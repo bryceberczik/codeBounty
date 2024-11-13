@@ -1,5 +1,5 @@
-import { User } from "./user";
-import { Listing } from "./listing";
-import { Job } from "./job";
+import { User } from "./user.js";
+import { Listing } from "./listing.js";
+import { Job } from "./job.js";
 
 export { User, Listing, Job };

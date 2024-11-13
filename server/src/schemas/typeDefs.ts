@@ -10,6 +10,21 @@ const typeDefs = gql`
     jobs: [Job]
   }
 
+  type Listing {
+    _id: ID
+    title: String
+    description: String
+    price: Int
+    userId: User
+  }
+
+  type Job {
+    _id: ID
+    listing: Listing
+    user: User
+    status: String
+  }
+  
   type UserInput {
     username: String!
     email: String!
