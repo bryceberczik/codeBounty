@@ -3,8 +3,8 @@ import { IListing } from "./listing";
 import { IUser } from "./user";
 
 interface IJob extends Document {
-  listing: Schema.Types.ObjectId | IListing;
-  user: Schema.Types.ObjectId | IUser;
+  listingId: Schema.Types.ObjectId | IListing;
+  userId: Schema.Types.ObjectId | IUser;
   status: string;
   createdAt: Date;
   updatedAt: Date;
@@ -12,12 +12,12 @@ interface IJob extends Document {
 
 const jobSchema = new Schema<IJob>(
   {
-    listing: {
+    listingId: {
       type: Schema.Types.ObjectId,
       ref: "Listing",
       required: true,
     },
-    user: {
+    userId: {
       type: Schema.Types.ObjectId,
       ref: "User",
       required: true,

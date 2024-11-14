@@ -24,10 +24,10 @@ interface AddListingArgs {
 
 interface AddJobArgs {
   input: {
-    listing: string;
-    user: string;
+    listingId: string;
+    userId: string;
     status: string;
-  }
+  };
 }
 
 interface LoginUserArgs {
@@ -47,6 +47,13 @@ interface JobArgs {
   _id: string;
 }
 
+interface UpdateJobArgs {
+  input: {
+    _id: string;
+    status: string;
+  };
+}
+
 const resolvers = {
   Query: {
     users: async () => {
@@ -62,10 +69,10 @@ const resolvers = {
       return Listing.findOne({ _id });
     },
     jobs: async () => {
-      return Job.find().populate("listings").populate("users");
+      return Job.find();
     },
     job: async (_parent: any, { _id }: JobArgs) => {
-      return Job.findOne({ _id }).populate("listings").populate("users");
+      return Job.findOne({ _id });
     },
     me: async (_parent: any, _args: any, context: any) => {
       // If the user is authenticated, find and return the user's information along with their thoughts
@@ -85,8 +92,7 @@ const resolvers = {
 
       return { token, user };
     },
-    addListing: async (_parent: any, { input }: AddListingArgs,) => {
-
+    addListing: async (_parent: any, { input }: AddListingArgs) => {
       const { userId, ...listingData } = input;
 
       const listing = await Listing.create({ ...listingData, userId });
@@ -100,7 +106,26 @@ const resolvers = {
       return { listing };
     },
     addJob: async (_parent: any, { input }: AddJobArgs) => {
-      const job = await Job.create({ ...input });
+      const { listingId, userId, ...JobData } = input;
+
+      const job = await Job.create({ ...JobData, listingId, userId });
+
+      await User.findByIdAndUpdate(
+        userId,
+        { $push: { jobs: job._id } },
+        { new: true }
+      );
+
+      return { job };
+    },
+    updateJobStatus: async (_parent: any, { input }: UpdateJobArgs) => {
+      const { _id, status } = input;
+
+      const job = await Job.findByIdAndUpdate(_id, { status }, { new: true });
+
+      if (!job) {
+        throw new Error("No job found with that ID.");
+      }
 
       return { job };
     },
