@@ -105,6 +105,12 @@ const resolvers = {
 
       const job = await Job.create({ ...JobData, listingId, userId });
 
+      await User.findByIdAndUpdate(
+        userId,
+        { $push: { jobs: job._id } },
+        { new: true }
+      );
+
       return { job };
     },
     login: async (_parent: any, { email, password }: LoginUserArgs) => {
