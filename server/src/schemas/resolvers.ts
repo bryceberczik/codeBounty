@@ -48,7 +48,7 @@ interface UpdateListingArgs {
     _id: string
     title: string;
     description: string;
-    price: string;
+    price: number;
   };
 }
 
@@ -130,13 +130,13 @@ const resolvers = {
       return { listing };
     },
     deleteListing: async (_parent: any, { _id }: DeleteListingArgs) => {
-      const deletedListing = await Listing.findByIdAndDelete(_id);
+      const listing = await Listing.findByIdAndDelete(_id);
 
-      if (!deletedListing) {
+      if (!listing) {
         throw new Error("No listing found with that ID.");
       }
 
-      return { message: "Listing deleted successfully.", deletedListing };
+      return { listing };
     },
     addJob: async (_parent: any, { input }: AddJobArgs) => {
       const { listingId, userId, ...JobData } = input;
