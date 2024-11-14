@@ -32,9 +32,13 @@ const userSchema = new Schema<IUser>(
       type: String,
       required: true,
       validate: {
-        validator: (v: string) => /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/.test(v),
-        message: "Password must be at least 8 characters long, contain at least one letter, one number, and one speical character.",
-      }
+        validator: (v: string) =>
+          /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/.test(
+            v
+          ),
+        message:
+          "Password must be at least 8 characters long, contain at least one letter, one number, and one speical character.",
+      },
     },
     role: {
       type: String,
@@ -53,9 +57,14 @@ const userSchema = new Schema<IUser>(
       type: [String],
       required: false,
       validate: {
-        validator: (v: string[]) => v.every(url => /^(https?:\/\/[^\s/$.?#].[^\s]*$)|(^[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}([\/\w \.-]*)*\/?$)/.test(url)),
+        validator: (v: string[]) =>
+          v.every((url) =>
+            /^(https?:\/\/[^\s/$.?#].[^\s]*$)|(^[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}([\/\w \.-]*)*\/?$)/.test(
+              url
+            )
+          ),
         message: "Each link must be a valid URL.",
-      }
+      },
     },
     listings: [
       {
@@ -92,6 +101,6 @@ userSchema.methods.isCorrectPassword = async function (
   return bcrypt.compare(password, this.password);
 };
 
-const User = model<IUser>('User', userSchema);
+const User = model<IUser>("User", userSchema);
 
 export { User, IUser };
