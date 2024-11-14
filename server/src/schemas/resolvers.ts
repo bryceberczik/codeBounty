@@ -143,7 +143,7 @@ const resolvers = {
       return { job };
     },
     updateUser: async (_parent: any, { input }: UpdateUserArgs) => {
-      
+
       const { _id, ...updateData } = input;
 
       const user = await User.findByIdAndUpdate(_id, updateData, { new: true });
@@ -151,6 +151,20 @@ const resolvers = {
       if (!user) {
         throw new Error("No user found with that ID.");
       }
+
+      return user;
+    },
+    deleteUser: async (_parent: any, { _id }: { _id: string }) => {
+
+      const user = await User.findById(_id);
+
+      if (!user) {
+        throw new Error("No user found with that ID.");
+      }
+
+      await Job.deleteMany({ _id: { $in: user.jobs } });
+
+      await User.findByIdAndDelete(_id);
 
       return user;
     },

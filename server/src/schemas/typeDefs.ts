@@ -98,6 +98,7 @@ const typeDefs = gql`
     addJob(input: JobInput!): JobReturn
     updateJobStatus(input: JobStatusUpdateInput!): JobReturn
     updateUser(input: UpdateUserInput!): User
+    deleteUser(_id: ID!): User
   }
 `;
 
