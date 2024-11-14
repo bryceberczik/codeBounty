@@ -75,7 +75,7 @@ const typeDefs = gql`
     addUser(input: UserInput!): Auth
     addListing(input: ListingInput!): ListingReturn
     addJob(input: JobInput!): Job
-    login(email: String!, password: String!): Auth
+    login(username: String!, password: String!): Auth
   }
 `;
 

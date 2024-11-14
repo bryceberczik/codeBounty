@@ -31,7 +31,7 @@ interface AddJobArgs {
 }
 
 interface LoginUserArgs {
-  email: string;
+  username: string;
   password: string;
 }
 
@@ -104,9 +104,9 @@ const resolvers = {
 
       return { job };
     },
-    login: async (_parent: any, { email, password }: LoginUserArgs) => {
-      // Find a user with the provided email
-      const user = await User.findOne({ email });
+    login: async (_parent: any, { username, password }: LoginUserArgs) => {
+      // Find a user with the provided username
+      const user = await User.findOne({ username });
 
       // If no user is found, throw an AuthenticationError
       if (!user) {
@@ -114,10 +114,10 @@ const resolvers = {
       }
 
       // Check if the provided password is correct
-      const correctPw = await user.isCorrectPassword(password);
+      const correctPassword = await user.isCorrectPassword(password);
 
       // If the password is incorrect, throw an AuthenticationError
-      if (!correctPw) {
+      if (!correctPassword) {
         throw new AuthenticationError("Could not authenticate user.");
       }
 
