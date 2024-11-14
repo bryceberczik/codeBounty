@@ -81,11 +81,11 @@ const typeDefs = gql`
   }
 
   type Mutation {
-    addUser(input: UserInput!): Auth
+    addUser(input: UseInput!): Auth
     addListing(input: ListingInput!): ListingReturn
+    login(username: String!, password: String!): Auth
     addJob(input: JobInput!): JobReturn
     updateJobStatus(input: JobStatusUpdateInput!): JobReturn
-    login(email: String!, password: String!): Auth
   }
 `;
 
