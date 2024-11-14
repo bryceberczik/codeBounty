@@ -43,6 +43,19 @@ interface ListingArgs {
   _id: string;
 }
 
+interface UpdateListingArgs {
+  input: {
+    _id: string
+    title: string;
+    description: string;
+    price: number;
+  };
+}
+
+interface DeleteListingArgs {
+  _id: string;
+}
+
 interface JobArgs {
   _id: string;
 }
@@ -115,6 +128,26 @@ const resolvers = {
         { $push: { listings: listing._id } },
         { new: true }
       );
+
+      return { listing };
+    },
+    updateListing: async (_parent: any, { input }: UpdateListingArgs) => {
+      const { _id, title, description, price } = input;
+
+      const listing = await Listing.findByIdAndUpdate(_id, { title, description, price }, { new: true });
+
+      if (!listing) {
+        throw new Error("No listing found with that ID.");
+      }
+
+      return { listing };
+    },
+    deleteListing: async (_parent: any, { _id }: DeleteListingArgs) => {
+      const listing = await Listing.findByIdAndDelete(_id);
+
+      if (!listing) {
+        throw new Error("No listing found with that ID.");
+      }
 
       return { listing };
     },

@@ -46,6 +46,17 @@ const typeDefs = gql`
     userId: ID!
   }
 
+  input ListingUpdateInput {
+    _id: String!
+    title: String
+    description: String
+    price: Int
+  }
+
+  input ListingDeleteInput {
+    _id: String!
+  }
+
   input JobInput {
     listingId: ID!
     userId: ID!
@@ -93,8 +104,10 @@ const typeDefs = gql`
 
   type Mutation {
     addUser(input: UserInput!): Auth
-    addListing(input: ListingInput!): ListingReturn
     login(username: String!, password: String!): Auth
+    addListing(input: ListingInput!): ListingReturn
+    updateListing(input: ListingUpdateInput!): ListingReturn
+    deleteListing(input: ListingDeleteInput!): ListingReturn
     addJob(input: JobInput!): JobReturn
     updateJobStatus(input: JobStatusUpdateInput!): JobReturn
     updateUser(input: UpdateUserInput!): User
