@@ -54,6 +54,19 @@ interface UpdateJobArgs {
   };
 }
 
+interface UpdateUserArgs {
+  input: {
+    _id: string;
+    username: string;
+    email: string;
+    password: string;
+    role?: string;
+    technologies?: string[];
+    description?: string;
+    links?: string[];
+  };
+}
+
 const resolvers = {
   Query: {
     users: async () => {
@@ -128,6 +141,18 @@ const resolvers = {
       }
 
       return { job };
+    },
+    updateUser: async (_parent: any, { input }: UpdateUserArgs) => {
+      
+      const { _id, ...updateData } = input;
+
+      const user = await User.findByIdAndUpdate(_id, updateData, { new: true });
+
+      if (!user) {
+        throw new Error("No user found with that ID.");
+      }
+
+      return user;
     },
     login: async (_parent: any, { username, password }: LoginUserArgs) => {
       // Find a user with the provided username
