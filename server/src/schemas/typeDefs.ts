@@ -19,7 +19,7 @@ const typeDefs = gql`
     title: String
     description: String
     price: Int
-    userId: User
+    userId: ID
   }
 
   type Job {
@@ -57,6 +57,10 @@ const typeDefs = gql`
     user: User
   }
 
+  type ListingReturn {
+    listing: Listing!
+  }
+
   type Query {
     users: [User]
     user(username: String!): User
@@ -69,7 +73,7 @@ const typeDefs = gql`
 
   type Mutation {
     addUser(input: UserInput!): Auth
-    addListing(input: ListingInput!): Listing
+    addListing(input: ListingInput!): ListingReturn
     addJob(input: JobInput!): Job
     login(email: String!, password: String!): Auth
   }
