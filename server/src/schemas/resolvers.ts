@@ -52,10 +52,6 @@ interface UpdateListingArgs {
   };
 }
 
-interface DeleteListingArgs {
-  _id: string;
-}
-
 interface JobArgs {
   _id: string;
 }
@@ -142,7 +138,7 @@ const resolvers = {
 
       return { listing };
     },
-    deleteListing: async (_parent: any, { _id }: DeleteListingArgs) => {
+    deleteListing: async (_parent: any, { _id }: { _id: string }) => {
       const listing = await Listing.findByIdAndDelete(_id);
 
       if (!listing) {
