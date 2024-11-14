@@ -45,7 +45,7 @@ interface ListingArgs {
 
 interface UpdateListingArgs {
   input: {
-    _id: string
+    _id: string;
     title: string;
     description: string;
     price: number;
@@ -130,7 +130,11 @@ const resolvers = {
     updateListing: async (_parent: any, { input }: UpdateListingArgs) => {
       const { _id, title, description, price } = input;
 
-      const listing = await Listing.findByIdAndUpdate(_id, { title, description, price }, { new: true });
+      const listing = await Listing.findByIdAndUpdate(
+        _id,
+        { title, description, price },
+        { new: true }
+      );
 
       if (!listing) {
         throw new Error("No listing found with that ID.");
@@ -172,7 +176,6 @@ const resolvers = {
       return { job };
     },
     updateUser: async (_parent: any, { input }: UpdateUserArgs) => {
-
       const { _id, ...updateData } = input;
 
       const user = await User.findByIdAndUpdate(_id, updateData, { new: true });
@@ -184,7 +187,6 @@ const resolvers = {
       return user;
     },
     deleteUser: async (_parent: any, { _id }: { _id: string }) => {
-
       const user = await User.findById(_id);
 
       if (!user) {
