@@ -6,6 +6,10 @@ interface AddUserArgs {
     username: string;
     email: string;
     password: string;
+    role?: string;
+    technologies?: string[];
+    description?: string;
+    links?: string[];
   };
 }
 
