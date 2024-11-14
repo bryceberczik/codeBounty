@@ -24,8 +24,8 @@ const typeDefs = gql`
 
   type Job {
     _id: ID
-    listing: Listing
-    user: User
+    listingId: ID
+    userId: ID
     status: String
   }
 
@@ -47,8 +47,8 @@ const typeDefs = gql`
   }
 
   input JobInput {
-    listing: ID!
-    user: ID!
+    listingId: ID!
+    userId: ID!
     status: String!
   }
 
@@ -59,6 +59,15 @@ const typeDefs = gql`
 
   type ListingReturn {
     listing: Listing!
+  }
+
+  type JobReturn {
+    job: Job!
+  }
+
+  input JobStatusUpdateInput {
+    _id: ID!
+    status: String!
   }
 
   type Query {
@@ -72,10 +81,11 @@ const typeDefs = gql`
   }
 
   type Mutation {
-    addUser(input: UserInput!): Auth
+    addUser(input: UseInput!): Auth
     addListing(input: ListingInput!): ListingReturn
-    addJob(input: JobInput!): Job
     login(username: String!, password: String!): Auth
+    addJob(input: JobInput!): JobReturn
+    updateJobStatus(input: JobStatusUpdateInput!): JobReturn
   }
 `;
 
