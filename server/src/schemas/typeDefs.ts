@@ -6,6 +6,10 @@ const typeDefs = gql`
     username: String
     email: String
     password: String
+    role: String
+    technologies: [String]
+    description: String
+    links: [String]
     listings: [Listing]
     jobs: [Job]
   }
@@ -29,6 +33,10 @@ const typeDefs = gql`
     username: String!
     email: String!
     password: String!
+    role: String
+    technologies: [String]
+    description: String
+    links: [String]
   }
 
   input ListingInput {
