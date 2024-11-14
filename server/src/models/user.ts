@@ -5,6 +5,10 @@ interface IUser extends Document {
   username: string;
   email: string;
   password: string;
+  role: string;
+  technologies: string[];
+  description: string;
+  links: string[];
   listings: Schema.Types.ObjectId[];
   jobs: Schema.Types.ObjectId[];
   isCorrectPassword(password: string): Promise<boolean>;
@@ -28,6 +32,27 @@ const userSchema = new Schema<IUser>(
       type: String,
       required: true,
       minlength: 7,
+    },
+    role: {
+      type: String,
+      required: false,
+    },
+    technologies: {
+      type: [String],
+      required: false,
+    },
+    description: {
+      type: String,
+      required: false,
+      maxLength: 800,
+    },
+    links: {
+      type: [String],
+      required: false,
+      validate: {
+        validator: (v: string[]) => v.every(url => /^(https?:\/\/[^\s/$.?#].[^\s]*$)|(^[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}([\/\w \.-]*)*\/?$)/.test(url)),
+        message: "Each link must be a valid URL.",
+      }
     },
     listings: [
       {
