@@ -24,8 +24,8 @@ interface AddListingArgs {
 
 interface AddJobArgs {
   input: {
-    listing: string;
-    user: string;
+    listingId: string;
+    userId: string;
     status: string;
   }
 }
@@ -62,10 +62,10 @@ const resolvers = {
       return Listing.findOne({ _id });
     },
     jobs: async () => {
-      return Job.find().populate("listings").populate("users");
+      return Job.find();
     },
     job: async (_parent: any, { _id }: JobArgs) => {
-      return Job.findOne({ _id }).populate("listings").populate("users");
+      return Job.findOne({ _id });
     },
     me: async (_parent: any, _args: any, context: any) => {
       // If the user is authenticated, find and return the user's information along with their thoughts
@@ -100,7 +100,10 @@ const resolvers = {
       return { listing };
     },
     addJob: async (_parent: any, { input }: AddJobArgs) => {
-      const job = await Job.create({ ...input });
+
+      const { listingId, userId, ...JobData } = input;
+
+      const job = await Job.create({ ...JobData, listingId, userId });
 
       return { job };
     },
