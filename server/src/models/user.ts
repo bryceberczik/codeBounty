@@ -31,7 +31,10 @@ const userSchema = new Schema<IUser>(
     password: {
       type: String,
       required: true,
-      minlength: 8,
+      validate: {
+        validator: (v: string) => /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/.test(v),
+        message: "Password must be at least 8 characters long, contain at least one letter, one number, and one speical character.",
+      }
     },
     role: {
       type: String,
