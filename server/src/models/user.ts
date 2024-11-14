@@ -37,7 +37,7 @@ const userSchema = new Schema<IUser>(
             v
           ),
         message:
-          "Password must be at least 8 characters long, contain at least one letter, one number, and one speical character.",
+          "Password must be at least 8 characters long, contain at least one letter, one number, and one special character.",
       },
     },
     role: {
