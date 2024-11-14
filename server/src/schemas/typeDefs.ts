@@ -53,10 +53,6 @@ const typeDefs = gql`
     price: Int
   }
 
-  input ListingDeleteInput {
-    _id: String!
-  }
-
   input JobInput {
     listingId: ID!
     userId: ID!
@@ -107,7 +103,7 @@ const typeDefs = gql`
     login(username: String!, password: String!): Auth
     addListing(input: ListingInput!): ListingReturn
     updateListing(input: ListingUpdateInput!): ListingReturn
-    deleteListing(input: ListingDeleteInput!): ListingReturn
+    deleteListing(_id: ID!): Listing
     addJob(input: JobInput!): JobReturn
     updateJobStatus(input: JobStatusUpdateInput!): JobReturn
     updateUser(input: UpdateUserInput!): User
