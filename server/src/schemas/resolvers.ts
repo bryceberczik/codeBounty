@@ -70,7 +70,7 @@ const resolvers = {
           .populate("listings")
           .populate("jobs");
       }
-      // If the user is not authenticated, throw an AuthenticationError
+
       throw new AuthenticationError("Could not authenticate user.");
     },
   },
