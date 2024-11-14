@@ -52,10 +52,10 @@ const resolvers = {
       return User.findOne({ username }).populate("listings").populate("jobs");
     },
     listings: async () => {
-      return Listing.find().populate("users");
+      return Listing.find();
     },
     listing: async (_parent: any, { _id }: ListingArgs) => {
-      return Listing.findOne({ _id }).populate("users");
+      return Listing.findOne({ _id });
     },
     jobs: async () => {
       return Job.find().populate("listings").populate("users");
@@ -81,8 +81,17 @@ const resolvers = {
 
       return { token, user };
     },
-    addListing: async (_parent: any, { input }: AddListingArgs) => {
-      const listing = await Listing.create({ ...input });
+    addListing: async (_parent: any, { input }: AddListingArgs,) => {
+
+      const { userId, ...listingData } = input;
+
+      const listing = await Listing.create({ ...listingData, userId });
+
+      await User.findByIdAndUpdate(
+        userId,
+        { $push: { listings: listing._id } },
+        { new: true }
+      );
 
       return { listing };
     },
