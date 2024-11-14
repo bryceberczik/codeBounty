@@ -65,6 +65,11 @@ const typeDefs = gql`
     job: Job!
   }
 
+  input JobStatusUpdateInput {
+    _id: ID!
+    status: String!
+  }
+
   type Query {
     users: [User]
     user(username: String!): User
@@ -79,6 +84,7 @@ const typeDefs = gql`
     addUser(input: UserInput!): Auth
     addListing(input: ListingInput!): ListingReturn
     addJob(input: JobInput!): JobReturn
+    updateJobStatus(input: JobStatusUpdateInput!): JobReturn
     login(email: String!, password: String!): Auth
   }
 `;
