@@ -24,11 +24,24 @@ const typeDefs = gql`
     user: User
     status: String
   }
-  
+
   input UserInput {
     username: String!
     email: String!
     password: String!
+  }
+
+  input ListingInput {
+    title: String!
+    description: String!
+    price: Int!
+    userId: ID!
+  }
+
+  input JobInput {
+    listing: ID!
+    user: ID!
+    status: String!
   }
 
   type Auth {
@@ -39,14 +52,19 @@ const typeDefs = gql`
   type Query {
     users: [User]
     user(username: String!): User
+    listings: [Listing]
+    listing(_id: ID!): Listing
+    jobs: [Job]
+    job(_id: ID!): Job
     me: User
   }
 
   type Mutation {
     addUser(input: UserInput!): Auth
+    addListing(input: ListingInput!): Listing
+    addJob(input: JobInput!): Job
     login(email: String!, password: String!): Auth
   }
-
 `;
 
 export default typeDefs;
