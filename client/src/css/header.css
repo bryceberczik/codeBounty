@@ -57,3 +57,18 @@ header {
     cursor: pointer;
     background-color: #b0b89a;
 }
+
+.category-nav {
+
+    text-decoration: none;
+}
+
+.activeNav {
+
+    text-decoration: none;
+}
+
+.restNav {
+
+    text-decoration: none;
+}
