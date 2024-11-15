@@ -4,13 +4,13 @@ import {
   AddUserArgs,
   AddListingArgs,
   AddJobArgs,
-  LoginUserArgs,
+  UpdateUserArgs,
+  UpdateListingArgs,
+  UpdateJobArgs,
   UserArgs,
   ListingArgs,
-  UpdateListingArgs,
   JobArgs,
-  UpdateJobArgs,
-  UpdateUserArgs,
+  LoginUserArgs,
 } from "../interfaces/interfaces.js";
 
 const resolvers = {

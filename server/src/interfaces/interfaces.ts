@@ -27,39 +27,6 @@ export interface AddJobArgs {
   };
 }
 
-export interface LoginUserArgs {
-  username: string;
-  password: string;
-}
-
-export interface UserArgs {
-  username: string;
-}
-
-export interface ListingArgs {
-  _id: string;
-}
-
-export interface UpdateListingArgs {
-  input: {
-    _id: string;
-    title: string;
-    description: string;
-    price: number;
-  };
-}
-
-export interface JobArgs {
-  _id: string;
-}
-
-export interface UpdateJobArgs {
-  input: {
-    _id: string;
-    status: string;
-  };
-}
-
 export interface UpdateUserArgs {
   input: {
     _id: string;
@@ -71,4 +38,37 @@ export interface UpdateUserArgs {
     description?: string;
     links?: string[];
   };
+}
+
+export interface UpdateListingArgs {
+  input: {
+    _id: string;
+    title: string;
+    description: string;
+    price: number;
+  };
+}
+
+export interface UpdateJobArgs {
+  input: {
+    _id: string;
+    status: string;
+  };
+}
+
+export interface UserArgs {
+  username: string;
+}
+
+export interface ListingArgs {
+  _id: string;
+}
+
+export interface JobArgs {
+  _id: string;
+}
+
+export interface LoginUserArgs {
+  username: string;
+  password: string;
 }
