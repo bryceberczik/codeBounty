@@ -21,6 +21,10 @@ export const ADD_USER = gql`
         username
         email
         password
+        role
+        technologies
+        description
+        links
       }
     }
   }
