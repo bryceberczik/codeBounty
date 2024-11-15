@@ -1,4 +1,4 @@
-import Navigation from './navigation.tsx';
+import Navigation from './Navigation.tsx';
 
 interface IHeader {
     text: string;
