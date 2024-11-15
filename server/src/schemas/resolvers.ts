@@ -80,7 +80,7 @@ const resolvers = {
   Query: {
     users: async () => {
       try {
-        return User.find().populate("listings").populate("jobs");
+        return await User.find().populate("listings").populate("jobs");
       } catch (error) {
         console.error("Error fetching users:", error);
         throw new Error("Failed to retrieve users.");
@@ -88,7 +88,7 @@ const resolvers = {
     },
     user: async (_parent: any, { username }: UserArgs) => {
       try {
-        return User.findOne({ username }).populate("listings").populate("jobs");
+        return await User.findOne({ username }).populate("listings").populate("jobs");
       } catch (error) {
         console.error("Error fetching user:", error);
         throw new Error("Failed to retrieve user.");
@@ -96,7 +96,7 @@ const resolvers = {
     },
     listings: async () => {
       try {
-        return Listing.find();
+        return await Listing.find();
       } catch (error) {
         console.error("Error fetching listings:", error);
         throw new Error("Failed to retrieve listings.");
@@ -104,7 +104,7 @@ const resolvers = {
     },
     listing: async (_parent: any, { _id }: ListingArgs) => {
       try {
-        return Listing.findOne({ _id });
+        return await Listing.findOne({ _id });
       } catch (error) {
         console.error("Error fetching listing:", error);
         throw new Error("Failed to retrieve listing.");
@@ -112,7 +112,7 @@ const resolvers = {
     },
     jobs: async () => {
       try {
-        return Job.find();
+        return await Job.find();
       } catch (error) {
         console.error("Error fetching jobs:", error);
         throw new Error("Failed to retrieve jobs.");
@@ -120,7 +120,7 @@ const resolvers = {
     },
     job: async (_parent: any, { _id }: JobArgs) => {
       try {
-        return Job.findOne({ _id });
+        return await Job.findOne({ _id });
       } catch (error) {
         console.error("Error fetching jobs:", error);
         throw new Error("Failed to retrieve job.");
@@ -130,7 +130,7 @@ const resolvers = {
       // If the user is authenticated, find and return the user's information along with their thoughts
       try {
         if (context.user) {
-          return User.findOne({ _id: context.user._id })
+          return await User.findOne({ _id: context.user._id })
             .populate("listings")
             .populate("jobs");
         }
