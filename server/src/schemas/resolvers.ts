@@ -1,80 +1,17 @@
 import { Listing, User, Job } from "../models/index.js";
 import { signToken, AuthenticationError } from "../utils/auth.js";
-
-interface AddUserArgs {
-  input: {
-    username: string;
-    email: string;
-    password: string;
-    role?: string;
-    technologies?: string[];
-    description?: string;
-    links?: string[];
-  };
-}
-
-interface AddListingArgs {
-  input: {
-    title: string;
-    description: string;
-    price: number;
-    userId: string;
-  };
-}
-
-interface AddJobArgs {
-  input: {
-    listingId: string;
-    userId: string;
-    status: string;
-  };
-}
-
-interface LoginUserArgs {
-  username: string;
-  password: string;
-}
-
-interface UserArgs {
-  username: string;
-}
-
-interface ListingArgs {
-  _id: string;
-}
-
-interface UpdateListingArgs {
-  input: {
-    _id: string;
-    title: string;
-    description: string;
-    price: number;
-  };
-}
-
-interface JobArgs {
-  _id: string;
-}
-
-interface UpdateJobArgs {
-  input: {
-    _id: string;
-    status: string;
-  };
-}
-
-interface UpdateUserArgs {
-  input: {
-    _id: string;
-    username: string;
-    email: string;
-    password: string;
-    role?: string;
-    technologies?: string[];
-    description?: string;
-    links?: string[];
-  };
-}
+import {
+  AddUserArgs,
+  AddListingArgs,
+  AddJobArgs,
+  LoginUserArgs,
+  UserArgs,
+  ListingArgs,
+  UpdateListingArgs,
+  JobArgs,
+  UpdateJobArgs,
+  UpdateUserArgs,
+} from "../interfaces/interfaces.js";
 
 const resolvers = {
   Query: {
