@@ -24,6 +24,30 @@ export const QUERY_USER = gql`
   }
 `;
 
+export const QUERY_ME = gql`
+  query me {
+    me {
+      _id
+      username
+      email
+      role
+      technologies
+      description
+      links
+      listings {
+        _id
+        title
+        description
+        price
+      }
+      jobs {
+        _id
+        status
+      }
+    }
+  }
+`;
+
 export const QUERY_LISTINGS = gql`
   query getListings {
     listing {
@@ -62,25 +86,5 @@ export const QUERY_SINGLE_JOB = gql`
     userId
     listingId
     status
-  }
-`;
-
-export const QUERY_ME = gql`
-  query me {
-    me {
-      _id
-      username
-      email
-      jobs {
-        _id
-        status
-      }
-      listings {
-        _id
-        title
-        price
-        description
-      }
-    }
   }
 `;
