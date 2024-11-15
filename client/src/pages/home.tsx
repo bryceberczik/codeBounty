@@ -1,17 +1,11 @@
-import Header from '../components/Header.tsx';
-import '../css/home.css';
-export default function Home() {
+const Home = () => {
 
     return (
-        
-        <>
-        
-            <div>
 
-                <Header text="Home" />
-
-            </div>
-
-        </>
+        <div>
+            
+        </div>
     )
-}
+};
+
+export default Home;

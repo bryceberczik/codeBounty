@@ -1,55 +1,55 @@
-import { useLocation, useNavigate } from "react-router-dom";
-import '../css/navigation.css';
+// import { useLocation, useNavigate } from "react-router-dom";
+// import '../css/navigation.css';
 
-interface INavigationButtons {
-    label: string;
-}
+// interface INavigationButtons {
+//     label: string;
+// }
 
-const NavigationLinks = ( props: INavigationButtons & { isActive: boolean, onClick:() => void }  ) => {
+// const NavigationLinks = ( props: INavigationButtons & { isActive: boolean, onClick:() => void }  ) => {
 
-    return (
+//     return (
         
-        <button onClick={props.onClick} type="button" className="btn btn-primary btn-lg">{props.label}</button>
+//         <button onClick={props.onClick} type="button" className="btn btn-primary btn-lg">{props.label}</button>
             
-    );
-};
+//     );
+// };
 
-export default function navigation() {
+// export default function navigation() {
 
-    const navigate = useNavigate();
-    const currentPage = useLocation().pathname;
+//     const navigate = useNavigate();
+//     const currentPage = useLocation().pathname;
 
-    const pageNavigation = [
+//     const pageNavigation = [
 
-        {label: 'Home', path:() => navigate('/'), location: '/'},
-        {label: '', path:() => navigate('/'), location: '/'},
-        {label: '', path:() => navigate('/'), location: '/'},
-        {label: '', path:() => navigate('/'), location: '/'},
-    ];
+//         {label: 'Home', path:() => navigate('/'), location: '/'},
+//         {label: '', path:() => navigate('/'), location: '/'},
+//         {label: '', path:() => navigate('/'), location: '/'},
+//         {label: '', path:() => navigate('/'), location: '/'},
+//     ];
 
-    return (
+//     return (
 
-        <>
-            <div>
+//         <>
+//             <div>
 
-            <ul>
+//             <ul>
 
-                {
-                    pageNavigation.map((navigateLinks) => (
-                        <NavigationLinks
-                            key={navigateLinks.label}
-                            onClick={navigateLinks.path}
-                            label={navigateLinks.label}
-                            isActive={currentPage === navigateLinks.location}
-                        />
-                    ))
-                }
+//                 {
+//                     pageNavigation.map((navigateLinks) => (
+//                         <NavigationLinks
+//                             key={navigateLinks.label}
+//                             onClick={navigateLinks.path}
+//                             label={navigateLinks.label}
+//                             isActive={currentPage === navigateLinks.location}
+//                         />
+//                     ))
+//                 }
 
-            </ul>
+//             </ul>
 
-            </div>
+//             </div>
         
-        </>
+//         </>
 
-    )
-}
+//     )
+// }
