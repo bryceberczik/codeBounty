@@ -2,7 +2,6 @@ import "../css/header.css";
 import { Link, useLocation } from "react-router-dom";
 
 const Header = () => {
-
   const currentPage = useLocation().pathname;
   return (
     <div>
@@ -11,20 +10,37 @@ const Header = () => {
           <h1>codeBounty</h1>
         </div>
         <div className="header-center">
-          <Link to='/' className={currentPage === "/" ? "activeNav" : "restNav"}>
-          <h1 className="category-nav">Home</h1>
+          <Link
+            to="/"
+            className={currentPage === "/" ? "activeNav" : "restNav"}
+          >
+            <h1 className="category-nav">Home</h1>
           </Link>
-          <Link to='/explore' className={currentPage === "/explore" ? "activeNav" : "restNav"}>
-          <h1 className="category-nav">Explore</h1>
+          <Link
+            to="/explore"
+            className={currentPage === "/explore" ? "activeNav" : "restNav"}
+          >
+            <h1 className="category-nav">Explore</h1>
           </Link>
-          <Link to='/find-work' className={currentPage === "/find-work" ? "activeNav" : "restNav"}>
-          <h1 className="category-nav">Find work</h1>
+          <Link
+            to="/find-work"
+            className={currentPage === "/find-work" ? "activeNav" : "restNav"}
+          >
+            <h1 className="category-nav">Find work</h1>
           </Link>
-          <Link to='/post-listing' className={currentPage === "/post-listing" ? "activeNav" : "restNav"}>
-          <h1 className="category-nav">Post a job</h1>
+          <Link
+            to="/post-listing"
+            className={
+              currentPage === "/post-listing" ? "activeNav" : "restNav"
+            }
+          >
+            <h1 className="category-nav">Post a job</h1>
           </Link>
-          <Link to='/about-us' className={currentPage === "/about-us" ? "activeNav" : "restNav"}>
-          <h1 className="category-nav">About</h1>
+          <Link
+            to="/about-us"
+            className={currentPage === "/about-us" ? "activeNav" : "restNav"}
+          >
+            <h1 className="category-nav">About</h1>
           </Link>
         </div>
         <div className="header-right">
