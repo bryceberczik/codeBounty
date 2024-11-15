@@ -69,6 +69,14 @@ export const UPDATE_LISTING = gql`
   }
 `;
 
+export const DELETE_LISTING = gql`
+  mutation Mutation($id: ID!) {
+    deleteListing(_id: $id) {
+      _id
+    }
+  }
+`;
+
 export const ADD_JOB = gql`
   mutation Mutation($input: JobInput!) {
     addJob(input: $input) {
