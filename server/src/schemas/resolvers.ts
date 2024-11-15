@@ -156,6 +156,70 @@ const resolvers = {
         throw new Error("Failed to create user.");
       }
     },
+    updateUser: async (_parent: any, { input }: UpdateUserArgs) => {
+      try {
+        const { _id, ...updateData } = input;
+
+        const user = await User.findByIdAndUpdate(_id, updateData, {
+          new: true,
+        });
+
+        if (!user) {
+          throw new Error("No user found with that ID.");
+        }
+
+        return user;
+      } catch (error) {
+        console.error("Error updating user:", error);
+        throw new Error("Failed to update user.");
+      }
+    },
+    deleteUser: async (_parent: any, { _id }: { _id: string }) => {
+      try {
+        const user = await User.findById(_id);
+
+        if (!user) {
+          throw new Error("No user found with that ID.");
+        }
+
+        await Job.deleteMany({ _id: { $in: user.jobs } });
+
+        await User.findByIdAndDelete(_id);
+
+        return user;
+      } catch (error) {
+        console.error("Error deleting user:", error);
+        throw new Error("Failed to delete user.");
+      }
+    },
+    login: async (_parent: any, { username, password }: LoginUserArgs) => {
+      try {
+        // Find a user with the provided username
+        const user = await User.findOne({ username });
+
+        // If no user is found, throw an AuthenticationError
+        if (!user) {
+          throw new AuthenticationError("Could not authenticate user.");
+        }
+
+        // Check if the provided password is correct
+        const correctPassword = await user.isCorrectPassword(password);
+
+        // If the password is incorrect, throw an AuthenticationError
+        if (!correctPassword) {
+          throw new AuthenticationError("Could not authenticate user.");
+        }
+
+        // Sign a token with the user's information
+        const token = signToken(user.username, user.email, user._id);
+
+        // Return the token and the user
+        return { token, user };
+      } catch (error) {
+        console.error("Error logging in user:", error);
+        throw new Error("Failed to login user.");
+      }
+    },
     addListing: async (_parent: any, { input }: AddListingArgs) => {
       try {
         const { userId, ...listingData } = input;
@@ -240,70 +304,6 @@ const resolvers = {
       } catch (error) {
         console.error("Error updating job:", error);
         throw new Error("Failed to update job.");
-      }
-    },
-    updateUser: async (_parent: any, { input }: UpdateUserArgs) => {
-      try {
-        const { _id, ...updateData } = input;
-
-        const user = await User.findByIdAndUpdate(_id, updateData, {
-          new: true,
-        });
-
-        if (!user) {
-          throw new Error("No user found with that ID.");
-        }
-
-        return user;
-      } catch (error) {
-        console.error("Error updating user:", error);
-        throw new Error("Failed to update user.");
-      }
-    },
-    deleteUser: async (_parent: any, { _id }: { _id: string }) => {
-      try {
-        const user = await User.findById(_id);
-
-        if (!user) {
-          throw new Error("No user found with that ID.");
-        }
-
-        await Job.deleteMany({ _id: { $in: user.jobs } });
-
-        await User.findByIdAndDelete(_id);
-
-        return user;
-      } catch (error) {
-        console.error("Error deleting user:", error);
-        throw new Error("Failed to delete user.");
-      }
-    },
-    login: async (_parent: any, { username, password }: LoginUserArgs) => {
-      try {
-        // Find a user with the provided username
-        const user = await User.findOne({ username });
-
-        // If no user is found, throw an AuthenticationError
-        if (!user) {
-          throw new AuthenticationError("Could not authenticate user.");
-        }
-
-        // Check if the provided password is correct
-        const correctPassword = await user.isCorrectPassword(password);
-
-        // If the password is incorrect, throw an AuthenticationError
-        if (!correctPassword) {
-          throw new AuthenticationError("Could not authenticate user.");
-        }
-
-        // Sign a token with the user's information
-        const token = signToken(user.username, user.email, user._id);
-
-        // Return the token and the user
-        return { token, user };
-      } catch (error) {
-        console.error("Error logging in user:", error);
-        throw new Error("Failed to login user.");
       }
     },
   },
