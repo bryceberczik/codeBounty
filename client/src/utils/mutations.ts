@@ -1,13 +1,13 @@
-import { gql } from '@apollo/client';
+import { gql } from "@apollo/client";
 
-export const LOGIN_USER = gql`
-  mutation login($email: String!, $password: String!) {
+export const LOGIN = gql`
+  mutation Mutation($email: String!, $password: String!) {
     login(email: $email, password: $password) {
       token
       user {
         _id
         username
-        
+        email
       }
     }
   }
@@ -16,41 +16,85 @@ export const LOGIN_USER = gql`
 export const ADD_USER = gql`
   mutation Mutation($input: UserInput!) {
     addUser(input: $input) {
+      token
       user {
         username
-        _id
-      }
-      token
-    }
-  }
-`;
-
-export const ADD_THOUGHT = gql`
-  mutation AddThought($input: ThoughtInput!) {
-    addThought(input: $input) {
-      _id
-      thoughtText
-      thoughtAuthor
-      createdAt
-      comments {
-        _id
-        commentText
+        email
+        password
+        role
+        technologies
+        description
+        links
       }
     }
   }
 `;
 
-export const ADD_COMMENT = gql`
-  mutation addComment($thoughtId: ID!, $commentText: String!) {
-    addComment(thoughtId: $thoughtId, commentText: $commentText) {
+export const UPDATE_USER = gql`
+  mutation Mutation($input: UpdateUserInput!) {
+    updateUser(input: $input) {
       _id
-      thoughtText
-      thoughtAuthor
-      createdAt
-      comments {
+      username
+      role
+      technologies
+      description
+      links
+    }
+  }
+`;
+
+export const ADD_LISTING = gql`
+  mutation Mutation($input: ListingInput!) {
+    addListing(input: $input) {
+      listing {
+        title
+        description
+        price
+        userId
+      }
+    }
+  }
+`;
+
+export const UPDATE_LISTING = gql`
+  mutation Mutation($input: ListingUpdateInput!) {
+    updateListing(input: $input) {
+      listing {
         _id
-        commentText
-        createdAt
+        title
+        description
+        price
+      }
+    }
+  }
+`;
+
+export const DELETE_LISTING = gql`
+  mutation Mutation($id: ID!) {
+    deleteListing(_id: $id) {
+      _id
+    }
+  }
+`;
+
+export const ADD_JOB = gql`
+  mutation Mutation($input: JobInput!) {
+    addJob(input: $input) {
+      job {
+        listingId
+        userId
+        status
+      }
+    }
+  }
+`;
+
+export const UPDATE_JOB_STATUS = gql`
+  mutation Mutation($input: JobStatusUpdateInput!) {
+    updateJobStatus(input: $input) {
+      job {
+        _id
+        status
       }
     }
   }
