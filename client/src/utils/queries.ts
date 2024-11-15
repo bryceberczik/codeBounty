@@ -6,11 +6,15 @@ export const QUERY_USER = gql`
       _id
       username
       email
+      role
+      technologies
+      description
+      links
       listings {
         _id
         title
-        price
         description
+        price
       }
       jobs {
         _id
