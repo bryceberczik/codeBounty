@@ -3,7 +3,7 @@ import "../css/findwork.css";
 
 const FindWork = () => {
   return (
-    <div>
+    <div id="find-work">
       <h1>Search for work that fits your role.</h1>
 
       <Form className="d-flex">
