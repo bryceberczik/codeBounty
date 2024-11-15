@@ -1,0 +1,28 @@
+header {
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 20px;
+    align-items: center;
+}
+
+.header-center {
+
+    display: flex;
+    flex-direction: row;
+}
+
+.header-center h1 {
+
+    margin: 0 20px;
+    font-size: 20px;
+}
+
+.header-left h1, .header-center h1, .header-right h1 {
+
+    font-family: 'Poppins', sans-serif;
+    font-weight: 350;
+    color: #003049;
+}
+
