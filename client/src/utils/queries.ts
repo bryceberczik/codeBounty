@@ -1,4 +1,4 @@
-import gql from "graphql-tag";
+import { gql } from "@apollo/client";
 
 export const QUERY_USER = gql`
   query user($username: String!) {
@@ -6,40 +6,58 @@ export const QUERY_USER = gql`
       _id
       username
       email
-      thoughts {
+      listings {
         _id
-        thoughtText
-        createdAt
+        title
+        price
+        description
+      }
+      jobs {
+        _id
+        status
       }
     }
   }
 `;
 
-export const QUERY_THOUGHTS = gql`
-  query getThoughts {
-    thoughts {
+export const QUERY_LISTINGS = gql`
+  query getListings {
+    listing {
       _id
-      thoughtText
-      thoughtAuthor
-      createdAt
+      title
+      description
+      price
     }
   }
 `;
 
-export const QUERY_SINGLE_THOUGHT = gql`
-  query getSingleThought($thoughtId: ID!) {
-    thought(thoughtId: $thoughtId) {
+export const QUERY_SINGLE_LISTING = gql`
+  query getSingleListing($id: ID!) {
+    listing(_id: $id) {
       _id
-      thoughtText
-      thoughtAuthor
-      createdAt
-      comments {
-        _id
-        commentText
-        commentAuthor
-        createdAt
-      }
+      title
+      description
+      price
+      userId
     }
+  }
+`;
+
+export const QUERY_JOBS = gql`
+  query getJobs {
+    _id
+    status
+    userId
+    listingId
+  }
+`;
+
+export const QUERY_SINGLE_JOB = gql`
+  query getSingleJob(_id: $id) {
+    _id
+    userId
+    listingId
+    status
   }
 `;
 
@@ -49,10 +67,15 @@ export const QUERY_ME = gql`
       _id
       username
       email
-      thoughts {
+      jobs {
         _id
-        thoughtText
-        createdAt
+        status
+      }
+      listings {
+        _id
+        title
+        price
+        description
       }
     }
   }
