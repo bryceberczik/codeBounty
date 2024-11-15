@@ -96,6 +96,21 @@ const resolvers = {
         throw new Error("Failed to retrieve user.");
       }
     },
+    me: async (_parent: any, _args: any, context: any) => {
+      // If the user is authenticated, find and return the user's information along with their thoughts
+      try {
+        if (context.user) {
+          return await User.findOne({ _id: context.user._id })
+            .populate("listings")
+            .populate("jobs");
+        }
+
+        throw new AuthenticationError("Could not authenticate user.");
+      } catch (error) {
+        console.error("Error fetching user:", error);
+        throw new Error("Failed to retrieve user.");
+      }
+    },
     listings: async () => {
       try {
         return await Listing.find();
@@ -126,21 +141,6 @@ const resolvers = {
       } catch (error) {
         console.error("Error fetching jobs:", error);
         throw new Error("Failed to retrieve job.");
-      }
-    },
-    me: async (_parent: any, _args: any, context: any) => {
-      // If the user is authenticated, find and return the user's information along with their thoughts
-      try {
-        if (context.user) {
-          return await User.findOne({ _id: context.user._id })
-            .populate("listings")
-            .populate("jobs");
-        }
-
-        throw new AuthenticationError("Could not authenticate user.");
-      } catch (error) {
-        console.error("Error fetching user:", error);
-        throw new Error("Failed to retrieve user.");
       }
     },
   },
