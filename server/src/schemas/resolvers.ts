@@ -79,32 +79,67 @@ interface UpdateUserArgs {
 const resolvers = {
   Query: {
     users: async () => {
-      return User.find().populate("listings").populate("jobs");
+      try {
+        return User.find().populate("listings").populate("jobs");
+      } catch (error) {
+        console.error("Error fetching users:", error);
+        throw new Error("Failed to retrieve users.");
+      }
     },
     user: async (_parent: any, { username }: UserArgs) => {
-      return User.findOne({ username }).populate("listings").populate("jobs");
+      try {
+        return User.findOne({ username }).populate("listings").populate("jobs");
+      } catch (error) {
+        console.error("Error fetching user:", error);
+        throw new Error("Failed to retrieve user.");
+      }
     },
     listings: async () => {
-      return Listing.find();
+      try {
+        return Listing.find();
+      } catch (error) {
+        console.error("Error fetching listings:", error);
+        throw new Error("Failed to retrieve listings.");
+      }
     },
     listing: async (_parent: any, { _id }: ListingArgs) => {
-      return Listing.findOne({ _id });
+      try {
+        return Listing.findOne({ _id });
+      } catch (error) {
+        console.error("Error fetching listing:", error);
+        throw new Error("Failed to retrieve listing.");
+      }
     },
     jobs: async () => {
-      return Job.find();
+      try {
+        return Job.find();
+      } catch (error) {
+        console.error("Error fetching jobs:", error);
+        throw new Error("Failed to retrieve jobs.");
+      }
     },
     job: async (_parent: any, { _id }: JobArgs) => {
-      return Job.findOne({ _id });
+      try {
+        return Job.findOne({ _id });
+      } catch (error) {
+        console.error("Error fetching jobs:", error);
+        throw new Error("Failed to retrieve job.");
+      }
     },
     me: async (_parent: any, _args: any, context: any) => {
       // If the user is authenticated, find and return the user's information along with their thoughts
-      if (context.user) {
-        return User.findOne({ _id: context.user._id })
-          .populate("listings")
-          .populate("jobs");
-      }
+      try {
+        if (context.user) {
+          return User.findOne({ _id: context.user._id })
+            .populate("listings")
+            .populate("jobs");
+        }
 
-      throw new AuthenticationError("Could not authenticate user.");
+        throw new AuthenticationError("Could not authenticate user.");
+      } catch (error) {
+        console.error("Error fetching user:", error);
+        throw new Error("Failed to retrieve user.");
+      }
     },
   },
   Mutation: {
