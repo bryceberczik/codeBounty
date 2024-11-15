@@ -1,11 +1,11 @@
-const Home = () => {
+const FindWork = () => {
 
     return (
 
         <div>
-            
+
         </div>
     )
 };
 
-export default Home;
+export default FindWork;
