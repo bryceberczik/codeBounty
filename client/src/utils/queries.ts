@@ -55,6 +55,7 @@ export const QUERY_LISTINGS = gql`
       title
       description
       price
+      userId
     }
   }
 `;
@@ -74,17 +75,17 @@ export const QUERY_SINGLE_LISTING = gql`
 export const QUERY_JOBS = gql`
   query getJobs {
     _id
-    status
-    userId
     listingId
+    userId
+    status
   }
 `;
 
 export const QUERY_SINGLE_JOB = gql`
   query getSingleJob(_id: $id) {
     _id
-    userId
     listingId
+    userId
     status
   }
 `;
