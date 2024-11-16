@@ -1,5 +1,5 @@
 import { Container, Row, Col } from "react-bootstrap";
-import Button from "react-bootstrap/Button";
+import { Button, Form } from "react-bootstrap";
 import { FaRegEdit } from "react-icons/fa";
 import "../css/userprofile.css";
 
@@ -53,6 +53,17 @@ const UserProfile = () => {
             </Row>
 
             <Row>
+              <Col md={11}>
+                <Form className="input-field">
+                  <Form.Group>
+                    <Form.Control
+                      className="tech-input"
+                      type="text"
+                      placeholder="Enter Technology"
+                    />
+                  </Form.Group>
+                </Form>
+              </Col>
               <Col md={6}>
                 <Button variant="info" className="list-button">
                   Add
@@ -82,6 +93,30 @@ const UserProfile = () => {
                   </div>
                 </Col>
               ))}
+            </Row>
+
+            <Row>
+              <Col md={11}>
+                <Form className="input-field">
+                  <Form.Group>
+                    <Form.Control
+                      className="tech-input"
+                      type="text"
+                      placeholder="Enter Technology"
+                    />
+                  </Form.Group>
+                </Form>
+              </Col>
+              <Col md={6}>
+                <Button variant="info" className="list-button">
+                  Add
+                </Button>
+              </Col>
+              <Col md={6}>
+                <Button variant="danger" className="list-button">
+                  Delete
+                </Button>
+              </Col>
             </Row>
           </Col>
         </Row>
