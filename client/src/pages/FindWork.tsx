@@ -1,4 +1,5 @@
 import { Form, Button } from "react-bootstrap";
+import ListingCard from "../components/ListingCard";
 import "../css/findwork.css";
 
 const FindWork = () => {
@@ -17,6 +18,8 @@ const FindWork = () => {
           <Button variant="outline-success">Search</Button>
         </div>
       </Form>
+
+			<ListingCard />
     </div>
   );
 };
