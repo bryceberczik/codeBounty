@@ -21,12 +21,14 @@ const Home = () => {
             </p>
           </div>
           <div className="getstarted-container">
+          <Link to="/signup" className="no-link">
             <div className="getstarted-btn">
               <h1>Get Started</h1>
             </div>
+            </Link>
             <p>
               Learn about the developers behind codeBounty{" "}
-              <Link to="/about-us" className="no-link">
+              <Link to="/about-us" className="offset-line">
                 here
               </Link>
               .
@@ -89,32 +91,21 @@ const Home = () => {
           <div className="info-div">
             <h2>Our Clients</h2>
             <h3>
-              Our clients are truly exceptional and a dream to work with for any
-              freelance developer. They are not only highly communicative,
-              providing clear and detailed project requirements, but also
-              collaborative, offering constructive feedback that helps elevate
-              the quality of the work. Their professionalism and understanding
-              create a positive and productive environment where creativity and
-              innovation thrive. Working with them feels less like a transaction
-              and more like a partnership, where your skills are valued and your
-              efforts are appreciated. If you're a freelance developer seeking
-              fulfilling projects and a rewarding experience, you'll find our
-              clients to be the perfect match.
+              Our clients are exceptional—clear, collaborative, and
+              professional. They provide detailed requirements, offer
+              constructive feedback, and foster a positive, creative
+              environment. Working with them feels like a true partnership,
+              making their projects rewarding for any freelance developer.
             </h3>
           </div>
           <div className="info-div">
             <h2>The developers</h2>
             <h3>
-              Our developers are incredibly efficient and dedicated to
-              delivering high-quality work on time. They prioritize constant
-              communication, keeping you updated on every step of the process
-              and actively seeking your feedback to ensure the project aligns
-              with your vision. Whether it's making adjustments or incorporating
-              new ideas, they are responsive and flexible, never missing a beat.
-              You can count on them to be proactive, diligent, and focused,
-              ensuring that the job gets done exactly when you need it, without
-              compromise. Their commitment to excellence and collaboration makes
-              them a reliable and valuable asset to any project.
+              Our developers are efficient, reliable, and committed to
+              delivering high-quality work on time. They prioritize clear
+              communication, seek feedback, and adapt quickly to changes,
+              ensuring your vision is met. Their dedication and focus make them
+              an invaluable asset to any project.
             </h3>
           </div>
         </div>

@@ -9,6 +9,8 @@
   flex-direction: flex;
 }
 
+.front-left P
+
 .maintext-homepage {
   max-width: 700px;
   margin-bottom: 30px;
@@ -46,8 +48,9 @@
 .getstarted-container p {
   font-family: "Poppins", sans-serif;
   font-weight: 400;
-  margin-left: 30px;
+  margin: 0 0 0 30px;
   color: #003049;
+
 }
 
 .getstarted-btn {
@@ -68,9 +71,16 @@
   font-weight: 400;
   font-size: 20px;
   color: #004d00;
+  margin: 0;
+  text-decoration: none;
 }
 
 .no-link {
+
+  text-decoration: none;
+}
+
+.offset-line {
   color: inherit;
   text-underline-offset: 3px;
 }
@@ -102,6 +112,16 @@
   color: #003049;
 }
 
+.ind-stat h2 {
+
+  font-size: 20px;
+}
+
+.ind-stat h3 {
+
+  font-size: 15px;
+}
+
 .second-homepage-section {
   margin: 100px 0;
   display: flex;
@@ -115,7 +135,7 @@
   width: 450px;
   text-align: center;
   padding: 60px 10px;
-  border-radius: 20px;
+  border-radius: 20px 0 0 20px;
 }
 
 .fullstack-block h1,
@@ -126,12 +146,21 @@
   color: #2a4d69;
 }
 
+.fullstack-block h1 {
+
+  font-size: 30px;
+}
+
+.fullstack-block p {
+
+  font-size: 15px;
+}
+
 .design-block {
   background-color: #ccd5ae;
   width: 450px;
   text-align: center;
   padding: 60px 10px;
-  border-radius: 20px;
 }
 
 .design-block h1,
@@ -142,12 +171,22 @@
   color: #004d00;
 }
 
+.design-block h1 {
+
+  font-size: 30px;
+}
+
+.design-block p {
+
+  font-size: 15px;
+}
+
 .database-block {
   background-color: #d5aeae;
   width: 450px;
   text-align: center;
   padding: 60px 10px;
-  border-radius: 20px;
+  border-radius: 0 20px 20px 0;
 }
 
 .database-block h1,
@@ -156,6 +195,16 @@
   font-weight: 400;
   margin: 20px 0;
   color: #4d0000;
+}
+
+.database-block h1 {
+
+  font-size: 30px;
+}
+
+.database-block p {
+
+  font-size: 15px;
 }
 
 .third-homepage-section {
@@ -195,17 +244,20 @@
   background-color: #e0e0a3;
   text-align: center;
   width: 600px;
-  height: 450px;
+  height: 300px;
   border-radius: 20px;
 }
 
 .info-div h2 {
+  color: #003049;
   font-weight: 500;
   margin: 20px 0px 30px 0px;
 }
 
 .info-div h3 {
+  color: #003049;
   font-weight: 400;
+  font-size: 20px;
 }
 
 .join-us-section {
@@ -241,9 +293,11 @@
 }
 
 .join-us-btn h2 {
+  font-size: 24px;
   font-weight: 450;
   color: #003049;
   text-decoration: none;
+  margin: 0;
 }
 
 .no-dec {
