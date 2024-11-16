@@ -1,0 +1,31 @@
+#listing-card {
+  width: 24rem;
+  border: 1px solid black;
+  border-radius: 15px;
+  box-shadow: 0px 0px 4px 2px gray;
+  background-color: #5A5A5A;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+#card-poster {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+#card-price {
+  float: right;
+  padding-right: 15px;
+  font-size: 24px;
+}
+
+#apply-button {
+  position: absolute;
+  bottom: -18px;
+  left: 15%;
+  z-index: 1;
+
+  width: 125px;
+  border: 1px solid white;
+  border-radius: 15px;
+  box-shadow: 0px 0px 3px white;
+  background-color: #2AAF7C;
+}

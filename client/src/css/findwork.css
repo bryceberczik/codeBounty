@@ -1,0 +1,30 @@
+#find-work {
+  font-family: "Poppins", sans-serif;
+  color: #003049;
+}
+
+#find-work h1 {
+  font-weight: 500;
+  text-align: center;
+  padding-top: 50px;
+}
+
+#find-work-search {
+  width: 25%;
+  margin: auto;
+  padding-top: 20px;
+}
+
+#find-work-search-bar {
+  border-color: transparent;
+  box-shadow: none;
+  border: 1px solid #003049;
+}
+
+#find-work-search-button {
+  padding-left: 10px;
+}
+
+#listings-container {
+  padding-top: 100px;
+}
