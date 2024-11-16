@@ -1,9 +1,14 @@
+import { useState } from "react";
+
 import { Container, Row, Col } from "react-bootstrap";
 import { Button, Form } from "react-bootstrap";
 import { FaRegEdit } from "react-icons/fa";
 import "../css/userprofile.css";
 
 const UserProfile = () => {
+  const [isLeftVisible, setIsLeftVisible] = useState(false);
+  const [isRightVisible, setIsRightVisible] = useState(false);
+
   const technologies = [
     "JavaScript",
     "TypeScript",
@@ -25,6 +30,14 @@ const UserProfile = () => {
     "https://chatgpt.com",
   ];
 
+  const toggleLeftVisibility = () => {
+    setIsLeftVisible(!isLeftVisible);
+  };
+
+  const toggleRightVisibility = () => {
+    setIsRightVisible(!isRightVisible);
+  };
+
   return (
     <Container id="user-profile">
       <div id="profile-card">
@@ -40,7 +53,7 @@ const UserProfile = () => {
         <Row>
           <Col md={6} style={{ position: "relative" }}>
             <h3>My Technologies:</h3>
-            <button className="edit-button">
+            <button className="edit-button" onClick={toggleLeftVisibility}>
               <FaRegEdit className="edit-icon" />
             </button>
 
@@ -52,34 +65,36 @@ const UserProfile = () => {
               ))}
             </Row>
 
-            <Row>
-              <Col md={11}>
-                <Form className="input-field">
-                  <Form.Group>
-                    <Form.Control
-                      className="tech-input"
-                      type="text"
-                      placeholder="Enter Technology"
-                    />
-                  </Form.Group>
-                </Form>
-              </Col>
-              <Col md={6}>
-                <Button variant="info" className="list-button">
-                  Add
-                </Button>
-              </Col>
-              <Col md={6}>
-                <Button variant="danger" className="list-button">
-                  Delete
-                </Button>
-              </Col>
-            </Row>
+            {isLeftVisible && (
+              <Row>
+                <Col md={11}>
+                  <Form className="input-field">
+                    <Form.Group>
+                      <Form.Control
+                        className="edit-input"
+                        type="text"
+                        placeholder="Enter Technology"
+                      />
+                    </Form.Group>
+                  </Form>
+                </Col>
+                <Col md={6}>
+                  <Button variant="info" className="list-button">
+                    Add
+                  </Button>
+                </Col>
+                <Col md={6}>
+                  <Button variant="danger" className="list-button">
+                    Delete
+                  </Button>
+                </Col>
+              </Row>
+            )}
           </Col>
 
           <Col md={6} style={{ position: "relative" }}>
             <h3>My Work:</h3>
-            <button className="edit-button">
+            <button className="edit-button" onClick={toggleRightVisibility}>
               <FaRegEdit className="edit-icon" />
             </button>
 
@@ -95,29 +110,31 @@ const UserProfile = () => {
               ))}
             </Row>
 
-            <Row>
-              <Col md={11}>
-                <Form className="input-field">
-                  <Form.Group>
-                    <Form.Control
-                      className="tech-input"
-                      type="text"
-                      placeholder="Enter Technology"
-                    />
-                  </Form.Group>
-                </Form>
-              </Col>
-              <Col md={6}>
-                <Button variant="info" className="list-button">
-                  Add
-                </Button>
-              </Col>
-              <Col md={6}>
-                <Button variant="danger" className="list-button">
-                  Delete
-                </Button>
-              </Col>
-            </Row>
+            {isRightVisible && (
+              <Row>
+                <Col md={11}>
+                  <Form className="input-field">
+                    <Form.Group>
+                      <Form.Control
+                        className="edit-input"
+                        type="text"
+                        placeholder="Enter Link"
+                      />
+                    </Form.Group>
+                  </Form>
+                </Col>
+                <Col md={6}>
+                  <Button variant="info" className="list-button">
+                    Add
+                  </Button>
+                </Col>
+                <Col md={6}>
+                  <Button variant="danger" className="list-button">
+                    Delete
+                  </Button>
+                </Col>
+              </Row>
+            )}
           </Col>
         </Row>
       </div>
