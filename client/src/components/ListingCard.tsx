@@ -4,14 +4,19 @@ import "../css/listingcard.css";
 const ListingCard = () => {
   return (
     <div>
-      <Card style={{ width: "18rem" }}>
+      <Card id="listing-card">
         <Card.Body>
-          <Card.Title>Title</Card.Title>
-          <Card.Subtitle className="mb-2 text muted">Posted by: Username</Card.Subtitle>
-          <Card.Text>
-            <strong>Description: </strong>This is where the listing description goes.
+          <Card.Title id="card-title">Hello World</Card.Title>
+          <Card.Subtitle id="card-lister" className="mb-2">
+            Posted by: Username
+          </Card.Subtitle>
+          <Card.Text id="card-description">
+            <strong>Description: </strong>This is where the listing description
+            goes.
           </Card.Text>
-          <Card.Text><strong>$100</strong></Card.Text>
+          <Card.Text id="card-price">
+            <strong>$100</strong>
+          </Card.Text>
         </Card.Body>
       </Card>
     </div>
