@@ -1,20 +1,32 @@
 import Card from "react-bootstrap/Card";
 import "../css/listingcard.css";
 
-const ListingCard = () => {
+interface ListingCardProps {
+  title: string;
+  poster: string;
+  description: string;
+  price: number;
+}
+
+const ListingCard = ({
+  title,
+  poster,
+  description,
+  price,
+}: ListingCardProps) => {
   return (
     <Card id="listing-card">
       <Card.Body>
-        <Card.Title id="card-title">Hello World</Card.Title>
+        <Card.Title id="card-title">{title}</Card.Title>
         <Card.Subtitle id="card-lister" className="mb-2">
-          Posted by: Username
+          Posted by: {poster}
         </Card.Subtitle>
         <Card.Text id="card-description">
-          <strong>Description: </strong>This is where the listing description
-          goes.
+          <strong>Description: </strong>
+          {description}
         </Card.Text>
         <Card.Text id="card-price">
-          <strong>$100</strong>
+          <strong>${price}</strong>
         </Card.Text>
       </Card.Body>
     </Card>
