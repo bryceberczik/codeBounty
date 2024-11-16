@@ -12,6 +12,8 @@ import FindWork from "./pages/FindWork.tsx";
 import PostAJob from "./pages/PostAJob.tsx";
 import About from "./pages/About.tsx";
 
+import UserProfile from "./pages/UserProfile.tsx";
+
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -20,7 +22,7 @@ export const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <Home />,
+        element: <UserProfile />,
       },
       {
         path: "/explore",
