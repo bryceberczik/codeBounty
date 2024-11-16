@@ -44,9 +44,11 @@ const Header = () => {
           </Link>
         </div>
         <div className="header-right">
+          <Link to="/signup" className="no-link">
           <div className="signup-btn">
             <h1>Sign up</h1>
           </div>
+          </Link>
         </div>
       </header>
     </div>
