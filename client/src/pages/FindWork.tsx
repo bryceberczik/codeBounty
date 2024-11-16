@@ -23,13 +23,28 @@ const FindWork = () => {
       <Container id="listings-container">
         <Row>
           <Col md={4} sm={6}>
-            <ListingCard />
+            <ListingCard
+							title="Need a React Website"
+							poster="User782"
+							description="Hello, I need a full-stack web developer to make me my own React website."
+							price={100}
+						/>
           </Col>
           <Col md={4} sm={6}>
-            <ListingCard />
+            <ListingCard
+							title="SQL Database"
+							poster="codingGuy"
+							description="Looking for a backend expert that can make a PostgreSQL database for my project. Minimum of 5 years of experience."
+							price={260}
+						/>
           </Col>
           <Col md={4} sm={6}>
-            <ListingCard />
+            <ListingCard
+							title="Test Listing"
+							poster="noPortfolio123!"
+							description="This is a test."
+							price={5}
+						/>
           </Col>
         </Row>
       </Container>
