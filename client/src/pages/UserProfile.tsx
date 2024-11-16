@@ -18,6 +18,12 @@ const UserProfile = () => {
     "CSS",
   ];
 
+  const links = [
+    "https://mattfarley.ca",
+    "https://github.com/ZVKubajak",
+    "https://chatgpt.com",
+  ];
+
   return (
     <Container id="user-profile">
       <div id="profile-card">
@@ -30,26 +36,46 @@ const UserProfile = () => {
           set up their APIs.
         </p>
 
-        <h3>My Technologies:</h3>
-
-        <Row style={{ width: "50%" }}>
-          {technologies.map((tech, index) => (
-            <Col key={index} sm={12} md={4} className="mb-3">
-              <div className="tech-box">{tech}</div>
-            </Col>
-          ))}
-        </Row>
-
-        <Row style={{ width: "50%" }}>
+        <Row>
           <Col md={6}>
-            <Button variant="info" className="list-button">
-              Add
-            </Button>
+            <h3>My Technologies:</h3>
+
+            <Row>
+              {technologies.map((tech, index) => (
+                <Col key={index} sm={12} md={4} className="mb-3">
+                  <div className="tech-box">{tech}</div>
+                </Col>
+              ))}
+            </Row>
+
+            <Row>
+              <Col md={6}>
+                <Button variant="info" className="list-button">
+                  Add
+                </Button>
+              </Col>
+              <Col md={6}>
+                <Button variant="danger" className="list-button">
+                  Delete
+                </Button>
+              </Col>
+            </Row>
           </Col>
+
           <Col md={6}>
-            <Button variant="danger" className="list-button">
-              Delete
-            </Button>
+            <h3>My Work:</h3>
+
+            <Row>
+              {links.map((link, index) => (
+                <Col key={index} sm={12} md={12} className="mb-3">
+                  <div className="link-box">
+                    <a href={link} target="_blank" rel="noopener noreferrer">
+                      {link}
+                    </a>
+                  </div>
+                </Col>
+              ))}
+            </Row>
           </Col>
         </Row>
       </div>

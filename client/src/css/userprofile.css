@@ -40,4 +40,9 @@
 .list-button {
   width: 80%;
   border-radius: 10px;
+  color: white;
+}
+
+.list-button:hover {
+  color: white;
 }
