@@ -37,6 +37,21 @@
   font-size: 24px;
 }
 
+.edit-button {
+  all: unset;
+  position: absolute;
+  top: 20px;
+  left: -24px;
+}
+
+.edit-icon {
+  transition: color 250ms ease;
+}
+
+.edit-icon:hover {
+  color: gray;
+}
+
 .list-button {
   width: 80%;
   border-radius: 10px;

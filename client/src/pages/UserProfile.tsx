@@ -1,5 +1,6 @@
 import { Container, Row, Col } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
+import { FaRegEdit } from "react-icons/fa";
 import "../css/userprofile.css";
 
 const UserProfile = () => {
@@ -37,8 +38,11 @@ const UserProfile = () => {
         </p>
 
         <Row>
-          <Col md={6}>
+          <Col md={6} style={{ position: "relative" }}>
             <h3>My Technologies:</h3>
+            <button className="edit-button">
+              <FaRegEdit className="edit-icon" />
+            </button>
 
             <Row>
               {technologies.map((tech, index) => (
@@ -62,8 +66,11 @@ const UserProfile = () => {
             </Row>
           </Col>
 
-          <Col md={6}>
+          <Col md={6} style={{ position: "relative" }}>
             <h3>My Work:</h3>
+            <button className="edit-button">
+              <FaRegEdit className="edit-icon" />
+            </button>
 
             <Row>
               {links.map((link, index) => (
