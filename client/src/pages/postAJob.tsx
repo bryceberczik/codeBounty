@@ -1,7 +1,7 @@
 import Header from '../components/header';
-import '../css/home.css';
 
-export default function Home() {
+
+export default function PostAJob() {
 
     return (
         
@@ -9,7 +9,7 @@ export default function Home() {
         
             <div>
 
-                <Header text="Home" />
+                <Header text="Post A Job" />
 
             </div>
 

@@ -1,7 +1,6 @@
 import Header from '../components/header';
-import '../css/home.css';
 
-export default function Home() {
+export default function About() {
 
     return (
         
@@ -9,7 +8,7 @@ export default function Home() {
         
             <div>
 
-                <Header text="Home" />
+                <Header text="About" />
 
             </div>
 

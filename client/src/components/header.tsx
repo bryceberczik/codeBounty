@@ -1,4 +1,5 @@
 import Navigation from './navigation.tsx';
+import '../css/header.css';
 
 interface IHeader {
     text: string;
