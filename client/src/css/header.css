@@ -31,7 +31,7 @@ header {
     cursor: pointer;
 }
 
-.header-left h1, .header-center h1, .header-right h1 {
+.header-left h1, .header-right h1 {
 
     font-family: 'Poppins', sans-serif;
     font-weight: 350;
@@ -59,22 +59,20 @@ header {
     background-color: #b0cc8a;
 }
 
-.category-nav {
-
-    text-decoration: none;
-}
-
 .activeNav {
 
-    text-decoration: none;
+    color: #003049;
+    font-weight: 500;
 }
 
 .restNav {
 
     text-decoration: none;
+    color: #003049;
+    font-weight: 350;
 }
 
-.no-link {
+.no-underline {
 
     text-decoration: none;
-  }
+}
