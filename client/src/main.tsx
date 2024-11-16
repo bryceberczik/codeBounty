@@ -6,7 +6,7 @@ import "./css/index.css";
 
 import App from "./App.tsx";
 import ErrorPage from "./pages/ErrorPage.tsx";
-import Home from "./pages/Home.tsx";
+// import Home from "./pages/Home.tsx";
 import Explore from "./pages/Explore.tsx";
 import FindWork from "./pages/FindWork.tsx";
 import PostAJob from "./pages/PostAJob.tsx";
