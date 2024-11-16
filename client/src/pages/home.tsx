@@ -121,8 +121,15 @@ const Home = () => {
       </div>
       <div className="fourth-container-section">
         <div className="join-us-section">
-            <h1>Freelancing beyond your <span className="wildest-span">wildest</span> dreams</h1>
-            <div className="join-us-btn"><h2>Join us</h2></div>
+          <h1>
+            Freelancing beyond your{" "}
+            <span className="wildest-span">wildest</span> dreams
+          </h1>
+          <Link to="/signup" className="no-dec">
+            <div className="join-us-btn">
+              <h2>Join us</h2>
+            </div>
+          </Link>
         </div>
       </div>
     </div>
