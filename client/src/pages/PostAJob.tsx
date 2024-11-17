@@ -1,5 +1,6 @@
 import { Container, Col, Row } from "react-bootstrap";
 import { Form, InputGroup, Card, Button } from "react-bootstrap";
+import ListingCard from "../components/ListingCard";
 import "../css/postajob.css";
 
 const PostAJob = () => {
@@ -40,27 +41,13 @@ const PostAJob = () => {
             </Form>
           </Col>
 
-          <Col md={6}>
-            <div style={{ position: "relative" }}>
-              <Card id="listing-card">
-                <Card.Body>
-                  <Card.Title id="card-title">Need a Database</Card.Title>
-                  <Card.Subtitle id="card-lister" className="mb-2">
-                    Posted by: UserPortfolio123!
-                  </Card.Subtitle>
-                  <Card.Text id="card-description">
-                    <strong>Description: </strong>
-                    Hello, developers. I am in need of a MongoDB database for my
-                    personal website. It would be cool to have.
-                  </Card.Text>
-                  <Card.Text id="card-price">
-                    <strong>$100</strong>
-                  </Card.Text>
-                </Card.Body>
-              </Card>
-
-              <Button id="apply-button">Apply</Button>
-            </div>
+          <Col md={4} className="mx-auto pt-4">
+            <ListingCard
+              title="Need a React Website"
+              poster="codingGuy"
+              description="Hello, I need a full-stack web developer to make me my own React website."
+              price={100}
+            />
           </Col>
         </Row>
       </Container>
