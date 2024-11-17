@@ -1,45 +1,39 @@
-import { useState, useEffect } from "react";
-import { useQuery, useMutation } from "@apollo/client";
-import { QUERY_ME } from "../utils/queries";
-import { UPDATE_USER } from "../utils/mutations";
+import { useState } from "react";
 
 import { Container, Row, Col } from "react-bootstrap";
 import { Button, Form } from "react-bootstrap";
 import { FaRegEdit } from "react-icons/fa";
 import "../css/userprofile.css";
 
-const UserProfile = () => {
-  const { data } = useQuery(QUERY_ME);
-  const [updateUser] = useMutation(UPDATE_USER);
+// Mock Technology Data
+const technologies = [
+  "JavaScript",
+  "TypeScript",
+  "React",
+  "Node.js",
+  "Express.js",
+  "Python",
+  "PostgreSQL",
+  "MongoDB",
+  "GraphQL",
+  "Git",
+  "HTML",
+  "CSS",
+];
 
-  const [username, setUsername] = useState("");
-  const [role, setRole] = useState("");
+// Mock Link Data
+const links = [
+  "https://mattfarley.ca",
+  "https://github.com/ZVKubajak",
+  "https://chatgpt.com",
+];
+
+const UserProfile = () => {
+  const [username, setUsername] = useState("codingGuy123!");
+  const [role, setRole] = useState("Web Developer");
 
   const [isLeftVisible, setIsLeftVisible] = useState(false);
   const [isRightVisible, setIsRightVisible] = useState(false);
-
-  // Mock Technology Data
-  const technologies = [
-    "JavaScript",
-    "TypeScript",
-    "React",
-    "Node.js",
-    "Express.js",
-    "Python",
-    "PostgreSQL",
-    "MongoDB",
-    "GraphQL",
-    "Git",
-    "HTML",
-    "CSS",
-  ];
-
-  // Mock Link Data
-  const links = [
-    "https://mattfarley.ca",
-    "https://github.com/ZVKubajak",
-    "https://chatgpt.com",
-  ];
 
   // View Technology Editing Tools
   const toggleLeftVisibility = () => {
@@ -51,14 +45,6 @@ const UserProfile = () => {
     setIsRightVisible(!isRightVisible);
   };
 
-  // If there's data set username and role (for now). Rerun everytime data changes.
-  useEffect(() => {
-    if (data) {
-      setUsername(data.me.username);
-      setRole(data.me.role);
-    }
-  }, [data]);
-
   // Changing Username
   const handleUsernameChange = (e: React.FormEvent<HTMLElement>) => {
     setUsername(e.currentTarget.innerText.trim());
@@ -69,28 +55,6 @@ const UserProfile = () => {
     setRole(e.currentTarget.innerText.trim());
   };
 
-  // Save changes after user is done typing.
-  const saveChanges = () => {
-    const input = {
-      _id: data.me._id,
-      username,
-      role,
-    };
-
-    // Takes input from saveChanges and runs it through updateUser mutation (so changes are saved in MongoDB).
-    updateUser({ variables: { input } })
-      .then((res) => {
-        console.log("User updated successfully:", res.data.updateUser);
-      })
-      .catch((err) => {
-        console.error("Error updating user:", err);
-      });
-  };
-
-
-  // For when there's no data yet, return null.
-  if (!data?.me) return null;
-
   return (
     <Container id="user-profile">
       <div id="profile-card">
@@ -98,7 +62,6 @@ const UserProfile = () => {
           contentEditable
           suppressContentEditableWarning
           onInput={handleUsernameChange}
-          onBlur={saveChanges}
         >
           {username}
         </h1>
@@ -106,7 +69,6 @@ const UserProfile = () => {
           contentEditable
           suppressContentEditableWarning
           onInput={handleRoleChange}
-          onBlur={saveChanges}
         >
           {role}
         </h2>
