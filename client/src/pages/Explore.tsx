@@ -6,8 +6,8 @@ const Explore = () => {
   const technologies1 = ["React.js", "Typescript", "Python", "+3 More"].join(
     " | "
   );
-  const technologies2 = ["Figma", "Azure", "React", "+1 More"].join(" | ");
-  const technologies3 = ["SQL", "noSQL", "Python", "+2 More"].join(" | ");
+  const technologies2 = ["SQL", "noSQL", "Python", "+2 More"].join(" | ");
+  const technologies3 = ["Figma", "Azure", "React", "+1 More"].join(" | ");
 
   const left = "<";
   const right = ">";
@@ -32,13 +32,13 @@ I absolutely love coding—it's more than just a passion; it feels like a callin
           username="data_guru98"
           role="Data Analyst"
           description="Working with data is like solving a mystery, uncovering hidden stories and insights buried in numbers. I enjoy finding patterns, visualizing trends, and translating complex datasets into actionable strategies. The joy of seeing data make a tangible impact on decisions is incredibly rewarding. It’s a dynamic field that ke... [See more]"
-          technologies={[technologies3]}
+          technologies={[technologies2]}
         />
         <DevCard
           username="design_dreamer"
           role="UI/UX Designer"
           description="Designing intuitive and visually stunning interfaces is what drives me. I have a knack for understanding user needs and turning them into seamless digital experiences. Whether it's wireframing or perfecting the final pixel, every step excites me. Creating designs that solve problems and delight users is my version of sto... [See more]"
-          technologies={[technologies2]}
+          technologies={[technologies3]}
         />
         <div className="turn">
           <h1>{right}</h1>
