@@ -26,20 +26,20 @@ export const router = createBrowserRouter([
       },
       {
         path: "/explore",
-        element: <Explore />
+        element: <Explore />,
       },
       {
         path: "/find-work",
-        element: <FindWork />
+        element: <FindWork />,
       },
       {
         path: "/post-listing",
-        element: <PostAJob />
+        element: <PostAJob />,
       },
       {
         path: "/about-us",
-        element: <About />
-      }
+        element: <About />,
+      },
     ],
   },
 ]);

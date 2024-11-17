@@ -21,10 +21,10 @@ const Home = () => {
             </p>
           </div>
           <div className="getstarted-container">
-          <Link to="/signup" className="no-link">
-            <div className="getstarted-btn">
-              <h1>Get Started</h1>
-            </div>
+            <Link to="/signup" className="no-link">
+              <div className="getstarted-btn">
+                <h1>Get Started</h1>
+              </div>
             </Link>
             <p>
               Learn about the developers behind codeBounty{" "}
