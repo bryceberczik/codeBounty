@@ -33,7 +33,7 @@ const Header = () => {
                   currentPage === "/find-work" ? "activeNav" : "restNav"
                 }
               >
-                Find work
+                Find Work
               </h1>
             </Link>
           </div>
@@ -44,7 +44,7 @@ const Header = () => {
                   currentPage === "/post-listing" ? "activeNav" : "restNav"
                 }
               >
-                Post a job
+                Post a Job
               </h1>
             </Link>
           </div>

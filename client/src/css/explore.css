@@ -109,15 +109,15 @@
 }
 
 .faq-container {
-
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-around;
 }
 
-.row-one-faq, .row-two-faq, .row-three-faq {
-
+.row-one-faq,
+.row-two-faq,
+.row-three-faq {
   display: flex;
   flex-direction: column;
 }
