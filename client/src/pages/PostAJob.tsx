@@ -1,9 +1,31 @@
+import { useState } from "react";
 import { Container, Col, Row } from "react-bootstrap";
-import { Form, InputGroup, Card, Button } from "react-bootstrap";
+import { Form, InputGroup } from "react-bootstrap";
 import ListingCard from "../components/ListingCard";
 import "../css/postajob.css";
 
 const PostAJob = () => {
+  const [title, setTitle] = useState("");
+  // const [poster, setPoster] = useState("");
+  const [description, setDescription] = useState("");
+  const [price, setPrice] = useState("");
+
+  const poster = "codingGuy123!";
+
+  const handleTitle = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setTitle(event.target.value);
+  };
+
+  const handleDescription = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setDescription(event.target.value);
+  };
+
+  const handlePrice = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setPrice(event.target.value);
+  };
+
+  const formattedPrice = Number(price) || 0;
+
   return (
     <div style={{ paddingBottom: "1000px" }}>
       <div id="post-job-heading">
@@ -17,7 +39,12 @@ const PostAJob = () => {
             <Form>
               <Form.Group className="mb-3" controlId="formListingTitle">
                 <Form.Label>Title</Form.Label>
-                <Form.Control type="text" placeholder="Enter title" />
+                <Form.Control
+                  type="text"
+                  value={title}
+                  onChange={handleTitle}
+                  placeholder="Enter title"
+                />
                 <Form.Text className="text-muted">
                   Developers can search for listings by title.
                 </Form.Text>
@@ -25,7 +52,12 @@ const PostAJob = () => {
 
               <Form.Group className="mb-3" controlId="formListingDescription">
                 <Form.Label>Description</Form.Label>
-                <Form.Control type="text" placeholder="Enter description" />
+                <Form.Control
+                  type="text"
+                  value={description}
+                  onChange={handleDescription}
+                  placeholder="Enter description"
+                />
                 <Form.Text className="text-muted">
                   Give an overview on what you're looking for, what type of
                   developer you need, and what technologies you want to be
@@ -35,7 +67,11 @@ const PostAJob = () => {
 
               <InputGroup className="mb-3">
                 <InputGroup.Text>$</InputGroup.Text>
-                <Form.Control aria-label="Price (to the nearest dollar)" />
+                <Form.Control
+                  value={price}
+                  onChange={handlePrice}
+                  aria-label="Price (to the nearest dollar)"
+                />
                 <InputGroup.Text>.00</InputGroup.Text>
               </InputGroup>
             </Form>
@@ -43,10 +79,10 @@ const PostAJob = () => {
 
           <Col md={4} className="mx-auto pt-4">
             <ListingCard
-              title="Need a React Website"
-              poster="codingGuy"
-              description="Hello, I need a full-stack web developer to make me my own React website."
-              price={100}
+              title={title}
+              poster={poster}
+              description={description}
+              price={formattedPrice}
             />
           </Col>
         </Row>
