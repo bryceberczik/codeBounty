@@ -1,6 +1,4 @@
 import { useState } from "react";
-// import { useQuery } from "@apollo/client";
-// import { QUERY_ME } from "../utils/queries";
 
 import { Container, Col, Row } from "react-bootstrap";
 import { Form, InputGroup, Button } from "react-bootstrap";
@@ -14,7 +12,7 @@ const PostAJob = () => {
   const [description, setDescription] = useState("");
   const [price, setPrice] = useState("");
 
-  const poster = "";
+  const poster = "codingGuy123!";
 
   const handleTitle = (event: React.ChangeEvent<HTMLInputElement>) => {
     setTitle(event.target.value);
