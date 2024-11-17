@@ -1,4 +1,7 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useQuery, useMutation } from "@apollo/client";
+import { QUERY_ME } from "../utils/queries";
+import { UPDATE_USER } from "../utils/mutations";
 
 import { Container, Row, Col } from "react-bootstrap";
 import { Button, Form } from "react-bootstrap";
@@ -6,6 +9,12 @@ import { FaRegEdit } from "react-icons/fa";
 import "../css/userprofile.css";
 
 const UserProfile = () => {
+  const { data } = useQuery(QUERY_ME);
+  const [updateUser] = useMutation(UPDATE_USER);
+
+  const [username, setUsername] = useState("");
+  const [role, setRole] = useState("");
+
   const [isLeftVisible, setIsLeftVisible] = useState(false);
   const [isRightVisible, setIsRightVisible] = useState(false);
 
@@ -38,11 +47,58 @@ const UserProfile = () => {
     setIsRightVisible(!isRightVisible);
   };
 
+  useEffect(() => {
+    if (data) {
+      setUsername(data.me.username);
+      setRole(data.me.role);
+    }
+  }, [data]);
+
+  const handleUsernameChange = (e: React.FormEvent<HTMLElement>) => {
+    setUsername(e.currentTarget.innerText.trim());
+  };
+
+  const handleRoleChange = (e: React.FormEvent<HTMLElement>) => {
+    setRole(e.currentTarget.innerText.trim());
+  };
+
+  const saveChanges = () => {
+    const input = {
+      _id: data.me._id,
+      username,
+      role,
+    };
+
+    updateUser({ variables: { input } })
+      .then((res) => {
+        console.log("User updated successfully:", res.data.updateUser);
+      })
+      .catch((err) => {
+        console.error("Error updating user:", err);
+      });
+  };
+
+  // if (!data?.me) return null;
+
   return (
     <Container id="user-profile">
       <div id="profile-card">
-        <h1>UserProfile123</h1>
-        <h2>Web Developer</h2>
+        <h1
+          contentEditable
+          suppressContentEditableWarning
+          onInput={handleUsernameChange}
+          onBlur={saveChanges}
+        >
+          {username}
+        </h1>
+        <h2
+          contentEditable
+          suppressContentEditableWarning
+          onInput={handleRoleChange}
+          onBlur={saveChanges}
+        >
+          {role}
+        </h2>
 
         <p>
           Hello codeBounty! I am full-stack web developer looking for freelance
