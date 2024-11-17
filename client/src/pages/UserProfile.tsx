@@ -18,6 +18,7 @@ const UserProfile = () => {
   const [isLeftVisible, setIsLeftVisible] = useState(false);
   const [isRightVisible, setIsRightVisible] = useState(false);
 
+  // Mock Technology Data
   const technologies = [
     "JavaScript",
     "TypeScript",
@@ -33,20 +34,24 @@ const UserProfile = () => {
     "CSS",
   ];
 
+  // Mock Link Data
   const links = [
     "https://mattfarley.ca",
     "https://github.com/ZVKubajak",
     "https://chatgpt.com",
   ];
 
+  // View Technology Editing Tools
   const toggleLeftVisibility = () => {
     setIsLeftVisible(!isLeftVisible);
   };
 
+  // View Link Editing Tools
   const toggleRightVisibility = () => {
     setIsRightVisible(!isRightVisible);
   };
 
+  // If there's data set username and role (for now). Rerun everytime data changes.
   useEffect(() => {
     if (data) {
       setUsername(data.me.username);
@@ -54,14 +59,17 @@ const UserProfile = () => {
     }
   }, [data]);
 
+  // Changing Username
   const handleUsernameChange = (e: React.FormEvent<HTMLElement>) => {
     setUsername(e.currentTarget.innerText.trim());
   };
 
+  // Changing Role
   const handleRoleChange = (e: React.FormEvent<HTMLElement>) => {
     setRole(e.currentTarget.innerText.trim());
   };
 
+  // Save changes after user is done typing.
   const saveChanges = () => {
     const input = {
       _id: data.me._id,
@@ -69,6 +77,7 @@ const UserProfile = () => {
       role,
     };
 
+    // Takes input from saveChanges and runs it through updateUser mutation (so changes are saved in MongoDB).
     updateUser({ variables: { input } })
       .then((res) => {
         console.log("User updated successfully:", res.data.updateUser);
@@ -78,6 +87,8 @@ const UserProfile = () => {
       });
   };
 
+
+  // For when there's no data yet, return null.
   if (!data?.me) return null;
 
   return (
