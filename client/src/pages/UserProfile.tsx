@@ -1,4 +1,9 @@
 import { useState } from "react";
+import { useQuery } from "@apollo/client";
+import { Navigate, useParams } from "react-router-dom";
+import { QUERY_USER, QUERY_ME } from "../utils/queries";
+
+import Auth from "../utils/auth";
 
 import { Container, Row, Col } from "react-bootstrap";
 import { Button, Form } from "react-bootstrap";
@@ -29,11 +34,36 @@ const links = [
 ];
 
 const UserProfile = () => {
-  const [username, setUsername] = useState("codingGuy123!");
-  const [role, setRole] = useState("Web Developer");
+  const { username } = useParams();
+
+  const { loading, data } = useQuery(username ? QUERY_USER : QUERY_ME, {
+    variables: { username: username },
+  });
+
+  const user = data?.me || data?.user || {};
+
+  if (Auth.loggedIn() && Auth.getProfile().data.username === username) {
+    return <Navigate to="/me" />;
+  }
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
+  if (!user?.username) {
+    return (
+      <h4>
+        You need to be logged in to see your profile page. Use the navigation
+        links above to sign up or log in!
+      </h4>
+    );
+  }
 
   const [isLeftVisible, setIsLeftVisible] = useState(false);
   const [isRightVisible, setIsRightVisible] = useState(false);
+
+  const [userName, setUserName] = useState(user?.username || "codingGuy123!");
+  const [role, setRole] = useState(user?.role || "Web Developer");
 
   // View Technology Editing Tools
   const toggleLeftVisibility = () => {
@@ -47,7 +77,7 @@ const UserProfile = () => {
 
   // Changing Username
   const handleUsernameChange = (e: React.FormEvent<HTMLElement>) => {
-    setUsername(e.currentTarget.innerText.trim());
+    setUserName(e.currentTarget.innerText.trim());
   };
 
   // Changing Role
@@ -63,7 +93,7 @@ const UserProfile = () => {
           suppressContentEditableWarning
           onInput={handleUsernameChange}
         >
-          {username}
+          {userName}
         </h1>
         <h2
           contentEditable
