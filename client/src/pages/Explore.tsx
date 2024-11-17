@@ -23,7 +23,7 @@ const Explore = () => {
         </div>
         <DevCard
           username="code_maker2005"
-          role="Junior Front-end Developer"
+          role="Junior Front-End Developer"
           description="
 I absolutely love coding—it's more than just a passion; it feels like a calling. The thrill of solving problems, creating something from nothing, and watching my ideas come to life is unmatched. Every line of code feels like a piece of a puzzle falling into place, and I can’t get enough of it! It’s so much fun that I often find myself comple... [See more]"
           technologies={[technologies1]}
@@ -48,7 +48,7 @@ I absolutely love coding—it's more than just a passion; it feels like a callin
         <h1>Web Services at its finest.</h1>
         <h2>You imagine it. A programmer brings it to life.</h2>
         <div className="findwork-btn">
-          <h3>Find work now</h3>
+          <h3>Find Work Now</h3>
         </div>
       </div>
       <div className="explore-faq-container">

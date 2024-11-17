@@ -10,7 +10,7 @@ const Home = () => {
           <div className="maintext-homepage">
             <h1>
               <span className="special-span">Building the future</span> for
-              developers all over the world
+              developers all over the world.
             </h1>
           </div>
           <div className="subtext-homepage">
@@ -42,7 +42,7 @@ const Home = () => {
           <div className="brand-stats">
             <div className="ind-stat">
               <h2>100+</h2>
-              <h3>Projects done</h3>
+              <h3>Projects Done</h3>
             </div>
             <div className="ind-stat">
               <h2>2.5k</h2>
@@ -99,7 +99,7 @@ const Home = () => {
             </h3>
           </div>
           <div className="info-div">
-            <h2>The developers</h2>
+            <h2>The Developers</h2>
             <h3>
               Our developers are efficient, reliable, and committed to
               delivering high-quality work on time. They prioritize clear
@@ -114,7 +114,7 @@ const Home = () => {
         <div className="join-us-section">
           <h1>
             Freelancing beyond your{" "}
-            <span className="wildest-span">wildest</span> dreams
+            <span className="wildest-span">wildest</span> dreams.
           </h1>
           <Link to="/signup" className="no-dec">
             <div className="join-us-btn">
