@@ -1,11 +1,11 @@
+import "../css/postajob.css";
+
 const PostAJob = () => {
+  return (
+    <div>
 
-    return (
-
-        <div>
-
-        </div>
-    )
+    </div>
+  );
 };
 
 export default PostAJob;

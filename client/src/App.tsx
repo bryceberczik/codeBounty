@@ -8,7 +8,7 @@ import { setContext } from "@apollo/client/link/context";
 import { Outlet } from "react-router-dom";
 
 import Header from '../src/components/Header'
-import Footer from "./components/footer";
+import Footer from "../src/components/Footer";
 
 const httpLink = createHttpLink({
   uri: "/graphql",
