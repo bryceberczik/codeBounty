@@ -78,7 +78,7 @@ const UserProfile = () => {
       });
   };
 
-  // if (!data?.me) return null;
+  if (!data?.me) return null;
 
   return (
     <Container id="user-profile">
