@@ -1,5 +1,6 @@
 import "../css/explore.css";
 import DevCard from "../components/DevCard";
+import FaqAccordion from "../components/FaqAccordion";
 
 const Explore = () => {
   const technologies1 = ["React.js", "Typescript", "Python", "+3 More"].join(
@@ -16,12 +17,12 @@ const Explore = () => {
       <div className="intro-text-explore">
         <h1>Top Rated Sellers</h1>
       </div>
-      <div className="explore-first-container">
+      <div className="explore-users-container">
         <div className="turn">
           <h1>{left}</h1>
         </div>
         <DevCard
-          username="bryceberczik"
+          username="code_maker2005"
           role="Junior Front-end Developer"
           description="
 I absolutely love coding—it's more than just a passion; it feels like a calling. The thrill of solving problems, creating something from nothing, and watching my ideas come to life is unmatched. Every line of code feels like a piece of a puzzle falling into place, and I can’t get enough of it! It’s so much fun that I often find myself comple... [See more]"
@@ -41,6 +42,49 @@ I absolutely love coding—it's more than just a passion; it feels like a callin
         />
         <div className="turn">
           <h1>{right}</h1>
+        </div>
+      </div>
+      <div className="explore-engage-container">
+        <h1>Web Services at its finest.</h1>
+        <h2>You imagine it. A programmer brings it to life.</h2>
+        <div className="findwork-btn">
+          <h3>Find work now</h3>
+        </div>
+      </div>
+      <div className="explore-faq-container">
+        <h1>Software Development FAQ</h1>
+        <h4>We're here to help.</h4>
+        <div className="faq-container">
+          <div className="row-one-faq">
+            <FaqAccordion
+              title="What are the benefits of hiring freelance software engineers?"
+              description="Freelancers offer flexibility, cost-effectiveness, and specialized skills. They can adapt to short-term projects and provide high-quality work without the overhead costs of a full-time employee."
+            />
+            <FaqAccordion
+              title="How do I ensure the freelancer has the right skills for my project?"
+              description="Review their portfolio, check client testimonials, and conduct technical interviews or skill assessments. Platforms like GitHub or LinkedIn can showcase their coding expertise."
+            />
+          </div>
+          <div className="row-two-faq">
+            <FaqAccordion
+              title="What’s the average cost of hiring a freelance software engineer?"
+              description="Costs vary based on experience, location, and project complexity. Rates can range from $30/hour for junior engineers to $200/hour for senior experts. Discuss and agree on a budget upfront."
+            />
+            <FaqAccordion
+              title="How can I protect my project's confidentiality and IP?"
+              description="Use a Non-Disclosure Agreement (NDA) and clearly outline intellectual property ownership in your contract. Most freelancers are accustomed to working under such agreements."
+            />
+          </div>
+          <div className="row-three-faq">
+            <FaqAccordion
+              title="How do I manage communication and timelines effectively?"
+              description="Use project management tools like Trello, Asana, or Jira, and establish clear communication channels (e.g., Slack or email). Set milestones and regular check-ins to track progress."
+            />
+            <FaqAccordion
+              title="What happens if the freelancer doesn’t meet expectations?"
+              description="Mitigate risks by starting with a smaller, paid test project. Clearly define deliverables in your contract, and use platforms with escrow systems to ensure payment is tied to satisfactory milestones."
+            />
+          </div>
         </div>
       </div>
     </div>
