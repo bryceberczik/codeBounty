@@ -1,7 +1,6 @@
 import { useState } from "react";
-import { useQuery } from "@apollo/client";
-import { QUERY_ME } from "../utils/queries";
-import { MockedProvider } from "@apollo/client/testing";
+// import { useQuery } from "@apollo/client";
+// import { QUERY_ME } from "../utils/queries";
 
 import { Container, Col, Row } from "react-bootstrap";
 import { Form, InputGroup, Button } from "react-bootstrap";
@@ -12,51 +11,10 @@ import "../css/postajob.css";
 
 const PostAJob = () => {
   const [title, setTitle] = useState("");
-  // const [poster, setPoster] = useState("");
   const [description, setDescription] = useState("");
   const [price, setPrice] = useState("");
 
-  const poster = "codingGuy123!";
-
-  // ! MOCK DATA FOR LOGGED IN USER
-  const mocks = [
-    {
-      request: {
-        query: QUERY_ME,
-      },
-      result: {
-        data: {
-          me: {
-            _id: "1",
-            username: "JohnDoe",
-            email: "john@example.com",
-            role: "Web Developer",
-            technologies: ["React", "Node.js"],
-            description: "Hello world. I am a passionate and disciplined full-stack web developer.",
-            links: ["https://github.com/johndoe"],
-            listings: [
-              {
-                _id: "1",
-                title: "Project A",
-                description: "Description A",
-                price: 100,
-              },
-              {
-                _id: "2",
-                title: "Project B",
-                description: "Description B",
-                price: 200,
-              },
-            ],
-            jobs: [
-              { _id: "1", status: "active" },
-              { _id: "2", status: "completed" },
-            ],
-          },
-        },
-      },
-    },
-  ];
+  const poster = "";
 
   const handleTitle = (event: React.ChangeEvent<HTMLInputElement>) => {
     setTitle(event.target.value);
