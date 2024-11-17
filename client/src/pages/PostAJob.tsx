@@ -1,8 +1,10 @@
 import { useState } from "react";
 import { Container, Col, Row } from "react-bootstrap";
-import { Form, InputGroup } from "react-bootstrap";
+import { Form, InputGroup, Button } from "react-bootstrap";
 import ListingCard from "../components/ListingCard";
 import "../css/postajob.css";
+
+// ! Need a logged in user to complete functionality for adding username to listing & to display the user's current listings.
 
 const PostAJob = () => {
   const [title, setTitle] = useState("");
@@ -75,6 +77,10 @@ const PostAJob = () => {
                 <InputGroup.Text>.00</InputGroup.Text>
               </InputGroup>
             </Form>
+
+            <div id="post-listing-button-container">
+              <Button id="post-listing-button">Post</Button>
+            </div>
           </Col>
 
           <Col md={4} className="mx-auto pt-4">
