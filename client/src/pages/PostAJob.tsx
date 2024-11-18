@@ -1,32 +1,64 @@
 import { useState } from "react";
+import { useQuery, useMutation } from "@apollo/client";
+import { QUERY_ME } from "../utils/queries";
+import { ADD_LISTING } from "../utils/mutations";
 
 import { Container, Col, Row } from "react-bootstrap";
 import { Form, InputGroup, Button } from "react-bootstrap";
 import ListingCard from "../components/ListingCard";
 import "../css/postajob.css";
 
-// Need a logged in user to complete functionality for adding username to listing & to display the user's current listings.
-
 const PostAJob = () => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [price, setPrice] = useState("");
 
-  const poster = "codingGuy123!";
+  // Fetch logged-in user's info.
+  const { loading, error, data } = useQuery(QUERY_ME);
+  const user = data?.me;
 
-  const handleTitle = (event: React.ChangeEvent<HTMLInputElement>) => {
+  // Mutation to add a listing.
+  const [addListing, { loading: adding }] = useMutation(ADD_LISTING, {
+    refetchQueries: [{ query: QUERY_ME }],
+  });
+
+  const handleTitle = (event: React.ChangeEvent<HTMLInputElement>) =>
     setTitle(event.target.value);
-  };
-
-  const handleDescription = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleDescription = (event: React.ChangeEvent<HTMLInputElement>) =>
     setDescription(event.target.value);
-  };
-
-  const handlePrice = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handlePrice = (event: React.ChangeEvent<HTMLInputElement>) =>
     setPrice(event.target.value);
+
+  const handlePostListing = async () => {
+    if (!title || !description || !price) {
+      alert("Please fill out all fields before posting.");
+      return;
+    }
+
+    try {
+      await addListing({
+        variables: {
+          input: {
+            title,
+            description,
+            price: Number(price),
+            userId: user._id,
+          },
+        },
+      });
+
+      // Clear the form after successful submission.
+      setTitle("");
+      setDescription("");
+      setPrice("");
+      alert("Listing posted successfully!");
+    } catch (error) {
+      console.error("Error posting listing:", error);
+    }
   };
 
-  const formattedPrice = Number(price) || 0;
+  if (loading) return <p>Loading user data...</p>;
+  if (error) return <p>Error loading user data: {error.message}</p>;
 
   return (
     <div style={{ paddingBottom: "1000px" }}>
@@ -79,16 +111,22 @@ const PostAJob = () => {
             </Form>
 
             <div id="post-listing-button-container">
-              <Button id="post-listing-button">Post</Button>
+              <Button
+                id="post-listing-button"
+                onClick={handlePostListing}
+                disabled={adding}
+              >
+                {adding ? "Posting..." : "Post"}
+              </Button>
             </div>
           </Col>
 
           <Col md={4} className="mx-auto pt-4">
             <ListingCard
               title={title}
-              poster={poster}
+              poster={user.username}
               description={description}
-              price={formattedPrice}
+              price={Number(price) || 0}
             />
           </Col>
         </Row>
