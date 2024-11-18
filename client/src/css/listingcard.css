@@ -29,3 +29,21 @@
   box-shadow: 0px 0px 3px white;
   background-color: #2aaf7c;
 }
+
+#listing-buttons-container {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+#view-applicants-button {
+  margin: 0px;
+  border-radius: 15px;
+  border-color: blue;
+  background-color: blue;
+}
+
+#delete-listing-button {
+  border-radius: 15px;
+  border-color: red;
+  background-color: red;
+}

@@ -6,6 +6,7 @@ import { ADD_LISTING } from "../utils/mutations";
 import { Container, Col, Row } from "react-bootstrap";
 import { Form, InputGroup, Button } from "react-bootstrap";
 import ListingCard from "../components/ListingCard";
+import YourListingCard from "../components/YourListingCard";
 import "../css/postajob.css";
 
 interface YourListingsProps {
@@ -149,7 +150,7 @@ const PostAJob = () => {
         <Row>
           {user?.listings?.map((listing: YourListingsProps) => (
             <Col key={listing._id} md={4} sm={6}>
-              <ListingCard
+              <YourListingCard
                 title={listing.title}
                 poster={user.username}
                 description={listing.description}
