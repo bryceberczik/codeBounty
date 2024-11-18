@@ -17,6 +17,10 @@ const PostAJob = () => {
   const { loading, error, data } = useQuery(QUERY_ME);
   const user = data?.me;
 
+  console.log("Testing");
+  console.log(data);
+  console.log(user);
+
   // Mutation to add a listing.
   const [addListing, { loading: adding }] = useMutation(ADD_LISTING, {
     refetchQueries: [{ query: QUERY_ME }],

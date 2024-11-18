@@ -1,4 +1,3 @@
-import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -41,7 +40,7 @@ export const router = createBrowserRouter([
         path: "/about-us",
         element: <About />,
       },
-      { 
+      {
         path: "/signup",
         element: <Signup />,
       },
@@ -50,7 +49,5 @@ export const router = createBrowserRouter([
 ]);
 
 createRoot(document.getElementById("root")!).render(
-  <StrictMode>
-    <RouterProvider router={router} />
-  </StrictMode>
+  <RouterProvider router={router} />
 );
