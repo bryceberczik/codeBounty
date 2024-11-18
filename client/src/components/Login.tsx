@@ -16,16 +16,19 @@ export default function Login() {
       setError("Username and password are required.");
       return;
     }
+
     try {
       const { data } = await login({
         variables: { username: username, password: password },
       });
+
       Auth.login(data.login.token);
     } catch (err) {
       console.error(err);
-      setError("Incorrect credentials");
+      setError("Incorrect credentials.");
     }
   };
+
   return (
     <div className="login-container">
       <form className="auth-form" onSubmit={handleFormSubmit}>
