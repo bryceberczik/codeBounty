@@ -1,10 +1,41 @@
+.label-ind {
+
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  color: #003049;
+}
+
+.group-space {
+
+  margin-bottom: 20px !important;
+}
+
+.form-control {
+
+  color: #003049 !important;
+}
+
+.form-control:focus {
+  box-shadow: none;
+  border: 1px solid #9ccc7a;
+}
+
 #post-job-heading {
   text-align: center;
-  padding-top: 50px;
+  padding: 50px 0;
+  color: #003049
+}
+
+#post-job-heading h1 {
+
+  font-family: "Poppins", sans-serif;
+  font-weight: 450;
 }
 
 #post-job-heading p {
   font-size: 24px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
 }
 
 #post-listing-button-container {

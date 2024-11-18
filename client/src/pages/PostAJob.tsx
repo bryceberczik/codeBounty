@@ -30,10 +30,10 @@ const PostAJob = () => {
   const formattedPrice = Number(price) || 0;
 
   return (
-    <div style={{ paddingBottom: "1000px" }}>
+    <div>
       <PageTab title="Post A Job">
       <div id="post-job-heading">
-        <h1>Need a Service? Create a Listing!</h1>
+        <h1>Create a listing with ease.</h1>
         <p>codeBounty has hundreds of developers looking for work everyday.</p>
       </div>
 
@@ -41,8 +41,8 @@ const PostAJob = () => {
         <Row className="g-5">
           <Col md={6}>
             <Form>
-              <Form.Group className="mb-3" controlId="formListingTitle">
-                <Form.Label>Title</Form.Label>
+              <Form.Group className="mb-3 group-space" controlId="formListingTitle">
+                <Form.Label className="label-ind">Title</Form.Label>
                 <Form.Control
                   type="text"
                   value={title}
@@ -54,8 +54,8 @@ const PostAJob = () => {
                 </Form.Text>
               </Form.Group>
 
-              <Form.Group className="mb-3" controlId="formListingDescription">
-                <Form.Label>Description</Form.Label>
+              <Form.Group className="mb-3 group-space" controlId="formListingDescription">
+                <Form.Label className="label-ind">Description</Form.Label>
                 <Form.Control
                   type="text"
                   value={description}
