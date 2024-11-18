@@ -15,9 +15,58 @@
   color: #003049 !important;
 }
 
+.input-group-text {
+
+  color: #003049;
+  border: 1px solid #aec5d5;
+  background-color: #aec5d5;
+}
+
 .form-control:focus {
   box-shadow: none;
-  border: 1px solid #9ccc7a;
+  border: 1px solid #aec5d5;
+}
+
+.why-section {
+
+  margin: 50px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color:#003049;
+}
+
+.why-section h1 {
+
+  font-family: "Poppins", sans-serif;
+  font-weight: 450;
+  font-size: 35px;
+}
+
+.why-section h3 {
+
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  font-size: 24px;
+  margin:10px 0 40px 0;
+}
+
+.why-explain {
+
+  background-color: #e0e0a3;
+  border-radius: 20px;
+  padding: 50px;
+  color:#003049;
+  box-shadow: 0 1px 1px hsl(0deg 0% 0% / 0.075),
+  0 2px 2px hsl(0deg 0% 0% / 0.075), 0 4px 4px hsl(0deg 0% 0% / 0.075),
+  0 8px 8px hsl(0deg 0% 0% / 0.075), 0 16px 16px hsl(0deg 0% 0% / 0.075);
+}
+
+.why-explain h2 {
+
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  
 }
 
 #post-job-heading {
@@ -44,6 +93,12 @@
 }
 
 #post-listing-button {
+  background-color: #aec5d5;
+  color:#003049;
+  border: 1px solid #003049;
   width: 50%;
   float: right;
+  box-shadow: 0 1px 1px hsl(0deg 0% 0% / 0.075),
+  0 2px 2px hsl(0deg 0% 0% / 0.075), 0 4px 4px hsl(0deg 0% 0% / 0.075),
+  0 8px 8px hsl(0deg 0% 0% / 0.075), 0 16px 16px hsl(0deg 0% 0% / 0.075);
 }

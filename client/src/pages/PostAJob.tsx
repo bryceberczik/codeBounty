@@ -95,6 +95,13 @@ const PostAJob = () => {
           </Col>
         </Row>
       </Container>
+      <div className="why-section">
+        <h1>Will a developer really see this listing?</h1>
+        <h3>Developers love work.</h3>
+        <div className="why-explain">
+          <h2>Listing your project ensures developers can find and contact you for collaboration or inquiries.</h2>
+        </div>
+      </div>
       </PageTab>
     </div>
   );
