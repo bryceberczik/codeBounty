@@ -1,4 +1,4 @@
-#listing-card {
+.listing-card {
   width: 24rem;
   border: 1px solid black;
   border-radius: 15px;
@@ -7,11 +7,11 @@
   color: rgba(255, 255, 255, 0.8);
 }
 
-#card-poster {
+.card-poster {
   color: rgba(255, 255, 255, 0.6);
 }
 
-#card-price {
+.card-price {
   float: right;
   padding-right: 15px;
   font-size: 24px;
