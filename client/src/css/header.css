@@ -71,3 +71,70 @@ header {
 .no-underline {
   text-decoration: none;
 }
+
+.loggedin-container {
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.loggedin-container:hover {
+
+  cursor: pointer;
+}
+
+.loggedin-container:hover h1 {
+
+  color: #00507F;
+}
+
+.loggedin-container:hover .profile-pic-container {
+
+  border: 2px solid #00507F;
+}
+
+.loggedin-container:hover .profile-pic {
+
+color: #00507F;
+}
+
+.loggedin-container h1 {
+
+  font-size: 20px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  color: #003049;
+  margin: 0 10px 0 0;
+  transition: 0.3s ease;
+}
+
+.profile-pic-container {
+
+  border: 2px solid #003049;
+  border-radius: 10px;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.3s ease;
+}
+
+.profile-pic {
+
+  color: #003049;
+  font-size: 20px;
+  transition: 0.3s ease;
+}
+
+.offcanvas-header, .offcanvas-body {
+
+  background-color: #eeede1;
+  color: #003049;
+}
+
+.btn-close {
+
+  border-color: #003049;
+}
