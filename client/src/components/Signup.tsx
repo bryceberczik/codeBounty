@@ -71,6 +71,7 @@ const Signup = () => {
   return (
     <div className="signup-container">
       <form className="auth-form" onSubmit={handleFormSubmit}>
+        {/* Username Section */}
         <input
           name="username"
           type="text"
@@ -81,6 +82,7 @@ const Signup = () => {
           }
         />
 
+        {/* Email Section */}
         <input
           name="email"
           type="email"
@@ -91,6 +93,7 @@ const Signup = () => {
           }
         />
 
+        {/* Password Section */}
         <input
           name="password"
           type="password"
@@ -101,6 +104,7 @@ const Signup = () => {
           }
         />
 
+        {/* Role Section */}
         <input
           name="role"
           type="text"
@@ -154,10 +158,10 @@ const Signup = () => {
           </button>
         </div>
 
+        {/* Description Section */}
         <div>
-          <label>Description</label>
           <textarea
-            placeholder="Description"
+            placeholder="Personal Description"
             value={formState.description}
             onChange={(e) =>
               setFormState({ ...formState, description: e.target.value })
