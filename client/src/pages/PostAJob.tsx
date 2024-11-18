@@ -8,6 +8,7 @@ import { Container, Col, Row } from "react-bootstrap";
 import { Form, InputGroup, Button } from "react-bootstrap";
 import ListingCard from "../components/ListingCard";
 import YourListingCard from "../components/YourListingCard";
+import PageTab from "../components/PageTab";
 import "../css/postajob.css";
 
 interface YourListingsProps {
@@ -92,9 +93,10 @@ const PostAJob = () => {
   if (error) return <p>Error loading user data: {error.message}</p>;
 
   return (
-    <div style={{ paddingBottom: "1000px" }}>
+    <div>
+      <PageTab title="Post A Job">
       <div id="post-job-heading">
-        <h1>Need a Service? Create a Listing!</h1>
+        <h1>Create a listing with ease.</h1>
         <p>codeBounty has hundreds of developers looking for work everyday.</p>
       </div>
 
@@ -102,8 +104,8 @@ const PostAJob = () => {
         <Row className="g-5">
           <Col md={6}>
             <Form>
-              <Form.Group className="mb-3" controlId="formListingTitle">
-                <Form.Label>Title</Form.Label>
+              <Form.Group className="mb-3 group-space" controlId="formListingTitle">
+                <Form.Label className="label-ind">Title</Form.Label>
                 <Form.Control
                   type="text"
                   value={title}
@@ -115,8 +117,8 @@ const PostAJob = () => {
                 </Form.Text>
               </Form.Group>
 
-              <Form.Group className="mb-3" controlId="formListingDescription">
-                <Form.Label>Description</Form.Label>
+              <Form.Group className="mb-3 group-space" controlId="formListingDescription">
+                <Form.Label className="label-ind">Description</Form.Label>
                 <Form.Control
                   type="text"
                   value={description}
@@ -162,7 +164,6 @@ const PostAJob = () => {
           </Col>
         </Row>
       </Container>
-
       <h1 id="your-listings-text">Your Current Listings</h1>
 
       <Container id="your-listings-container">
@@ -180,6 +181,14 @@ const PostAJob = () => {
           ))}
         </Row>
       </Container>
+      <div className="why-section">
+        <h1>Will a developer really see this listing?</h1>
+        <h3>Developers love work.</h3>
+        <div className="why-explain">
+          <h2>Listing your project ensures developers can find and contact you for collaboration or inquiries.</h2>
+        </div>
+      </div>
+      </PageTab>
     </div>
   );
 };

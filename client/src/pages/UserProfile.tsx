@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import { Button, Form } from "react-bootstrap";
 import { FaRegEdit } from "react-icons/fa";
+import PageTab from "../components/PageTab";
 import "../css/userprofile.css";
 
 // Mock Technology Data
@@ -56,6 +57,7 @@ const UserProfile = () => {
 
   return (
     <Container id="user-profile">
+      <PageTab title="My Profile">
       <div id="profile-card">
         <h1
           contentEditable
@@ -166,6 +168,7 @@ const UserProfile = () => {
           </Col>
         </Row>
       </div>
+      </PageTab>
     </Container>
   );
 };

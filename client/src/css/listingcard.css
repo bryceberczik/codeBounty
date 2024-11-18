@@ -1,20 +1,56 @@
-.listing-card {
-  width: 24rem;
-  border: 1px solid black;
-  border-radius: 15px;
-  box-shadow: 0px 0px 4px 2px gray;
-  background-color: #5a5a5a;
-  color: rgba(255, 255, 255, 0.8);
+.listing-card-container {
+
+  margin-bottom: 60px;
 }
 
-.card-poster {
+.desc-tag {
+
+  font-family: "Poppins", sans-serif;
+  font-weight: 450;
+  font-size: 18px;
+}
+
+.price-tag {
+
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  font-size: 24px;
+}
+
+#listing-card {
+  max-width: 24rem;
+  width: 24rem;
+  border: 1px solid #6a4a7b;
+  border-radius: 15px;
+  background-color: #c3aed5;
+  color: #6a4a7b;
+  max-height: 300px;
+  height: 300px;
+  position: inherit;
+  box-shadow: 0 1px 1px hsl(0deg 0% 0% / 0.075),
+  0 2px 2px hsl(0deg 0% 0% / 0.075), 0 4px 4px hsl(0deg 0% 0% / 0.075),
+  0 8px 8px hsl(0deg 0% 0% / 0.075), 0 16px 16px hsl(0deg 0% 0% / 0.075);
+}
+
+#card-title {
+
+  margin-bottom: 10px;
+}
+
+#card-lister {
+
+  margin-bottom: 10px !important;
+}
+
+#card-poster {
   color: rgba(255, 255, 255, 0.6);
 }
 
-.card-price {
-  float: right;
-  padding-right: 15px;
-  font-size: 24px;
+#card-price {
+
+  position: absolute;
+  bottom: 10px;
+  right: 13px;
 }
 
 #apply-button {
@@ -22,28 +58,17 @@
   bottom: -18px;
   left: 15%;
   z-index: 1;
-
+  color: #003049;
   width: 125px;
-  border: 1px solid white;
+  border: 1px solid #003049;
   border-radius: 15px;
-  box-shadow: 0px 0px 3px white;
-  background-color: #2aaf7c;
+  background-color: #eeede1;
+  box-shadow: 0 1px 1px hsl(0deg 0% 0% / 0.075),
+  0 2px 2px hsl(0deg 0% 0% / 0.075), 0 4px 4px hsl(0deg 0% 0% / 0.075),
+  0 8px 8px hsl(0deg 0% 0% / 0.075), 0 16px 16px hsl(0deg 0% 0% / 0.075);
 }
 
-#listing-buttons-container {
-  display: flex;
-  justify-content: space-evenly;
-}
+#apply-button:hover {
 
-#view-applicants-button {
-  margin: 0px;
-  border-radius: 15px;
-  border-color: blue;
-  background-color: blue;
-}
-
-#delete-listing-button {
-  border-radius: 15px;
-  border-color: red;
-  background-color: red;
+  background-color: #d6d5c9;
 }

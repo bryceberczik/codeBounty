@@ -1,11 +1,13 @@
 import { Container, Row, Col } from "react-bootstrap";
 import { Form, Button } from "react-bootstrap";
 import ListingCard from "../components/ListingCard";
+import PageTab from "../components/PageTab";
 import "../css/findwork.css";
 
 const FindWork = () => {
   return (
     <div id="find-work">
+      <PageTab title="Find Work">
       <h1>Search for work that fits your role.</h1>
 
       <Form id="find-work-search" className="d-flex">
@@ -40,6 +42,30 @@ const FindWork = () => {
           </Col>
           <Col md={4} sm={6}>
             <ListingCard
+              title="SQL Database"
+              poster="codingGuy"
+              description="Looking for a backend expert that can make a PostgreSQL database for my project. Minimum of 5 years of experience."
+              price={260}
+            />
+          </Col>
+          <Col md={4} sm={6}>
+            <ListingCard
+              title="SQL Database"
+              poster="codingGuy"
+              description="Looking for a backend expert that can make a PostgreSQL database for my project. Minimum of 5 years of experience."
+              price={260}
+            />
+          </Col>
+          <Col md={4} sm={6}>
+            <ListingCard
+              title="SQL Database"
+              poster="codingGuy"
+              description="Looking for a backend expert that can make a PostgreSQL database for my project. Minimum of 5 years of experience."
+              price={260}
+            />
+          </Col>
+          <Col md={4} sm={6}>
+            <ListingCard
               title="Test Listing"
               poster="noPortfolio123!"
               description="This is a test."
@@ -48,6 +74,7 @@ const FindWork = () => {
           </Col>
         </Row>
       </Container>
+      </PageTab>
     </div>
   );
 };

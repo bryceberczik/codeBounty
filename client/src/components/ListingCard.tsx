@@ -15,19 +15,19 @@ const ListingCard = ({
   price,
 }: ListingCardProps) => {
   return (
-    <div style={{ position: "relative" }}>
-      <Card className="listing-card">
+    <div className="listing-card-container" style={{ position: "relative" }}>
+      <Card id="listing-card">
         <Card.Body>
           <Card.Title className="card-title">{title}</Card.Title>
           <Card.Subtitle className="card-lister mb-2">
             Posted by: {poster}
           </Card.Subtitle>
-          <Card.Text className="card-description">
-            <strong>Description: </strong>
+          <Card.Text id="card-description">
+            <h3 className="desc-tag">Description: </h3>
             {description}
           </Card.Text>
-          <Card.Text className="card-price">
-            <strong>${price}</strong>
+          <Card.Text id="card-price">
+          <h3 className="price-tag">${price.toLocaleString()}</h3>
           </Card.Text>
         </Card.Body>
       </Card>
