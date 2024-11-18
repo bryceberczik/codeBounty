@@ -1,22 +1,51 @@
+.about-title {
+
+    text-align: center;
+    margin: 100px 0 150px 0;
+}
+
+.about-title h1 {
+
+    font-family: "Poppins", sans-serif;
+    font-weight: 450;
+    color: #003049;
+}
+
+.about-title h3 {
+
+    margin-top: 20px;
+    color: #003049;
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+}
+
 .bio {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 40rem;
-    margin: 10rem auto 5rem auto;
+    margin: 100px 400px;
 }
 
 .developerName {
     display: flex;
     justify-content: center;
     margin-bottom: 1.5rem;
-    text-shadow: 1px 3px 4px rgb(139, 139, 138);
+    color: #003049;
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
 }
 
 .bioDescription {
-    border: 2px solid black;
-    box-shadow: 5px 7px 4px rgb(66, 65, 65);
+    background-color: #d5aeae;
+    border: 2px solid #4d0000;
+    border-radius: 20px;
     padding: 2rem;
-    margin-bottom: 5rem;
+    padding: 50px;
+    margin-bottom: 100px;
+}
+
+.bioDescription p {
+
+    color: #4d0000;
 }
