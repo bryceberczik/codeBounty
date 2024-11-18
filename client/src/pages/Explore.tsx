@@ -1,6 +1,7 @@
 import "../css/explore.css";
 import DevCard from "../components/DevCard";
 import FaqAccordion from "../components/FaqAccordion";
+import PageTab from '../components/PageTab';
 
 const Explore = () => {
   const technologies1 = ["React.js", "Typescript", "Python", "+3 More"].join(
@@ -14,6 +15,7 @@ const Explore = () => {
 
   return (
     <div className="explore-container">
+      <PageTab title="Explore">
       <div className="intro-text-explore">
         <h1>Top Rated Sellers</h1>
       </div>
@@ -87,6 +89,7 @@ I absolutely love coding—it's more than just a passion; it feels like a callin
           </div>
         </div>
       </div>
+      </PageTab>
     </div>
   );
 };

@@ -1,10 +1,12 @@
 import "../css/home.css";
+import PageTab from '../components/PageTab';
 import { Link } from "react-router-dom";
 import HappyCustomers from "../images/jpeg-frontpage-photo.jpg";
 
 const Home = () => {
   return (
     <div className="homepage-container">
+      <PageTab title="Home">
       <div className="first-homepage-section">
         <div className="front-left">
           <div className="maintext-homepage">
@@ -123,6 +125,7 @@ const Home = () => {
           </Link>
         </div>
       </div>
+      </PageTab>
     </div>
   );
 };
