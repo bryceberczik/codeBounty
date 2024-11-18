@@ -1,8 +1,23 @@
 import "../css/header.css";
+import { type MouseEvent } from "react";
 import { Link, useLocation } from "react-router-dom";
+import auth from "../utils/auth";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faUser } from "@fortawesome/free-solid-svg-icons";
+import { useState } from "react";
+import Offcanvas from "react-bootstrap/Offcanvas";
 
 const Header = () => {
+  const logout = (event: MouseEvent<HTMLDivElement>) => {
+    event.preventDefault();
+    auth.logout();
+  };
   const currentPage = useLocation().pathname;
+
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
   return (
     <div>
       <header>
@@ -61,13 +76,42 @@ const Header = () => {
           </div>
         </div>
         <div className="header-right">
-          <Link to="/signup" className="no-link">
-            <div className="signup-btn">
-              <h1>Sign up</h1>
+          {auth.loggedIn() ? (
+            <div className="loggedin-container" onClick={handleShow}>
+              <h1>{auth.getProfile().data.username}</h1>
+              <div className="profile-pic-container">
+                <FontAwesomeIcon icon={faUser} className="profile-pic" />
+              </div>
             </div>
-          </Link>
+          ) : (
+            <Link to="/signup" className="no-link">
+              <div className="signup-btn">
+                <h1>Sign up</h1>
+              </div>
+            </Link>
+          )}
         </div>
       </header>
+
+      {auth.loggedIn() ? (
+        <Offcanvas show={show} onHide={handleClose} placement="end">
+          <Offcanvas.Header closeButton>
+            <Offcanvas.Title>
+              Hey, {auth.getProfile().data.username}
+            </Offcanvas.Title>
+          </Offcanvas.Header>
+          <Offcanvas.Body>
+            <Link to="/my-profile" className="offcanvas-opt">My Profile</Link>
+            <Link to="/settings" className="offcanvas-opt">Settings</Link>
+            <Link to="/find-work" className="offcanvas-opt">Find work</Link>
+            <div className="logout-btn" onClick={logout}>
+              <h1>Log out</h1>
+            </div>
+          </Offcanvas.Body>
+        </Offcanvas>
+      ) : (
+        <></>
+      )}
     </div>
   );
 };
