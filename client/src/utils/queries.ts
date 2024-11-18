@@ -82,10 +82,12 @@ export const QUERY_JOBS = gql`
 `;
 
 export const QUERY_SINGLE_JOB = gql`
-  query getSingleJob(_id: $id) {
+  query getSingleJob($id: ID!) {
+    job(_id: $id) {
     _id
     listingId
     userId
     status
+    }
   }
 `;

@@ -6,35 +6,41 @@ interface ListingCardProps {
   poster: string;
   description: string;
   price: number;
+  onDelete: () => void;
 }
 
-const ListingCard = ({
+const YourListingCard = ({
   title,
   poster,
   description,
   price,
+  onDelete,
 }: ListingCardProps) => {
   return (
-    <div className="listing-card-container" style={{ position: "relative" }}>
-      <Card id="listing-card">
+    <div style={{ position: "relative" }}>
+      <Card className="listing-card">
         <Card.Body>
           <Card.Title className="card-title">{title}</Card.Title>
           <Card.Subtitle className="card-lister mb-2">
             Posted by: {poster}
           </Card.Subtitle>
-          <Card.Text id="card-description">
-            <h3 className="desc-tag">Description: </h3>
+          <Card.Text className="card-description">
+            <strong>Description: </strong>
             {description}
           </Card.Text>
-          <Card.Text id="card-price">
-          <h3 className="price-tag">${price.toLocaleString()}</h3>
+          <Card.Text className="card-price">
+            <strong>${price}</strong>
           </Card.Text>
+          <div id="listing-buttons-container">
+            <Button id="view-applicants-button">View Applicants</Button>
+            <Button id="delete-listing-button" onClick={onDelete}>
+              Delete Listing
+            </Button>
+          </div>
         </Card.Body>
       </Card>
-
-      <Button id="apply-button">Apply</Button>
     </div>
   );
 };
 
-export default ListingCard;
+export default YourListingCard;
