@@ -3,45 +3,42 @@ import { useMutation } from "@apollo/client";
 import { ADD_USER } from "../utils/mutations";
 import Auth from "../utils/auth";
 
-const ROLES = ["developer", "client"];
-export default function Signup() {
-  const [formState, setFormState] = useState({
+const Signup = () => {
+  const [formState, setFormState] = useState<{
+    username: string;
+    email: string;
+    password: string;
+    role?: string;
+    technologies?: string[];
+    description?: string;
+    links?: string[];
+  }>({
+    username: "",
     email: "",
     password: "",
-    username: "",
-    role: "",
-    technologies: [] as string[],
-    description: "",
-    links: [] as string[],
+    role: undefined,
+    technologies: [],
+    description: undefined,
+    links: [],
   });
+
   const [error, setError] = useState("");
   const [addUser] = useMutation(ADD_USER);
 
   const validate = () => {
     let isValid = true;
-    if (formState.email === "") {
-      setError("Email is required");
+    if (!formState.username) {
+      setError("Username is required.");
       isValid = false;
-    } else if (formState.password === "") {
-      setError("Password is required");
+    } else if (!formState.email) {
+      setError("Email is required.");
       isValid = false;
-    } else if (formState.username === "") {
-      setError("Username is required");
-      isValid = false;
-    } else if (formState.role === "") {
-      setError("Reason for joining is required");
-      isValid = false;
-    } else if (formState.description === "") {
-      setError("Description is required");
-      isValid = false;
-    } else if (formState.technologies.length === 0) {
-      setError("Technologies is required");
-      isValid = false;
-    } else if (formState.links.length === 0) {
-      setError("Links is required");
+    } else if (!formState.password) {
+      setError("Password is required.");
       isValid = false;
     }
-    //Password must be at least 8 characters long, contain at least one letter, one number, and one special character.
+
+    // Password must be at least 8 characters long, contain at least one letter, one number, and one special character.
     else if (
       !/(?=.*[a-z])(?=.*[0-9])(?=.*[!@#\$%\^&])/.test(formState.password)
     ) {
@@ -52,12 +49,14 @@ export default function Signup() {
     }
     return isValid;
   };
+
   const handleFormSubmit = async (event: any) => {
     event.preventDefault();
 
     if (!validate()) {
       return;
     }
+
     try {
       const { data } = await addUser({
         variables: { input: formState },
@@ -65,7 +64,7 @@ export default function Signup() {
       Auth.login(data.addUser.token);
     } catch (err) {
       console.error(err);
-      setError("Something went wrong");
+      setError("Something went wrong.");
     }
   };
 
@@ -81,6 +80,7 @@ export default function Signup() {
             setFormState({ ...formState, username: e.target.value })
           }
         />
+
         <input
           name="email"
           type="email"
@@ -90,6 +90,7 @@ export default function Signup() {
             setFormState({ ...formState, email: e.target.value })
           }
         />
+
         <input
           name="password"
           type="password"
@@ -99,18 +100,59 @@ export default function Signup() {
             setFormState({ ...formState, password: e.target.value })
           }
         />
-        <select
+
+        <input
           name="role"
-          value={formState.role}
+          type="text"
+          placeholder="Developer Role (optional)"
+          value={formState.role || ""}
           onChange={(e) => setFormState({ ...formState, role: e.target.value })}
-        >
-          <option value="">Why are you here</option>
-          {ROLES.map((role) => (
-            <option key={role} value={role}>
-              {role}
-            </option>
+        />
+
+        {/* Technologies Section */}
+        <div className="input-items">
+          {(formState.technologies || []).map((technology, idx) => (
+            <div key={idx}>
+              <input
+                type="text"
+                placeholder="Technology"
+                value={technology}
+                onChange={(e) => {
+                  const newTechnologies = [...(formState.technologies || [])];
+                  newTechnologies[idx] = e.target.value;
+                  setFormState({
+                    ...formState,
+                    technologies: newTechnologies,
+                  });
+                }}
+              />
+              <button
+                type="button"
+                onClick={() => {
+                  const newTechnologies = [...(formState.technologies || [])];
+                  newTechnologies.splice(idx, 1);
+                  setFormState({
+                    ...formState,
+                    technologies: newTechnologies,
+                  });
+                }}
+              >
+                X
+              </button>
+            </div>
           ))}
-        </select>
+          <button
+            type="button"
+            onClick={() => {
+              setFormState({
+                ...formState,
+                technologies: [...(formState.technologies || []), ""],
+              });
+            }}
+          >
+            Add Technology
+          </button>
+        </div>
 
         <div>
           <label>Description</label>
@@ -123,90 +165,45 @@ export default function Signup() {
           />
         </div>
 
-        <div>
-          <label>Technologies</label>
-          <div className="input-items">
-            {formState.technologies.map((technology, idx) => (
-              <div key={idx}>
-                <input
-                  type="text"
-                  placeholder="Technology"
-                  value={technology}
-                  onChange={(e) => {
-                    const newTechnologies = [...formState.technologies];
-                    newTechnologies[idx] = e.target.value;
-                    setFormState({
-                      ...formState,
-                      technologies: newTechnologies,
-                    });
-                  }}
-                />
-                <button
-                  type="button"
-                  onClick={() => {
-                    const newTechnologies = [...formState.technologies];
-                    newTechnologies.splice(idx, 1);
-                    setFormState({
-                      ...formState,
-                      technologies: newTechnologies,
-                    });
-                  }}
-                >
-                  X
-                </button>
-              </div>
-            ))}
-            <button
-              type="button"
-              onClick={() => {
-                setFormState({
-                  ...formState,
-                  technologies: [...formState.technologies, ""],
-                });
-              }}
-            >
-              Add Technology
-            </button>
-          </div>
+        {/* Links Section */}
+        <div className="input-items">
+          {(formState.links || []).map((link, idx) => (
+            <div key={idx}>
+              <input
+                type="text"
+                placeholder="Link"
+                value={link}
+                onChange={(e) => {
+                  const newLinks = [...(formState.links || [])];
+                  newLinks[idx] = e.target.value;
+                  setFormState({ ...formState, links: newLinks });
+                }}
+              />
+              <button
+                type="button"
+                onClick={() => {
+                  const newLinks = [...(formState.links || [])];
+                  newLinks.splice(idx, 1);
+                  setFormState({ ...formState, links: newLinks });
+                }}
+              >
+                X
+              </button>
+            </div>
+          ))}
+          <button
+            type="button"
+            onClick={() => {
+              setFormState({
+                ...formState,
+                links: [...(formState.links || []), ""],
+              });
+            }}
+          >
+            Add Link
+          </button>
         </div>
 
-        <div>
-          <label>Links</label>
-          <div className="input-items">
-            {formState.links.map((link, idx) => (
-              <div key={idx}>
-                <input
-                  type="text"
-                  placeholder="Link"
-                  value={link}
-                  onChange={(e) => {
-                    const newLinks = [...formState.links];
-                    newLinks[idx] = e.target.value;
-                    setFormState({ ...formState, links: newLinks });
-                  }}
-                />
-                <button
-                  type="button"
-                  onClick={() => {
-                    const newLinks = [...formState.links];
-                    newLinks.splice(idx, 1);
-                    setFormState({ ...formState, links: newLinks });
-                  }}
-                >
-                  X
-                </button>
-              </div>
-            ))}
-            <button
-              type="button"
-              onClick={() => {
-                setFormState({ ...formState, links: [...formState.links, ""] });
-              }}
-            >
-              Add Link
-            </button>
-          </div>
-        </div>
         <button className="auth-btn" type="submit">
           Submit
         </button>
@@ -214,4 +211,6 @@ export default function Signup() {
       </form>
     </div>
   );
-}
+};
+
+export default Signup;
