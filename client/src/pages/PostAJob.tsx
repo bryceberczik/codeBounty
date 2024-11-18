@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useQuery, useMutation } from "@apollo/client";
 import { QUERY_ME } from "../utils/queries";
 import { ADD_LISTING } from "../utils/mutations";
+import { DELETE_LISTING } from "../utils/mutations";
 
 import { Container, Col, Row } from "react-bootstrap";
 import { Form, InputGroup, Button } from "react-bootstrap";
@@ -34,6 +35,11 @@ const PostAJob = () => {
     refetchQueries: [{ query: QUERY_ME }],
   });
 
+  // Mutation to delete a listing.
+  const [deleteListing] = useMutation(DELETE_LISTING, {
+    refetchQueries: [{ query: QUERY_ME }]
+  })
+
   const handleTitle = (event: React.ChangeEvent<HTMLInputElement>) =>
     setTitle(event.target.value);
   const handleDescription = (event: React.ChangeEvent<HTMLInputElement>) =>
@@ -41,7 +47,7 @@ const PostAJob = () => {
   const handlePrice = (event: React.ChangeEvent<HTMLInputElement>) =>
     setPrice(event.target.value);
 
-  const handlePostListing = async () => {
+  const handleAddListing = async () => {
     if (!title || !description || !price) {
       alert("Please fill out all fields before posting.");
       return;
@@ -66,6 +72,19 @@ const PostAJob = () => {
       alert("Listing posted successfully!");
     } catch (error) {
       console.error("Error posting listing:", error);
+    }
+  };
+
+  const handleDeleteListing = async (id: string) => {
+    try {
+      await deleteListing({
+        variables: { id },
+      });
+
+      alert("Listing deleted successfully!");
+    } catch (error) {
+      console.error("Error deleting listing:", error);
+      alert("Failed to delete the listing. Please try again.");
     }
   };
 
@@ -125,7 +144,7 @@ const PostAJob = () => {
             <div id="post-listing-button-container">
               <Button
                 id="post-listing-button"
-                onClick={handlePostListing}
+                onClick={handleAddListing}
                 disabled={adding}
               >
                 {adding ? "Posting..." : "Post"}
@@ -155,6 +174,7 @@ const PostAJob = () => {
                 poster={user.username}
                 description={listing.description}
                 price={listing.price}
+                onDelete={() => handleDeleteListing(listing._id)}
               />
             </Col>
           ))}

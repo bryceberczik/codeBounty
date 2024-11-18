@@ -6,6 +6,7 @@ interface ListingCardProps {
   poster: string;
   description: string;
   price: number;
+  onDelete: () => void;
 }
 
 const YourListingCard = ({
@@ -13,6 +14,7 @@ const YourListingCard = ({
   poster,
   description,
   price,
+  onDelete,
 }: ListingCardProps) => {
   return (
     <div style={{ position: "relative" }}>
@@ -31,7 +33,9 @@ const YourListingCard = ({
           </Card.Text>
           <div id="listing-buttons-container">
             <Button id="view-applicants-button">View Applicants</Button>
-            <Button id="delete-listing-button">Delete Listing</Button>
+            <Button id="delete-listing-button" onClick={onDelete}>
+              Delete Listing
+            </Button>
           </div>
         </Card.Body>
       </Card>
