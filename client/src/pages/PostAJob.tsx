@@ -8,6 +8,13 @@ import { Form, InputGroup, Button } from "react-bootstrap";
 import ListingCard from "../components/ListingCard";
 import "../css/postajob.css";
 
+interface YourListingsProps {
+  _id: string;
+  title: string;
+  description: string;
+  price: number;
+}
+
 const PostAJob = () => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
@@ -133,6 +140,23 @@ const PostAJob = () => {
               price={Number(price) || 0}
             />
           </Col>
+        </Row>
+      </Container>
+
+      <h1 id="your-listings-text">Your Current Listings</h1>
+
+      <Container id="your-listings-container">
+        <Row>
+          {user?.listings?.map((listing: YourListingsProps) => (
+            <Col key={listing._id} md={4} sm={6}>
+              <ListingCard
+                title={listing.title}
+                poster={user.username}
+                description={listing.description}
+                price={listing.price}
+              />
+            </Col>
+          ))}
         </Row>
       </Container>
     </div>

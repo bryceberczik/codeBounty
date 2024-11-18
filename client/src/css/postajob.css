@@ -16,3 +16,14 @@
   width: 50%;
   float: right;
 }
+
+/* * Your Current Listings * */
+
+#your-listings-text {
+  text-align: center;
+  padding-top: 100px;
+}
+
+#your-listings-container {
+  padding-top: 50px;
+}
