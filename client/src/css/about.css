@@ -1,0 +1,22 @@
+.bio {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 40rem;
+    margin: 10rem auto 5rem auto;
+}
+
+.developerName {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+    text-shadow: 1px 3px 4px rgb(139, 139, 138);
+}
+
+.bioDescription {
+    border: 2px solid black;
+    box-shadow: 5px 7px 4px rgb(66, 65, 65);
+    padding: 2rem;
+    margin-bottom: 5rem;
+}

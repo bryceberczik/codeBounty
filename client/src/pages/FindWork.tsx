@@ -1,11 +1,13 @@
 import { Container, Row, Col } from "react-bootstrap";
 import { Form, Button } from "react-bootstrap";
 import ListingCard from "../components/ListingCard";
+import PageTab from "../components/PageTab";
 import "../css/findwork.css";
 
 const FindWork = () => {
   return (
     <div id="find-work">
+      <PageTab title="Find Work">
       <h1>Search for work that fits your role.</h1>
 
       <Form id="find-work-search" className="d-flex">
@@ -48,6 +50,7 @@ const FindWork = () => {
           </Col>
         </Row>
       </Container>
+      </PageTab>
     </div>
   );
 };

@@ -3,6 +3,7 @@ import { useState } from "react";
 import { Container, Col, Row } from "react-bootstrap";
 import { Form, InputGroup, Button } from "react-bootstrap";
 import ListingCard from "../components/ListingCard";
+import PageTab from "../components/PageTab";
 import "../css/postajob.css";
 
 // Need a logged in user to complete functionality for adding username to listing & to display the user's current listings.
@@ -30,6 +31,7 @@ const PostAJob = () => {
 
   return (
     <div style={{ paddingBottom: "1000px" }}>
+      <PageTab title="Post A Job">
       <div id="post-job-heading">
         <h1>Need a Service? Create a Listing!</h1>
         <p>codeBounty has hundreds of developers looking for work everyday.</p>
@@ -93,6 +95,7 @@ const PostAJob = () => {
           </Col>
         </Row>
       </Container>
+      </PageTab>
     </div>
   );
 };
