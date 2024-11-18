@@ -11,6 +11,7 @@ import Explore from "./pages/Explore.tsx";
 import FindWork from "./pages/FindWork.tsx";
 import PostAJob from "./pages/PostAJob.tsx";
 import About from "./pages/About.tsx";
+import Signup from "./pages/Signup.tsx";
 
 // import UserProfile from "./pages/UserProfile.tsx";
 
@@ -39,6 +40,10 @@ export const router = createBrowserRouter([
       {
         path: "/about-us",
         element: <About />,
+      },
+      { 
+        path: "/signup",
+        element: <Signup />,
       },
     ],
   },
