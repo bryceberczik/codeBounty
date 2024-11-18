@@ -9,9 +9,7 @@
   flex-direction: flex;
 }
 
-.front-left P
-
-.maintext-homepage {
+.front-left P .maintext-homepage {
   max-width: 700px;
   margin-bottom: 30px;
 }
@@ -50,7 +48,6 @@
   font-weight: 400;
   margin: 0 0 0 30px;
   color: #003049;
-
 }
 
 .getstarted-btn {
@@ -76,7 +73,6 @@
 }
 
 .no-link {
-
   text-decoration: none;
 }
 
@@ -113,12 +109,10 @@
 }
 
 .ind-stat h2 {
-
   font-size: 20px;
 }
 
 .ind-stat h3 {
-
   font-size: 15px;
 }
 
@@ -147,12 +141,10 @@
 }
 
 .fullstack-block h1 {
-
   font-size: 30px;
 }
 
 .fullstack-block p {
-
   font-size: 15px;
 }
 
@@ -172,12 +164,10 @@
 }
 
 .design-block h1 {
-
   font-size: 30px;
 }
 
 .design-block p {
-
   font-size: 15px;
 }
 
@@ -198,12 +188,10 @@
 }
 
 .database-block h1 {
-
   font-size: 30px;
 }
 
 .database-block p {
-
   font-size: 15px;
 }
 

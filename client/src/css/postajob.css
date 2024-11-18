@@ -1,0 +1,18 @@
+#post-job-heading {
+  text-align: center;
+  padding-top: 50px;
+}
+
+#post-job-heading p {
+  font-size: 24px;
+}
+
+#post-listing-button-container {
+  width: 50%;
+  float: right;
+}
+
+#post-listing-button {
+  width: 50%;
+  float: right;
+}

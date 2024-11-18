@@ -1,13 +1,11 @@
 footer {
-
-    text-align: center;
-    background-color: #003049;
-    color: #eeede1;
-    margin: 0;
+  text-align: center;
+  background-color: #003049;
+  color: #eeede1;
+  margin: 0;
 }
 
 footer p {
-
-    margin: 0;
-    padding: 30px;
+  margin: 0;
+  padding: 30px;
 }

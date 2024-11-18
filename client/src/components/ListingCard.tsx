@@ -32,9 +32,7 @@ const ListingCard = ({
         </Card.Body>
       </Card>
 
-      <Button id="apply-button">
-        Apply
-      </Button>
+      <Button id="apply-button">Apply</Button>
     </div>
   );
 };

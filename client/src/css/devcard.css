@@ -1,0 +1,63 @@
+.card-container {
+  background-color: #aec5d5;
+  width: 450px;
+  padding: 30px;
+  height: 350px;
+  margin: 20px;
+  border-radius: 20px;
+}
+
+.username-container,
+.role-container,
+.technologies-container {
+  text-align: center;
+  color: #003049;
+}
+
+.username-container h1 {
+  font-size: 30px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+}
+
+.role-container h3 {
+  font-size: 15px;
+  margin-bottom: 10px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+}
+
+.technologies-container p {
+  margin-top: 10px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+}
+
+.description-container p {
+  color: #003049;
+  font-size: 15px;
+}
+
+.openprofile-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #eeede1;
+  border-radius: 10px;
+  width: 125px;
+  margin: 0 auto;
+  padding: 5px 0;
+  transition: 0.1s ease;
+}
+
+.openprofile-btn:hover {
+  cursor: pointer;
+  background-color: #d6d5c9;
+}
+
+.openprofile-btn h1 {
+  font-size: 15px;
+  color: #003049;
+  font-weight: 400;
+  margin: 0;
+}

@@ -13,6 +13,8 @@ import PostAJob from "./pages/PostAJob.tsx";
 import About from "./pages/About.tsx";
 import Signup from "./pages/Signup.tsx";
 
+// import UserProfile from "./pages/UserProfile.tsx";
+
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -25,25 +27,24 @@ export const router = createBrowserRouter([
       },
       {
         path: "/explore",
-        element: <Explore />
+        element: <Explore />,
       },
       {
         path: "/find-work",
-        element: <FindWork />
+        element: <FindWork />,
       },
       {
         path: "/post-listing",
-        element: <PostAJob />
+        element: <PostAJob />,
       },
       {
         path: "/about-us",
-        element: <About />
+        element: <About />,
       },
-     { 
-      path: "/signup",
-      element: <Signup />
-     }
-
+      { 
+        path: "/signup",
+        element: <Signup />,
+      },
     ],
   },
 ]);

@@ -1,0 +1,9 @@
+.accordion-item {
+  width: 550px !important;
+  margin: 15px 0;
+}
+
+.accordion-button {
+  background-color: #ccd5ae !important;
+  color: #003049 !important;
+}
