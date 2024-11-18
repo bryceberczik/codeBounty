@@ -42,6 +42,30 @@ const FindWork = () => {
           </Col>
           <Col md={4} sm={6}>
             <ListingCard
+              title="SQL Database"
+              poster="codingGuy"
+              description="Looking for a backend expert that can make a PostgreSQL database for my project. Minimum of 5 years of experience."
+              price={260}
+            />
+          </Col>
+          <Col md={4} sm={6}>
+            <ListingCard
+              title="SQL Database"
+              poster="codingGuy"
+              description="Looking for a backend expert that can make a PostgreSQL database for my project. Minimum of 5 years of experience."
+              price={260}
+            />
+          </Col>
+          <Col md={4} sm={6}>
+            <ListingCard
+              title="SQL Database"
+              poster="codingGuy"
+              description="Looking for a backend expert that can make a PostgreSQL database for my project. Minimum of 5 years of experience."
+              price={260}
+            />
+          </Col>
+          <Col md={4} sm={6}>
+            <ListingCard
               title="Test Listing"
               poster="noPortfolio123!"
               description="This is a test."

@@ -1,3 +1,20 @@
+.btn-outline-success {
+  background-color: #ccd5ae;
+  border: 1px solid #003049;
+  color: #003049;
+  transition: 0.3s ease;
+}
+
+.btn-outline-success:hover {
+  background-color: #b0cc8a;
+  color: #003049;
+}
+
+#listings-container {
+
+  margin-bottom: 50px;
+}
+
 #find-work {
   font-family: "Poppins", sans-serif;
   color: #003049;
@@ -19,6 +36,11 @@
   border-color: transparent;
   box-shadow: none;
   border: 1px solid #003049;
+  color: #003049;
+}
+
+#find-work-search-bar::placeholder {
+  color: #003049;
 }
 
 #find-work-search-button {
