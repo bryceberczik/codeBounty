@@ -12,6 +12,7 @@ import PostAJob from "./pages/PostAJob.tsx";
 import About from "./pages/About.tsx";
 import UserProfile from "./pages/UserProfile.tsx";
 import Signup from "./pages/Signup.tsx";
+import SettingsPage from "./pages/Settings.tsx";
 
 export const router = createBrowserRouter([
   {
@@ -46,6 +47,10 @@ export const router = createBrowserRouter([
       { 
         path: "/signup",
         element: <Signup />,
+      },
+      {
+        path: "/settings",
+        element: <SettingsPage />,
       },
     ],
   },
