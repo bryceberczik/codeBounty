@@ -134,6 +134,7 @@ const PostAJob = () => {
               <InputGroup className="mb-3">
                 <InputGroup.Text>$</InputGroup.Text>
                 <Form.Control
+                type="number"
                   value={price}
                   onChange={handlePrice}
                   aria-label="Price (to the nearest dollar)"
