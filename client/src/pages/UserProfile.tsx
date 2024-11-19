@@ -90,6 +90,17 @@ const UserProfile = ({ username }: { username?: string }) => {
 
   const handleDeleteTechnology = (tech: string) => {
     if (!user) return;
+
+    if (!tech.trim()) {
+      alert("Please enter a valid technology to delete.");
+      return;
+    }
+
+    if (!user.technologies.includes(tech)) {
+      alert("This technology does not exist on your list.");
+      return;
+    }
+
     setUser({
       ...user,
       technologies: user.technologies.filter((t) => t !== tech),
@@ -117,6 +128,17 @@ const UserProfile = ({ username }: { username?: string }) => {
 
   const handleDeleteLink = (link: string) => {
     if (!user) return;
+
+    if (!link.trim()) {
+      alert("Please enter a valid link to delete.");
+      return;
+    }
+
+    if (!user.technologies.includes(link)) {
+      alert("This link does not exist on your list.");
+      return;
+    }
+
     setUser({
       ...user,
       links: user.links.filter((l) => l !== link),
@@ -231,7 +253,14 @@ const UserProfile = ({ username }: { username?: string }) => {
                     </Button>
                   </Col>
                   <Col md={6}>
-                    <Button variant="danger" className="list-button">
+                    <Button
+                      variant="danger"
+                      className="list-button"
+                      onClick={() => {
+                        handleDeleteTechnology(techInput);
+                        setTechInput("");
+                      }}
+                    >
                       Delete
                     </Button>
                   </Col>
@@ -287,7 +316,14 @@ const UserProfile = ({ username }: { username?: string }) => {
                     </Button>
                   </Col>
                   <Col md={6}>
-                    <Button variant="danger" className="list-button">
+                    <Button
+                      variant="danger"
+                      className="list-button"
+                      onClick={() => {
+                        handleDeleteLink(linkInput);
+                        setLinkInput("");
+                      }}
+                    >
                       Delete
                     </Button>
                   </Col>
