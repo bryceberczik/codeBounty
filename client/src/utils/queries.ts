@@ -49,15 +49,15 @@ export const QUERY_ME = gql`
 `;
 
 export const QUERY_LISTINGS = gql`
-  query getListings {
-    listing {
-      _id
-      title
-      description
-      price
-      userId
-    }
+query Listings {
+  listings {
+    _id
+    description
+    price
+    title
+    userId
   }
+}
 `;
 
 export const QUERY_SINGLE_LISTING = gql`

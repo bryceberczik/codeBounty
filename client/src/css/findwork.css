@@ -10,6 +10,12 @@
   color: #003049;
 }
 
+.listings-tab {
+
+  display: flex;
+  flex-direction: row;
+}
+
 #listings-container {
 
   margin-bottom: 50px;
