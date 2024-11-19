@@ -7,7 +7,7 @@ function SettingsPage() {
     language: 'en',
   });
 
-  const handleInputChange = (event) => {
+  const handleInputChange = (event: any) => {
     const { name, value, checked } = event.target;
     setSettings({
       ...settings,
