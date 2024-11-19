@@ -49,15 +49,19 @@ const UserProfile = ({ username }: { username?: string }) => {
 
   const displayedUsername = username || paramsUsername || loggedInUser;
 
+  // console.log(displayedUsername);
+
   if (!displayedUsername) {
     return <p>Error: No username available.</p>;
   }
 
   const isOwnProfile = loggedInUser === username;
 
+  // if (isOwnProfile) console.log(isOwnProfile);
+
   const { loading, data } = useQuery(isOwnProfile ? QUERY_ME : QUERY_USER, {
-    variables: { username },
-    skip: isOwnProfile,
+    variables: isOwnProfile ? undefined : { username: displayedUsername },
+    skip: !displayedUsername,
   });
 
   const [updateUser] = useMutation(UPDATE_USER);
@@ -66,6 +70,8 @@ const UserProfile = ({ username }: { username?: string }) => {
   const [isRightVisible, setIsRightVisible] = useState(false);
 
   const [user, setUser] = useState<IUserProfile | null>(null);
+
+  // console.log(user);
 
   useEffect(() => {
     if (data?.me || data?.user) {
