@@ -7,8 +7,7 @@
     "scripts": {
         "build": "tsc",
         "start": "npm run build && node dist/server.js --ignore client",
-        "watch": "nodemon dist/server.js",
-        "test": "echo \"Error: no test specified\" && exit 1"
+        "watch": "nodemon dist/server.js"
     },
     "keywords": [],
     "author": "",
