@@ -35,7 +35,10 @@ export const router = createBrowserRouter([
       },
       {
         path: "/post-listing",
-        element: <PostAJob />,
+        element: auth.loggedIn() ? (
+        <PostAJob /> ) : (
+          <Navigate to="/signup" />
+        )
       },
       {
         path: "/about-us",

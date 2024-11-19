@@ -6,7 +6,7 @@ import { DELETE_LISTING } from "../utils/mutations";
 
 import { Container, Col, Row } from "react-bootstrap";
 import { Form, InputGroup, Button } from "react-bootstrap";
-// import ListingCard from "../components/ListingCard";
+import TestListingCard from "../components/TestListingCard";
 import YourListingCard from "../components/YourListingCard";
 import PageTab from "../components/PageTab";
 import "../css/postajob.css";
@@ -152,12 +152,12 @@ const PostAJob = () => {
           </Col>
 
           <Col md={4} className="mx-auto pt-4">
-            {/* <ListingCard
+            <TestListingCard
               title={title}
               poster={user.username}
               description={description}
               price={Number(price) || 0}
-            /> */}
+            />
           </Col>
         </Row>
       </Container>
