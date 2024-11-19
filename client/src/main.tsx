@@ -1,5 +1,5 @@
 import { createRoot } from "react-dom/client";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { createBrowserRouter, RouterProvider, Navigate } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./css/index.css";
 
@@ -13,7 +13,7 @@ import About from "./pages/About.tsx";
 import UserProfile from "./pages/UserProfile.tsx";
 import Signup from "./pages/Signup.tsx";
 
-import Auth from "./utils/auth.ts";
+import auth from "./utils/auth.ts";
 
 export const router = createBrowserRouter([
   {
@@ -47,10 +47,10 @@ export const router = createBrowserRouter([
       },
       {
         path: "/me",
-        element: (
-          <UserProfile
-            username={Auth.getProfile().data.username}
-          />
+        element: auth.loggedIn() ? (
+          <UserProfile username={auth.getProfile().data.username} />
+        ) : (
+          <Navigate to="/signup" />
         ),
       },
       { 
