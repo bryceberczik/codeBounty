@@ -1,4 +1,4 @@
-import { Container, Row, Col } from "react-bootstrap";
+import { Container } from "react-bootstrap";
 import { Form, Button } from "react-bootstrap";
 import ListingCard from "../components/ListingCard";
 import PageTab from "../components/PageTab";
