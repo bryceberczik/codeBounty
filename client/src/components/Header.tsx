@@ -101,7 +101,7 @@ const Header = () => {
             </Offcanvas.Title>
           </Offcanvas.Header>
           <Offcanvas.Body>
-            <Link to="/my-profile" className="offcanvas-opt">My Profile</Link>
+            <Link to="/me" className="offcanvas-opt">My Profile</Link>
             <Link to="/settings" className="offcanvas-opt">Settings</Link>
             <Link to="/find-work" className="offcanvas-opt">Find work</Link>
             <div className="logout-btn" onClick={logout}>
