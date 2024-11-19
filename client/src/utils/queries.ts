@@ -24,6 +24,33 @@ export const QUERY_USER = gql`
   }
 `;
 
+export const QUERY_USERS = gql`
+  query users {
+    users {
+      _id
+      username
+      role
+      links
+      email
+      description
+      technologies
+      jobs {
+        userId
+        status
+        listingId
+        _id
+      }
+      listings {
+        userId
+        title
+        price
+        description
+        _id
+      }
+    }
+  }
+`;
+
 export const QUERY_ME = gql`
   query me {
     me {
@@ -49,12 +76,12 @@ export const QUERY_ME = gql`
 `;
 
 export const QUERY_LISTINGS = gql`
-  query getListings {
-    listing {
+  query Listings {
+    listings {
       _id
-      title
       description
       price
+      title
       userId
     }
   }
@@ -84,10 +111,10 @@ export const QUERY_JOBS = gql`
 export const QUERY_SINGLE_JOB = gql`
   query getSingleJob($id: ID!) {
     job(_id: $id) {
-    _id
-    listingId
-    userId
-    status
+      _id
+      listingId
+      userId
+      status
     }
   }
 `;

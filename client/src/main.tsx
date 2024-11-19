@@ -14,6 +14,8 @@ import UserProfile from "./pages/UserProfile.tsx";
 import Signup from "./pages/Signup.tsx";
 import SettingsPage from "./pages/Settings.tsx";
 
+import Auth from "./utils/auth.ts";
+
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -41,8 +43,16 @@ export const router = createBrowserRouter([
         element: <About />,
       },
       {
-        path: "/my-profile",
+        path: "/profiles/:username",
         element: <UserProfile />
+      },
+      {
+        path: "/me",
+        element: (
+          <UserProfile
+            username={Auth.getProfile().data.username}
+          />
+        ),
       },
       { 
         path: "/signup",
