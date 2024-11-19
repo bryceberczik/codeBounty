@@ -67,17 +67,30 @@ const UserProfile = ({ username }: { username?: string }) => {
   const toggleRightVisibility = () => setIsRightVisible(!isRightVisible);
 
   const handleSave = () => {
-    if (!user) return;
+    const updatedUserData = {
+      username:
+        document.getElementById("username-profile-input")?.innerText ||
+        user?.username,
+      role:
+        document.getElementById("role-profile-input")?.innerText || user?.role,
+      description:
+        document.getElementById("description-profile-input")?.innerText ||
+        user?.description,
+      technologies:
+        document.getElementById("technologies-profile-input")?.innerText ||
+        user?.technologies,
+      links:
+        document.getElementById("links-profile-input")?.innerText ||
+        user?.links,
+    };
+
+    // console.log(updatedUserData);
 
     updateUser({
       variables: {
         input: {
           _id: userId,
-          username: user.username,
-          role: user.role,
-          technologies: user.technologies,
-          description: user.description,
-          links: user.links,
+          ...updatedUserData,
         },
       },
     }).then(() => alert("Profile updated successfully!"));
@@ -92,12 +105,14 @@ const UserProfile = ({ username }: { username?: string }) => {
       >
         <div id="profile-card">
           <h1
+            id="username-profile-input"
             suppressContentEditableWarning={true}
             contentEditable={isOwnProfile}
           >
             {user?.username}
           </h1>
           <h2
+            id="role-profile-input"
             suppressContentEditableWarning={true}
             contentEditable={isOwnProfile}
           >
@@ -105,6 +120,7 @@ const UserProfile = ({ username }: { username?: string }) => {
           </h2>
 
           <p
+            id="description-profile-input"
             suppressContentEditableWarning={true}
             contentEditable={isOwnProfile}
           >
