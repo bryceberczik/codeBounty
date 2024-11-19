@@ -1,4 +1,4 @@
-import { Card, Button } from "react-bootstrap";
+import { Card } from "react-bootstrap";
 
 interface TestListingProps {
 
@@ -28,8 +28,6 @@ const TestListingCard = ({ title, poster, description, price }: TestListingProps
             </Card.Text>
           </Card.Body>
         </Card>
-
-        <Button id="apply-button">Apply</Button>
       </div>
     )
 }

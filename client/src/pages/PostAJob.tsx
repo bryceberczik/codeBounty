@@ -121,6 +121,7 @@ const PostAJob = () => {
                   value={description}
                   onChange={handleDescription}
                   placeholder="Enter description"
+                  maxLength={225}
                 />
                 <Form.Text className="text-muted">
                   Give an overview on what you're looking for, what type of
