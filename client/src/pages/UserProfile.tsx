@@ -20,29 +20,6 @@ interface IUserProfile {
   links: string[];
 }
 
-// // Mock Technology Data
-// const technologies = [
-//   "JavaScript",
-//   "TypeScript",
-//   "React",
-//   "Node.js",
-//   "Express.js",
-//   "Python",
-//   "PostgreSQL",
-//   "MongoDB",
-//   "GraphQL",
-//   "Git",
-//   "HTML",
-//   "CSS",
-// ];
-
-// // Mock Link Data
-// const links = [
-//   "https://mattfarley.ca",
-//   "https://github.com/ZVKubajak",
-//   "https://chatgpt.com",
-// ];
-
 const UserProfile = ({ username }: { username?: string }) => {
   const { username: paramsUsername } = useParams();
   const loggedInUser = Auth.getProfile().data.username;
@@ -63,6 +40,11 @@ const UserProfile = ({ username }: { username?: string }) => {
     variables: isOwnProfile ? undefined : { username: displayedUsername },
     skip: !displayedUsername,
   });
+
+  // userId for UPDATE_USER mutation.
+  const userId = data?.me?._id;
+
+  // console.log(userId);
 
   const [updateUser] = useMutation(UPDATE_USER);
 
@@ -90,6 +72,7 @@ const UserProfile = ({ username }: { username?: string }) => {
     updateUser({
       variables: {
         input: {
+          _id: userId,
           username: user.username,
           role: user.role,
           technologies: user.technologies,
@@ -102,26 +85,31 @@ const UserProfile = ({ username }: { username?: string }) => {
 
   if (loading) return <p>Loading...</p>;
 
-  // // Changing Username
-  // const handleUsernameChange = (e: React.FormEvent<HTMLElement>) => {
-  //   setUsername(e.currentTarget.innerText.trim());
-  // };
-
-  // // Changing Role
-  // const handleRoleChange = (e: React.FormEvent<HTMLElement>) => {
-  //   setRole(e.currentTarget.innerText.trim());
-  // };
-
   return (
     <Container id="user-profile">
       <PageTab
         title={isOwnProfile ? "My Profile" : `${user?.username}'s Profile`}
       >
         <div id="profile-card">
-          <h1 contentEditable={isOwnProfile}>{user?.username}</h1>
-          <h2 contentEditable={isOwnProfile}>{user?.role}</h2>
+          <h1
+            suppressContentEditableWarning={true}
+            contentEditable={isOwnProfile}
+          >
+            {user?.username}
+          </h1>
+          <h2
+            suppressContentEditableWarning={true}
+            contentEditable={isOwnProfile}
+          >
+            {user?.role}
+          </h2>
 
-          <p>{user?.description}</p>
+          <p
+            suppressContentEditableWarning={true}
+            contentEditable={isOwnProfile}
+          >
+            {user?.description}
+          </p>
 
           <Row>
             <Col md={6} style={{ position: "relative" }}>
