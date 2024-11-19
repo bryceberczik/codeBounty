@@ -1,7 +1,9 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useQuery, useMutation } from "@apollo/client";
 import { QUERY_USER, QUERY_ME } from "../utils/queries";
+import { UPDATE_USER } from "../utils/mutations";
 
+import { useParams } from "react-router-dom";
 import Auth from "../utils/auth";
 
 import { Container, Row, Col } from "react-bootstrap";
@@ -10,31 +12,47 @@ import { FaRegEdit } from "react-icons/fa";
 import PageTab from "../components/PageTab";
 import "../css/userprofile.css";
 
-// Mock Technology Data
-const technologies = [
-  "JavaScript",
-  "TypeScript",
-  "React",
-  "Node.js",
-  "Express.js",
-  "Python",
-  "PostgreSQL",
-  "MongoDB",
-  "GraphQL",
-  "Git",
-  "HTML",
-  "CSS",
-];
+interface IUserProfile {
+  username: string;
+  role: string;
+  description: string;
+  technologies: string[];
+  links: string[];
+}
 
-// Mock Link Data
-const links = [
-  "https://mattfarley.ca",
-  "https://github.com/ZVKubajak",
-  "https://chatgpt.com",
-];
+// // Mock Technology Data
+// const technologies = [
+//   "JavaScript",
+//   "TypeScript",
+//   "React",
+//   "Node.js",
+//   "Express.js",
+//   "Python",
+//   "PostgreSQL",
+//   "MongoDB",
+//   "GraphQL",
+//   "Git",
+//   "HTML",
+//   "CSS",
+// ];
 
-const UserProfile = ({ username }: { username: string }) => {
+// // Mock Link Data
+// const links = [
+//   "https://mattfarley.ca",
+//   "https://github.com/ZVKubajak",
+//   "https://chatgpt.com",
+// ];
+
+const UserProfile = ({ username }: { username?: string }) => {
+  const { username: paramsUsername } = useParams();
   const loggedInUser = Auth.getProfile().data.username;
+
+  const displayedUsername = username || paramsUsername || loggedInUser;
+
+  if (!displayedUsername) {
+    return <p>Error: No username available.</p>;
+  }
+
   const isOwnProfile = loggedInUser === username;
 
   const { loading, data } = useQuery(isOwnProfile ? QUERY_ME : QUERY_USER, {
@@ -42,62 +60,62 @@ const UserProfile = ({ username }: { username: string }) => {
     skip: isOwnProfile,
   });
 
-  if (loading) return <p>Loading...</p>;
-
-  const user = data?.me || data?.user;
-
-  //
+  const [updateUser] = useMutation(UPDATE_USER);
 
   const [isLeftVisible, setIsLeftVisible] = useState(false);
   const [isRightVisible, setIsRightVisible] = useState(false);
 
-  const [userName, setUserName] = useState("codingGuy123!");
-  const [role, setRole] = useState("Web Developer");
+  const [user, setUser] = useState<IUserProfile | null>(null);
+
+  useEffect(() => {
+    if (data?.me || data?.user) {
+      setUser(data.me || data.user);
+    }
+  }, [data]);
 
   // View Technology Editing Tools
-  const toggleLeftVisibility = () => {
-    setIsLeftVisible(!isLeftVisible);
-  };
-
+  const toggleLeftVisibility = () => setIsLeftVisible(!isLeftVisible);
   // View Link Editing Tools
-  const toggleRightVisibility = () => {
-    setIsRightVisible(!isRightVisible);
+  const toggleRightVisibility = () => setIsRightVisible(!isRightVisible);
+
+  const handleSave = () => {
+    if (!user) return;
+
+    updateUser({
+      variables: {
+        input: {
+          username: user.username,
+          role: user.role,
+          technologies: user.technologies,
+          description: user.description,
+          links: user.links,
+        },
+      },
+    }).then(() => alert("Profile updated successfully!"));
   };
 
-  // Changing Username
-  const handleUsernameChange = (e: React.FormEvent<HTMLElement>) => {
-    setUserName(e.currentTarget.innerText.trim());
-  };
+  if (loading) return <p>Loading...</p>;
 
-  // Changing Role
-  const handleRoleChange = (e: React.FormEvent<HTMLElement>) => {
-    setRole(e.currentTarget.innerText.trim());
-  };
+  // // Changing Username
+  // const handleUsernameChange = (e: React.FormEvent<HTMLElement>) => {
+  //   setUsername(e.currentTarget.innerText.trim());
+  // };
+
+  // // Changing Role
+  // const handleRoleChange = (e: React.FormEvent<HTMLElement>) => {
+  //   setRole(e.currentTarget.innerText.trim());
+  // };
 
   return (
     <Container id="user-profile">
-      <PageTab title="My Profile">
+      <PageTab
+        title={isOwnProfile ? "My Profile" : `${user?.username}'s Profile`}
+      >
         <div id="profile-card">
-          <h1
-            contentEditable
-            suppressContentEditableWarning
-            onInput={handleUsernameChange}
-          >
-            {userName}
-          </h1>
-          <h2
-            contentEditable
-            suppressContentEditableWarning
-            onInput={handleRoleChange}
-          >
-            {role}
-          </h2>
+          <h1 contentEditable={isOwnProfile}>{user?.username}</h1>
+          <h2 contentEditable={isOwnProfile}>{user?.role}</h2>
 
-          <p>
-            Hello codeBounty! I am full-stack web developer looking for
-            freelance work. I love working on backend applications and helping
-            developers set up their APIs.
-          </p>
+          <p>{user?.description}</p>
 
           <Row>
             <Col md={6} style={{ position: "relative" }}>
@@ -109,7 +127,7 @@ const UserProfile = ({ username }: { username: string }) => {
               )}
 
               <Row>
-                {technologies.map((tech, index) => (
+                {user?.technologies?.map((tech: string, index: number) => (
                   <Col key={index} sm={12} md={4} className="mb-3">
                     <div className="tech-box">{tech}</div>
                   </Col>
@@ -152,7 +170,7 @@ const UserProfile = ({ username }: { username: string }) => {
               )}
 
               <Row>
-                {links.map((link, index) => (
+                {user?.links?.map((link: string, index: number) => (
                   <Col key={index} sm={12} md={12} className="mb-3">
                     <div className="link-box">
                       <a href={link} target="_blank" rel="noopener noreferrer">
@@ -190,6 +208,12 @@ const UserProfile = ({ username }: { username: string }) => {
               )}
             </Col>
           </Row>
+
+          {isOwnProfile && (
+            <Button variant="primary" onClick={handleSave}>
+              Save Changes
+            </Button>
+          )}
         </div>
       </PageTab>
     </Container>
