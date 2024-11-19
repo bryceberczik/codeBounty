@@ -23,6 +23,7 @@
 }
 
 .turn {
+  user-select: none; /* Prevents the arrow from being highlighted. */
   background-color: #ccd5ae;
   color: #004d00;
   padding: 10px;

@@ -46,12 +46,17 @@ const Explore = () => {
   const developers = users.filter((user) => user.jobs.length > 0);
   // console.log(developers);
 
+  // * Circular Navigation * //
+
   const left = "<";
   const right = ">";
 
   const developerCount = developers.length;
 
-  const displayedDevelopers = developers.slice(startIndex, startIndex + 3);
+  const displayedDevelopers = [
+    ...developers.slice(startIndex, startIndex + 3),
+    ...developers.slice(0, Math.max(0, startIndex + 3 - developerCount)),
+  ];
 
   const handleNext = () => {
     setStartIndex((prevIndex) => (prevIndex + 3) % developerCount);
@@ -73,7 +78,7 @@ const Explore = () => {
           <h1>Top Rated Sellers</h1>
         </div>
         <div className="explore-users-container">
-          <div className="turn">
+          <div onClick={handlePrevious} className="turn">
             <h1>{left}</h1>
           </div>
           {displayedDevelopers.map((developer: IUser) => (
@@ -85,7 +90,7 @@ const Explore = () => {
               technologies={developer.technologies.join(" | ")}
             />
           ))}
-          <div className="turn">
+          <div onClick={handleNext} className="turn">
             <h1>{right}</h1>
           </div>
         </div>
