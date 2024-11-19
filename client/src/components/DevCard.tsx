@@ -3,7 +3,7 @@ import "../css/devcard.css";
 interface DevCardProps {
   username: string;
   role: string;
-  technologies: string[];
+  technologies: string;
   description: string;
 }
 
