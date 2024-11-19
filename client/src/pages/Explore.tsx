@@ -1,4 +1,4 @@
-// import { useState } from "react";
+import { useState } from "react";
 import { useQuery } from "@apollo/client";
 import { QUERY_USERS } from "../utils/queries";
 
@@ -35,6 +35,8 @@ type IUser = {
 };
 
 const Explore = () => {
+  const [startIndex, setStartIndex] = useState(0);
+
   const { loading, data } = useQuery(QUERY_USERS);
 
   if (loading) return <p>Loading...</p>;
@@ -47,6 +49,23 @@ const Explore = () => {
   const left = "<";
   const right = ">";
 
+  const developerCount = developers.length;
+
+  const displayedDevelopers = developers.slice(startIndex, startIndex + 3);
+
+  const handleNext = () => {
+    setStartIndex((prevIndex) => (prevIndex + 3) % developerCount);
+  };
+
+  const handlePrevious = () => {
+    setStartIndex(
+      (prevIndex) => (prevIndex - 3 + developerCount) % developerCount
+    );
+  };
+
+  console.log(handleNext);
+  console.log(handlePrevious);
+
   return (
     <div className="explore-container">
       <PageTab title="Explore">
@@ -57,7 +76,7 @@ const Explore = () => {
           <div className="turn">
             <h1>{left}</h1>
           </div>
-          {developers.map((developer: IUser) => (
+          {displayedDevelopers.map((developer: IUser) => (
             <DevCard
               key={developer._id}
               username={developer.username}
