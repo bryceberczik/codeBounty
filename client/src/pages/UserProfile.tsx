@@ -51,6 +51,9 @@ const UserProfile = ({ username }: { username?: string }) => {
   const [isLeftVisible, setIsLeftVisible] = useState(false);
   const [isRightVisible, setIsRightVisible] = useState(false);
 
+  const [techInput, setTechInput] = useState("");
+  const [linkInput, setLinkInput] = useState("");
+
   const [user, setUser] = useState<IUserProfile | null>(null);
 
   // console.log(user);
@@ -66,22 +69,78 @@ const UserProfile = ({ username }: { username?: string }) => {
   // View Link Editing Tools
   const toggleRightVisibility = () => setIsRightVisible(!isRightVisible);
 
+  const handleAddTechnology = (tech: string) => {
+    if (!user) return;
+
+    if (!tech.trim()) {
+      alert("Technology cannot be nothing.");
+      return;
+    }
+
+    if (user.technologies.includes(tech)) {
+      alert("This technology is already listed.");
+      return;
+    }
+
+    setUser({
+      ...user,
+      technologies: [...user.technologies, tech],
+    });
+  };
+
+  const handleDeleteTechnology = (tech: string) => {
+    if (!user) return;
+    setUser({
+      ...user,
+      technologies: user.technologies.filter((t) => t !== tech),
+    });
+  };
+
+  const handleAddLink = (link: string) => {
+    if (!user) return;
+
+    if (!link.trim()) {
+      alert("Link can not be nothing.");
+      return;
+    }
+
+    if (user.links.includes(link)) {
+      alert("This link is already listed.");
+      return;
+    }
+
+    setUser({
+      ...user,
+      links: [...user.links, link],
+    });
+  };
+
+  const handleDeleteLink = (link: string) => {
+    if (!user) return;
+    setUser({
+      ...user,
+      links: user.links.filter((l) => l !== link),
+    });
+  };
+
   const handleSave = () => {
+    if (!user) return;
+
     const updatedUserData = {
       username:
         document.getElementById("username-profile-input")?.innerText ||
         user?.username,
+
       role:
         document.getElementById("role-profile-input")?.innerText || user?.role,
+
       description:
         document.getElementById("description-profile-input")?.innerText ||
         user?.description,
-      technologies:
-        document.getElementById("technologies-profile-input")?.innerText ||
-        user?.technologies,
-      links:
-        document.getElementById("links-profile-input")?.innerText ||
-        user?.links,
+
+      technologies: user.technologies,
+
+      links: user.links,
     };
 
     // console.log(updatedUserData);
@@ -153,12 +212,21 @@ const UserProfile = ({ username }: { username?: string }) => {
                           className="edit-input"
                           type="text"
                           placeholder="Enter Technology"
+                          value={techInput}
+                          onChange={(e) => setTechInput(e.target.value)}
                         />
                       </Form.Group>
                     </Form>
                   </Col>
                   <Col md={6}>
-                    <Button variant="info" className="list-button">
+                    <Button
+                      variant="info"
+                      className="list-button"
+                      onClick={() => {
+                        handleAddTechnology(techInput);
+                        setTechInput("");
+                      }}
+                    >
                       Add
                     </Button>
                   </Col>
@@ -200,12 +268,21 @@ const UserProfile = ({ username }: { username?: string }) => {
                           className="edit-input"
                           type="text"
                           placeholder="Enter Link"
+                          value={linkInput}
+                          onChange={(e) => setLinkInput(e.target.value)}
                         />
                       </Form.Group>
                     </Form>
                   </Col>
                   <Col md={6}>
-                    <Button variant="info" className="list-button">
+                    <Button
+                      variant="info"
+                      className="list-button"
+                      onClick={() => {
+                        handleAddLink(linkInput);
+                        setLinkInput("");
+                      }}
+                    >
                       Add
                     </Button>
                   </Col>
