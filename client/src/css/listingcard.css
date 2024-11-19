@@ -1,6 +1,15 @@
 .listing-card-container {
 
-  margin-bottom: 60px;
+  margin-bottom: 40px;
+}
+
+.listings-tab {
+
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  align-items: center;
+
 }
 
 .desc-tag {

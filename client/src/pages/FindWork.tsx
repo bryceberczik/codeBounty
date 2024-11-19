@@ -1,15 +1,29 @@
 import { Container } from "react-bootstrap";
-import { Form, Button } from "react-bootstrap";
+import { Form } from "react-bootstrap";
 import ListingCard from "../components/ListingCard";
 import PageTab from "../components/PageTab";
 import { useQuery } from "@apollo/client";
-import { QUERY_LISTINGS } from "../utils/queries";
+import { QUERY_LISTINGS, QUERY_USERS } from "../utils/queries";
+import { useState } from "react";
 import "../css/findwork.css";
 
 const FindWork = () => {
-  const { loading, data } = useQuery(QUERY_LISTINGS);
-  const listings = data?.listings || [];
+  const { loading: loadingListings, data: listingsData } = useQuery(QUERY_LISTINGS);
+  const { loading: loadingUsers, data: usersData } = useQuery(QUERY_USERS);
 
+  const listings = listingsData?.listings || [];
+  const users = usersData?.users || [];
+
+  const [searchQuery, setSearchQuery] = useState("");
+
+  interface Listing {
+    title: string;
+  }
+
+  const filteredListings = listings.filter((listing: Listing) => {
+    return listing.title.toLowerCase().includes(searchQuery.toLowerCase());
+  });
+  
   return (
     <div id="find-work">
       <PageTab title="Find Work">
@@ -21,17 +35,15 @@ const FindWork = () => {
             type="search"
             placeholder="Search"
             aria-label="Search"
+            onChange={(e) => setSearchQuery(e.target.value)}
           />
-          <div id="find-work-search-button">
-            <Button variant="outline-success">Search</Button>
-          </div>
         </Form>
 
         <Container id="listings-container">
-          {loading ? (
-            <div>Loading...</div>
+          {loadingListings || loadingUsers ? (
+            <div style={{ textAlign: "center" }}>Loading...</div>
           ) : (
-                <ListingCard listings={listings} />
+                <ListingCard listings={filteredListings} users={users}/>
           )}
         </Container>
       </PageTab>

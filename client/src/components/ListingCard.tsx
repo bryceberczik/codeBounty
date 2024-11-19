@@ -9,11 +9,22 @@ interface Listing {
   price: number;
 }
 
-interface ListingCardProps {
-  listings: Listing[];
+interface User {
+  _id: string;
+  username: string;
 }
 
-const ListingCard: React.FC<ListingCardProps> = ({ listings }) => {
+interface ListingCardProps {
+  listings: Listing[];
+  users: User[];
+}
+
+const ListingCard: React.FC<ListingCardProps> = ({ listings, users }) => {
+
+  const getUsername = (userId: string) => {
+    const user = users.find((user) => user._id === userId);
+    return user ? user.username : "Unknown User";
+  };
 
   if (!listings.length) {
     return <h3>No Listings Yet</h3>;
@@ -32,7 +43,7 @@ const ListingCard: React.FC<ListingCardProps> = ({ listings }) => {
               <Card.Body>
                 <Card.Title className="card-title">{listing.title}</Card.Title>
                 <Card.Subtitle className="card-lister mb-2">
-                  Posted by: {listing.userId}
+                  Posted by: {getUsername(listing.userId)}
                 </Card.Subtitle>
                 <Card.Text id="card-description">
                   <h3 className="desc-tag">Description: </h3>
