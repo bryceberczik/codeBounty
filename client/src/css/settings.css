@@ -1,0 +1,21 @@
+.settingsTitle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 4rem auto 5rem auto;
+}
+
+.settingsContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+}
+
+.settingsForm {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto 23rem auto;
+}
