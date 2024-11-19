@@ -108,6 +108,7 @@ const PostAJob = () => {
                   value={title}
                   onChange={handleTitle}
                   placeholder="Enter title"
+                  maxLength={35}
                 />
                 <Form.Text className="text-muted">
                   Developers can search for listings by title.
