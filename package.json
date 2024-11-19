@@ -1,36 +1,41 @@
 {
-    "name": "project-3",
+    "name": "codebounty",
     "version": "1.0.0",
     "description": "",
     "main": "server/server.js",
     "scripts": {
-      "start": "cd server && npm run start",
-      "start:dev": "npm run build && npm run develop",
-      "develop": "concurrently \"cd server && npm run watch\" \"wait-on tcp:3001 && cd client && npm run dev\"",
-      "install": "cd server && npm i && cd ../client && npm i",
-      "build": "concurrently \"cd server && npm run build\" \"cd client && npm run build\"",
-      "render-build": "npm install && npm run build",
-      "cypress": "cypress open",
-      "test": "npm run test:e2e || true && npm run test:comp",
-      "test:e2e": "npx cypress run --browser electron --headless",
-      "test:comp": "npx cypress run --component",
-      "test-gui": "npx cypress open --detached"
+        "start": "cd server && npm run start",
+        "start:dev": "npm run build && npm run develop",
+        "develop": "concurrently \"cd server && npm run watch\" \"wait-on tcp:3001 && cd client && npm run dev\"",
+        "install": "cd server && npm i && cd ../client && npm i",
+        "build": "concurrently \"cd server && npm run build\" \"cd client && npm run build\"",
+        "render-build": "npm install && npm run build",
+        "cypress": "cypress open",
+        "test": "npm run test:e2e || true && npm run test:comp",
+        "test:e2e": "npx cypress run --browser electron --headless",
+        "test:comp": "npx cypress run --component",
+        "test-gui": "npx cypress open --detached"
     },
     "keywords": [],
     "author": "",
     "license": "ISC",
     "devDependencies": {
-      "@apollo/client": "^3.11.9",
-      "@testing-library/cypress": "^10.0.2",
-      "@types/react": "^18.3.12",
-      "@vitejs/plugin-react": "^4.3.3",
-      "concurrently": "^8.2.0",
-      "cypress": "^13.15.2",
-      "react": "^18.3.1",
-      "react-dom": "^18.3.1",
-      "react-router-dom": "^6.28.0",
-      "typescript": "^5.6.3",
-      "vitest": "^2.1.4",
-      "wait-on": "^8.0.1"
+        "@apollo/client": "^3.11.9",
+        "@testing-library/cypress": "^10.0.2",
+        "@types/react": "^18.3.12",
+        "@vitejs/plugin-react": "^4.3.3",
+        "concurrently": "^8.2.0",
+        "cypress": "^13.15.2",
+        "react": "^18.3.1",
+        "react-dom": "^18.3.1",
+        "react-router-dom": "^6.28.0",
+        "typescript": "^5.6.3",
+        "vitest": "^2.1.4",
+        "wait-on": "^8.0.1"
+    },
+    "dependencies": {
+        "dotenv": "^16.4.5",
+        "graphql-tag": "^2.12.6",
+        "jwt-decode": "^4.0.0"
     }
-  }
+}

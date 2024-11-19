@@ -1,0 +1,84 @@
+.listing-card-container {
+
+  margin-bottom: 40px;
+}
+
+.listings-tab {
+
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  align-items: center;
+
+}
+
+.desc-tag {
+
+  font-family: "Poppins", sans-serif;
+  font-weight: 450;
+  font-size: 18px;
+}
+
+.price-tag {
+
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  font-size: 24px;
+}
+
+#listing-card {
+  max-width: 24rem;
+  width: 24rem;
+  border: 1px solid #6a4a7b;
+  border-radius: 15px;
+  background-color: #c3aed5;
+  color: #6a4a7b;
+  max-height: 300px;
+  height: 300px;
+  position: inherit;
+  box-shadow: 0 1px 1px hsl(0deg 0% 0% / 0.075),
+  0 2px 2px hsl(0deg 0% 0% / 0.075), 0 4px 4px hsl(0deg 0% 0% / 0.075),
+  0 8px 8px hsl(0deg 0% 0% / 0.075), 0 16px 16px hsl(0deg 0% 0% / 0.075);
+  margin: 0 20px;
+}
+
+#card-title {
+
+  margin-bottom: 10px;
+}
+
+#card-lister {
+
+  margin-bottom: 10px !important;
+}
+
+#card-poster {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+#card-price {
+
+  position: absolute;
+  bottom: 10px;
+  right: 13px;
+}
+
+#apply-button {
+  position: absolute;
+  bottom: -18px;
+  left: 15%;
+  z-index: 1;
+  color: #003049;
+  width: 125px;
+  border: 1px solid #003049;
+  border-radius: 15px;
+  background-color: #eeede1;
+  box-shadow: 0 1px 1px hsl(0deg 0% 0% / 0.075),
+  0 2px 2px hsl(0deg 0% 0% / 0.075), 0 4px 4px hsl(0deg 0% 0% / 0.075),
+  0 8px 8px hsl(0deg 0% 0% / 0.075), 0 16px 16px hsl(0deg 0% 0% / 0.075);
+}
+
+#apply-button:hover {
+
+  background-color: #d6d5c9;
+}
