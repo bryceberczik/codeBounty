@@ -24,6 +24,7 @@ const UserProfile = ({ username }: { username?: string }) => {
   const { username: paramsUsername } = useParams();
   const loggedInUser = Auth.getProfile().data.username;
 
+  // * Gets a username from either the URL params (user's profile) or the logged-in user's token (my profile).
   const displayedUsername = username || paramsUsername || loggedInUser;
 
   // console.log(displayedUsername);
@@ -32,6 +33,7 @@ const UserProfile = ({ username }: { username?: string }) => {
     return <p>Error: No username available.</p>;
   }
 
+  // * isOwnProfile is a boolean that checks if the profile being visited is the logged-in user's profile. When this is true, the user gets access to the editing tools.
   const isOwnProfile = loggedInUser === username;
 
   // if (isOwnProfile) console.log(isOwnProfile);
@@ -41,7 +43,7 @@ const UserProfile = ({ username }: { username?: string }) => {
     skip: !displayedUsername,
   });
 
-  // userId for UPDATE_USER mutation.
+  // * userId for UPDATE_USER mutation.
   const userId = data?.me?._id;
 
   // console.log(userId);
@@ -64,11 +66,12 @@ const UserProfile = ({ username }: { username?: string }) => {
     }
   }, [data]);
 
-  // View Technology Editing Tools
+  // * View Technology Editing Tools
   const toggleLeftVisibility = () => setIsLeftVisible(!isLeftVisible);
-  // View Link Editing Tools
+  // * View Link Editing Tools
   const toggleRightVisibility = () => setIsRightVisible(!isRightVisible);
 
+  // ! Handle Add Technology
   const handleAddTechnology = (tech: string) => {
     if (!user) return;
 
@@ -88,6 +91,7 @@ const UserProfile = ({ username }: { username?: string }) => {
     });
   };
 
+  // ! Handle Delete Technology
   const handleDeleteTechnology = (tech: string) => {
     if (!user) return;
 
@@ -107,6 +111,7 @@ const UserProfile = ({ username }: { username?: string }) => {
     });
   };
 
+  // ! Handle Add Link
   const handleAddLink = (link: string) => {
     if (!user) return;
 
@@ -126,6 +131,7 @@ const UserProfile = ({ username }: { username?: string }) => {
     });
   };
 
+  // ! Handle Delete Link
   const handleDeleteLink = (link: string) => {
     if (!user) return;
 
@@ -145,6 +151,7 @@ const UserProfile = ({ username }: { username?: string }) => {
     });
   };
 
+  // * This function takes in any new changes made by the user and saves it to the account.
   const handleSave = () => {
     if (!user) return;
 
@@ -177,6 +184,7 @@ const UserProfile = ({ username }: { username?: string }) => {
     }).then(() => alert("Profile updated successfully!"));
   };
 
+  // ! Loading Screen
   if (loading) return <p>Loading...</p>;
 
   return (
