@@ -6,7 +6,7 @@ import { DELETE_LISTING } from "../utils/mutations";
 
 import { Container, Col, Row } from "react-bootstrap";
 import { Form, InputGroup, Button } from "react-bootstrap";
-import ListingCard from "../components/ListingCard";
+// import ListingCard from "../components/ListingCard";
 import YourListingCard from "../components/YourListingCard";
 import PageTab from "../components/PageTab";
 import "../css/postajob.css";
@@ -26,10 +26,6 @@ const PostAJob = () => {
   // Fetch logged-in user's info.
   const { loading, error, data } = useQuery(QUERY_ME);
   const user = data?.me;
-
-  console.log("Testing");
-  console.log(data);
-  console.log(user);
 
   // Mutation to add a listing.
   const [addListing, { loading: adding }] = useMutation(ADD_LISTING, {
@@ -71,6 +67,7 @@ const PostAJob = () => {
       setDescription("");
       setPrice("");
       alert("Listing posted successfully!");
+      window.location.reload();
     } catch (error) {
       console.error("Error posting listing:", error);
     }
@@ -155,12 +152,12 @@ const PostAJob = () => {
           </Col>
 
           <Col md={4} className="mx-auto pt-4">
-            <ListingCard
+            {/* <ListingCard
               title={title}
               poster={user.username}
               description={description}
               price={Number(price) || 0}
-            />
+            /> */}
           </Col>
         </Row>
       </Container>
