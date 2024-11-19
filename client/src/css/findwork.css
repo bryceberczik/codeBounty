@@ -10,6 +10,28 @@
   color: #003049;
 }
 
+.get-accepted-container {
+
+  display: flex;
+  flex-direction: column;
+  color:#003049;
+  align-items: center;
+  margin: 50px 200px;
+}
+
+.get-accepted {
+
+  color:#003049;
+  background-color: #e0e0a3;
+  width: 100%;
+  text-align: center;
+  margin: 50px 0;
+  padding: 50px;
+  border-radius: 20px;
+}
+
+.get-accepted h2 {}
+
 #listings-container {
 
   margin-bottom: 50px;

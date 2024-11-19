@@ -27,7 +27,7 @@ const ListingCard: React.FC<ListingCardProps> = ({ listings, users }) => {
   };
 
   if (!listings.length) {
-    return <h3>No Listings Yet</h3>;
+    return <h3 style={{ textAlign: "center" }}>No Listings Yet</h3>;
   }
 
   return (

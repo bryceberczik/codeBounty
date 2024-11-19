@@ -23,7 +23,6 @@ const FindWork = () => {
   const filteredListings = listings.filter((listing: Listing) => {
     return listing.title.toLowerCase().includes(searchQuery.toLowerCase());
   });
-  
   return (
     <div id="find-work">
       <PageTab title="Find Work">
@@ -46,6 +45,15 @@ const FindWork = () => {
                 <ListingCard listings={filteredListings} users={users}/>
           )}
         </Container>
+        <div className="get-accepted-container">
+          <h1>Not getting jobs?</h1>
+
+          <div className="get-accepted">
+          <h2>The more jobs you do, the more your rating goes up.</h2>
+          <h3>Clients will accept more offers from higher rated sellers</h3>
+          </div>
+        </div>
+        
       </PageTab>
     </div>
   );
