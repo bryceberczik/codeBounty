@@ -24,6 +24,30 @@ export const QUERY_USER = gql`
   }
 `;
 
+export const QUERY_USED_BY_ID = gql`
+  query UserById($id: ID!) {
+    userById(_id: $id) {
+      _id
+      username
+      email
+      role
+      technologies
+      description
+      links
+      listings {
+        _id
+        title
+        description
+        price
+      }
+      jobs {
+        _id
+        status
+      }
+    }
+  }
+`;
+
 export const QUERY_USERS = gql`
   query users {
     users {
