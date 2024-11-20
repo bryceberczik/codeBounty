@@ -1,3 +1,6 @@
+import { useLazyQuery } from "@apollo/client";
+import { FIND_APPLICANTS_BY_LISTING_ID } from "../utils/queries";
+
 import { Card, Button } from "react-bootstrap";
 import "../css/listingcard.css";
 
