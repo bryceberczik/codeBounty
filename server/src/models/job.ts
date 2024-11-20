@@ -24,7 +24,7 @@ const jobSchema = new Schema<IJob>(
     },
     status: {
       type: String,
-      enum: ["pending", "accepted", "completed", "cancelled"],
+      enum: ["pending", "accepted", "completed", "rejected"],
       default: "pending",
     },
   },

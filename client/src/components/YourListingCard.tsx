@@ -108,7 +108,7 @@ const YourListingCard = ({
       variables: {
         input: {
           _id: _id,
-          status: "cancelled",
+          status: "rejected",
         },
       },
     }).then(() => alert("You have rejected 'applicant's username''s application."))
