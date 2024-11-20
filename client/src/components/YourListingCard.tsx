@@ -68,9 +68,14 @@ const YourListingCard = ({
             return userDetails;
           })
         );
-
         console.log("Fetched Applicant Details:", fetchedApplicantDetails);
-        setApplicantDetailsArray(fetchedApplicantDetails);
+
+        const filteredApplicants = fetchedApplicantDetails.filter(
+          (applicant) => applicant !== null
+        );
+        console.log("Filtered Applicant Details:", filteredApplicants);
+
+        setApplicantDetailsArray(filteredApplicants);
       }
 
       setShowModal(true);
@@ -97,7 +102,8 @@ const YourListingCard = ({
         // console.log("ListingId:", listingId);
         // console.log("Jobs:", data.userById.jobs);
         const job = data.userById.jobs.find(
-          (job: { listingId: string }) => job.listingId === listingId
+          (job: { listingId: string; status: string }) =>
+            job.listingId === listingId && job.status !== "rejected"
         );
 
         if (job) {
@@ -123,38 +129,58 @@ const YourListingCard = ({
     }
   };
 
-  const handleAcceptApplicant = (applicant: handleAcceptApplicantProps) => {
+  // * Optimistic UI * //
+
+  const handleAcceptApplicant = async (
+    applicant: handleAcceptApplicantProps
+  ) => {
     const { jobId, username, email } = applicant;
 
-    updateJobStatus({
+    await updateJobStatus({
       variables: {
         input: {
           _id: jobId,
           status: "accepted",
         },
       },
-    }).then(() =>
-      alert(
-        `You have accepted ${username}'s application. Contact them at ${email} to get in touch!`
-      )
+    });
+
+    alert(
+      `You have accepted ${username}'s application. Contact them at ${email} to get in touch!`
     );
+    await handleShowModal(listingId);
   };
 
-  const handleRejectApplicant = (applicant: handleRejectApplicantProps) => {
-    console.log(applicant);
+  const handleRejectApplicant = async (
+    applicant: handleRejectApplicantProps
+  ) => {
     const { jobId, username } = applicant;
 
-    console.log(jobId);
-    console.log(username);
+    const removedApplicant = applicantDetailsArray.find(
+      (app) => app.jobId === jobId
+    );
 
-    updateJobStatus({
-      variables: {
-        input: {
-          _id: jobId,
-          status: "rejected",
+    setApplicantDetailsArray((prevArray) =>
+      prevArray.filter((app) => app.jobId !== jobId)
+    );
+
+    try {
+      await updateJobStatus({
+        variables: {
+          input: {
+            _id: jobId,
+            status: "rejected",
+          },
         },
-      },
-    }).then(() => alert(`You have rejected ${username}'s application.`));
+      });
+
+      // alert(`You have rejected ${username}'s application.`);
+    } catch (error) {
+      console.error("Error rejecting applicant:", error);
+
+      setApplicantDetailsArray((prevArray) => [...prevArray, removedApplicant]);
+      alert("Something went wrong. The rejection could not be processed.");
+    }
   };
 
   return (
@@ -195,14 +221,10 @@ const YourListingCard = ({
                   <h4>{applicant.username}</h4>
                   <p>Email: {applicant.email}</p>
                   <div className="applicant-btn-container">
-                    <button
-                      onClick={() => handleAcceptApplicant(applicant)}
-                    >
+                    <button onClick={() => handleAcceptApplicant(applicant)}>
                       Accept
                     </button>
-                    <button
-                      onClick={() => handleRejectApplicant(applicant)}
-                    >
+                    <button onClick={() => handleRejectApplicant(applicant)}>
                       Reject
                     </button>
                   </div>
