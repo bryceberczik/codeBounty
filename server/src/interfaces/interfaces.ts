@@ -60,6 +60,10 @@ export interface UserArgs {
   username: string;
 }
 
+export interface UserByIdArgs {
+  _id: string;
+}
+
 export interface ListingArgs {
   _id: string;
 }
