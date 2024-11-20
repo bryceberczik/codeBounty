@@ -27,12 +27,14 @@ const YourListingCard = ({
   };
   const handleCloseModal = () => setShowModal(false);
 
-  const [findApplicantsByListingId, { data, loading }] = useLazyQuery(
+  const [findApplicantsByListingId, { loading, data }] = useLazyQuery(
     FIND_APPLICANTS_BY_LISTING_ID
   );
 
   if (loading) return <p>Loading...</p>;
-  console.log(data);
+
+  const applicants = data;
+  console.log(applicants);
 
   return (
     <div className="your-listingcard-container">
