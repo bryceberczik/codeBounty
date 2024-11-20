@@ -72,3 +72,7 @@ export interface LoginUserArgs {
   username: string;
   password: string;
 }
+
+export interface findApplicantsByListingIdArgs {
+  _id: string;
+}

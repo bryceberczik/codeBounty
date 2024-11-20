@@ -11,6 +11,7 @@ import {
   ListingArgs,
   JobArgs,
   LoginUserArgs,
+  findApplicantsByListingIdArgs
 } from "../interfaces/interfaces.js";
 
 const resolvers = {
@@ -62,6 +63,14 @@ const resolvers = {
       } catch (error) {
         console.error("Error fetching listing:", error);
         throw new Error("Failed to retrieve listing.");
+      }
+    },
+    findApplicantsByListingId: async (_parent: any, { _id }: findApplicantsByListingIdArgs) => {
+      try {
+        return await Job.find({ listingId: _id });
+      } catch (error) {
+        console.error("Error finding applicants by listing ID:", error);
+        throw new Error("Unable to find applicants for the given listing ID.");
       }
     },
     jobs: async () => {
