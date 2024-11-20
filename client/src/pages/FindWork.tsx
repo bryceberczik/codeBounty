@@ -18,7 +18,7 @@ const FindWork = () => {
   const { loading: loadingUsers, data: usersData } = useQuery(QUERY_USERS);
 
   // Fetch logged-in user's info.
-  const { loading, error, data } = useQuery(QUERY_ME);
+  const { data } = useQuery(QUERY_ME);
   const user = data?.me;
 
   const [addJob] = useMutation(ADD_JOB);
@@ -35,12 +35,12 @@ const FindWork = () => {
     return listing.title.toLowerCase().includes(searchQuery.toLowerCase());
   });
 
-  const handleApplication = async () => {
+  const handleApplication = async (listingId: string) => {
     try {
       await addJob({
         variables: {
           input: {
-            listingId: "",
+            listingId: listingId,
             userId: user._id,
             status: "pending",
           },
@@ -72,7 +72,11 @@ const FindWork = () => {
           {loadingListings || loadingUsers ? (
             <div style={{ textAlign: "center" }}>Loading...</div>
           ) : (
-            <ListingCard listings={filteredListings} users={users} />
+            <ListingCard
+              listings={filteredListings}
+              users={users}
+              onApply={handleApplication}
+            />
           )}
         </Container>
         <div className="get-accepted-container">
