@@ -85,10 +85,17 @@ const YourListingCard = ({
   // * handleApplicantDetails Function (using findUserById) * //
   const handleApplicantDetails = async (userId: string, listingId: string) => {
     // console.log(userId);
+    // console.log(listingId);
+
     try {
       const { data } = await findUserById({ variables: { id: userId } });
 
+      // console.log(data);
+
       if (data) {
+        // console.log("Data:", data);
+        // console.log("ListingId:", listingId);
+        // console.log("Jobs:", data.userById.jobs);
         const job = data.userById.jobs.find(
           (job: { listingId: string }) => job.listingId === listingId
         );
@@ -181,8 +188,8 @@ const YourListingCard = ({
             {applicantDetailsArray.length > 0 ? (
               applicantDetailsArray.map((applicant: any, index) => (
                 <div className="applicant-container" key={index}>
-                  <h4>{applicant.userById.username}</h4>
-                  <p>Email: {applicant.userById.email}</p>
+                  <h4>{applicant.username}</h4>
+                  <p>Email: {applicant.email}</p>
                   <div className="applicant-btn-container">
                     <button
                       onClick={() => handleAcceptApplicant(applicant.userById)}

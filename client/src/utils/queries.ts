@@ -42,6 +42,8 @@ export const QUERY_USER_BY_ID = gql`
       }
       jobs {
         _id
+        listingId
+        userId
         status
       }
     }

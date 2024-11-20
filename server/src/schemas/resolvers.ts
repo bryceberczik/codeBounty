@@ -37,7 +37,9 @@ const resolvers = {
     },
     userById: async (_parent: any, { _id }: UserByIdArgs) => {
       try {
-        return await User.findOne({ _id });
+        return await User.findOne({ _id })
+          .populate("listings")
+          .populate("jobs");
       } catch (error) {
         console.error("Error fetching user by ID:", error);
         throw new Error("Failed to retrieve user by ID.");
