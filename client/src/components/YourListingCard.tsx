@@ -6,6 +6,8 @@ import {
 import { UPDATE_JOB_STATUS } from "../utils/mutations";
 import { Modal, Card, Button } from "react-bootstrap";
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+// import PageTab from "./PageTab";
 import "../css/listingcard.css";
 
 interface ListingCardProps {
@@ -129,8 +131,6 @@ const YourListingCard = ({
     }
   };
 
-  // * Optimistic UI * //
-
   const handleAcceptApplicant = async (
     applicant: handleAcceptApplicantProps
   ) => {
@@ -151,10 +151,12 @@ const YourListingCard = ({
     await handleShowModal(listingId);
   };
 
+  // * Optimistic UI * //
+
   const handleRejectApplicant = async (
     applicant: handleRejectApplicantProps
   ) => {
-    const { jobId, username } = applicant;
+    const { jobId } = applicant;
 
     const removedApplicant = applicantDetailsArray.find(
       (app) => app.jobId === jobId
@@ -174,7 +176,6 @@ const YourListingCard = ({
         },
       });
 
-      // alert(`You have rejected ${username}'s application.`);
     } catch (error) {
       console.error("Error rejecting applicant:", error);
 
@@ -219,7 +220,11 @@ const YourListingCard = ({
               applicantDetailsArray.map((applicant: any, index) => (
                 <div className="applicant-container" key={index}>
                   <h4>{applicant.username}</h4>
-                  <p>Email: {applicant.email}</p>
+                  <div className="applicant-profile-btn">
+                    <Link to={`/profiles/${applicant.username}`}>
+                      <p>{applicant.username}'s Profile</p>
+                    </Link>
+                  </div>
                   <div className="applicant-btn-container">
                     <button onClick={() => handleAcceptApplicant(applicant)}>
                       Accept
