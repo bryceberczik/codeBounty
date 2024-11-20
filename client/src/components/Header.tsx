@@ -6,6 +6,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
 import Offcanvas from "react-bootstrap/Offcanvas";
+import BrandLogo from "../images/brandlogo_app.jpg";
 
 const Header = () => {
   const logout = (event: MouseEvent<HTMLDivElement>) => {
@@ -22,46 +23,33 @@ const Header = () => {
   return (
     <div>
       <header>
-
         <div className="header-left">
-
-          <h1>codeBounty</h1>
-
+          <Link to="/">
+          <img src={BrandLogo} alt="brandlogo" width="300"/>
+          </Link>
         </div>
 
         <div className="header-center">
-
           <div className="category-item">
-
             <Link to="/" className="no-underline">
-
               <h1 className={currentPage === "/" ? "activeNav" : "restNav"}>
-
                 Home
               </h1>
-
             </Link>
-
           </div>
 
           <div className="category-item">
-
             <Link to="/explore" className="no-underline">
-
               <h1
                 className={currentPage === "/explore" ? "activeNav" : "restNav"}
               >
                 Explore
               </h1>
-
             </Link>
-
           </div>
 
           <div className="category-item">
-
             <Link to="/find-work" className="no-underline">
-
               <h1
                 className={
                   currentPage === "/find-work" ? "activeNav" : "restNav"
@@ -69,15 +57,11 @@ const Header = () => {
               >
                 Find Work
               </h1>
-
             </Link>
-
           </div>
 
           <div className="category-item">
-
             <Link to="/post-listing" className="no-underline">
-
               <h1
                 className={
                   currentPage === "/post-listing" ? "activeNav" : "restNav"
@@ -85,15 +69,11 @@ const Header = () => {
               >
                 Post a Job
               </h1>
-
             </Link>
-
           </div>
 
           <div className="category-item">
-
             <Link to="/about-us" className="no-underline">
-
               <h1
                 className={
                   currentPage === "/about-us" ? "activeNav" : "restNav"
@@ -101,77 +81,67 @@ const Header = () => {
               >
                 About
               </h1>
-
             </Link>
-
           </div>
-
         </div>
 
         <div className="header-right">
           {auth.loggedIn() ? (
-
             <div className="loggedin-container" onClick={handleShow}>
-
               <h1>{auth.getProfile().data.username}</h1>
 
               <div className="profile-pic-container">
                 <FontAwesomeIcon icon={faUser} className="profile-pic" />
               </div>
-
             </div>
-
           ) : (
             <Link to="/signup" className="no-link">
               <div className="signup-btn">
                 <h1>Sign up</h1>
               </div>
             </Link>
-
           )}
         </div>
-
       </header>
 
       {auth.loggedIn() ? (
         <Offcanvas show={show} onHide={handleClose} placement="end">
-
           <Offcanvas.Header closeButton>
-
             <Offcanvas.Title>
-
               Hey, {auth.getProfile().data.username}
-
             </Offcanvas.Title>
-
           </Offcanvas.Header>
 
           <Offcanvas.Body>
-            <Link to="/me" className="offcanvas-opt" onClick={() => window.location.href = '/me'}>
+            <Link
+              to="/me"
+              className="offcanvas-opt"
+              onClick={() => (window.location.href = "/me")}
+            >
               My Profile
             </Link>
-            <Link to="/find-work" className="offcanvas-opt" onClick={() => window.location.href = '/find-work'}>
+            <Link
+              to="/find-work"
+              className="offcanvas-opt"
+              onClick={() => (window.location.href = "/find-work")}
+            >
               Find work
             </Link>
-            <Link to="/settings" className="offcanvas-opt" onClick={() => window.location.href = '/settings'}>
+            <Link
+              to="/settings"
+              className="offcanvas-opt"
+              onClick={() => (window.location.href = "/settings")}
+            >
               Settings
             </Link>
             <div className="logout-btn" onClick={logout}>
-
               <h1>Log out</h1>
-
             </div>
-
           </Offcanvas.Body>
-
         </Offcanvas>
-
       ) : (
-
         <></>
-        
       )}
-      
     </div>
   );
 };
