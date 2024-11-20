@@ -99,7 +99,7 @@ const Explore = () => {
           <h1>Web Services at its finest.</h1>
           <h2>You imagine it. A programmer brings it to life.</h2>
           <div className="findwork-btn">
-            <Link to="/find-work">
+            <Link to="/find-work" style={{ textDecoration: "none", color: "#003049" }}>
               <h3>Find Work Now</h3>
             </Link>
           </div>

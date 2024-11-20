@@ -26,7 +26,7 @@ const DevCard = ({
         <p>{description}</p>
       </div>
       <div className="openprofile-btn">
-        <Link to={`/profiles/${username}`}>
+        <Link to={`/profiles/${username}`} style={{ textDecoration: "none" }}>
           <h1>Open Profile</h1>
         </Link>
       </div>
