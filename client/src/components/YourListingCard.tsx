@@ -17,13 +17,13 @@ interface ListingCardProps {
 }
 
 interface handleAcceptApplicantProps {
-  _id: string;
+  jobId: string;
   username: string;
   email: string;
 }
 
 interface handleRejectApplicantProps {
-  _id: string;
+  jobId: string;
   username: string;
 }
 
@@ -63,7 +63,7 @@ const YourListingCard = ({
 
         const fetchedApplicantDetails = await Promise.all(
           userIds.map(async (userId: string) => {
-            const userDetails = await handleApplicantDetails(userId);
+            const userDetails = await handleApplicantDetails(userId, listingId);
             // console.log(userDetails);
             return userDetails;
           })
@@ -83,16 +83,29 @@ const YourListingCard = ({
   const handleCloseModal = () => setShowModal(false);
 
   // * handleApplicantDetails Function (using findUserById) * //
-  const handleApplicantDetails = async (userId: string) => {
+  const handleApplicantDetails = async (userId: string, listingId: string) => {
     // console.log(userId);
     try {
       const { data } = await findUserById({ variables: { id: userId } });
 
-      // console.log(data);
-
       if (data) {
-        // console.log(data);
-        return data;
+        const job = data.userById.jobs.find(
+          (job: { listingId: string }) => job.listingId === listingId
+        );
+
+        if (job) {
+          console.log(data.userById);
+          console.log(job._id);
+          return {
+            ...data.userById,
+            jobId: job._id,
+          };
+        } else {
+          console.warn(
+            `No job found for userId: ${userId} and listingId: ${listingId}.`
+          );
+          return null;
+        }
       } else {
         console.warn(`No data found for userId: ${userId}.`);
         return null;
@@ -104,12 +117,12 @@ const YourListingCard = ({
   };
 
   const handleAcceptApplicant = (applicant: handleAcceptApplicantProps) => {
-    const { _id, username, email } = applicant;
+    const { jobId, username, email } = applicant;
 
     updateJobStatus({
       variables: {
         input: {
-          _id: _id,
+          _id: jobId,
           status: "accepted",
         },
       },
@@ -121,12 +134,12 @@ const YourListingCard = ({
   };
 
   const handleRejectApplicant = (applicant: handleRejectApplicantProps) => {
-    const { _id, username } = applicant;
+    const { jobId, username } = applicant;
 
     updateJobStatus({
       variables: {
         input: {
-          _id: _id,
+          _id: jobId,
           status: "rejected",
         },
       },
