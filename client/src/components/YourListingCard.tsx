@@ -141,7 +141,11 @@ const YourListingCard = ({
   };
 
   const handleRejectApplicant = (applicant: handleRejectApplicantProps) => {
+    console.log(applicant);
     const { jobId, username } = applicant;
+
+    console.log(jobId);
+    console.log(username);
 
     updateJobStatus({
       variables: {
@@ -192,12 +196,12 @@ const YourListingCard = ({
                   <p>Email: {applicant.email}</p>
                   <div className="applicant-btn-container">
                     <button
-                      onClick={() => handleAcceptApplicant(applicant.userById)}
+                      onClick={() => handleAcceptApplicant(applicant)}
                     >
                       Accept
                     </button>
                     <button
-                      onClick={() => handleRejectApplicant(applicant.userById)}
+                      onClick={() => handleRejectApplicant(applicant)}
                     >
                       Reject
                     </button>
