@@ -103,11 +103,9 @@ const YourListingCard = ({
     }
   };
 
-  const handleAcceptApplicant = ({
-    _id,
-    username,
-    email,
-  }: handleAcceptApplicantProps) => {
+  const handleAcceptApplicant = (applicant: handleAcceptApplicantProps) => {
+    const { _id, username, email } = applicant;
+
     updateJobStatus({
       variables: {
         input: {
@@ -122,10 +120,9 @@ const YourListingCard = ({
     );
   };
 
-  const handleRejectApplicant = ({
-    _id,
-    username,
-  }: handleAcceptApplicantProps) => {
+  const handleRejectApplicant = (applicant: handleRejectApplicantProps) => {
+    const { _id, username } = applicant;
+
     updateJobStatus({
       variables: {
         input: {
@@ -133,9 +130,7 @@ const YourListingCard = ({
           status: "rejected",
         },
       },
-    }).then(() =>
-      alert(`You have rejected ${username}'s application.`)
-    );
+    }).then(() => alert(`You have rejected ${username}'s application.`));
   };
 
   return (
@@ -176,8 +171,16 @@ const YourListingCard = ({
                   <h4>{applicant.userById.username}</h4>
                   <p>Email: {applicant.userById.email}</p>
                   <div className="applicant-btn-container">
-                    <button>Accept</button>
-                    <button>Reject</button>
+                    <button
+                      onClick={() => handleAcceptApplicant(applicant.userById)}
+                    >
+                      Accept
+                    </button>
+                    <button
+                      onClick={() => handleRejectApplicant(applicant.userById)}
+                    >
+                      Reject
+                    </button>
                   </div>
                 </div>
               ))
