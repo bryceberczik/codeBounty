@@ -1,4 +1,4 @@
-import { gql, useLazyQuery } from "@apollo/client";
+import { gql } from "@apollo/client";
 
 export const QUERY_USER = gql`
   query user($username: String!) {
@@ -119,11 +119,11 @@ export const QUERY_SINGLE_JOB = gql`
   }
 `;
 
-findApplicantsByListingId(listingId: ID!): [Job]
+// findApplicantsByListingId(listingId: ID!): [Job]
 
-return await QUERY_JOBS.find({ listingId: args.listingId })
+// return await QUERY_JOBS.find({ listingId: args.listingId })
 
-useLazyQuery
+// useLazyQuery
 
 // typeDefs.ts: Get the structure.
 // resolvers.ts: Write out the thing.

@@ -93,7 +93,7 @@ const typeDefs = gql`
     user(username: String!): User
     listings: [Listing]
     listing(_id: ID!): Listing
-    findApplicantsByListingId(listingId: ID!): [Job]
+    findApplicantsByListingId(_id: ID!): [Job]
     jobs: [Job]
     job(_id: ID!): Job
     me: User
@@ -104,7 +104,7 @@ const typeDefs = gql`
     login(username: String!, password: String!): Auth
     addListing(input: ListingInput!): ListingReturn
     updateListing(input: ListingUpdateInput!): ListingReturn
-    deleteListing(_id: ID!): Listing
+    deleteListing(listingId: ID!): Listing
     addJob(input: JobInput!): JobReturn
     updateJobStatus(input: JobStatusUpdateInput!): JobReturn
     updateUser(input: UpdateUserInput!): User
