@@ -41,9 +41,12 @@ const YourListingCard = ({
           (applicant: { userId: string }) => applicant.userId
         );
 
+        // console.log(userIds);
+
         const applicantDetailsArray = await Promise.all(
           userIds.map(async (userId: string) => {
             const userDetails = await handleApplicantDetails(userId);
+            // console.log(userDetails);
             return userDetails;
           })
         );
@@ -62,11 +65,15 @@ const YourListingCard = ({
 
   // * handleApplicantDetails Function (using findUserById) * //
   const handleApplicantDetails = async (userId: string) => {
+    // console.log(userId);
     try {
       const { data } = await findUserById({ variables: { id: userId } });
 
+      // console.log(data);
+
       if (data) {
-        return data.user;
+        // console.log(data);
+        return data;
       } else {
         console.warn(`No data found for userId: ${userId}.`);
         return null;
@@ -76,8 +83,6 @@ const YourListingCard = ({
       return null;
     }
   };
-
-  // if (loading) return <p>Loading...</p>;
 
   return (
     <div className="your-listingcard-container">
