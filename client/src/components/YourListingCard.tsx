@@ -126,7 +126,7 @@ const YourListingCard = ({
               applicantDetailsArray.map((applicant: any, index) => (
                 <div className="applicant-container" key={index}>
                   <h4>{applicant.userById.username}</h4>
-                  <p>Email: {applicant.email}</p>
+                  <p>Email: {applicant.userById.email}</p>
                   <div className="applicant-btn-container">
                     <button>Accept</button>
                     <button>Reject</button>
