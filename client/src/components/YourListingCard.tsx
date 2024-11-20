@@ -4,7 +4,7 @@ import {
   FIND_APPLICANTS_BY_LISTING_ID,
 } from "../utils/queries";
 import { Modal, Card, Button } from "react-bootstrap";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "../css/listingcard.css";
 
 interface ListingCardProps {
@@ -23,11 +23,16 @@ const YourListingCard = ({
   onDelete,
 }: ListingCardProps) => {
   const [showModal, setShowModal] = useState(false);
+  const [applicantDetailsArray, setApplicantDetailsArray] = useState<any[]>([]);
 
   const [findUserById] = useLazyQuery(QUERY_USER_BY_ID);
   const [findApplicantsByListingId] = useLazyQuery(
     FIND_APPLICANTS_BY_LISTING_ID
   );
+
+  useEffect(() => {
+    console.log("Applicant Details Array:", applicantDetailsArray);
+  }, [applicantDetailsArray]);
 
   // * handleShowModal Function (using findApplicantsByListingId) * //
   const handleShowModal = async (listingId: string) => {
@@ -43,7 +48,7 @@ const YourListingCard = ({
 
         // console.log(userIds);
 
-        const applicantDetailsArray = await Promise.all(
+        const fetchedApplicantDetails = await Promise.all(
           userIds.map(async (userId: string) => {
             const userDetails = await handleApplicantDetails(userId);
             // console.log(userDetails);
@@ -51,7 +56,8 @@ const YourListingCard = ({
           })
         );
 
-        console.log("Applicant Details:", applicantDetailsArray);
+        console.log("Fetched Applicant Details:", fetchedApplicantDetails);
+        setApplicantDetailsArray(fetchedApplicantDetails);
       }
 
       setShowModal(true);
@@ -116,13 +122,20 @@ const YourListingCard = ({
         </Modal.Header>
         <Modal.Body>
           <div className="applicant-div">
-            <div className="applicant-container">
-              <h4>Zander</h4>
-              <div className="applicant-btn-container">
-                <button>Accept</button>
-                <button>Reject</button>
-              </div>
-            </div>
+            {applicantDetailsArray.length > 0 ? (
+              applicantDetailsArray.map((applicant: any, index) => (
+                <div className="applicant-container" key={index}>
+                  <h4>{applicant.userById.username}</h4>
+                  <p>Email: {applicant.email}</p>
+                  <div className="applicant-btn-container">
+                    <button>Accept</button>
+                    <button>Reject</button>
+                  </div>
+                </div>
+              ))
+            ) : (
+              <p>No applicants found.</p>
+            )}
           </div>
         </Modal.Body>
         <Modal.Footer></Modal.Footer>
