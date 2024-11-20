@@ -93,6 +93,7 @@ const typeDefs = gql`
     user(username: String!): User
     listings: [Listing]
     listing(_id: ID!): Listing
+    findApplicantsByListingId(listingId: ID!): [Job]
     jobs: [Job]
     job(_id: ID!): Job
     me: User
