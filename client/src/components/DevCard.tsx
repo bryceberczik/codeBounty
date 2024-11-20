@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import "../css/devcard.css";
 
 interface DevCardProps {
@@ -10,8 +11,8 @@ interface DevCardProps {
 const DevCard = ({
   username,
   role,
-  technologies,
   description,
+  technologies,
 }: DevCardProps) => {
   return (
     <div className="card-container">
@@ -25,7 +26,9 @@ const DevCard = ({
         <p>{description}</p>
       </div>
       <div className="openprofile-btn">
-        <h1>Open Profile</h1>
+        <Link to={`/profiles/${username}`}>
+          <h1>Open Profile</h1>
+        </Link>
       </div>
       <div className="technologies-container">
         <p>{technologies}</p>

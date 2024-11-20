@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useQuery } from "@apollo/client";
 import { QUERY_USERS } from "../utils/queries";
+import { Link } from "react-router-dom";
 
 import "../css/explore.css";
 import DevCard from "../components/DevCard";
@@ -98,7 +99,9 @@ const Explore = () => {
           <h1>Web Services at its finest.</h1>
           <h2>You imagine it. A programmer brings it to life.</h2>
           <div className="findwork-btn">
-            <h3>Find Work Now</h3>
+            <Link to="/find-work">
+              <h3>Find Work Now</h3>
+            </Link>
           </div>
         </div>
         <div className="explore-faq-container">
