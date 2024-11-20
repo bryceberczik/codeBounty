@@ -6,7 +6,7 @@ import { DELETE_LISTING } from "../utils/mutations";
 
 import { Container, Col, Row } from "react-bootstrap";
 import { Form, InputGroup, Button } from "react-bootstrap";
-// import ListingCard from "../components/ListingCard";
+import TestListingCard from "../components/TestListingCard";
 import YourListingCard from "../components/YourListingCard";
 import PageTab from "../components/PageTab";
 import "../css/postajob.css";
@@ -108,6 +108,7 @@ const PostAJob = () => {
                   value={title}
                   onChange={handleTitle}
                   placeholder="Enter title"
+                  maxLength={35}
                 />
                 <Form.Text className="text-muted">
                   Developers can search for listings by title.
@@ -121,6 +122,7 @@ const PostAJob = () => {
                   value={description}
                   onChange={handleDescription}
                   placeholder="Enter description"
+                  maxLength={225}
                 />
                 <Form.Text className="text-muted">
                   Give an overview on what you're looking for, what type of
@@ -132,6 +134,7 @@ const PostAJob = () => {
               <InputGroup className="mb-3">
                 <InputGroup.Text>$</InputGroup.Text>
                 <Form.Control
+                type="number"
                   value={price}
                   onChange={handlePrice}
                   aria-label="Price (to the nearest dollar)"
@@ -152,12 +155,12 @@ const PostAJob = () => {
           </Col>
 
           <Col md={4} className="mx-auto pt-4">
-            {/* <ListingCard
+            <TestListingCard
               title={title}
               poster={user.username}
               description={description}
               price={Number(price) || 0}
-            /> */}
+            />
           </Col>
         </Row>
       </Container>
@@ -171,7 +174,6 @@ const PostAJob = () => {
                 title={listing.title}
                 poster={user.username}
                 description={listing.description}
-                price={listing.price}
                 onDelete={() => handleDeleteListing(listing._id)}
               />
             </Col>
