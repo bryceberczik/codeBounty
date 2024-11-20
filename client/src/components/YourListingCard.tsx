@@ -1,5 +1,5 @@
 import { useLazyQuery } from "@apollo/client";
-import { FIND_APPLICANTS_BY_LISTING_ID } from "../utils/queries";
+import { FIND_APPLICANTS_BY_LISTING_ID, QUERY_USER_BY_ID } from "../utils/queries";
 import { Modal, Card, Button } from "react-bootstrap";
 import { useState } from "react";
 import "../css/listingcard.css";
@@ -27,14 +27,28 @@ const YourListingCard = ({
   };
   const handleCloseModal = () => setShowModal(false);
 
+  const [findUserById] = useLazyQuery(QUERY_USER_BY_ID);
+  const [applicantDetails, setApplicantDetails] = useState<{ [key: string]: any }>({});
+
+  const handleApplicantDetails = async (userId: string) => {
+    const { data } = await findUserById({ variables: { userId } });
+
+    if (data) {
+      setApplicantDetails((prevDetails) => ({
+        ...prevDetails,
+        [userId]: data.user,
+      }));
+    }
+  };
+
   const [findApplicantsByListingId, { loading, data }] = useLazyQuery(
     FIND_APPLICANTS_BY_LISTING_ID
   );
 
-  if (loading) return <p>Loading...</p>;
-
   const applicants = data;
   console.log(applicants);
+
+  if (loading) return <p>Loading...</p>;
 
   return (
     <div className="your-listingcard-container">
