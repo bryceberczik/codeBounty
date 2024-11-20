@@ -1,8 +1,9 @@
-import { useLazyQuery } from "@apollo/client";
+import { useLazyQuery, useMutation } from "@apollo/client";
 import {
   QUERY_USER_BY_ID,
   FIND_APPLICANTS_BY_LISTING_ID,
 } from "../utils/queries";
+import { UPDATE_JOB_STATUS } from "../utils/mutations";
 import { Modal, Card, Button } from "react-bootstrap";
 import { useState, useEffect } from "react";
 import "../css/listingcard.css";
@@ -25,6 +26,7 @@ const YourListingCard = ({
   const [showModal, setShowModal] = useState(false);
   const [applicantDetailsArray, setApplicantDetailsArray] = useState<any[]>([]);
 
+  const [updateJobStatus] = useMutation(UPDATE_JOB_STATUS);
   const [findUserById] = useLazyQuery(QUERY_USER_BY_ID);
   const [findApplicantsByListingId] = useLazyQuery(
     FIND_APPLICANTS_BY_LISTING_ID
@@ -89,6 +91,28 @@ const YourListingCard = ({
       return null;
     }
   };
+
+  const handleAcceptApplicant = (_id: string) => {
+    updateJobStatus({
+      variables: {
+        input: {
+          _id: _id,
+          status: "accepted",
+        },
+      },
+    }).then(() => alert("You have accepted 'applicant's username''s application."))
+  }
+
+  const handleRejectApplicant = (_id: string) => {
+    updateJobStatus({
+      variables: {
+        input: {
+          _id: _id,
+          status: "cancelled",
+        },
+      },
+    }).then(() => alert("You have rejected 'applicant's username''s application."))
+  }
 
   return (
     <div className="your-listingcard-container">
