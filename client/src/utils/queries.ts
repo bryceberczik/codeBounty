@@ -1,4 +1,4 @@
-import { gql } from "@apollo/client";
+import { gql, useLazyQuery } from "@apollo/client";
 
 export const QUERY_USER = gql`
   query user($username: String!) {
@@ -118,3 +118,17 @@ export const QUERY_SINGLE_JOB = gql`
     }
   }
 `;
+
+findApplicantsByListingId(listingId: ID!): [Job]
+
+return await QUERY_JOBS.find({ listingId: args.listingId })
+
+useLazyQuery
+
+// typeDefs.ts: Get the structure.
+// resolvers.ts: Write out the thing.
+
+// Write out the query in client-side.
+// Import the query and useLazyQuery.
+
+// Hook it up to View Applicants Button.
