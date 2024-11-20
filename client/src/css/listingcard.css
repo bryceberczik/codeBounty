@@ -26,6 +26,51 @@
   font-size: 24px;
 }
 
+.your-listing-card {
+
+  background-color: #eeede1;
+  border: 2px solid #003049;
+  height: 300px;
+  width: 24rem;
+  position: relative;
+  box-shadow: 0 1px 1px hsl(0deg 0% 0% / 0.075),
+  0 2px 2px hsl(0deg 0% 0% / 0.075), 0 4px 4px hsl(0deg 0% 0% / 0.075),
+  0 8px 8px hsl(0deg 0% 0% / 0.075), 0 16px 16px hsl(0deg 0% 0% / 0.075);
+}
+
+.your-listingcard-container {
+
+  margin-bottom: 60px;
+}
+
+.your-card-price {
+
+  position: absolute;
+  
+}
+
+#your-listing-buttons-container {
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  position: absolute;
+  bottom: 20px;
+}
+
+#your-listing-button {
+
+  background-color: #003049;
+  border: none;
+  transition: 0.3s ease;
+  margin: 0px 20px;
+}
+
+#your-listing-button:hover {
+
+  background-color: #4a5a6a;
+}
+
 #listing-card {
   max-width: 24rem;
   width: 24rem;
