@@ -119,6 +119,17 @@ export const QUERY_SINGLE_JOB = gql`
   }
 `;
 
+export const FIND_APPLICANTS_BY_LISTING_ID = gql`
+  query FindApplicantsByListingId($listingId: ID!) {
+    findApplicantsByListingId(_id: $listingId) {
+      _id
+      listingId
+      userId
+      status
+    }
+  }
+`;
+
 // findApplicantsByListingId(listingId: ID!): [Job]
 
 // return await QUERY_JOBS.find({ listingId: args.listingId })
