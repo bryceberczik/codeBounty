@@ -174,7 +174,6 @@ const PostAJob = () => {
                 title={listing.title}
                 poster={user.username}
                 description={listing.description}
-                price={listing.price}
                 onDelete={() => handleDeleteListing(listing._id)}
               />
             </Col>
