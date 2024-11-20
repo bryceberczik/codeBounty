@@ -16,6 +16,17 @@ interface ListingCardProps {
   onDelete: () => void;
 }
 
+interface handleAcceptApplicantProps {
+  _id: string;
+  username: string;
+  email: string;
+}
+
+interface handleRejectApplicantProps {
+  _id: string;
+  username: string;
+}
+
 const YourListingCard = ({
   listingId,
   title,
@@ -92,7 +103,11 @@ const YourListingCard = ({
     }
   };
 
-  const handleAcceptApplicant = (_id: string) => {
+  const handleAcceptApplicant = ({
+    _id,
+    username,
+    email,
+  }: handleAcceptApplicantProps) => {
     updateJobStatus({
       variables: {
         input: {
@@ -100,10 +115,17 @@ const YourListingCard = ({
           status: "accepted",
         },
       },
-    }).then(() => alert("You have accepted 'applicant's username''s application."))
-  }
+    }).then(() =>
+      alert(
+        `You have accepted ${username}'s application. Contact them at ${email} to get in touch!`
+      )
+    );
+  };
 
-  const handleRejectApplicant = (_id: string) => {
+  const handleRejectApplicant = ({
+    _id,
+    username,
+  }: handleAcceptApplicantProps) => {
     updateJobStatus({
       variables: {
         input: {
@@ -111,8 +133,10 @@ const YourListingCard = ({
           status: "rejected",
         },
       },
-    }).then(() => alert("You have rejected 'applicant's username''s application."))
-  }
+    }).then(() =>
+      alert(`You have rejected ${username}'s application.`)
+    );
+  };
 
   return (
     <div className="your-listingcard-container">
