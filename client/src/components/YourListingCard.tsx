@@ -1,5 +1,8 @@
 import { useLazyQuery } from "@apollo/client";
-import { FIND_APPLICANTS_BY_LISTING_ID, QUERY_USER_BY_ID } from "../utils/queries";
+import {
+  QUERY_USER_BY_ID,
+  FIND_APPLICANTS_BY_LISTING_ID,
+} from "../utils/queries";
 import { Modal, Card, Button } from "react-bootstrap";
 import { useState } from "react";
 import "../css/listingcard.css";
@@ -21,34 +24,60 @@ const YourListingCard = ({
 }: ListingCardProps) => {
   const [showModal, setShowModal] = useState(false);
 
-  const handleShowModal = (listingId: string) => {
-    findApplicantsByListingId({ variables: { listingId } });
-    setShowModal(true);
-  };
-  const handleCloseModal = () => setShowModal(false);
-
   const [findUserById] = useLazyQuery(QUERY_USER_BY_ID);
-  const [applicantDetails, setApplicantDetails] = useState<{ [key: string]: any }>({});
-
-  const handleApplicantDetails = async (userId: string) => {
-    const { data } = await findUserById({ variables: { userId } });
-
-    if (data) {
-      setApplicantDetails((prevDetails) => ({
-        ...prevDetails,
-        [userId]: data.user,
-      }));
-    }
-  };
-
-  const [findApplicantsByListingId, { loading, data }] = useLazyQuery(
+  const [findApplicantsByListingId] = useLazyQuery(
     FIND_APPLICANTS_BY_LISTING_ID
   );
 
-  const applicants = data;
-  console.log(applicants);
+  // * handleShowModal Function (using findApplicantsByListingId) * //
+  const handleShowModal = async (listingId: string) => {
+    try {
+      const { data: applicants } = await findApplicantsByListingId({
+        variables: { listingId },
+      });
 
-  if (loading) return <p>Loading...</p>;
+      if (applicants) {
+        const userIds = applicants.findApplicantsByListingId.map(
+          (applicant: { userId: string }) => applicant.userId
+        );
+
+        const applicantDetailsArray = await Promise.all(
+          userIds.map(async (userId: string) => {
+            const userDetails = await handleApplicantDetails(userId);
+            return userDetails;
+          })
+        );
+
+        console.log("Applicant Details:", applicantDetailsArray);
+      }
+
+      setShowModal(true);
+    } catch (error) {
+      console.error("handleShowModal Error:", error);
+    }
+  };
+
+  // * handleCloseModal Function * //
+  const handleCloseModal = () => setShowModal(false);
+
+  // * handleApplicantDetails Function (using findUserById) * //
+  const handleApplicantDetails = async (userId: string) => {
+    try {
+      const { data } = await findUserById({ variables: { id: userId } });
+
+      if (data) {
+        return data.user;
+      } else {
+        console.warn(`No data found for userId: ${userId}.`);
+        return null;
+      }
+    } catch (error) {
+      console.error(`Error fetching data for userId: ${userId}.`, error);
+      return null;
+    }
+  };
+
+  // if (loading) return <p>Loading...</p>;
 
   return (
     <div className="your-listingcard-container">
