@@ -129,17 +129,3 @@ export const FIND_APPLICANTS_BY_LISTING_ID = gql`
     }
   }
 `;
-
-// findApplicantsByListingId(listingId: ID!): [Job]
-
-// return await QUERY_JOBS.find({ listingId: args.listingId })
-
-// useLazyQuery
-
-// typeDefs.ts: Get the structure.
-// resolvers.ts: Write out the thing.
-
-// Write out the query in client-side.
-// Import the query and useLazyQuery.
-
-// Hook it up to View Applicants Button.
