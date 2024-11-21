@@ -18,6 +18,8 @@ export const QUERY_USER = gql`
       }
       jobs {
         _id
+        listingId
+        userId
         status
       }
     }
@@ -95,6 +97,8 @@ export const QUERY_ME = gql`
       }
       jobs {
         _id
+        listingId
+        userId
         status
       }
     }

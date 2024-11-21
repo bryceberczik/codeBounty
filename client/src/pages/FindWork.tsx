@@ -37,6 +37,39 @@ const FindWork = () => {
 
   const handleApplication = async (listingId: string) => {
     try {
+      console.log("Listing ID:", listingId);
+      console.log("User's listings:", user.listings);
+      console.log("User's jobs:", user.jobs);
+
+      user.jobs.forEach((job: any, index: number) => {
+        console.log(`Job #${index + 1} listingId:`, job.listingId);
+      });
+
+      // Check if the user has already applied
+      const hasApplied = user.jobs.some(
+        (job: any) => job.listingId === listingId
+      );
+      console.log("Has applied:", hasApplied);
+
+      if (hasApplied) {
+        alert(
+          "You have already applied to this listing. You will be notified when the author of this post makes a decision on your application."
+        );
+        return;
+      }
+
+      // Check if the user is applying to their own listing
+      const isOwnListing = user.listings.some(
+        (listing: any) => listing._id === listingId
+      );
+      console.log("Is own listing:", isOwnListing);
+
+      if (isOwnListing) {
+        alert("You cannot apply to your own listing.");
+        return;
+      }
+
+      // Apply to the job
       await addJob({
         variables: {
           input: {
