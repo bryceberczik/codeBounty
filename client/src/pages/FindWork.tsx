@@ -18,7 +18,6 @@ const FindWork = () => {
     useQuery(QUERY_LISTINGS);
   const { loading: loadingUsers, data: usersData } = useQuery(QUERY_USERS);
 
-  // Fetch logged-in user's info.
   const { data } = useQuery(QUERY_ME);
   const user = data?.me;
 
@@ -70,7 +69,9 @@ const FindWork = () => {
         },
       });
 
-      setAppliedListings((currentListings) => new Set(currentListings).add(listingId));
+      setAppliedListings((currentListings) =>
+        new Set(currentListings).add(listingId)
+      );
 
       alert("Applied to job successfully!");
     } catch (error) {
