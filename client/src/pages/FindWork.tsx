@@ -9,6 +9,7 @@ import { useState } from "react";
 import "../css/findwork.css";
 
 interface Listing {
+  _id: string;
   title: string;
 }
 
@@ -22,14 +23,15 @@ const FindWork = () => {
   const user = data?.me;
 
   const [addJob] = useMutation(ADD_JOB);
-  // * status = pending
-  // * userId comes from QUERY_ME
-  // * listingId probably comes from QUERY_LISTINGS
 
   const listings = listingsData?.listings || [];
   const users = usersData?.users || [];
 
   const [searchQuery, setSearchQuery] = useState("");
+
+  const [appliedListings, setAppliedListings] = useState<Set<string>>(
+    new Set()
+  );
 
   const filteredListings = listings.filter((listing: Listing) => {
     return listing.title.toLowerCase().includes(searchQuery.toLowerCase());
@@ -37,30 +39,19 @@ const FindWork = () => {
 
   const handleApplication = async (listingId: string) => {
     try {
-      console.log("Listing ID:", listingId);
-      console.log("User's listings:", user.listings);
-      console.log("User's jobs:", user.jobs);
+      // console.log("Listing ID:", listingId);
+      // console.log("User's listings:", user.listings);
+      // console.log("User's jobs:", user.jobs);
 
-      user.jobs.forEach((job: any, index: number) => {
-        console.log(`Job #${index + 1} listingId:`, job.listingId);
-      });
-
-      // Check if the user has already applied
-      const hasApplied = user.jobs.some(
-        (job: any) => job.listingId === listingId
-      );
-      console.log("Has applied:", hasApplied);
-
-      if (hasApplied) {
+      if (appliedListings.has(listingId)) {
         alert(
           "You have already applied to this listing. You will be notified when the author of this post makes a decision on your application."
         );
         return;
       }
 
-      // Check if the user is applying to their own listing
       const isOwnListing = user.listings.some(
-        (listing: any) => listing._id === listingId
+        (listing: Listing) => listing._id === listingId
       );
       console.log("Is own listing:", isOwnListing);
 
@@ -69,7 +60,6 @@ const FindWork = () => {
         return;
       }
 
-      // Apply to the job
       await addJob({
         variables: {
           input: {
@@ -79,6 +69,8 @@ const FindWork = () => {
           },
         },
       });
+
+      setAppliedListings((currentListings) => new Set(currentListings).add(listingId));
 
       alert("Applied to job successfully!");
     } catch (error) {
