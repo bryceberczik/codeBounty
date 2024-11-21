@@ -7,7 +7,6 @@ import { UPDATE_JOB_STATUS, DELETE_LISTING } from "../utils/mutations";
 import { Modal, Card, Button } from "react-bootstrap";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-// import PageTab from "./PageTab";
 import "../css/listingcard.css";
 
 interface ListingCardProps {
@@ -190,7 +189,6 @@ const YourListingCard = ({
   // * Similar handleDeleteListing Function to parent file, PostAJob.tsx. * //
 
   const handleDeleteListing = async (listingId: string) => {
-    console.log(listingId);
     try {
       await deleteListing({
         variables: { id: listingId },
