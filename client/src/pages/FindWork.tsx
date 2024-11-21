@@ -1,5 +1,5 @@
 import { Container } from "react-bootstrap";
-import { Form } from "react-bootstrap";
+import { Form, Alert } from "react-bootstrap";
 import ListingCard from "../components/ListingCard";
 import PageTab from "../components/PageTab";
 import { useQuery, useMutation } from "@apollo/client";
@@ -36,24 +36,25 @@ const FindWork = () => {
     new Set()
   );
 
+  const [alertMessage, setAlertMessage] = useState<string | null>(null);
+  const [alertVariant, setAlertVariant] = useState<string>("warning");
+
   const filteredListings = listings.filter((listing: Listing) => {
     return listing.title.toLowerCase().includes(searchQuery.toLowerCase());
   });
 
   const handleApplication = async (listingId: string) => {
     try {
-      // console.log("Listing ID:", listingId);
-      // console.log("User's listings:", user.listings);
-      // console.log("User's jobs:", user.jobs);
 
       const hasApplied = user.jobs.some(
         (job: Job) => job.listingId === listingId
       );
 
       if (hasApplied || appliedListings.has(listingId)) {
-        alert(
+        setAlertMessage(
           "You have already applied to this listing. You will be notified when the author of this post makes a decision on your application."
         );
+        setAlertVariant("danger");
         return;
       }
 
@@ -63,7 +64,8 @@ const FindWork = () => {
       console.log("Is own listing:", isOwnListing);
 
       if (isOwnListing) {
-        alert("You cannot apply to your own listing.");
+        setAlertMessage("You cannot apply to your own listing.");
+        setAlertVariant("danger");
         return;
       }
 
@@ -81,7 +83,8 @@ const FindWork = () => {
         new Set(currentListings).add(listingId)
       );
 
-      alert("Applied to job successfully!");
+      setAlertMessage("Applied to job successfully!");
+      setAlertVariant("success");
     } catch (error) {
       console.error("Error applying to job:", error);
     }
@@ -90,6 +93,11 @@ const FindWork = () => {
   return (
     <div id="find-work">
       <PageTab title="Find Work">
+      {alertMessage && (
+      <Alert className="alert-back" variant={alertVariant} onClose={() => setAlertMessage(null)} dismissible>
+        {alertMessage}
+      </Alert>
+    )}
         <h1>Search for work that fits your role.</h1>
 
         <Form id="find-work-search" className="d-flex">

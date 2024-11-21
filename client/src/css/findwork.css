@@ -30,7 +30,18 @@
   border-radius: 20px;
 }
 
-.get-accepted h2 {}
+.alert-back {
+
+  margin: 25px auto;
+  width: 600px;
+  border: 1px solid #003049;
+  color: #003049;
+}
+
+.btn-close {
+
+  transition: 0.3s ease;
+}
 
 #listings-container {
 
