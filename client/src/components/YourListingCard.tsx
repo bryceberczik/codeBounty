@@ -3,7 +3,7 @@ import {
   QUERY_USER_BY_ID,
   FIND_APPLICANTS_BY_LISTING_ID,
 } from "../utils/queries";
-import { UPDATE_JOB_STATUS } from "../utils/mutations";
+import { UPDATE_JOB_STATUS, DELETE_LISTING } from "../utils/mutations";
 import { Modal, Card, Button } from "react-bootstrap";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
@@ -22,6 +22,7 @@ interface handleAcceptApplicantProps {
   jobId: string;
   username: string;
   email: string;
+  listingId: string;
 }
 
 interface handleRejectApplicantProps {
@@ -40,6 +41,7 @@ const YourListingCard = ({
   const [applicantDetailsArray, setApplicantDetailsArray] = useState<any[]>([]);
 
   const [updateJobStatus] = useMutation(UPDATE_JOB_STATUS);
+  const [deleteListing] = useMutation(DELETE_LISTING);
   const [findUserById] = useLazyQuery(QUERY_USER_BY_ID);
   const [findApplicantsByListingId] = useLazyQuery(
     FIND_APPLICANTS_BY_LISTING_ID
@@ -70,12 +72,12 @@ const YourListingCard = ({
             return userDetails;
           })
         );
-        console.log("Fetched Applicant Details:", fetchedApplicantDetails);
+        // console.log("Fetched Applicant Details:", fetchedApplicantDetails);
 
         const filteredApplicants = fetchedApplicantDetails.filter(
           (applicant) => applicant !== null
         );
-        console.log("Filtered Applicant Details:", filteredApplicants);
+        // console.log("Filtered Applicant Details:", filteredApplicants);
 
         setApplicantDetailsArray(filteredApplicants);
       }
@@ -109,11 +111,13 @@ const YourListingCard = ({
         );
 
         if (job) {
-          console.log(data.userById);
-          console.log(job._id);
+          // console.log(data.userById);
+          // console.log(job._id);
+          // console.log(listingId);
           return {
             ...data.userById,
             jobId: job._id,
+            listingId: listingId,
           };
         } else {
           console.warn(
@@ -134,7 +138,7 @@ const YourListingCard = ({
   const handleAcceptApplicant = async (
     applicant: handleAcceptApplicantProps
   ) => {
-    const { jobId, username, email } = applicant;
+    const { jobId, username, email, listingId } = applicant;
 
     await updateJobStatus({
       variables: {
@@ -148,10 +152,10 @@ const YourListingCard = ({
     alert(
       `You have accepted ${username}'s application. Contact them at ${email} to get in touch!`
     );
-    await handleShowModal(listingId);
+    await handleDeleteListing(listingId);
   };
 
-  // * Optimistic UI * //
+  // * Optimistic UI Function * //
 
   const handleRejectApplicant = async (
     applicant: handleRejectApplicantProps
@@ -175,12 +179,26 @@ const YourListingCard = ({
           },
         },
       });
-
     } catch (error) {
       console.error("Error rejecting applicant:", error);
 
       setApplicantDetailsArray((prevArray) => [...prevArray, removedApplicant]);
       alert("Something went wrong. The rejection could not be processed.");
+    }
+  };
+
+  // * Similar handleDeleteListing Function to parent file, PostAJob.tsx. * //
+
+  const handleDeleteListing = async (listingId: string) => {
+    console.log(listingId);
+    try {
+      await deleteListing({
+        variables: { id: listingId },
+      });
+
+      onDelete();
+    } catch (error) {
+      console.error("Error deleting listing:", error);
     }
   };
 
