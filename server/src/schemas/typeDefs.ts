@@ -105,7 +105,7 @@ const typeDefs = gql`
     login(username: String!, password: String!): Auth
     addListing(input: ListingInput!): ListingReturn
     updateListing(input: ListingUpdateInput!): ListingReturn
-    deleteListing(listingId: ID!): Listing
+    deleteListing(_id: ID!): Listing
     addJob(input: JobInput!): JobReturn
     updateJobStatus(input: JobStatusUpdateInput!): JobReturn
     updateUser(input: UpdateUserInput!): User
