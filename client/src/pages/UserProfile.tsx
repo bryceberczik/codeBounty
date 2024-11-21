@@ -177,27 +177,27 @@ const UserProfile = ({ username }: { username?: string }) => {
       document.getElementById("description-profile-input")?.innerText ||
       user?.description;
 
-      if (usernameInput.length > 20) {
-        setAlertMessage("Your username cannot exceed 20 characters.");
-        setAlertVariant("danger");
-        return;
-      } else if (usernameInput.length < 8) {
-        setAlertMessage("Your username cannot be less than 8 characters.");
-        setAlertVariant("danger");
-        return;
-      }
+    if (usernameInput.length > 20) {
+      setAlertMessage("Your username cannot exceed 20 characters.");
+      setAlertVariant("danger");
+      return;
+    } else if (usernameInput.length < 8) {
+      setAlertMessage("Your username cannot be less than 8 characters.");
+      setAlertVariant("danger");
+      return;
+    }
 
-      if (roleInput.length > 24) {
-        setAlertMessage("Your role cannot exceed 24 characters.");
-        setAlertVariant("danger");
-        return;
-      }
+    if (roleInput.length > 24) {
+      setAlertMessage("Your role cannot exceed 24 characters.");
+      setAlertVariant("danger");
+      return;
+    }
 
-      if (descriptionInput.length > 300) {
-        setAlertMessage("Your description cannot exceed 300 characters.");
-        setAlertVariant("danger");
-        return;
-      }
+    if (descriptionInput.length > 300) {
+      setAlertMessage("Your description cannot exceed 300 characters.");
+      setAlertVariant("danger");
+      return;
+    }
 
     const updatedUserData = {
       username: usernameInput,
@@ -242,6 +242,19 @@ const UserProfile = ({ username }: { username?: string }) => {
             id="username-profile-input"
             suppressContentEditableWarning={true}
             contentEditable={isOwnProfile}
+            onInput={(e) => {
+              if (e.currentTarget.innerText.length > 20) {
+                setAlertMessage("Your username cannot exceed 20 characters.");
+                setAlertVariant("danger");
+              } else if (e.currentTarget.innerText.length < 8) {
+                setAlertMessage(
+                  "Your username cannot be less than 8 characters."
+                );
+                setAlertVariant("danger");
+              } else {
+                setAlertMessage(null);
+              }
+            }}
           >
             {user?.username}
           </h1>
@@ -249,6 +262,14 @@ const UserProfile = ({ username }: { username?: string }) => {
             id="role-profile-input"
             suppressContentEditableWarning={true}
             contentEditable={isOwnProfile}
+            onInput={(e) => {
+              if (e.currentTarget.innerText.length > 24) {
+                setAlertMessage("Your role cannot exceed 24 characters.");
+                setAlertVariant("danger");
+              } else {
+                setAlertMessage(null);
+              }
+            }}
           >
             {user?.role}
           </h2>
@@ -257,6 +278,16 @@ const UserProfile = ({ username }: { username?: string }) => {
             id="description-profile-input"
             suppressContentEditableWarning={true}
             contentEditable={isOwnProfile}
+            onInput={(e) => {
+              if (e.currentTarget.innerText.length > 300) {
+                setAlertMessage(
+                  "Your description cannot exceed 300 characters."
+                );
+                setAlertVariant("danger");
+              } else {
+                setAlertMessage(null);
+              }
+            }}
           >
             {user?.description}
           </p>
