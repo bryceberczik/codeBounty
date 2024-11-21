@@ -9,7 +9,12 @@ import { useState } from "react";
 import "../css/findwork.css";
 
 interface Listing {
+  _id: string;
   title: string;
+}
+
+interface Job {
+  listingId: string;
 }
 
 const FindWork = () => {
@@ -17,19 +22,19 @@ const FindWork = () => {
     useQuery(QUERY_LISTINGS);
   const { loading: loadingUsers, data: usersData } = useQuery(QUERY_USERS);
 
-  // Fetch logged-in user's info.
   const { data } = useQuery(QUERY_ME);
   const user = data?.me;
 
   const [addJob] = useMutation(ADD_JOB);
-  // * status = pending
-  // * userId comes from QUERY_ME
-  // * listingId probably comes from QUERY_LISTINGS
 
   const listings = listingsData?.listings || [];
   const users = usersData?.users || [];
 
   const [searchQuery, setSearchQuery] = useState("");
+
+  const [appliedListings, setAppliedListings] = useState<Set<string>>(
+    new Set()
+  );
 
   const filteredListings = listings.filter((listing: Listing) => {
     return listing.title.toLowerCase().includes(searchQuery.toLowerCase());
@@ -37,6 +42,31 @@ const FindWork = () => {
 
   const handleApplication = async (listingId: string) => {
     try {
+      // console.log("Listing ID:", listingId);
+      // console.log("User's listings:", user.listings);
+      // console.log("User's jobs:", user.jobs);
+
+      const hasApplied = user.jobs.some(
+        (job: Job) => job.listingId === listingId
+      );
+
+      if (hasApplied || appliedListings.has(listingId)) {
+        alert(
+          "You have already applied to this listing. You will be notified when the author of this post makes a decision on your application."
+        );
+        return;
+      }
+
+      const isOwnListing = user.listings.some(
+        (listing: Listing) => listing._id === listingId
+      );
+      console.log("Is own listing:", isOwnListing);
+
+      if (isOwnListing) {
+        alert("You cannot apply to your own listing.");
+        return;
+      }
+
       await addJob({
         variables: {
           input: {
@@ -46,6 +76,10 @@ const FindWork = () => {
           },
         },
       });
+
+      setAppliedListings((currentListings) =>
+        new Set(currentListings).add(listingId)
+      );
 
       alert("Applied to job successfully!");
     } catch (error) {
