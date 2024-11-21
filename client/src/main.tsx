@@ -9,7 +9,7 @@ import Home from "./pages/Home.tsx";
 import Explore from "./pages/Explore.tsx";
 import FindWork from "./pages/FindWork.tsx";
 import PostAJob from "./pages/PostAJob.tsx";
-import About from "./pages/About.tsx";
+// import About from "./pages/About.tsx";
 import UserProfile from "./pages/UserProfile.tsx";
 import Signup from "./pages/Signup.tsx";
 import SettingsPage from "./pages/settings.tsx";
@@ -41,10 +41,10 @@ export const router = createBrowserRouter([
           <Navigate to="/signup" />
         )
       },
-      {
-        path: "/about-us",
-        element: <About />,
-      },
+      // {
+      //   path: "/about-us",
+      //   element: <About />,
+      // },
       {
         path: "/profiles/:username",
         element: <UserProfile />

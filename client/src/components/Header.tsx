@@ -72,7 +72,7 @@ const Header = () => {
             </Link>
           </div>
 
-          <div className="category-item">
+          {/* <div className="category-item">
             <Link to="/about-us" className="no-underline">
               <h1
                 className={
@@ -82,7 +82,7 @@ const Header = () => {
                 About
               </h1>
             </Link>
-          </div>
+          </div> */}
         </div>
 
         <div className="header-right">
