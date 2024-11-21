@@ -4,7 +4,7 @@ import { QUERY_ME } from "../utils/queries";
 import { ADD_LISTING } from "../utils/mutations";
 import { DELETE_LISTING } from "../utils/mutations";
 
-import { Container, Col, Row } from "react-bootstrap";
+import { Container, Col, Row, Alert } from "react-bootstrap";
 import { Form, InputGroup, Button } from "react-bootstrap";
 import TestListingCard from "../components/TestListingCard";
 import YourListingCard from "../components/YourListingCard";
@@ -22,6 +22,8 @@ const PostAJob = () => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [price, setPrice] = useState("");
+  const [alertMessage, setAlertMessage] = useState<string | null>(null);
+  const [alertVariant, setAlertVariant] = useState<string>("warning");
 
   // Fetch logged-in user's info.
   const { loading, error, data } = useQuery(QUERY_ME);
@@ -46,7 +48,8 @@ const PostAJob = () => {
 
   const handleAddListing = async () => {
     if (!title || !description || !price) {
-      alert("Please fill out all fields before posting.");
+      setAlertMessage("Please fill out all fields before posting.");
+      setAlertVariant("danger");
       return;
     }
 
@@ -63,11 +66,13 @@ const PostAJob = () => {
       });
 
       // Clear the form after successful submission.
+
       setTitle("");
       setDescription("");
       setPrice("");
-      alert("Listing posted successfully!");
-      window.location.reload();
+      setAlertMessage("Listing posted successfully!");
+      setAlertVariant("success");
+
     } catch (error) {
       console.error("Error posting listing:", error);
     }
@@ -79,10 +84,12 @@ const PostAJob = () => {
         variables: { id },
       });
 
-      alert("Listing deleted successfully!");
+      setAlertMessage("Listing deleted successfully!");
+      setAlertVariant("success");
     } catch (error) {
       console.error("Error deleting listing:", error);
-      alert("Failed to delete the listing. Please try again.");
+      setAlertMessage("Failed to delete the listing. Please try again.");
+      setAlertVariant("danger");
     }
   };
 
@@ -92,6 +99,16 @@ const PostAJob = () => {
   return (
     <div>
       <PageTab title="Post A Job">
+        {alertMessage && (
+          <Alert
+            className="alert-back"
+            variant={alertVariant}
+            onClose={() => setAlertMessage(null)}
+            dismissible
+          >
+            {alertMessage}
+          </Alert>
+        )}
         <div id="post-job-heading">
           <h1>Create a listing with ease.</h1>
           <p>

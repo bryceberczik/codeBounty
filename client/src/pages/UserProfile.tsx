@@ -6,7 +6,7 @@ import { UPDATE_USER } from "../utils/mutations";
 import { useParams } from "react-router-dom";
 import Auth from "../utils/auth";
 
-import { Container, Row, Col } from "react-bootstrap";
+import { Container, Row, Col, Alert } from "react-bootstrap";
 import { Button, Form } from "react-bootstrap";
 import { FaRegEdit } from "react-icons/fa";
 import PageTab from "../components/PageTab";
@@ -58,6 +58,9 @@ const UserProfile = ({ username }: { username?: string }) => {
 
   const [user, setUser] = useState<IUserProfile | null>(null);
 
+  const [alertMessage, setAlertMessage] = useState<string | null>(null);
+  const [alertVariant, setAlertVariant] = useState<string>("success");
+
   // console.log(user);
 
   useEffect(() => {
@@ -76,12 +79,14 @@ const UserProfile = ({ username }: { username?: string }) => {
     if (!user) return;
 
     if (!tech.trim()) {
-      alert("Technology cannot be nothing.");
+      setAlertMessage("Technology cannot be nothing.");
+      setAlertVariant("danger");
       return;
     }
 
     if (user.technologies.includes(tech)) {
-      alert("This technology is already listed.");
+      setAlertMessage("This technology is already listed.");
+      setAlertVariant("danger");
       return;
     }
 
@@ -96,12 +101,14 @@ const UserProfile = ({ username }: { username?: string }) => {
     if (!user) return;
 
     if (!tech.trim()) {
-      alert("Please enter a valid technology to delete.");
+      setAlertMessage("Please enter a valid technology to delete.");
+      setAlertVariant("danger");
       return;
     }
 
     if (!user.technologies.includes(tech)) {
-      alert("This technology does not exist on your list.");
+      setAlertMessage("This technology does not exist on your list.");
+      setAlertVariant("danger");
       return;
     }
 
@@ -116,12 +123,14 @@ const UserProfile = ({ username }: { username?: string }) => {
     if (!user) return;
 
     if (!link.trim()) {
-      alert("Link can not be nothing.");
+      setAlertMessage("Link can not be nothing.");
+      setAlertVariant("danger");
       return;
     }
 
     if (user.links.includes(link)) {
-      alert("This link is already listed.");
+      setAlertMessage("This link is already listed.");
+      setAlertVariant("danger");
       return;
     }
 
@@ -136,12 +145,14 @@ const UserProfile = ({ username }: { username?: string }) => {
     if (!user) return;
 
     if (!link.trim()) {
-      alert("Please enter a valid link to delete.");
+      setAlertMessage("Please enter a valid link to delete.");
+      setAlertVariant("danger");
       return;
     }
 
     if (!user.technologies.includes(link)) {
-      alert("This link does not exist on your list.");
+      setAlertMessage("This link does not exist on your list.");
+      setAlertVariant("danger");
       return;
     }
 
@@ -181,7 +192,7 @@ const UserProfile = ({ username }: { username?: string }) => {
           ...updatedUserData,
         },
       },
-    }).then(() => alert("Profile updated successfully!"));
+    }).then(() => setAlertMessage("Profile updated successfully!"));
   };
 
   // ! Loading Screen
@@ -192,6 +203,17 @@ const UserProfile = ({ username }: { username?: string }) => {
       <PageTab
         title={isOwnProfile ? "My Profile" : `${user?.username}'s Profile`}
       >
+
+{alertMessage && (
+          <Alert
+            className="alert-back"
+            variant={alertVariant}
+            onClose={() => setAlertMessage(null)}
+            dismissible
+          >
+            {alertMessage}
+          </Alert>
+        )}
         <div id="profile-card">
           <h1
             id="username-profile-input"
