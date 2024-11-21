@@ -20,7 +20,9 @@ interface YourListingsProps {
 
 const PostAJob = () => {
   const [title, setTitle] = useState("");
+  const maxTitleCharCount = 35;
   const [description, setDescription] = useState("");
+  const maxDescriptionCharCount = 225
   const [price, setPrice] = useState("");
 
   // Fetch logged-in user's info.
@@ -108,12 +110,13 @@ const PostAJob = () => {
                   controlId="formListingTitle"
                 >
                   <Form.Label className="label-ind">Title</Form.Label>
+                  <p>{title.length}/{maxTitleCharCount}</p>
                   <Form.Control
                     type="text"
                     value={title}
+                    maxLength={maxTitleCharCount}
                     onChange={handleTitle}
                     placeholder="Enter title"
-                    maxLength={35}
                   />
                   <Form.Text className="text-muted">
                     Developers can search for listings by title.
@@ -125,12 +128,13 @@ const PostAJob = () => {
                   controlId="formListingDescription"
                 >
                   <Form.Label className="label-ind">Description</Form.Label>
+                  <p>{description.length}/{maxDescriptionCharCount}</p>
                   <Form.Control
                     type="text"
                     value={description}
+                    maxLength={maxDescriptionCharCount}
                     onChange={handleDescription}
                     placeholder="Enter description"
-                    maxLength={225}
                   />
                   <Form.Text className="text-muted">
                     Give an overview on what you're looking for, what type of
