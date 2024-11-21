@@ -166,20 +166,44 @@ const UserProfile = ({ username }: { username?: string }) => {
   const handleSave = () => {
     if (!user) return;
 
+    const usernameInput =
+      document.getElementById("username-profile-input")?.innerText ||
+      user?.username;
+
+    const roleInput =
+      document.getElementById("role-profile-input")?.innerText || user?.role;
+
+    const descriptionInput =
+      document.getElementById("description-profile-input")?.innerText ||
+      user?.description;
+
+      if (usernameInput.length > 20) {
+        setAlertMessage("Your username cannot exceed 20 characters.");
+        setAlertVariant("danger");
+        return;
+      } else if (usernameInput.length < 8) {
+        setAlertMessage("Your username cannot be less than 8 characters.");
+        setAlertVariant("danger");
+        return;
+      }
+
+      if (roleInput.length > 24) {
+        setAlertMessage("Your role cannot exceed 24 characters.");
+        setAlertVariant("danger");
+        return;
+      }
+
+      if (descriptionInput.length > 300) {
+        setAlertMessage("Your description cannot exceed 300 characters.");
+        setAlertVariant("danger");
+        return;
+      }
+
     const updatedUserData = {
-      username:
-        document.getElementById("username-profile-input")?.innerText ||
-        user?.username,
-
-      role:
-        document.getElementById("role-profile-input")?.innerText || user?.role,
-
-      description:
-        document.getElementById("description-profile-input")?.innerText ||
-        user?.description,
-
+      username: usernameInput,
+      role: roleInput,
+      description: descriptionInput,
       technologies: user.technologies,
-
       links: user.links,
     };
 
@@ -203,8 +227,7 @@ const UserProfile = ({ username }: { username?: string }) => {
       <PageTab
         title={isOwnProfile ? "My Profile" : `${user?.username}'s Profile`}
       >
-
-{alertMessage && (
+        {alertMessage && (
           <Alert
             className="alert-back"
             variant={alertVariant}
