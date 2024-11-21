@@ -13,6 +13,10 @@ interface Listing {
   title: string;
 }
 
+interface Job {
+  listingId: string;
+}
+
 const FindWork = () => {
   const { loading: loadingListings, data: listingsData } =
     useQuery(QUERY_LISTINGS);
@@ -42,7 +46,11 @@ const FindWork = () => {
       // console.log("User's listings:", user.listings);
       // console.log("User's jobs:", user.jobs);
 
-      if (appliedListings.has(listingId)) {
+      const hasApplied = user.jobs.some(
+        (job: Job) => job.listingId === listingId
+      );
+
+      if (hasApplied || appliedListings.has(listingId)) {
         alert(
           "You have already applied to this listing. You will be notified when the author of this post makes a decision on your application."
         );
