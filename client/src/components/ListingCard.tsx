@@ -17,9 +17,10 @@ interface User {
 interface ListingCardProps {
   listings: Listing[];
   users: User[];
+  onApply: (listingId: string) => void;
 }
 
-const ListingCard: React.FC<ListingCardProps> = ({ listings, users }) => {
+const ListingCard: React.FC<ListingCardProps> = ({ listings, users, onApply }) => {
 
   const getUsername = (userId: string) => {
     const user = users.find((user) => user._id === userId);
@@ -55,7 +56,9 @@ const ListingCard: React.FC<ListingCardProps> = ({ listings, users }) => {
               </Card.Body>
             </Card>
 
-            <Button id="apply-button">Apply</Button>
+            <Button onClick={() => onApply (
+              listing._id
+            )} id="apply-button">Apply</Button>
           </div>
         ))}
     </div>

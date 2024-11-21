@@ -24,6 +24,32 @@ export const QUERY_USER = gql`
   }
 `;
 
+export const QUERY_USER_BY_ID = gql`
+  query UserById($id: ID!) {
+    userById(_id: $id) {
+      _id
+      username
+      email
+      role
+      technologies
+      description
+      links
+      listings {
+        _id
+        title
+        description
+        price
+      }
+      jobs {
+        _id
+        listingId
+        userId
+        status
+      }
+    }
+  }
+`;
+
 export const QUERY_USERS = gql`
   query users {
     users {
@@ -111,6 +137,17 @@ export const QUERY_JOBS = gql`
 export const QUERY_SINGLE_JOB = gql`
   query getSingleJob($id: ID!) {
     job(_id: $id) {
+      _id
+      listingId
+      userId
+      status
+    }
+  }
+`;
+
+export const FIND_APPLICANTS_BY_LISTING_ID = gql`
+  query FindApplicantsByListingId($listingId: ID!) {
+    findApplicantsByListingId(_id: $listingId) {
       _id
       listingId
       userId
