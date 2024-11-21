@@ -126,8 +126,10 @@ const PostAJob = () => {
                   className="mb-3 group-space"
                   controlId="formListingTitle"
                 >
+                  <div className="form-title-cust">
                   <Form.Label className="label-ind">Title</Form.Label>
                   <p>{title.length}/{maxTitleCharCount}</p>
+                  </div>
                   <Form.Control
                     type="text"
                     value={title}
@@ -144,8 +146,10 @@ const PostAJob = () => {
                   className="mb-3 group-space"
                   controlId="formListingDescription"
                 >
+                  <div className="form-title-cust">
                   <Form.Label className="label-ind">Description</Form.Label>
                   <p>{description.length}/{maxDescriptionCharCount}</p>
+                  </div>
                   <Form.Control
                     type="text"
                     value={description}
