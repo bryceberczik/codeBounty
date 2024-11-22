@@ -6,7 +6,7 @@
 
 .first-homepage-section {
   display: flex;
-  flex-direction: flex;
+  flex-direction: row;
 }
 
 .front-left P .maintext-homepage {
@@ -320,4 +320,99 @@
 
 .no-dec {
   text-decoration: none;
+}
+
+@media (max-width: 400px) {
+
+  .getstarted-btn {
+
+    text-align: center;
+  }
+
+  .homepage-container {
+
+    margin: 50px 25px;
+  }
+
+  .first-homepage-section {
+
+    display: flex;
+    flex-direction: column;
+  }
+
+  .maintext-homepage h1 {
+
+    font-size: 30px;
+  }
+
+  .subtext-homepage p {
+
+    margin-top: 20px;
+  }
+
+  .front-right {
+
+    margin: 0;
+  }
+  
+  .frontpage-photo {
+
+    display: flex;
+    justify-content: center;
+  }
+
+  .frontpage-photo img {
+
+    margin-top: 50px;
+    width: 350px
+  }
+
+  .ind-stat h3 {
+
+    font-size: 14px;
+  }
+
+  .second-homepage-section {
+
+    display: flex;
+    flex-direction: column;
+    margin-top: 40px;
+  }
+
+  .fullstack-block, .database-block, .design-block {
+
+    width: 350px;
+    border-radius: 20px;
+    margin: 20px 0;
+    padding: 10px;
+  }
+
+  .third-homepage-section {
+
+    margin: 0;
+  }
+
+  .third-homepage-section h1 {
+
+    font-size: 40px;
+  }
+
+  .info-container {
+
+    display: flex;
+    flex-direction: column;
+    margin: 40px 0;
+  }
+
+  .info-div {
+
+    width: 350px;
+    height: 400px;
+    margin: 20px 0;
+  }
+
+  .join-us-section h1 {
+
+    font-size: 40px;
+  }
 }
