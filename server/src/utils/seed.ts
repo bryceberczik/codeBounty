@@ -14,6 +14,7 @@ const seedData = async () => {
     // ! Client Users ! //
 
     // * User 1 * //
+
     const user1 = await User.create({
       username: "Emily_James",
       email: "emily@james.com",
@@ -171,5 +172,55 @@ const seedData = async () => {
 
     user6.listings.push(listing11._id as mongoose.ObjectId);
     await user6.save();
+
+    // ! Developer Users ! //
+
+    // * User 7 * //
+
+    const user7 = await User.create({
+      username: "Jack_Thomas22",
+      email: "jack@thomas22.com",
+      password: "seed1!",
+    });
+
+    // * User 8 * //
+
+    const user8 = await User.create({
+      username: "GraceParker",
+      email: "grace@parker.com",
+      password: "seed1!",
+    });
+
+    // * User 9 * //
+
+    const user9 = await User.create({
+      username: "Luke-Adams",
+      email: "luke@adams.com",
+      password: "seed1!",
+    });
+
+    // * User 10 * //
+
+    const user10 = await User.create({
+      username: "Isabella.Moore",
+      email: "isabella@moore.com",
+      password: "seed1!",
+    });
+
+    // * User 11 * //
+
+    const user11 = await User.create({
+      username: "Henry_Taylor93",
+      email: "henry@taylor93.com",
+      password: "seed1!",
+    });
+
+    // * User 12 * //
+
+    const user12 = await User.create({
+      username: "SophieKing",
+      email: "sophie@king.com",
+      password: "seed1!",
+    });
   } catch (error) {}
 };
