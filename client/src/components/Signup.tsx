@@ -54,7 +54,6 @@ const Signup = () => {
         variables: { input: formState },
       });
       Auth.login(data.addUser.token);
-      alert('Signup successful! You can edit your profile in the "My Profile" section.');
     } catch (err) {
       console.error(err);
       setError("Something went wrong.");
