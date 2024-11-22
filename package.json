@@ -9,12 +9,14 @@
         "develop": "concurrently \"cd server && npm run watch\" \"wait-on tcp:3001 && cd client && npm run dev\"",
         "install": "cd server && npm i && cd ../client && npm i",
         "build": "concurrently \"cd server && npm run build\" \"cd client && npm run build\"",
-        "render-build": "npm install && npm run build",
+        "seed": "cd server && npm run seed",
         "cypress": "cypress open",
         "test": "npm run test:e2e || true && npm run test:comp",
         "test:e2e": "npx cypress run --browser electron --headless",
         "test:comp": "npx cypress run --component",
-        "test-gui": "npx cypress open --detached"
+        "test-gui": "npx cypress open --detached",
+        "render-build": "npm install && npm run build",
+        "render-start": "npm run start"
     },
     "keywords": [],
     "author": "",
