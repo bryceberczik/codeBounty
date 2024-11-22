@@ -181,6 +181,22 @@ const seedData = async () => {
       username: "Jack_Thomas22",
       email: "jack@thomas22.com",
       password: "seed1!",
+      role: "Frontend Developer",
+      technologies: [
+        "HTML",
+        "CSS",
+        "JavaScript",
+        "React",
+        "Redux",
+        "Bootstrap",
+      ],
+      description:
+        "I specialize in creating clean, responsive, and visually appealing websites. With a strong focus on performance and accessibility, I ensure every site looks great on any device.",
+      links: [
+        "https://jackthomasportfolio.com",
+        "https://modernshopdesign.com",
+        "https://github.com/jackthomas22",
+      ],
     });
 
     // * User 8 * //
@@ -189,6 +205,22 @@ const seedData = async () => {
       username: "GraceParker",
       email: "grace@parker.com",
       password: "seed1!",
+      role: "UI/UX Designer",
+      technologies: [
+        "Figma",
+        "Sketch",
+        "AdobeXD",
+        "CSS",
+        "Wireframes",
+        "Prototyping",
+      ],
+      description:
+        "I'm passionate about crafting user-friendly designs that enhance the user experience. I bring ideas to life through detailed wireframes, prototypes, and creative visuals.",
+      links: [
+        "https://graceparkerdesigns.com",
+        "https://dribbble.com/graceparker",
+        "https://behance.net/graceparker",
+      ],
     });
 
     // * User 9 * //
@@ -197,6 +229,14 @@ const seedData = async () => {
       username: "Luke-Adams",
       email: "luke@adams.com",
       password: "seed1!",
+      role: "Database Administrator",
+      technologies: ["SQL", "MongoDB", "PostgreSQL", "NoSQL", "Firebase"],
+      description:
+        "I design and manage databases to ensure seamless data flow and storage. Whether it’s SQL or NoSQL, I optimize systems for speed, security, and scalability.",
+      links: [
+        "https://lukeadamsdatabases.com",
+        "https://github.com/luke-adams",
+      ],
     });
 
     // * User 10 * //
@@ -205,6 +245,23 @@ const seedData = async () => {
       username: "Isabella.Moore",
       email: "isabella@moore.com",
       password: "seed1!",
+      role: "Backend Developer",
+      technologies: [
+        "Node.js",
+        "Express",
+        "Python",
+        "Django",
+        "GraphQL",
+        "APIs",
+        "PostgreSQL",
+      ],
+      description:
+        "I build robust backend systems to power modern applications. My expertise includes API development, database integration, and scalable architecture.",
+      links: [
+        "https://backendbyisabella.com",
+        "https://github.com/isabellamoore",
+        "https://apiintegrationproject.com",
+      ],
     });
 
     // * User 11 * //
@@ -213,6 +270,23 @@ const seedData = async () => {
       username: "Henry_Taylor93",
       email: "henry@taylor93.com",
       password: "seed1!",
+      role: "Full Stack Developer",
+      technologies: [
+        "HTML",
+        "CSS",
+        "JavaScript",
+        "React",
+        "Node.js",
+        "MongoDB",
+        "Express",
+      ],
+      description:
+        "I bring ideas to life with full-stack solutions. From frontend design to backend development, I deliver user-focused applications tailored to client needs.",
+      links: [
+        "https://henrytaylorprojects.com",
+        "https://github.com/henry-taylor93",
+        "https://ecommercefullstack.com",
+      ],
     });
 
     // * User 12 * //
@@ -221,6 +295,22 @@ const seedData = async () => {
       username: "SophieKing",
       email: "sophie@king.com",
       password: "seed1!",
+      role: "UI/UX Designer",
+      technologies: [
+        "Figma",
+        "Photoshop",
+        "Wireframes",
+        "Prototyping",
+        "CSS",
+        "HTML",
+      ],
+      description:
+        "I transform concepts into intuitive and engaging designs. My goal is to create seamless user experiences with creativity and attention to detail.",
+      links: [
+        "https://sophiekingdesigns.com",
+        "https://dribbble.com/sophieking",
+        "https://minimalappdesign.com",
+      ],
     });
   } catch (error) {}
 };
