@@ -4,7 +4,7 @@ import '../css/settings.css';
 function SettingsPage() {
     const [settings, setSettings] = useState({
         theme: 'light',
-        notifications: true,
+        // notifications: true,
         language: 'en',
     });
 
@@ -12,7 +12,7 @@ function SettingsPage() {
         const { name, value, checked } = event.target as HTMLInputElement;
         setSettings({
             ...settings,
-            [name]: name === 'notifications' ? checked : value,
+            [name]: name === '' ? checked : value,
         });
     };
 
@@ -25,17 +25,33 @@ function SettingsPage() {
 
                 <form className='settingsForm'>
 
-                    <label>
-                        Theme:
-                        <select name="theme" value={settings.theme} onChange={handleInputChange}>
+
+                    <div>
+
+                        <label className='themeLabel'>
+                            Theme:
+                        </label>
+
+                    </div>
+
+                    <div>
+
+                        <select name="theme" className="lightDarkModeDropDown" value={settings.theme} onChange={handleInputChange}>
+
                             <option value="light">Light</option>
                             <option value="dark">Dark</option>
+
                         </select>
-                    </label>
+
+                    </div>
+
+
+
+                    <button className='deleteUser'>Delete User</button>
 
                     <br />
 
-                    <label>
+                    {/* <label>
                         Notifications:
                         <input
                             type="checkbox"
@@ -43,11 +59,11 @@ function SettingsPage() {
                             checked={settings.notifications}
                             onChange={handleInputChange}
                         />
-                    </label>
+                    </label> */}
 
                     <br />
 
-                    <button type="submit">Save Settings</button>
+                    <button type="submit" className='saveSettings'>Save Settings</button>
 
                 </form>
 
