@@ -125,3 +125,10 @@
 #your-listings-container {
   padding-top: 50px;
 }
+
+#no-listings-message {
+  text-align: center;
+  padding-bottom: 20px;
+  font-size: 36px;
+  color: #003049
+}
