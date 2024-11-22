@@ -22,7 +22,7 @@ const PostAJob = () => {
   const [title, setTitle] = useState("");
   const maxTitleCharCount = 35;
   const [description, setDescription] = useState("");
-  const maxDescriptionCharCount = 225
+  const maxDescriptionCharCount = 225;
   const [price, setPrice] = useState("");
   const [alertMessage, setAlertMessage] = useState<string | null>(null);
   const [alertVariant, setAlertVariant] = useState<string>("warning");
@@ -74,7 +74,6 @@ const PostAJob = () => {
       setPrice("");
       setAlertMessage("Listing posted successfully!");
       setAlertVariant("success");
-
     } catch (error) {
       console.error("Error posting listing:", error);
     }
@@ -127,8 +126,10 @@ const PostAJob = () => {
                   controlId="formListingTitle"
                 >
                   <div className="form-title-cust">
-                  <Form.Label className="label-ind">Title</Form.Label>
-                  <p>{title.length}/{maxTitleCharCount}</p>
+                    <Form.Label className="label-ind">Title</Form.Label>
+                    <p>
+                      {title.length}/{maxTitleCharCount}
+                    </p>
                   </div>
                   <Form.Control
                     type="text"
@@ -147,8 +148,10 @@ const PostAJob = () => {
                   controlId="formListingDescription"
                 >
                   <div className="form-title-cust">
-                  <Form.Label className="label-ind">Description</Form.Label>
-                  <p>{description.length}/{maxDescriptionCharCount}</p>
+                    <Form.Label className="label-ind">Description</Form.Label>
+                    <p>
+                      {description.length}/{maxDescriptionCharCount}
+                    </p>
                   </div>
                   <Form.Control
                     type="text"
@@ -200,19 +203,23 @@ const PostAJob = () => {
         <h1 id="your-listings-text">Your Current Listings</h1>
 
         <Container id="your-listings-container">
-          <Row>
-            {user?.listings?.map((listing: YourListingsProps) => (
-              <Col key={listing._id} md={4} sm={6}>
-                <YourListingCard
-                  title={listing.title}
-                  poster={user.username}
-                  description={listing.description}
-                  listingId={listing._id}
-                  onDelete={() => handleDeleteListing(listing._id)}
-                />
-              </Col>
-            ))}
-          </Row>
+          {user?.listings?.length === 0 ? (
+            <p id="no-listings-message">You have no current listings.</p>
+          ) : (
+            <Row>
+              {user?.listings?.map((listing: YourListingsProps) => (
+                <Col key={listing._id} md={4} sm={6}>
+                  <YourListingCard
+                    title={listing.title}
+                    poster={user.username}
+                    description={listing.description}
+                    listingId={listing._id}
+                    onDelete={() => handleDeleteListing(listing._id)}
+                  />
+                </Col>
+              ))}
+            </Row>
+          )}
         </Container>
         <div className="why-section">
           <h1>Will a developer really see this listing?</h1>
