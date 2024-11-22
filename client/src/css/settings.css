@@ -19,3 +19,40 @@
     align-items: center;
     margin: 0 auto 23rem auto;
 }
+
+.themeLabel {
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-bottom: 0.5rem;
+    font-size: 1.2rem;
+}
+
+.lightDarkModeDropDown {
+margin: 0 auto;
+padding: 0.5rem;
+border-radius: 8px;
+}
+.deleteUser {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 4rem auto 0.2rem auto;
+    padding: 0.5rem;
+    background-color: #f44336;
+    color: white;
+    border-radius: 9px;
+}
+
+.saveSettings {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 1rem auto 1rem auto;
+    padding: 0.5rem;
+    background-color: #4CAF50;
+    color: white;
+    border-radius: 9px;
+}
