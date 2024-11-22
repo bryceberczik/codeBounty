@@ -78,7 +78,17 @@ const UserProfile = ({ username }: { username?: string }) => {
   const handleAddTechnology = (tech: string) => {
     if (!user) return;
 
-    if (!tech.trim()) {
+    if (user.technologies.length === 15) {
+      setAlertMessage("You have reached the limit for technologies displayed.");
+      setAlertVariant("danger");
+      return;
+    }
+
+    if (tech.length > 12) {
+      setAlertMessage("Technology cannot be more than 12 characters.");
+      setAlertVariant("danger");
+      return;
+    } else if (!tech.trim()) {
       setAlertMessage("Technology cannot be nothing.");
       setAlertVariant("danger");
       return;
@@ -122,7 +132,17 @@ const UserProfile = ({ username }: { username?: string }) => {
   const handleAddLink = (link: string) => {
     if (!user) return;
 
-    if (!link.trim()) {
+    if (user.links.length === 5) {
+      setAlertMessage("You have reached the limit for links displayed.")
+      setAlertVariant("danger");
+      return;
+    }
+
+    if (link.length > 80) {
+      setAlertMessage("Link cannot be more than 80 characters.");
+      setAlertMessage("danger");
+      return;
+    } else if (!link.trim()) {
       setAlertMessage("Link can not be nothing.");
       setAlertVariant("danger");
       return;
