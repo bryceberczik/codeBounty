@@ -11,7 +11,9 @@ const seedData = async () => {
     await Listing.deleteMany({});
     await Job.deleteMany({});
 
+    // ! ------------ ! //
     // ! Client Users ! //
+    // ! ------------ ! //
 
     // * User 1 * //
 
@@ -173,7 +175,9 @@ const seedData = async () => {
     user6.listings.push(listing11._id as mongoose.ObjectId);
     await user6.save();
 
+    // ! --------------- ! //
     // ! Developer Users ! //
+    // ! --------------- ! //
 
     // * User 7 * //
 
