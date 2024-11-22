@@ -20,8 +20,11 @@ interface ListingCardProps {
   onApply: (listingId: string) => void;
 }
 
-const ListingCard: React.FC<ListingCardProps> = ({ listings, users, onApply }) => {
-
+const ListingCard: React.FC<ListingCardProps> = ({
+  listings,
+  users,
+  onApply,
+}) => {
   const getUsername = (userId: string) => {
     const user = users.find((user) => user._id === userId);
     return user ? user.username : "Unknown User";
@@ -56,9 +59,15 @@ const ListingCard: React.FC<ListingCardProps> = ({ listings, users, onApply }) =
               </Card.Body>
             </Card>
 
-            <Button onClick={() => onApply (
-              listing._id
-            )} id="apply-button">Apply</Button>
+            <Button
+              onClick={() => {
+                window.scrollTo({ top: 0, behavior: "smooth" });
+                onApply(listing._id);
+              }}
+              id="apply-button"
+            >
+              Apply
+            </Button>
           </div>
         ))}
     </div>

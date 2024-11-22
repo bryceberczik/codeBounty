@@ -237,6 +237,7 @@ const UserProfile = ({ username }: { username?: string }) => {
         },
       },
     }).then(() => setAlertMessage("Profile updated successfully!"));
+    setAlertVariant("success");
   };
 
   // ! Loading Screen
@@ -258,6 +259,8 @@ const UserProfile = ({ username }: { username?: string }) => {
           </Alert>
         )}
         <div id="profile-card">
+          <div className="first-sect-profile">
+          <div className="username-role">
           <h1
             id="username-profile-input"
             suppressContentEditableWarning={true}
@@ -293,7 +296,9 @@ const UserProfile = ({ username }: { username?: string }) => {
           >
             {user?.role}
           </h2>
+          </div>
 
+          <div className="descr-container">
           <p
             id="description-profile-input"
             suppressContentEditableWarning={true}
@@ -311,6 +316,10 @@ const UserProfile = ({ username }: { username?: string }) => {
           >
             {user?.description}
           </p>
+          </div>
+
+          </div>
+          
 
           <Row>
             <Col md={6} style={{ position: "relative" }}>
