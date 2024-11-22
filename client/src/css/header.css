@@ -187,25 +187,32 @@ color: #4a5a6a;
   font-weight: 400;
 }
 
-.no-scroll {
-  overflow-x:scroll;
-}
-
 @media (max-width: 400px) {
 
   header {
     margin-left: 20px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
   }
 
   header img {
 
-    width: 250px
+    width: 200px
   }
 
   .hamburger-menu {
 
     color: #003049;
-    font-size: 40px;
-    margin-left: 50px
+    font-size: 30px;
+    margin-left: 90px
+  }
+
+  .signup-mobile {
+
+    color:#003049;
+    font-size: 20px;
+    white-space: nowrap;
+    margin: 0 0 0 75px;
   }
 }

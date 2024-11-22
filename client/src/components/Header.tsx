@@ -18,12 +18,8 @@ const Header = () => {
   const [show, setShow] = useState(false);
   const [isSmallScreen, setIsSmallScreen] = useState(window.innerWidth < 401);
 
-  const handleClose = () => {
-    setShow(false);
-  }
-  const handleShow = () => {
-    setShow(true)
-  };
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
   useEffect(() => {
     const handleResize = () => {
@@ -46,11 +42,18 @@ const Header = () => {
             <Link to="/">
               <img src={BrandLogo} alt="brandlogo" width="300" />
             </Link>
+            {auth.loggedIn() ? (
             <FontAwesomeIcon
-              onClick={handleShow}
-              className="hamburger-menu"
-              icon={faBars}
-            />
+            onClick={handleShow}
+            className="hamburger-menu"
+            icon={faBars}
+          />
+            ) : (
+              <Link to="signup" style={{ textDecoration: "none" }}>
+              <h2 className="signup-mobile">Sign up</h2>
+              </Link>
+            )}
+
           </header>
         </div>
       ) : (
@@ -137,45 +140,6 @@ const Header = () => {
             )}
           </div>
         </header>
-      )}
-
-      {auth.loggedIn() ? (
-        <Offcanvas show={show} onHide={handleClose} placement="end">
-          <Offcanvas.Header closeButton>
-            <Offcanvas.Title>
-              Hey, {auth.getProfile().data.username}
-            </Offcanvas.Title>
-          </Offcanvas.Header>
-
-          <Offcanvas.Body>
-            <Link
-              to="/me"
-              className="offcanvas-opt"
-              onClick={() => (window.location.href = "/me")}
-            >
-              My Profile
-            </Link>
-            <Link
-              to="/find-work"
-              className="offcanvas-opt"
-              onClick={() => (window.location.href = "/find-work")}
-            >
-              Find work
-            </Link>
-            <Link
-              to="/settings"
-              className="offcanvas-opt"
-              onClick={() => (window.location.href = "/settings")}
-            >
-              Settings
-            </Link>
-            <div className="logout-btn" onClick={logout}>
-              <h1>Log out</h1>
-            </div>
-          </Offcanvas.Body>
-        </Offcanvas>
-      ) : (
-        <></>
       )}
 
       {auth.loggedIn() ? (
