@@ -1,4 +1,4 @@
-import seedData from "./seedData";
+import seedData from "./seedData.js";
 
 seedData()
   .then(() => {
