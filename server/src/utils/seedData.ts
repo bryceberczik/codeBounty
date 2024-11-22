@@ -24,6 +24,7 @@ const seedData = async () => {
       username: "Emily_James",
       email: "emily@james.com",
       password: "seed123!",
+      _isSeeding: true,
     });
 
     const listing1 = await Listing.create({
@@ -52,11 +53,12 @@ const seedData = async () => {
       username: "Sarah92",
       email: "sarah@92.com",
       password: "seed123!",
+      _isSeeding: true,
     });
 
     const listing3 = await Listing.create({
       title: "Develop a Database For Customer Management",
-      desciption:
+      description:
         "I need a database to store customer details and make managing my client data easier.",
       price: 1500,
       userId: user2._id,
@@ -81,6 +83,7 @@ const seedData = async () => {
       username: "JohnDoe123",
       email: "john@doe123.com",
       password: "seed123!",
+      _isSeeding: true,
     });
 
     const listing5 = await Listing.create({
@@ -100,6 +103,7 @@ const seedData = async () => {
       username: "AlexTaylor",
       email: "alex@taylor.com",
       password: "seed123!",
+      _isSeeding: true,
     });
 
     const listing6 = await Listing.create({
@@ -137,6 +141,7 @@ const seedData = async () => {
       username: "Chloe_Brown",
       email: "chloe@brown.com",
       password: "seed123!",
+      _isSeeding: true,
     });
 
     const listing9 = await Listing.create({
@@ -163,8 +168,9 @@ const seedData = async () => {
 
     const user6 = await User.create({
       username: "EmmaJohnson",
-      email: "emma@johnson",
+      email: "emma@johnson.com",
       password: "seed123!",
+      _isSeeding: true,
     });
 
     const listing11 = await Listing.create({
