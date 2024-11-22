@@ -24,7 +24,7 @@ const seedData = async () => {
       title: "Build a Responsive Website For My Business",
       description:
         "I need a web developer to build a fully responsive website for my small business. It should look great on both desktop and mobile devices.",
-      price: 1500,
+      price: 2250,
       userId: user1._id,
     });
 
@@ -32,7 +32,7 @@ const seedData = async () => {
       title: "Redesign My Homepage With a Modern Look",
       description:
         "My homepage feels outdated. Can you redesign it with a fresh, modern look that matches my brand?",
-      price: 800,
+      price: 1150,
       userId: user1._id,
     });
 
@@ -52,7 +52,7 @@ const seedData = async () => {
       title: "Develop a Database For Customer Management",
       desciption:
         "I need a database to store customer details and make managing my client data easier.",
-      price: "1000",
+      price: 1500,
       userId: user2._id,
     });
 
@@ -61,7 +61,7 @@ const seedData = async () => {
         "Design a Clean, User-Friendly Dashboard For Easy Data Visualization",
       description:
         "Help me design a dashboard that's clean, simple, and easy to understand for my team to use daily.",
-      price: 900,
+      price: 1350,
       userId: user2._id,
     });
 
@@ -81,7 +81,7 @@ const seedData = async () => {
       title: "Fix Layout Issues On My Web App",
       description:
         "My app layout has a few glitches that are ruining the user experience. Can anyone fix them?",
-      price: 150,
+      price: 325,
       userId: user3._id,
     });
 
@@ -100,7 +100,7 @@ const seedData = async () => {
       title: "Design Wireframes For a New Web Project",
       description:
         "I've got a project idea but need wireframes to visualize it. Need a UI/UX designer to help me create a basic prototype!",
-      price: 300,
+      price: 500,
       userId: user4._id,
     });
 
@@ -108,7 +108,7 @@ const seedData = async () => {
       title: "Help With Backend Integration For My App",
       description:
         "I'm struggling to connect the backend to my app. Can a backend specialist help integrate the APIs properly?",
-      price: 800,
+      price: 1150,
       userId: user4._id,
     });
 
@@ -116,7 +116,7 @@ const seedData = async () => {
       title: "Create a Sleek Landing Page For My Product",
       description:
         "I need a stunning landing page for my product launch that grabs attention and converts visitors.",
-      price: 700,
+      price: 950,
       userId: user4._id,
     });
 
@@ -137,7 +137,7 @@ const seedData = async () => {
       title: "Optimize My Website For Faster Loading Speeds",
       description:
         "My site is slow, and it's frustrating users. Need a dev's help to optimize the site so it loads faster and perfoms better.",
-      price: 300,
+      price: 550,
       userId: user5._id,
     });
 
@@ -145,7 +145,7 @@ const seedData = async () => {
       title: "Design a Mobile-Friendly User Experience",
       description:
         "I need a user-friendly design for my app that's easy to navigate and looks professional",
-      price: 1200,
+      price: 1850,
       userId: user5._id,
     });
 
@@ -165,7 +165,7 @@ const seedData = async () => {
       title: "Develop a Database For Inventory-Tracking",
       description:
         "Can I get a database expert to set up a database to help me track inventory and ensure my business runs smoothly?",
-      price: 1000,
+      price: 1500,
       userId: user6._id,
     });
 
