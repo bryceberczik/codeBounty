@@ -133,14 +133,14 @@ const UserProfile = ({ username }: { username?: string }) => {
     if (!user) return;
 
     if (user.links.length === 5) {
-      setAlertMessage("You have reached the limit for links displayed.")
+      setAlertMessage("You have reached the limit for links displayed.");
       setAlertVariant("danger");
       return;
     }
 
     if (link.length > 80) {
       setAlertMessage("Link cannot be more than 80 characters.");
-      setAlertMessage("danger");
+      setAlertVariant("danger");
       return;
     } else if (!link.trim()) {
       setAlertMessage("Link can not be nothing.");
@@ -340,6 +340,16 @@ const UserProfile = ({ username }: { username?: string }) => {
                           placeholder="Enter Technology"
                           value={techInput}
                           onChange={(e) => setTechInput(e.target.value)}
+                          onInput={(e) => {
+                            if (e.currentTarget.value.length > 12) {
+                              setAlertMessage(
+                                "Your technology cannot exceed 12 characters."
+                              );
+                              setAlertVariant("danger");
+                            } else {
+                              setAlertMessage(null);
+                            }
+                          }}
                         />
                       </Form.Group>
                     </Form>
@@ -403,6 +413,16 @@ const UserProfile = ({ username }: { username?: string }) => {
                           placeholder="Enter Link"
                           value={linkInput}
                           onChange={(e) => setLinkInput(e.target.value)}
+                          onInput={(e) => {
+                            if (e.currentTarget.value.length > 80) {
+                              setAlertMessage(
+                                "Your link cannot exceed 80 characters."
+                              );
+                              setAlertVariant("danger");
+                            } else {
+                              setAlertMessage(null);
+                            }
+                          }}
                         />
                       </Form.Group>
                     </Form>
