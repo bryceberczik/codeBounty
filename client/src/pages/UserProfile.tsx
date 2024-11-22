@@ -78,7 +78,17 @@ const UserProfile = ({ username }: { username?: string }) => {
   const handleAddTechnology = (tech: string) => {
     if (!user) return;
 
-    if (!tech.trim()) {
+    if (user.technologies.length === 15) {
+      setAlertMessage("You have reached the limit for technologies displayed.");
+      setAlertVariant("danger");
+      return;
+    }
+
+    if (tech.length > 12) {
+      setAlertMessage("Technology cannot be more than 12 characters.");
+      setAlertVariant("danger");
+      return;
+    } else if (!tech.trim()) {
       setAlertMessage("Technology cannot be nothing.");
       setAlertVariant("danger");
       return;
@@ -122,7 +132,17 @@ const UserProfile = ({ username }: { username?: string }) => {
   const handleAddLink = (link: string) => {
     if (!user) return;
 
-    if (!link.trim()) {
+    if (user.links.length === 5) {
+      setAlertMessage("You have reached the limit for links displayed.");
+      setAlertVariant("danger");
+      return;
+    }
+
+    if (link.length > 80) {
+      setAlertMessage("Link cannot be more than 80 characters.");
+      setAlertVariant("danger");
+      return;
+    } else if (!link.trim()) {
       setAlertMessage("Link can not be nothing.");
       setAlertVariant("danger");
       return;
@@ -166,20 +186,44 @@ const UserProfile = ({ username }: { username?: string }) => {
   const handleSave = () => {
     if (!user) return;
 
+    const usernameInput =
+      document.getElementById("username-profile-input")?.innerText ||
+      user?.username;
+
+    const roleInput =
+      document.getElementById("role-profile-input")?.innerText || user?.role;
+
+    const descriptionInput =
+      document.getElementById("description-profile-input")?.innerText ||
+      user?.description;
+
+    if (usernameInput.length > 20) {
+      setAlertMessage("Your username cannot exceed 20 characters.");
+      setAlertVariant("danger");
+      return;
+    } else if (usernameInput.length < 8) {
+      setAlertMessage("Your username cannot be less than 8 characters.");
+      setAlertVariant("danger");
+      return;
+    }
+
+    if (roleInput.length > 24) {
+      setAlertMessage("Your role cannot exceed 24 characters.");
+      setAlertVariant("danger");
+      return;
+    }
+
+    if (descriptionInput.length > 300) {
+      setAlertMessage("Your description cannot exceed 300 characters.");
+      setAlertVariant("danger");
+      return;
+    }
+
     const updatedUserData = {
-      username:
-        document.getElementById("username-profile-input")?.innerText ||
-        user?.username,
-
-      role:
-        document.getElementById("role-profile-input")?.innerText || user?.role,
-
-      description:
-        document.getElementById("description-profile-input")?.innerText ||
-        user?.description,
-
+      username: usernameInput,
+      role: roleInput,
+      description: descriptionInput,
       technologies: user.technologies,
-
       links: user.links,
     };
 
@@ -203,8 +247,7 @@ const UserProfile = ({ username }: { username?: string }) => {
       <PageTab
         title={isOwnProfile ? "My Profile" : `${user?.username}'s Profile`}
       >
-
-{alertMessage && (
+        {alertMessage && (
           <Alert
             className="alert-back"
             variant={alertVariant}
@@ -219,6 +262,19 @@ const UserProfile = ({ username }: { username?: string }) => {
             id="username-profile-input"
             suppressContentEditableWarning={true}
             contentEditable={isOwnProfile}
+            onInput={(e) => {
+              if (e.currentTarget.innerText.length > 20) {
+                setAlertMessage("Your username cannot exceed 20 characters.");
+                setAlertVariant("danger");
+              } else if (e.currentTarget.innerText.length < 8) {
+                setAlertMessage(
+                  "Your username cannot be less than 8 characters."
+                );
+                setAlertVariant("danger");
+              } else {
+                setAlertMessage(null);
+              }
+            }}
           >
             {user?.username}
           </h1>
@@ -226,6 +282,14 @@ const UserProfile = ({ username }: { username?: string }) => {
             id="role-profile-input"
             suppressContentEditableWarning={true}
             contentEditable={isOwnProfile}
+            onInput={(e) => {
+              if (e.currentTarget.innerText.length > 24) {
+                setAlertMessage("Your role cannot exceed 24 characters.");
+                setAlertVariant("danger");
+              } else {
+                setAlertMessage(null);
+              }
+            }}
           >
             {user?.role}
           </h2>
@@ -234,6 +298,16 @@ const UserProfile = ({ username }: { username?: string }) => {
             id="description-profile-input"
             suppressContentEditableWarning={true}
             contentEditable={isOwnProfile}
+            onInput={(e) => {
+              if (e.currentTarget.innerText.length > 300) {
+                setAlertMessage(
+                  "Your description cannot exceed 300 characters."
+                );
+                setAlertVariant("danger");
+              } else {
+                setAlertMessage(null);
+              }
+            }}
           >
             {user?.description}
           </p>
@@ -266,6 +340,16 @@ const UserProfile = ({ username }: { username?: string }) => {
                           placeholder="Enter Technology"
                           value={techInput}
                           onChange={(e) => setTechInput(e.target.value)}
+                          onInput={(e) => {
+                            if (e.currentTarget.value.length > 12) {
+                              setAlertMessage(
+                                "Your technology cannot exceed 12 characters."
+                              );
+                              setAlertVariant("danger");
+                            } else {
+                              setAlertMessage(null);
+                            }
+                          }}
                         />
                       </Form.Group>
                     </Form>
@@ -329,6 +413,16 @@ const UserProfile = ({ username }: { username?: string }) => {
                           placeholder="Enter Link"
                           value={linkInput}
                           onChange={(e) => setLinkInput(e.target.value)}
+                          onInput={(e) => {
+                            if (e.currentTarget.value.length > 80) {
+                              setAlertMessage(
+                                "Your link cannot exceed 80 characters."
+                              );
+                              setAlertVariant("danger");
+                            } else {
+                              setAlertMessage(null);
+                            }
+                          }}
                         />
                       </Form.Group>
                     </Form>
