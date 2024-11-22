@@ -151,7 +151,7 @@ color: #4a5a6a;
   color: #003049;
   font-family: "Poppins", sans-serif;
   font-size: 30px;
-  margin: 10px 0;
+  margin: 20px 0;
   transition: 0.3s ease;
 }
 
@@ -170,7 +170,7 @@ color: #4a5a6a;
 
   text-decoration: none;
   color: #003049;
-  margin: 10px 0;
+  margin: 20px 0;
   transition: 0.3s ease;
 }
 
@@ -185,4 +185,27 @@ color: #4a5a6a;
   font-family: "Poppins", sans-serif;
   font-size: 30px;
   font-weight: 400;
+}
+
+.no-scroll {
+  overflow-x:scroll;
+}
+
+@media (max-width: 400px) {
+
+  header {
+    margin-left: 20px;
+  }
+
+  header img {
+
+    width: 250px
+  }
+
+  .hamburger-menu {
+
+    color: #003049;
+    font-size: 40px;
+    margin-left: 50px
+  }
 }
