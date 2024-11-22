@@ -104,7 +104,7 @@ const FindWork = () => {
           <Form.Control
             id="find-work-search-bar"
             type="search"
-            placeholder="Search"
+            placeholder="Search for jobs"
             aria-label="Search"
             onChange={(e) => setSearchQuery(e.target.value)}
           />
