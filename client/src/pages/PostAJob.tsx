@@ -200,7 +200,7 @@ const PostAJob = () => {
             </Col>
           </Row>
         </Container>
-        <h1 id="your-listings-text">Your Current Listings</h1>
+        <h1 id="your-listings-text" style={{ color: "#003049" }}>Your Current Listings</h1>
 
         <Container id="your-listings-container">
           {user?.listings?.length === 0 ? (
