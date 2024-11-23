@@ -12,6 +12,7 @@ interface IUser extends Document {
   listings: Schema.Types.ObjectId[];
   jobs: Schema.Types.ObjectId[];
   isCorrectPassword(password: string): Promise<boolean>;
+  _isSeeding?: boolean;
 }
 
 const userSchema = new Schema<IUser>(
@@ -78,6 +79,10 @@ const userSchema = new Schema<IUser>(
         ref: "Job",
       },
     ],
+    _isSeeding: {
+      type: Boolean,
+      default: false,
+    }
   },
   {
     timestamps: true,
@@ -87,7 +92,7 @@ const userSchema = new Schema<IUser>(
 );
 
 userSchema.pre<IUser>("save", async function (next) {
-  if (this.isNew || this.isModified("password")) {
+  if ((this.isNew || this.isModified("password")) && !this._isSeeding) {
     const saltRounds = 10;
     this.password = await bcrypt.hash(this.password, saltRounds);
   }
