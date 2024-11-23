@@ -196,4 +196,20 @@
     margin: 0 10px;
   }
 
+  .your-listingcard-container {
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .col-md-6  {
+
+    /* padding-right: 0; */
+  }
+
+  .your-listing-card {
+
+    width: 350px;
+  }
 }
