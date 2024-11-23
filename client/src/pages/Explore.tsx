@@ -50,7 +50,7 @@ const Explore = () => {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  if (loading) return <p>Loading...</p>;
+  if (loading) return <p style={{ paddingBottom: "1000px" }}>Loading...</p>;
 
   const users: IUser[] = data.users;
   // console.log(users);
