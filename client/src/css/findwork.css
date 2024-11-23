@@ -79,3 +79,26 @@
 #listings-container {
   padding-top: 100px;
 }
+
+@media screen and (max-width: 768px) {
+
+  #find-work-search {
+
+    width: 75%;
+  }
+
+  .get-accepted-container h1 {
+
+    white-space: nowrap;
+  }
+
+  .get-accepted {
+
+    width: 350px;
+  }
+  
+  .alert-back {
+
+    width: 350px;
+  }
+}

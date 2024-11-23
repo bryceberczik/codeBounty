@@ -7,3 +7,11 @@
   background-color: #ccd5ae !important;
   color: #003049 !important;
 }
+
+@media screen and (max-width: 768px) {
+
+  .accordion-item {
+
+    width: 350px !important;
+  }
+}

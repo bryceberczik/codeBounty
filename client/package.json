@@ -1,6 +1,5 @@
 {
-  "name": "codebounty",
-  "private": true,
+  "name": "codebounty", 
   "version": "0.0.0",
   "type": "module",
   "scripts": {

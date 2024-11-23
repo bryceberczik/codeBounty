@@ -38,13 +38,7 @@ const Home = () => {
                 </Link>
               )}
 
-              <p>
-                Learn about the developers behind codeBounty{" "}
-                <Link to="/about-us" className="offset-line">
-                  here
-                </Link>
-                .
-              </p>
+              <p>Explore limitless possibilities both as a client and a seller.</p>
             </div>
           </div>
           <div className="front-right">

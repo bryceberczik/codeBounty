@@ -132,3 +132,32 @@
   font-size: 36px;
   color: #003049
 }
+
+@media screen and (max-width: 768px) {
+
+  #post-job-heading {
+
+    margin: 0 25px;
+  }
+
+  #no-listings-message {
+
+    font-size: 20px;
+  }
+
+  .why-section  {
+
+    margin: 50px 25px;
+  }
+
+  .why-section h1 {
+
+    text-align: center;
+    font-size: 30px;
+  }
+
+  .why-explain {
+
+    text-align: center;
+  }
+}

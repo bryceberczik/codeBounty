@@ -187,3 +187,24 @@
 
   background-color: #d6d5c9;
 }
+
+@media screen and (max-width: 768px) {
+
+  #listing-card {
+
+    width: 347px;
+    margin: 0 10px;
+  }
+
+  .your-listingcard-container {
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .your-listing-card {
+
+    width: 350px;
+  }
+}
