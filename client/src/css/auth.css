@@ -103,7 +103,10 @@
 
   .auth-form label {
 
-    margin-left: 75px;
+    display: block;
+    width: 300px;
+    margin: 0 auto 5px auto;
+    text-align: left;
   }
 
   .auth-form input {
@@ -116,5 +119,11 @@
 
     width: 300px;
     margin: 20px auto;
+  }
+
+  .error {
+
+    max-width: 300px;
+    margin: 0 auto;
   }
 }

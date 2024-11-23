@@ -1,11 +1,9 @@
 {
-  "name": "codebounty",
-  "private": true,
+  "name": "codebounty", 
   "version": "0.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "start": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview"
