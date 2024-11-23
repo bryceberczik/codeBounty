@@ -27,6 +27,7 @@ const seedData = async () => {
       _isSeeding: true,
     });
 
+    // listing1 will be used to test job logic for all developer users.
     const listing1 = await Listing.create({
       title: "Responsive Website For My Business",
       description:
@@ -190,141 +191,195 @@ const seedData = async () => {
 
     // * User 7 * //
 
-    // const user7 = await User.create({
-    //   username: "Jack_Thomas22",
-    //   email: "jack@thomas22.com",
-    //   password: "seed123!",
-    //   role: "Frontend Developer",
-    //   technologies: [
-    //     "HTML",
-    //     "CSS",
-    //     "JavaScript",
-    //     "React",
-    //     "Redux",
-    //     "Bootstrap",
-    //   ],
-    //   description:
-    //     "I specialize in creating clean, responsive, and visually appealing websites. With a strong focus on performance and accessibility, I ensure every site looks great on any device.",
-    //   links: [
-    //     "https://jackthomasportfolio.com",
-    //     "https://modernshopdesign.com",
-    //     "https://github.com/jackthomas22",
-    //   ],
-    // });
+    const user7 = await User.create({
+      username: "Jack_Thomas22",
+      email: "jack@thomas22.com",
+      password: "seed123!",
+      role: "Frontend Developer",
+      technologies: [
+        "HTML",
+        "CSS",
+        "JavaScript",
+        "React",
+        "Redux",
+        "Bootstrap",
+      ],
+      description:
+        "I specialize in creating clean, responsive, and visually appealing websites. With a strong focus on performance and accessibility, I ensure every site looks great on any device.",
+      links: [
+        "https://jackthomasportfolio.com",
+        "https://modernshopdesign.com",
+        "https://github.com/jackthomas22",
+      ],
+    });
 
-    // // * User 8 * //
+    const job1 = await Job.create({
+      listingId: listing1._id,
+      userId: user7._id,
+      status: "pending",
+    });
 
-    // const user8 = await User.create({
-    //   username: "GraceParker",
-    //   email: "grace@parker.com",
-    //   password: "seed123!",
-    //   role: "UI/UX Designer",
-    //   technologies: [
-    //     "Figma",
-    //     "Sketch",
-    //     "AdobeXD",
-    //     "CSS",
-    //     "Wireframes",
-    //     "Prototyping",
-    //   ],
-    //   description:
-    //     "I'm passionate about crafting user-friendly designs that enhance the user experience. I bring ideas to life through detailed wireframes, prototypes, and creative visuals.",
-    //   links: [
-    //     "https://graceparkerdesigns.com",
-    //     "https://dribbble.com/graceparker",
-    //     "https://behance.net/graceparker",
-    //   ],
-    // });
+    user7.jobs.push(job1._id as mongoose.ObjectId);
+    await user7.save();
 
-    // // * User 9 * //
+    // * User 8 * //
 
-    // const user9 = await User.create({
-    //   username: "Luke-Adams",
-    //   email: "luke@adams.com",
-    //   password: "seed123!",
-    //   role: "Database Administrator",
-    //   technologies: ["SQL", "MongoDB", "PostgreSQL", "NoSQL", "Firebase"],
-    //   description:
-    //     "I design and manage databases to ensure seamless data flow and storage. Whether it’s SQL or NoSQL, I optimize systems for speed, security, and scalability.",
-    //   links: [
-    //     "https://lukeadamsdatabases.com",
-    //     "https://github.com/luke-adams",
-    //   ],
-    // });
+    const user8 = await User.create({
+      username: "GraceParker",
+      email: "grace@parker.com",
+      password: "seed123!",
+      role: "UI/UX Designer",
+      technologies: [
+        "Figma",
+        "Sketch",
+        "AdobeXD",
+        "CSS",
+        "Wireframes",
+        "Prototyping",
+      ],
+      description:
+        "I'm passionate about crafting user-friendly designs that enhance the user experience. I bring ideas to life through detailed wireframes, prototypes, and creative visuals.",
+      links: [
+        "https://graceparkerdesigns.com",
+        "https://dribbble.com/graceparker",
+        "https://behance.net/graceparker",
+      ],
+    });
 
-    // // * User 10 * //
+    const job2 = await Job.create({
+      listingId: listing1._id,
+      userId: user8._id,
+      status: "pending",
+    });
 
-    // const user10 = await User.create({
-    //   username: "Isabella.Moore",
-    //   email: "isabella@moore.com",
-    //   password: "seed123!",
-    //   role: "Backend Developer",
-    //   technologies: [
-    //     "Node.js",
-    //     "Express",
-    //     "Python",
-    //     "Django",
-    //     "GraphQL",
-    //     "APIs",
-    //     "PostgreSQL",
-    //   ],
-    //   description:
-    //     "I build robust backend systems to power modern applications. My expertise includes API development, database integration, and scalable architecture.",
-    //   links: [
-    //     "https://backendbyisabella.com",
-    //     "https://github.com/isabellamoore",
-    //     "https://apiintegrationproject.com",
-    //   ],
-    // });
+    user8.jobs.push(job2._id as mongoose.ObjectId);
+    await user8.save();
 
-    // // * User 11 * //
+    // * User 9 * //
 
-    // const user11 = await User.create({
-    //   username: "Henry_Taylor93",
-    //   email: "henry@taylor93.com",
-    //   password: "seed123!",
-    //   role: "Full Stack Developer",
-    //   technologies: [
-    //     "HTML",
-    //     "CSS",
-    //     "JavaScript",
-    //     "React",
-    //     "Node.js",
-    //     "MongoDB",
-    //     "Express",
-    //   ],
-    //   description:
-    //     "I bring ideas to life with full-stack solutions. From frontend design to backend development, I deliver user-focused applications tailored to client needs.",
-    //   links: [
-    //     "https://henrytaylorprojects.com",
-    //     "https://github.com/henry-taylor93",
-    //     "https://ecommercefullstack.com",
-    //   ],
-    // });
+    const user9 = await User.create({
+      username: "Luke-Adams",
+      email: "luke@adams.com",
+      password: "seed123!",
+      role: "Database Administrator",
+      technologies: ["SQL", "MongoDB", "PostgreSQL", "NoSQL", "Firebase"],
+      description:
+        "I design and manage databases to ensure seamless data flow and storage. Whether it’s SQL or NoSQL, I optimize systems for speed, security, and scalability.",
+      links: [
+        "https://lukeadamsdatabases.com",
+        "https://github.com/luke-adams",
+      ],
+    });
 
-    // // * User 12 * //
+    const job3 = await Job.create({
+      listingId: listing1._id,
+      userId: user9._id,
+      status: "pending",
+    });
 
-    // const user12 = await User.create({
-    //   username: "SophieKing",
-    //   email: "sophie@king.com",
-    //   password: "seed123!",
-    //   role: "UI/UX Designer",
-    //   technologies: [
-    //     "Figma",
-    //     "Photoshop",
-    //     "Wireframes",
-    //     "Prototyping",
-    //     "CSS",
-    //     "HTML",
-    //   ],
-    //   description:
-    //     "I transform concepts into intuitive and engaging designs. My goal is to create seamless user experiences with creativity and attention to detail.",
-    //   links: [
-    //     "https://sophiekingdesigns.com",
-    //     "https://dribbble.com/sophieking",
-    //     "https://minimalappdesign.com",
-    //   ],
-    // });
+    user9.jobs.push(job3._id as mongoose.ObjectId);
+    await user9.save();
+
+    // * User 10 * //
+
+    const user10 = await User.create({
+      username: "Isabella.Moore",
+      email: "isabella@moore.com",
+      password: "seed123!",
+      role: "Backend Developer",
+      technologies: [
+        "Node.js",
+        "Express",
+        "Python",
+        "Django",
+        "GraphQL",
+        "APIs",
+        "PostgreSQL",
+      ],
+      description:
+        "I build robust backend systems to power modern applications. My expertise includes API development, database integration, and scalable architecture.",
+      links: [
+        "https://backendbyisabella.com",
+        "https://github.com/isabellamoore",
+        "https://apiintegrationproject.com",
+      ],
+    });
+
+    const job4 = await Job.create({
+      listingId: listing1._id,
+      userId: user10._id,
+      status: "pending",
+    });
+
+    user10.jobs.push(job4._id as mongoose.ObjectId);
+    await user10.save();
+
+    // * User 11 * //
+
+    const user11 = await User.create({
+      username: "Henry_Taylor93",
+      email: "henry@taylor93.com",
+      password: "seed123!",
+      role: "Full Stack Developer",
+      technologies: [
+        "HTML",
+        "CSS",
+        "JavaScript",
+        "React",
+        "Node.js",
+        "MongoDB",
+        "Express",
+      ],
+      description:
+        "I bring ideas to life with full-stack solutions. From frontend design to backend development, I deliver user-focused applications tailored to client needs.",
+      links: [
+        "https://henrytaylorprojects.com",
+        "https://github.com/henry-taylor93",
+        "https://ecommercefullstack.com",
+      ],
+    });
+
+    const job5 = await Job.create({
+      listingId: listing1._id,
+      userId: user11._id,
+      status: "pending",
+    });
+
+    user11.jobs.push(job5._id as mongoose.ObjectId);
+    await user11.save();
+
+    // * User 12 * //
+
+    const user12 = await User.create({
+      username: "SophieKing",
+      email: "sophie@king.com",
+      password: "seed123!",
+      role: "UI/UX Designer",
+      technologies: [
+        "Figma",
+        "Photoshop",
+        "Wireframes",
+        "Prototyping",
+        "CSS",
+        "HTML",
+      ],
+      description:
+        "I transform concepts into intuitive and engaging designs. My goal is to create seamless user experiences with creativity and attention to detail.",
+      links: [
+        "https://sophiekingdesigns.com",
+        "https://dribbble.com/sophieking",
+        "https://minimalappdesign.com",
+      ],
+    });
+
+    const job6 = await Job.create({
+      listingId: listing1._id,
+      userId: user12._id,
+      status: "pending",
+    });
+
+    user12.jobs.push(job6._id as mongoose.ObjectId);
+    await user12.save();
   } catch (error) {
     // console.log(process.env.MONGODB_URI);
     console.error("Error Seeding Data:", error);
