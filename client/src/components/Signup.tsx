@@ -30,6 +30,14 @@ const Signup = () => {
       isValid = false;
     }
 
+    // Username must be at least 8 characters long.
+    else if (formState.username.length < 8) {
+      setError(
+        "Username must be at least 8 characters long."
+      );
+      isValid = false;
+    }
+
     // Password must be at least 8 characters long, contain at least one letter, one number, and one special character.
     else if (
       !/(?=.*[a-z])(?=.*[0-9])(?=.*[!@#\$%\^&])/.test(formState.password)
