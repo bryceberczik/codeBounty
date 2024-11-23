@@ -2,14 +2,12 @@ import { useState, useEffect } from "react";
 import { useQuery, useMutation } from "@apollo/client";
 import { QUERY_USER, QUERY_ME } from "../utils/queries";
 import { UPDATE_USER } from "../utils/mutations";
-
-import { useParams } from "react-router-dom";
-import Auth from "../utils/auth";
-
 import { Container, Row, Col, Alert } from "react-bootstrap";
 import { Button, Form } from "react-bootstrap";
 import { FaRegEdit } from "react-icons/fa";
 import PageTab from "../components/PageTab";
+import { useParams } from "react-router-dom";
+import Auth from "../utils/auth";
 import "../css/userprofile.css";
 
 interface IUserProfile {
@@ -27,16 +25,12 @@ const UserProfile = ({ username }: { username?: string }) => {
   // * Gets a username from either the URL params (user's profile) or the logged-in user's token (my profile).
   const displayedUsername = username || paramsUsername || loggedInUser;
 
-  // console.log(displayedUsername);
-
   if (!displayedUsername) {
     return <p>Error: No username available.</p>;
   }
 
   // * isOwnProfile is a boolean that checks if the profile being visited is the logged-in user's profile. When this is true, the user gets access to the editing tools.
   const isOwnProfile = loggedInUser === username;
-
-  // if (isOwnProfile) console.log(isOwnProfile);
 
   const { loading, data } = useQuery(isOwnProfile ? QUERY_ME : QUERY_USER, {
     variables: isOwnProfile ? undefined : { username: displayedUsername },
@@ -45,8 +39,6 @@ const UserProfile = ({ username }: { username?: string }) => {
 
   // * userId for UPDATE_USER mutation.
   const userId = data?.me?._id;
-
-  // console.log(userId);
 
   const [updateUser] = useMutation(UPDATE_USER);
 
@@ -60,8 +52,6 @@ const UserProfile = ({ username }: { username?: string }) => {
 
   const [alertMessage, setAlertMessage] = useState<string | null>(null);
   const [alertVariant, setAlertVariant] = useState<string>("success");
-
-  // console.log(user);
 
   useEffect(() => {
     if (data?.me || data?.user) {
@@ -207,16 +197,20 @@ const UserProfile = ({ username }: { username?: string }) => {
       return;
     }
 
-    if (roleInput.length > 24) {
-      setAlertMessage("Your role cannot exceed 24 characters.");
-      setAlertVariant("danger");
-      return;
+    if (roleInput !== null) {
+      if (roleInput.length > 24) {
+        setAlertMessage("Your role cannot exceed 24 characters.");
+        setAlertVariant("danger");
+        return;
+      }
     }
 
-    if (descriptionInput.length > 300) {
-      setAlertMessage("Your description cannot exceed 300 characters.");
-      setAlertVariant("danger");
-      return;
+    if (descriptionInput !== null) {
+      if (descriptionInput.length > 300) {
+        setAlertMessage("Your description cannot exceed 300 characters.");
+        setAlertVariant("danger");
+        return;
+      }
     }
 
     const updatedUserData = {
@@ -226,8 +220,6 @@ const UserProfile = ({ username }: { username?: string }) => {
       technologies: user.technologies,
       links: user.links,
     };
-
-    // console.log(updatedUserData);
 
     updateUser({
       variables: {
@@ -260,66 +252,66 @@ const UserProfile = ({ username }: { username?: string }) => {
         )}
         <div id="profile-card">
           <div className="first-sect-profile">
-          <div className="username-role">
-          <h1
-            id="username-profile-input"
-            suppressContentEditableWarning={true}
-            contentEditable={isOwnProfile}
-            onInput={(e) => {
-              if (e.currentTarget.innerText.length > 20) {
-                setAlertMessage("Your username cannot exceed 20 characters.");
-                setAlertVariant("danger");
-              } else if (e.currentTarget.innerText.length < 8) {
-                setAlertMessage(
-                  "Your username cannot be less than 8 characters."
-                );
-                setAlertVariant("danger");
-              } else {
-                setAlertMessage(null);
-              }
-            }}
-          >
-            {user?.username}
-          </h1>
-          <h2
-            id="role-profile-input"
-            suppressContentEditableWarning={true}
-            contentEditable={isOwnProfile}
-            onInput={(e) => {
-              if (e.currentTarget.innerText.length > 24) {
-                setAlertMessage("Your role cannot exceed 24 characters.");
-                setAlertVariant("danger");
-              } else {
-                setAlertMessage(null);
-              }
-            }}
-          >
-            {user?.role}
-          </h2>
-          </div>
+            <div className="username-role">
+              <h1
+                id="username-profile-input"
+                suppressContentEditableWarning={true}
+                contentEditable={isOwnProfile}
+                onInput={(e) => {
+                  if (e.currentTarget.innerText.length > 20) {
+                    setAlertMessage(
+                      "Your username cannot exceed 20 characters."
+                    );
+                    setAlertVariant("danger");
+                  } else if (e.currentTarget.innerText.length < 8) {
+                    setAlertMessage(
+                      "Your username cannot be less than 8 characters."
+                    );
+                    setAlertVariant("danger");
+                  } else {
+                    setAlertMessage(null);
+                  }
+                }}
+              >
+                {user?.username}
+              </h1>
+              <h2
+                id="role-profile-input"
+                suppressContentEditableWarning={true}
+                contentEditable={isOwnProfile}
+                onInput={(e) => {
+                  if (e.currentTarget.innerText.length > 24) {
+                    setAlertMessage("Your role cannot exceed 24 characters.");
+                    setAlertVariant("danger");
+                  } else {
+                    setAlertMessage(null);
+                  }
+                }}
+              >
+                {user?.role}
+              </h2>
+            </div>
 
-          <div className="descr-container">
-          <p
-            id="description-profile-input"
-            suppressContentEditableWarning={true}
-            contentEditable={isOwnProfile}
-            onInput={(e) => {
-              if (e.currentTarget.innerText.length > 300) {
-                setAlertMessage(
-                  "Your description cannot exceed 300 characters."
-                );
-                setAlertVariant("danger");
-              } else {
-                setAlertMessage(null);
-              }
-            }}
-          >
-            {user?.description}
-          </p>
+            <div className="descr-container">
+              <p
+                id="description-profile-input"
+                suppressContentEditableWarning={true}
+                contentEditable={isOwnProfile}
+                onInput={(e) => {
+                  if (e.currentTarget.innerText.length > 300) {
+                    setAlertMessage(
+                      "Your description cannot exceed 300 characters."
+                    );
+                    setAlertVariant("danger");
+                  } else {
+                    setAlertMessage(null);
+                  }
+                }}
+              >
+                {user?.description}
+              </p>
+            </div>
           </div>
-
-          </div>
-          
 
           <Row>
             <Col md={6} style={{ position: "relative" }}>
