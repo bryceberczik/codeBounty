@@ -66,8 +66,7 @@ const seedData = async () => {
     });
 
     const listing4 = await Listing.create({
-      title:
-        "Dashboard For Data Visualization",
+      title: "Dashboard For Data Visualization",
       description:
         "Help me design a dashboard that's clean, simple, and easy to understand for my team to use daily.",
       price: 1350,
