@@ -144,6 +144,7 @@ const resolvers = {
           throw new Error("No user found with that ID.");
         }
 
+        await Listing.deleteMany({ _id: { $in: user.listings } })
         await Job.deleteMany({ _id: { $in: user.jobs } });
 
         await User.findByIdAndDelete(_id);
