@@ -194,6 +194,7 @@ const seedData = async () => {
       username: "Jack_Thomas22",
       email: "jack@thomas22.com",
       password: "seed123!",
+      _isSeeding: true,
       role: "Frontend Developer",
       technologies: [
         "HTML",
@@ -227,6 +228,7 @@ const seedData = async () => {
       username: "GraceParker",
       email: "grace@parker.com",
       password: "seed123!",
+      _isSeeding: true,
       role: "UI/UX Designer",
       technologies: [
         "Figma",
@@ -237,7 +239,7 @@ const seedData = async () => {
         "Prototyping",
       ],
       description:
-        "I'm passionate about crafting user-friendly designs that enhance the user experience. I bring ideas to life through detailed wireframes, prototypes, and creative visuals.",
+        "I'm passionate about crafting user-friendly designs that enhance user experience. I bring ideas to life through wireframes, prototypes, and visuals.",
       links: [
         "https://graceparkerdesigns.com",
         "https://dribbble.com/graceparker",
@@ -260,6 +262,7 @@ const seedData = async () => {
       username: "Luke-Adams",
       email: "luke@adams.com",
       password: "seed123!",
+      _isSeeding: true,
       role: "Database Administrator",
       technologies: ["SQL", "MongoDB", "PostgreSQL", "NoSQL", "Firebase"],
       description:
@@ -285,6 +288,7 @@ const seedData = async () => {
       username: "Isabella.Moore",
       email: "isabella@moore.com",
       password: "seed123!",
+      _isSeeding: true,
       role: "Backend Developer",
       technologies: [
         "Node.js",
@@ -296,7 +300,7 @@ const seedData = async () => {
         "PostgreSQL",
       ],
       description:
-        "I build robust backend systems to power modern applications. My expertise includes API development, database integration, and scalable architecture.",
+        "I build robust backend systems to power modern applications. My expertise includes APIs, database integration, and scalable architecture.",
       links: [
         "https://backendbyisabella.com",
         "https://github.com/isabellamoore",
@@ -319,6 +323,7 @@ const seedData = async () => {
       username: "Henry_Taylor93",
       email: "henry@taylor93.com",
       password: "seed123!",
+      _isSeeding: true,
       role: "Full Stack Developer",
       technologies: [
         "HTML",
@@ -353,6 +358,7 @@ const seedData = async () => {
       username: "SophieKing",
       email: "sophie@king.com",
       password: "seed123!",
+      _isSeeding: true,
       role: "UI/UX Designer",
       technologies: [
         "Figma",
