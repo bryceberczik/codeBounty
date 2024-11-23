@@ -187,7 +187,7 @@ color: #4a5a6a;
   font-weight: 400;
 }
 
-@media (max-width: 400px) {
+@media screen and (max-width: 768px) {
 
   header {
     margin-left: 20px;

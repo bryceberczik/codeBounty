@@ -188,7 +188,7 @@
   background-color: #d6d5c9;
 }
 
-@media (max-width: 400px) {
+@media screen and (max-width: 768px) {
 
   #listing-card {
 

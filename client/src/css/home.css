@@ -322,7 +322,7 @@
   text-decoration: none;
 }
 
-@media (max-width: 400px) {
+@media screen and (max-width: 768px) {
 
   .getstarted-btn {
 

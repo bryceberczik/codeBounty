@@ -16,14 +16,14 @@ const Header = () => {
   const currentPage = useLocation().pathname;
 
   const [show, setShow] = useState(false);
-  const [isSmallScreen, setIsSmallScreen] = useState(window.innerWidth < 401);
+  const [isSmallScreen, setIsSmallScreen] = useState(window.innerWidth < 768);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
   useEffect(() => {
     const handleResize = () => {
-      setIsSmallScreen(window.innerWidth < 401);
+      setIsSmallScreen(window.innerWidth < 768);
     };
 
     window.addEventListener("resize", handleResize);
