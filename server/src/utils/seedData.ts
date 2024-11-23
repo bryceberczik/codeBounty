@@ -28,7 +28,7 @@ const seedData = async () => {
     });
 
     const listing1 = await Listing.create({
-      title: "Build a Responsive Website For My Business",
+      title: "Responsive Website For My Business",
       description:
         "I need a web developer to build a fully responsive website for my small business. It should look great on both desktop and mobile devices.",
       price: 2250,
@@ -36,7 +36,7 @@ const seedData = async () => {
     });
 
     const listing2 = await Listing.create({
-      title: "Redesign My Homepage With a Modern Look",
+      title: "Redesign My Homepage",
       description:
         "My homepage feels outdated. Can you redesign it with a fresh, modern look that matches my brand?",
       price: 1150,
@@ -57,7 +57,7 @@ const seedData = async () => {
     });
 
     const listing3 = await Listing.create({
-      title: "Develop a Database For Customer Management",
+      title: "Database For Customer Management",
       description:
         "I need a database to store customer details and make managing my client data easier.",
       price: 1500,
@@ -66,7 +66,7 @@ const seedData = async () => {
 
     const listing4 = await Listing.create({
       title:
-        "Design a Clean, User-Friendly Dashboard For Easy Data Visualization",
+        "Dashboard For Data Visualization",
       description:
         "Help me design a dashboard that's clean, simple, and easy to understand for my team to use daily.",
       price: 1350,
@@ -107,7 +107,7 @@ const seedData = async () => {
     });
 
     const listing6 = await Listing.create({
-      title: "Design Wireframes For a New Web Project",
+      title: "Wireframes For New Project",
       description:
         "I've got a project idea but need wireframes to visualize it. Need a UI/UX designer to help me create a basic prototype!",
       price: 500,
@@ -115,7 +115,7 @@ const seedData = async () => {
     });
 
     const listing7 = await Listing.create({
-      title: "Help With Backend Integration For My App",
+      title: "Help With Backend Integration",
       description:
         "I'm struggling to connect the backend to my app. Can a backend specialist help integrate the APIs properly?",
       price: 1150,
@@ -123,7 +123,7 @@ const seedData = async () => {
     });
 
     const listing8 = await Listing.create({
-      title: "Create a Sleek Landing Page For My Product",
+      title: "Sleek Landing Page For My Product",
       description:
         "I need a stunning landing page for my product launch that grabs attention and converts visitors.",
       price: 950,
@@ -145,7 +145,7 @@ const seedData = async () => {
     });
 
     const listing9 = await Listing.create({
-      title: "Optimize My Website For Faster Loading Speeds",
+      title: "Optimize Loading Speeds",
       description:
         "My site is slow, and it's frustrating users. Need a dev's help to optimize the site so it loads faster and perfoms better.",
       price: 550,
@@ -153,7 +153,7 @@ const seedData = async () => {
     });
 
     const listing10 = await Listing.create({
-      title: "Design a Mobile-Friendly User Experience",
+      title: "Design Mobile-Friendly Experience",
       description:
         "I need a user-friendly design for my app that's easy to navigate and looks professional",
       price: 1850,
@@ -174,7 +174,7 @@ const seedData = async () => {
     });
 
     const listing11 = await Listing.create({
-      title: "Develop a Database For Inventory-Tracking",
+      title: "Inventory-Tracking Database",
       description:
         "Can I get a database expert to set up a database to help me track inventory and ensure my business runs smoothly?",
       price: 1500,
