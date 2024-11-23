@@ -8,7 +8,7 @@ interface IFaqAccordionProps {
 
 const FaqAccordion = ({ title, description }: IFaqAccordionProps) => {
   return (
-    <Accordion defaultActiveKey="0">
+    <Accordion>
       <Accordion.Item eventKey="0">
         <Accordion.Header>{title}</Accordion.Header>
         <Accordion.Body>{description}</Accordion.Body>

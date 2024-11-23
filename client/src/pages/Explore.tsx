@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useQuery } from "@apollo/client";
 import { QUERY_USERS } from "../utils/queries";
 import { Link } from "react-router-dom";
@@ -37,8 +37,18 @@ type IUser = {
 
 const Explore = () => {
   const [startIndex, setStartIndex] = useState(0);
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
 
   const { loading, data } = useQuery(QUERY_USERS);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   if (loading) return <p>Loading...</p>;
 
@@ -54,18 +64,23 @@ const Explore = () => {
 
   const developerCount = developers.length;
 
-  const displayedDevelopers = [
-    ...developers.slice(startIndex, startIndex + 3),
-    ...developers.slice(0, Math.max(0, startIndex + 3 - developerCount)),
-  ];
+  const displayedDevelopers = isMobile
+    ? [developers[startIndex]]
+    : [
+        ...developers.slice(startIndex, startIndex + 3),
+        ...developers.slice(0, Math.max(0, startIndex + 3 - developerCount)),
+      ];
 
   const handleNext = () => {
-    setStartIndex((prevIndex) => (prevIndex + 3) % developerCount);
+    setStartIndex(
+      (prevIndex) => (prevIndex + (isMobile ? 1 : 3)) % developerCount
+    );
   };
 
   const handlePrevious = () => {
     setStartIndex(
-      (prevIndex) => (prevIndex - 3 + developerCount) % developerCount
+      (prevIndex) =>
+        (prevIndex - (isMobile ? 1 : 3) + developerCount) % developerCount
     );
   };
 
@@ -79,27 +94,55 @@ const Explore = () => {
           <h1>Top Rated Sellers</h1>
         </div>
         <div className="explore-users-container">
-          <div onClick={handlePrevious} className="turn">
-            <h1>{left}</h1>
-          </div>
-          {displayedDevelopers.map((developer: IUser) => (
-            <DevCard
-              key={developer._id}
-              username={developer.username}
-              role={developer.role}
-              description={developer.description}
-              technologies={developer.technologies.join(" | ")}
-            />
-          ))}
-          <div onClick={handleNext} className="turn">
-            <h1>{right}</h1>
-          </div>
+          {isMobile ? (
+            <div className="mobile-explore">
+              {displayedDevelopers.map((developer: IUser) => (
+                <DevCard
+                  key={developer._id}
+                  username={developer.username}
+                  role={developer.role}
+                  description={developer.description}
+                  technologies={developer.technologies.join(" | ")}
+                />
+              ))}
+              <div className="turn-handles">
+              <div onClick={handlePrevious} className="turn">
+                <h1>{left}</h1>
+              </div>
+              <div onClick={handleNext} className="turn">
+                <h1>{right}</h1>
+              </div>
+              </div>
+
+            </div>
+          ) : (
+            <>
+              <div onClick={handlePrevious} className="turn">
+                <h1>{left}</h1>
+              </div>
+              {displayedDevelopers.map((developer: IUser) => (
+                <DevCard
+                  key={developer._id}
+                  username={developer.username}
+                  role={developer.role}
+                  description={developer.description}
+                  technologies={developer.technologies.join(" | ")}
+                />
+              ))}
+              <div onClick={handleNext} className="turn">
+                <h1>{right}</h1>
+              </div>
+            </>
+          )}
         </div>
         <div className="explore-engage-container">
           <h1>Web Services at its finest.</h1>
           <h2>You imagine it. A programmer brings it to life.</h2>
           <div className="findwork-btn">
-            <Link to="/find-work" style={{ textDecoration: "none", color: "#003049" }}>
+            <Link
+              to="/find-work"
+              style={{ textDecoration: "none", color: "#003049" }}
+            >
               <h3>Find Work Now</h3>
             </Link>
           </div>
