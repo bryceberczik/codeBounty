@@ -12,7 +12,7 @@ import PostAJob from "./pages/PostAJob.tsx";
 // import About from "./pages/About.tsx";
 import UserProfile from "./pages/UserProfile.tsx";
 import Signup from "./pages/Signup.tsx";
-import SettingsPage from "./pages/settings.tsx";
+import Settings from "./pages/settings.tsx";
 
 import auth from "./utils/auth.ts";
 
@@ -63,7 +63,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "/settings",
-        element: <SettingsPage />,
+        element: <Settings />,
       },
     ],
   },
