@@ -10,7 +10,7 @@ const Congrats = () => {
   const [confettiActive, setConfettiActive] = useState(true);
 
   useEffect(() => {
-    const timer = setTimeout(() => setConfettiActive(false), 5000);
+    const timer = setTimeout(() => setConfettiActive(false), 10000);
     return () => clearTimeout(timer);
   }, []);
 
@@ -30,17 +30,25 @@ const Congrats = () => {
           <h1 className="congrats-text">Congratulations!</h1>
           <div className="congrats-div">
             <h1>You have accepted {username}'s request!</h1>
-            <p>You can contact them at {email}.</p>
+            <p>You can contact them at <a style={{ textDecoration: "none" }} target="_blank" href={`mailto:${email}`}>{email}</a>.</p>
             <p>We have removed the listing for you, keep up the great work!</p>
             <Link to="/" style={{ textDecoration: "none" }}>
               <div className="back-home">
-                <h1>Back home</h1>
+                <h1 style={{ textDecoration: "underline" }}>Continue</h1>
               </div>
             </Link>
           </div>
         </div>
       ) : (
-        <h1>YOU SUCK</h1>
+        <div className="lost-container">
+          <h1>Looks like you're lost...</h1>
+          <p>We'll take it from here!</p>
+          <Link to="/" style={{ textDecoration: "none" }}>
+            <div className="back-home">
+              <h1>Go Back</h1>
+            </div>
+          </Link>
+        </div>
       )}
     </div>
   );

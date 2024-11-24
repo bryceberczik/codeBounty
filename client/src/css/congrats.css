@@ -4,7 +4,14 @@
     flex-direction: column;
     align-items: center;
     text-align: center;
-    margin: 150px 0 300px 0
+    margin: 150px auto 300px auto;
+    border: 2px solid #003049;
+    border-radius: 20px;
+    width: 700px;
+    padding: 15px;
+    box-shadow: 0 1px 1px hsl(0deg 0% 0% / 0.075),
+    0 2px 2px hsl(0deg 0% 0% / 0.075), 0 4px 4px hsl(0deg 0% 0% / 0.075),
+    0 8px 8px hsl(0deg 0% 0% / 0.075), 0 16px 16px hsl(0deg 0% 0% / 0.075);
 }
 
 .congrats-text {
@@ -32,4 +39,15 @@
 .back-home h1 {
 
     color: #003049;
+}
+
+.lost-container {
+
+    color: #003049;
+    padding: 20px;
+}
+
+.lost-container p {
+
+    font-size: 30px;
 }
