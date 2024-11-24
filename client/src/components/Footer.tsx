@@ -14,21 +14,26 @@ const Footer = () => {
 
         <h1 id="footer-heading">Request More Information</h1>
 
-        <Button size="lg" id="contact-us-btn">Contact Us</Button>
+        <Button size="lg" id="contact-us-btn">
+          Contact Us
+        </Button>
 
         <div id="icon-container">
           <div className="social-icon">
-            <a>
+            <a
+              href="https://github.com/bryceberczik/codeBounty"
+              className="social-icon-a-tag"
+            >
               <FaGithub />
             </a>
           </div>
           <div className="social-icon">
-            <a>
+            <a href="mailto:zvkubajak@gmail.com" className="social-icon-a-tag">
               <SiGmail />
             </a>
           </div>
           <div className="social-icon">
-            <a>
+            <a href="https://linkedin.com" className="social-icon-a-tag">
               <FaLinkedin />
             </a>
           </div>
@@ -37,7 +42,8 @@ const Footer = () => {
         <p>&copy; 2024 codeBounty | All Rights Reserved</p>
 
         <p>
-          Built by Bryce Berczik, Zander Kubajak, Jarvis Young, and Justin Hebenstreit.
+          Built by Bryce Berczik, Zander Kubajak, Jarvis Young, and Justin
+          Hebenstreit.
         </p>
       </footer>
     </div>

@@ -34,3 +34,13 @@ footer p {
   width: 6%;
   font-size: 50px;
 }
+
+.social-icon a {
+  cursor: pointer;
+  color: white;
+  transition: color 0.25s ease;
+}
+
+.social-icon a:hover {
+  color: #4F8FF7;
+}
