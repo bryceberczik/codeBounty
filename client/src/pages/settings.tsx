@@ -3,10 +3,12 @@ import { useQuery, useMutation } from "@apollo/client";
 import { QUERY_ME } from "../utils/queries";
 import { DELETE_USER } from "../utils/mutations";
 import { Modal } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
 import "../css/settings.css";
 
 const Settings = () => {
   const [showModal, setShowModal] = useState(false);
+  const navigate = useNavigate();
 
   const [deleteUser] = useMutation(DELETE_USER);
   const { loading, data } = useQuery(QUERY_ME);
@@ -17,15 +19,17 @@ const Settings = () => {
 
   const handleDeleteUser = async (userId: string) => {
     try {
-      console.log(userId);
-
       await deleteUser({
         variables: {
           id: userId,
         },
       });
 
+      localStorage.removeItem("id_token");
+
       alert(`Your account has been deleted. Hope to see you again soon!`);
+
+      navigate("/");
     } catch (error) {
       console.error("Error Deleting User:", error);
     }
