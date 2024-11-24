@@ -15,7 +15,13 @@ const Footer = () => {
         <h1 id="footer-heading">Request More Information</h1>
 
         <Button size="lg" id="contact-us-btn">
-          Contact Us
+          <a
+            href="mailto:zvkubajak@gmail.com"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Contact Us
+          </a>
         </Button>
 
         <div id="icon-container">
