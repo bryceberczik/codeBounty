@@ -28,7 +28,7 @@ const PostAJob = () => {
   const [alertVariant, setAlertVariant] = useState<string>("warning");
 
   // Fetch logged-in user's info.
-  const { loading, error, data } = useQuery(QUERY_ME);
+  const { loading, data } = useQuery(QUERY_ME);
   const user = data?.me;
 
   // Mutation to add a listing.
@@ -94,8 +94,7 @@ const PostAJob = () => {
     }
   };
 
-  if (loading) return <p>Loading user data...</p>;
-  if (error) return <p>Error loading user data: {error.message}</p>;
+  if (loading) return <p style={{ paddingBottom: "1000px" }}>Loading...</p>;
 
   return (
     <div>

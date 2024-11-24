@@ -233,7 +233,7 @@ const UserProfile = ({ username }: { username?: string }) => {
   };
 
   // ! Loading Screen
-  if (loading) return <p>Loading...</p>;
+  if (loading) return <p style={{ paddingBottom: "1000px" }}>Loading...</p>;
 
   return (
     <Container id="user-profile">

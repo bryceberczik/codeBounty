@@ -1,11 +1,36 @@
 footer {
   text-align: center;
-  background-color: #003049;
+  padding: 100px 0 20px 0px;
+  border-top: 1px solid #0B5ED7;
+  background-color: #0a142f;
   color: #eeede1;
-  margin: 0;
 }
 
 footer p {
-  margin: 0;
-  padding: 11px 0;
+  opacity: 0.85;
+}
+
+#footer-motto {
+  font-size: 20px;
+  padding-bottom: 15px;
+}
+
+#footer-heading {
+  padding-bottom: 40px;
+}
+
+#contact-us-btn {
+  border-radius: 25px;
+  padding: 10px 40px 10px 40px;
+}
+
+#icon-container {
+  display: flex;
+  justify-content: center;
+  padding: 30px 0px 60px 0px;
+}
+
+.social-icon {
+  width: 6%;
+  font-size: 50px;
 }
