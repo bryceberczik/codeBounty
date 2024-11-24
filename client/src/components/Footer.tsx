@@ -22,18 +22,27 @@ const Footer = () => {
           <div className="social-icon">
             <a
               href="https://github.com/bryceberczik/codeBounty"
-              className="social-icon-a-tag"
+              target="_blank"
+              rel="noopener noreferrer"
             >
               <FaGithub />
             </a>
           </div>
           <div className="social-icon">
-            <a href="mailto:zvkubajak@gmail.com" className="social-icon-a-tag">
+            <a
+              href="mailto:zvkubajak@gmail.com"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <SiGmail />
             </a>
           </div>
           <div className="social-icon">
-            <a href="https://linkedin.com" className="social-icon-a-tag">
+            <a
+              href="https://linkedin.com"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <FaLinkedin />
             </a>
           </div>
