@@ -250,48 +250,45 @@ const UserProfile = ({ username }: { username?: string }) => {
             {alertMessage}
           </Alert>
         )}
+        <div className="username-role">
+          <h1
+            id="username-profile-input"
+            suppressContentEditableWarning={true}
+            contentEditable={isOwnProfile}
+            onInput={(e) => {
+              if (e.currentTarget.innerText.length > 20) {
+                setAlertMessage("Your username cannot exceed 20 characters.");
+                setAlertVariant("danger");
+              } else if (e.currentTarget.innerText.length < 8) {
+                setAlertMessage(
+                  "Your username cannot be less than 8 characters."
+                );
+                setAlertVariant("danger");
+              } else {
+                setAlertMessage(null);
+              }
+            }}
+          >
+            {user?.username}
+          </h1>
+          <h2
+            id="role-profile-input"
+            suppressContentEditableWarning={true}
+            contentEditable={isOwnProfile}
+            onInput={(e) => {
+              if (e.currentTarget.innerText.length > 24) {
+                setAlertMessage("Your role cannot exceed 24 characters.");
+                setAlertVariant("danger");
+              } else {
+                setAlertMessage(null);
+              }
+            }}
+          >
+            {user?.role}
+          </h2>
+        </div>
         <div id="profile-card">
           <div className="first-sect-profile">
-            <div className="username-role">
-              <h1
-                id="username-profile-input"
-                suppressContentEditableWarning={true}
-                contentEditable={isOwnProfile}
-                onInput={(e) => {
-                  if (e.currentTarget.innerText.length > 20) {
-                    setAlertMessage(
-                      "Your username cannot exceed 20 characters."
-                    );
-                    setAlertVariant("danger");
-                  } else if (e.currentTarget.innerText.length < 8) {
-                    setAlertMessage(
-                      "Your username cannot be less than 8 characters."
-                    );
-                    setAlertVariant("danger");
-                  } else {
-                    setAlertMessage(null);
-                  }
-                }}
-              >
-                {user?.username}
-              </h1>
-              <h2
-                id="role-profile-input"
-                suppressContentEditableWarning={true}
-                contentEditable={isOwnProfile}
-                onInput={(e) => {
-                  if (e.currentTarget.innerText.length > 24) {
-                    setAlertMessage("Your role cannot exceed 24 characters.");
-                    setAlertVariant("danger");
-                  } else {
-                    setAlertMessage(null);
-                  }
-                }}
-              >
-                {user?.role}
-              </h2>
-            </div>
-
             <div className="descr-container">
               <p
                 id="description-profile-input"
