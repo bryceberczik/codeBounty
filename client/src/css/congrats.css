@@ -1,0 +1,35 @@
+.congrats-container {
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin: 150px 0 300px 0
+}
+
+.congrats-text {
+
+    color: #003049;
+    font-size: 45px;
+}
+
+.congrats-div {
+
+    color: #003049;
+}
+
+.congrats-div h1 {
+
+    font-size: 35px;
+    margin: 25px 0;
+}
+
+.congrats-div p {
+
+    font-size: 30px;
+}
+
+.back-home h1 {
+
+    color: #003049;
+}
