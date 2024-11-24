@@ -43,6 +43,14 @@ export const UPDATE_USER = gql`
   }
 `;
 
+export const DELETE_USER = gql`
+  mutation Mutation($id: ID!) {
+    deleteUser(_id: $id) {
+      _id
+    }
+  }
+`;
+
 export const ADD_LISTING = gql`
   mutation Mutation($input: ListingInput!) {
     addListing(input: $input) {

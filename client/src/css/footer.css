@@ -24,6 +24,11 @@ footer p {
   padding: 10px 40px 10px 40px;
 }
 
+#contact-us-btn a {
+  text-decoration: none;
+  color: white;
+}
+
 #icon-container {
   display: flex;
   justify-content: center;
@@ -33,4 +38,14 @@ footer p {
 .social-icon {
   width: 6%;
   font-size: 50px;
+}
+
+.social-icon a {
+  cursor: pointer;
+  color: white;
+  transition: color 0.25s ease;
+}
+
+.social-icon a:hover {
+  color: #4F8FF7;
 }
