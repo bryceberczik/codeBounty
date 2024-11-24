@@ -60,7 +60,7 @@ const Settings = () => {
         </Modal.Header>
         <Modal.Body>
           <button onClick={() => handleDeleteUser(userId)}>Hell yea</button>
-          <button onClick={() => handleCloseModal}>Nuh uh</button>
+          <button onClick={handleCloseModal}>Nuh uh</button>
         </Modal.Body>
       </Modal>
     </div>
