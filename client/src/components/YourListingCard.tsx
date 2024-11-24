@@ -6,7 +6,7 @@ import {
 import { UPDATE_JOB_STATUS, DELETE_LISTING } from "../utils/mutations";
 import { Modal, Card, Button } from "react-bootstrap";
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "../css/listingcard.css";
 
 interface ListingCardProps {
@@ -37,6 +37,7 @@ const YourListingCard = ({
   onDelete,
 }: ListingCardProps) => {
   const [showModal, setShowModal] = useState(false);
+  const navigate = useNavigate();
   const [applicantDetailsArray, setApplicantDetailsArray] = useState<any[]>([]);
 
   const [updateJobStatus] = useMutation(UPDATE_JOB_STATUS);
@@ -148,9 +149,15 @@ const YourListingCard = ({
       },
     });
 
-    alert(
-      `You have accepted ${username}'s application. Contact them at ${email} to get in touch!`
-    );
+    navigate("/congrats", {
+      state: {
+        jobId,
+        username,
+        email,
+        listingId,
+      },
+    });
+
     await handleDeleteListing(listingId);
   };
 
