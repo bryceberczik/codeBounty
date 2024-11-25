@@ -160,7 +160,7 @@ const UserProfile = ({ username }: { username?: string }) => {
       return;
     }
 
-    if (!user.technologies.includes(link)) {
+    if (!user.links.includes(link)) {
       setAlertMessage("This link does not exist on your list.");
       setAlertVariant("danger");
       return;
