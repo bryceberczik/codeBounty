@@ -9,9 +9,11 @@ import Home from "./pages/Home.tsx";
 import Explore from "./pages/Explore.tsx";
 import FindWork from "./pages/FindWork.tsx";
 import PostAJob from "./pages/PostAJob.tsx";
-import About from "./pages/About.tsx";
+// import About from "./pages/About.tsx";
 import UserProfile from "./pages/UserProfile.tsx";
 import Signup from "./pages/Signup.tsx";
+import Settings from "./pages/settings.tsx";
+import Congrats from "./pages/Congrats.tsx";
 
 import auth from "./utils/auth.ts";
 
@@ -35,12 +37,15 @@ export const router = createBrowserRouter([
       },
       {
         path: "/post-listing",
-        element: <PostAJob />,
+        element: auth.loggedIn() ? (
+        <PostAJob /> ) : (
+          <Navigate to="/signup" />
+        )
       },
-      {
-        path: "/about-us",
-        element: <About />,
-      },
+      // {
+      //   path: "/about-us",
+      //   element: <About />,
+      // },
       {
         path: "/profiles/:username",
         element: <UserProfile />
@@ -57,6 +62,18 @@ export const router = createBrowserRouter([
         path: "/signup",
         element: <Signup />,
       },
+      {
+        path: "/settings",
+        element: auth.loggedIn() ? (
+          <Settings />
+        ) : (
+          <Navigate to="/signup" />
+        ),
+      },
+      {
+        path: "/congrats",
+        element: <Congrats />
+      }
     ],
   },
 ]);

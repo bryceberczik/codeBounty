@@ -1,0 +1,20 @@
+.errorPage {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: rgb(255, 217, 0);
+}
+
+.noBananas {
+  font-size: 4rem;
+  font-weight: bold;
+  margin-bottom: 2rem;
+}
+
+.banana {
+  width: 30rem;
+  height: 30rem;
+  margin: 20px;
+}

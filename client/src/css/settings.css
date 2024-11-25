@@ -1,0 +1,134 @@
+.settings-div {
+  margin: 50px 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.settings-div h1 {
+  font-size: 40px;
+  text-align: center;
+  color: #003049;
+  margin-bottom: 50px;
+}
+
+body.dark .settings-div h1 {
+  color: #eee;
+}
+
+body.dark .settings-container {
+  border: 2px solid #eee;
+}
+
+.settings-container {
+  padding: 20px;
+  border: 2px solid #003049;
+  border-radius: 20px;
+  width: 450px;
+  box-shadow: 0 1px 1px hsl(0deg 0% 0% / 0.075),
+    0 2px 2px hsl(0deg 0% 0% / 0.075), 0 4px 4px hsl(0deg 0% 0% / 0.075),
+    0 8px 8px hsl(0deg 0% 0% / 0.075), 0 16px 16px hsl(0deg 0% 0% / 0.075);
+  margin: 50px;
+}
+
+.setting-opt {
+  text-align: center;
+}
+
+.setting-opt h3 {
+  color: #003049;
+  font-size: 20px;
+}
+
+body.dark .setting-opt h3 {
+  color: #eee;
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+  margin: 25px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: 0.4s;
+  border-radius: 34px;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  transition: 0.4s;
+  border-radius: 50%;
+}
+
+input:checked + .slider {
+  background-color: #003049;
+}
+
+input:checked + .slider:before {
+  transform: translateX(26px);
+}
+
+.delete-user-btn {
+  margin: 25px 0;
+  background-color: #d5aeae;
+  padding: 5px 10px;
+  color: #4d0000;
+  border: 2px solid #4d0000;
+  border-radius: 10px;
+  transition: 0.3s ease;
+}
+
+body.dark .delete-user-btn {
+  background-color: #502f2f;
+  border: 2px solid #502f2f;
+  color: #eee;
+}
+
+.delete-user-btn:hover {
+  background-color: #b08b8b;
+}
+
+body.dark .delete-user-btn:hover {
+  background-color: #4d0000;
+}
+
+.modal-title {
+  font-size: 24px;
+  text-align: center;
+}
+
+.modal-body button {
+  background-color: #003049 !important;
+  border-radius: 5px;
+  padding: 5px;
+  color: white;
+  margin: 0 20px;
+}
+
+@media screen and (max-width: 768px) {
+  .settings-container {
+    width: 350px;
+  }
+}

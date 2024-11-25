@@ -8,18 +8,10 @@ const Signup = () => {
     username: string;
     email: string;
     password: string;
-    role?: string;
-    technologies?: string[];
-    description?: string;
-    links?: string[];
   }>({
     username: "",
     email: "",
     password: "",
-    role: undefined,
-    technologies: [],
-    description: undefined,
-    links: [],
   });
 
   const [error, setError] = useState("");
@@ -35,6 +27,12 @@ const Signup = () => {
       isValid = false;
     } else if (!formState.password) {
       setError("Password is required.");
+      isValid = false;
+    }
+
+    // Username must be at least 8 characters long.
+    else if (formState.username.length < 8) {
+      setError("Username must be at least 8 characters long.");
       isValid = false;
     }
 
@@ -62,6 +60,9 @@ const Signup = () => {
         variables: { input: formState },
       });
       Auth.login(data.addUser.token);
+
+      // let hasTheme = localStorage.getItem("theme");
+      // if (!hasTheme) localStorage.setItem("theme", "light");
     } catch (err) {
       console.error(err);
       setError("Something went wrong.");
@@ -72,6 +73,7 @@ const Signup = () => {
     <div className="signup-container">
       <form className="auth-form" onSubmit={handleFormSubmit}>
         {/* Username Section */}
+        <label>Username</label>
         <input
           name="username"
           type="text"
@@ -83,6 +85,7 @@ const Signup = () => {
         />
 
         {/* Email Section */}
+        <label>Email</label>
         <input
           name="email"
           type="email"
@@ -94,6 +97,7 @@ const Signup = () => {
         />
 
         {/* Password Section */}
+        <label>Password</label>
         <input
           name="password"
           type="password"
@@ -103,110 +107,6 @@ const Signup = () => {
             setFormState({ ...formState, password: e.target.value })
           }
         />
-
-        {/* Role Section */}
-        <input
-          name="role"
-          type="text"
-          placeholder="Developer Role (optional)"
-          value={formState.role || ""}
-          onChange={(e) => setFormState({ ...formState, role: e.target.value })}
-        />
-
-        {/* Technologies Section */}
-        <div className="input-items">
-          {(formState.technologies || []).map((technology, idx) => (
-            <div key={idx}>
-              <input
-                type="text"
-                placeholder="Technology"
-                value={technology}
-                onChange={(e) => {
-                  const newTechnologies = [...(formState.technologies || [])];
-                  newTechnologies[idx] = e.target.value;
-                  setFormState({
-                    ...formState,
-                    technologies: newTechnologies,
-                  });
-                }}
-              />
-              <button
-                type="button"
-                onClick={() => {
-                  const newTechnologies = [...(formState.technologies || [])];
-                  newTechnologies.splice(idx, 1);
-                  setFormState({
-                    ...formState,
-                    technologies: newTechnologies,
-                  });
-                }}
-              >
-                X
-              </button>
-            </div>
-          ))}
-          <button
-            type="button"
-            onClick={() => {
-              setFormState({
-                ...formState,
-                technologies: [...(formState.technologies || []), ""],
-              });
-            }}
-          >
-            Add Technology
-          </button>
-        </div>
-
-        {/* Description Section */}
-        <div>
-          <textarea
-            placeholder="Personal Description"
-            value={formState.description}
-            onChange={(e) =>
-              setFormState({ ...formState, description: e.target.value })
-            }
-          />
-        </div>
-
-        {/* Links Section */}
-        <div className="input-items">
-          {(formState.links || []).map((link, idx) => (
-            <div key={idx}>
-              <input
-                type="text"
-                placeholder="Link"
-                value={link}
-                onChange={(e) => {
-                  const newLinks = [...(formState.links || [])];
-                  newLinks[idx] = e.target.value;
-                  setFormState({ ...formState, links: newLinks });
-                }}
-              />
-              <button
-                type="button"
-                onClick={() => {
-                  const newLinks = [...(formState.links || [])];
-                  newLinks.splice(idx, 1);
-                  setFormState({ ...formState, links: newLinks });
-                }}
-              >
-                X
-              </button>
-            </div>
-          ))}
-          <button
-            type="button"
-            onClick={() => {
-              setFormState({
-                ...formState,
-                links: [...(formState.links || []), ""],
-              });
-            }}
-          >
-            Add Link
-          </button>
-        </div>
 
         <button className="auth-btn" type="submit">
           Submit

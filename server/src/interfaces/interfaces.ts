@@ -60,6 +60,10 @@ export interface UserArgs {
   username: string;
 }
 
+export interface UserByIdArgs {
+  _id: string;
+}
+
 export interface ListingArgs {
   _id: string;
 }
@@ -71,4 +75,8 @@ export interface JobArgs {
 export interface LoginUserArgs {
   username: string;
   password: string;
+}
+
+export interface findApplicantsByListingIdArgs {
+  _id: string;
 }

@@ -1,25 +1,35 @@
 .label-ind {
-
   font-family: "Poppins", sans-serif;
   font-weight: 500;
   color: #003049;
 }
 
-.group-space {
+body.dark .label-ind {
+  color: #eeede1;
+}
 
+.group-space {
   margin-bottom: 20px !important;
 }
 
 .form-control {
-
   color: #003049 !important;
 }
 
-.input-group-text {
+body.dark .text-muted {
+  color: #eeede1 !important;
+}
 
+.input-group-text {
   color: #003049;
   border: 1px solid #aec5d5;
   background-color: #aec5d5;
+}
+
+body.dark .input-group-text {
+  color: #eeede1;
+  border: 1px solid #003049;
+  background-color: #003049;
 }
 
 .form-control:focus {
@@ -28,55 +38,66 @@
 }
 
 .why-section {
-
   margin: 50px 0;
   display: flex;
   flex-direction: column;
   align-items: center;
-  color:#003049;
+  color: #003049;
 }
 
 .why-section h1 {
-
   font-family: "Poppins", sans-serif;
   font-weight: 450;
   font-size: 35px;
 }
 
 .why-section h3 {
-
   font-family: "Poppins", sans-serif;
   font-weight: 400;
   font-size: 24px;
-  margin:10px 0 40px 0;
+  margin: 10px 0 40px 0;
 }
 
 .why-explain {
-
   background-color: #e0e0a3;
   border-radius: 20px;
   padding: 50px;
-  color:#003049;
+  color: #003049;
   box-shadow: 0 1px 1px hsl(0deg 0% 0% / 0.075),
-  0 2px 2px hsl(0deg 0% 0% / 0.075), 0 4px 4px hsl(0deg 0% 0% / 0.075),
-  0 8px 8px hsl(0deg 0% 0% / 0.075), 0 16px 16px hsl(0deg 0% 0% / 0.075);
+    0 2px 2px hsl(0deg 0% 0% / 0.075), 0 4px 4px hsl(0deg 0% 0% / 0.075),
+    0 8px 8px hsl(0deg 0% 0% / 0.075), 0 16px 16px hsl(0deg 0% 0% / 0.075);
+  margin: 20px 0 60px 0;
 }
 
 .why-explain h2 {
-
   font-family: "Poppins", sans-serif;
   font-weight: 400;
-  
+}
+
+.form-title-cust {
+  display: flex;
+  flex-direction: flex;
+}
+
+.form-title-cust p {
+  margin-left: 10px;
+}
+
+.form-title-cust {
+  color: #eeede1;
 }
 
 #post-job-heading {
   text-align: center;
   padding: 50px 0;
-  color: #003049
+  color: #003049;
+}
+
+body.dark #post-job-heading {
+  color: #eeede1;
 }
 
 #post-job-heading h1 {
-
   font-family: "Poppins", sans-serif;
   font-weight: 450;
 }
@@ -94,13 +115,18 @@
 
 #post-listing-button {
   background-color: #aec5d5;
-  color:#003049;
+  color: #003049;
   border: 1px solid #003049;
   width: 50%;
   float: right;
   box-shadow: 0 1px 1px hsl(0deg 0% 0% / 0.075),
-  0 2px 2px hsl(0deg 0% 0% / 0.075), 0 4px 4px hsl(0deg 0% 0% / 0.075),
-  0 8px 8px hsl(0deg 0% 0% / 0.075), 0 16px 16px hsl(0deg 0% 0% / 0.075);
+    0 2px 2px hsl(0deg 0% 0% / 0.075), 0 4px 4px hsl(0deg 0% 0% / 0.075),
+    0 8px 8px hsl(0deg 0% 0% / 0.075), 0 16px 16px hsl(0deg 0% 0% / 0.075);
+}
+
+body.dark #post-listing-button {
+  background-color: #003049;
+  color: #eeede1;
 }
 
 /* * Your Current Listings * */
@@ -108,8 +134,55 @@
 #your-listings-text {
   text-align: center;
   padding-top: 100px;
+  color: #003049;
+}
+
+body.dark #your-listings-text {
+  color: #eeede1;
 }
 
 #your-listings-container {
   padding-top: 50px;
+}
+
+body.dark #your-listings-container p {
+  color: #eee;
+}
+
+body.dark .why-section {
+  color: #eee;
+}
+
+body.dark .why-explain {
+  background-color: #1a1a1a;
+  color: #eee;
+}
+#no-listings-message {
+  text-align: center;
+  padding-bottom: 20px;
+  font-size: 36px;
+  color: #003049;
+}
+
+@media screen and (max-width: 768px) {
+  #post-job-heading {
+    margin: 0 25px;
+  }
+
+  #no-listings-message {
+    font-size: 20px;
+  }
+
+  .why-section {
+    margin: 50px 25px;
+  }
+
+  .why-section h1 {
+    text-align: center;
+    font-size: 30px;
+  }
+
+  .why-explain {
+    text-align: center;
+  }
 }

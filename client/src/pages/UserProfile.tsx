@@ -2,14 +2,12 @@ import { useState, useEffect } from "react";
 import { useQuery, useMutation } from "@apollo/client";
 import { QUERY_USER, QUERY_ME } from "../utils/queries";
 import { UPDATE_USER } from "../utils/mutations";
-
-import { useParams } from "react-router-dom";
-import Auth from "../utils/auth";
-
-import { Container, Row, Col } from "react-bootstrap";
+import { Container, Row, Col, Alert } from "react-bootstrap";
 import { Button, Form } from "react-bootstrap";
 import { FaRegEdit } from "react-icons/fa";
 import PageTab from "../components/PageTab";
+import { useParams } from "react-router-dom";
+import Auth from "../utils/auth";
 import "../css/userprofile.css";
 
 interface IUserProfile {
@@ -27,16 +25,12 @@ const UserProfile = ({ username }: { username?: string }) => {
   // * Gets a username from either the URL params (user's profile) or the logged-in user's token (my profile).
   const displayedUsername = username || paramsUsername || loggedInUser;
 
-  // console.log(displayedUsername);
-
   if (!displayedUsername) {
     return <p>Error: No username available.</p>;
   }
 
   // * isOwnProfile is a boolean that checks if the profile being visited is the logged-in user's profile. When this is true, the user gets access to the editing tools.
   const isOwnProfile = loggedInUser === username;
-
-  // if (isOwnProfile) console.log(isOwnProfile);
 
   const { loading, data } = useQuery(isOwnProfile ? QUERY_ME : QUERY_USER, {
     variables: isOwnProfile ? undefined : { username: displayedUsername },
@@ -45,8 +39,6 @@ const UserProfile = ({ username }: { username?: string }) => {
 
   // * userId for UPDATE_USER mutation.
   const userId = data?.me?._id;
-
-  // console.log(userId);
 
   const [updateUser] = useMutation(UPDATE_USER);
 
@@ -58,7 +50,8 @@ const UserProfile = ({ username }: { username?: string }) => {
 
   const [user, setUser] = useState<IUserProfile | null>(null);
 
-  // console.log(user);
+  const [alertMessage, setAlertMessage] = useState<string | null>(null);
+  const [alertVariant, setAlertVariant] = useState<string>("success");
 
   useEffect(() => {
     if (data?.me || data?.user) {
@@ -75,13 +68,25 @@ const UserProfile = ({ username }: { username?: string }) => {
   const handleAddTechnology = (tech: string) => {
     if (!user) return;
 
-    if (!tech.trim()) {
-      alert("Technology cannot be nothing.");
+    if (user.technologies.length === 15) {
+      setAlertMessage("You have reached the limit for technologies displayed.");
+      setAlertVariant("danger");
+      return;
+    }
+
+    if (tech.length > 12) {
+      setAlertMessage("Technology cannot be more than 12 characters.");
+      setAlertVariant("danger");
+      return;
+    } else if (!tech.trim()) {
+      setAlertMessage("Technology cannot be nothing.");
+      setAlertVariant("danger");
       return;
     }
 
     if (user.technologies.includes(tech)) {
-      alert("This technology is already listed.");
+      setAlertMessage("This technology is already listed.");
+      setAlertVariant("danger");
       return;
     }
 
@@ -96,12 +101,14 @@ const UserProfile = ({ username }: { username?: string }) => {
     if (!user) return;
 
     if (!tech.trim()) {
-      alert("Please enter a valid technology to delete.");
+      setAlertMessage("Please enter a valid technology to delete.");
+      setAlertVariant("danger");
       return;
     }
 
     if (!user.technologies.includes(tech)) {
-      alert("This technology does not exist on your list.");
+      setAlertMessage("This technology does not exist on your list.");
+      setAlertVariant("danger");
       return;
     }
 
@@ -115,13 +122,25 @@ const UserProfile = ({ username }: { username?: string }) => {
   const handleAddLink = (link: string) => {
     if (!user) return;
 
-    if (!link.trim()) {
-      alert("Link can not be nothing.");
+    if (user.links.length === 5) {
+      setAlertMessage("You have reached the limit for links displayed.");
+      setAlertVariant("danger");
+      return;
+    }
+
+    if (link.length > 80) {
+      setAlertMessage("Link cannot be more than 80 characters.");
+      setAlertVariant("danger");
+      return;
+    } else if (!link.trim()) {
+      setAlertMessage("Link can not be nothing.");
+      setAlertVariant("danger");
       return;
     }
 
     if (user.links.includes(link)) {
-      alert("This link is already listed.");
+      setAlertMessage("This link is already listed.");
+      setAlertVariant("danger");
       return;
     }
 
@@ -136,12 +155,14 @@ const UserProfile = ({ username }: { username?: string }) => {
     if (!user) return;
 
     if (!link.trim()) {
-      alert("Please enter a valid link to delete.");
+      setAlertMessage("Please enter a valid link to delete.");
+      setAlertVariant("danger");
       return;
     }
 
-    if (!user.technologies.includes(link)) {
-      alert("This link does not exist on your list.");
+    if (!user.links.includes(link)) {
+      setAlertMessage("This link does not exist on your list.");
+      setAlertVariant("danger");
       return;
     }
 
@@ -155,24 +176,50 @@ const UserProfile = ({ username }: { username?: string }) => {
   const handleSave = () => {
     if (!user) return;
 
+    const usernameInput =
+      document.getElementById("username-profile-input")?.innerText ||
+      user?.username;
+
+    const roleInput =
+      document.getElementById("role-profile-input")?.innerText || user?.role;
+
+    const descriptionInput =
+      document.getElementById("description-profile-input")?.innerText ||
+      user?.description;
+
+    if (usernameInput.length > 20) {
+      setAlertMessage("Your username cannot exceed 20 characters.");
+      setAlertVariant("danger");
+      return;
+    } else if (usernameInput.length < 8) {
+      setAlertMessage("Your username cannot be less than 8 characters.");
+      setAlertVariant("danger");
+      return;
+    }
+
+    if (roleInput !== null) {
+      if (roleInput.length > 24) {
+        setAlertMessage("Your role cannot exceed 24 characters.");
+        setAlertVariant("danger");
+        return;
+      }
+    }
+
+    if (descriptionInput !== null) {
+      if (descriptionInput.length > 300) {
+        setAlertMessage("Your description cannot exceed 300 characters.");
+        setAlertVariant("danger");
+        return;
+      }
+    }
+
     const updatedUserData = {
-      username:
-        document.getElementById("username-profile-input")?.innerText ||
-        user?.username,
-
-      role:
-        document.getElementById("role-profile-input")?.innerText || user?.role,
-
-      description:
-        document.getElementById("description-profile-input")?.innerText ||
-        user?.description,
-
+      username: usernameInput,
+      role: roleInput,
+      description: descriptionInput,
       technologies: user.technologies,
-
       links: user.links,
     };
-
-    // console.log(updatedUserData);
 
     updateUser({
       variables: {
@@ -181,22 +228,46 @@ const UserProfile = ({ username }: { username?: string }) => {
           ...updatedUserData,
         },
       },
-    }).then(() => alert("Profile updated successfully!"));
+    }).then(() => setAlertMessage("Profile updated successfully!"));
+    setAlertVariant("success");
   };
 
   // ! Loading Screen
-  if (loading) return <p>Loading...</p>;
+  if (loading) return <p style={{ paddingBottom: "1000px" }}>Loading...</p>;
 
   return (
     <Container id="user-profile">
       <PageTab
         title={isOwnProfile ? "My Profile" : `${user?.username}'s Profile`}
       >
-        <div id="profile-card">
+        {alertMessage && (
+          <Alert
+            className="alert-back"
+            variant={alertVariant}
+            onClose={() => setAlertMessage(null)}
+            dismissible
+          >
+            {alertMessage}
+          </Alert>
+        )}
+        <div className="username-role">
           <h1
             id="username-profile-input"
             suppressContentEditableWarning={true}
             contentEditable={isOwnProfile}
+            onInput={(e) => {
+              if (e.currentTarget.innerText.length > 20) {
+                setAlertMessage("Your username cannot exceed 20 characters.");
+                setAlertVariant("danger");
+              } else if (e.currentTarget.innerText.length < 8) {
+                setAlertMessage(
+                  "Your username cannot be less than 8 characters."
+                );
+                setAlertVariant("danger");
+              } else {
+                setAlertMessage(null);
+              }
+            }}
           >
             {user?.username}
           </h1>
@@ -204,17 +275,41 @@ const UserProfile = ({ username }: { username?: string }) => {
             id="role-profile-input"
             suppressContentEditableWarning={true}
             contentEditable={isOwnProfile}
+            onInput={(e) => {
+              if (e.currentTarget.innerText.length > 24) {
+                setAlertMessage("Your role cannot exceed 24 characters.");
+                setAlertVariant("danger");
+              } else {
+                setAlertMessage(null);
+              }
+            }}
           >
             {user?.role}
           </h2>
-
-          <p
-            id="description-profile-input"
-            suppressContentEditableWarning={true}
-            contentEditable={isOwnProfile}
-          >
-            {user?.description}
-          </p>
+        </div>
+        <div id="profile-card">
+          <h3>Description:</h3>
+          <div className="first-sect-profile">
+            <div className="descr-container">
+              <p
+                id="description-profile-input"
+                suppressContentEditableWarning={true}
+                contentEditable={isOwnProfile}
+                onInput={(e) => {
+                  if (e.currentTarget.innerText.length > 300) {
+                    setAlertMessage(
+                      "Your description cannot exceed 300 characters."
+                    );
+                    setAlertVariant("danger");
+                  } else {
+                    setAlertMessage(null);
+                  }
+                }}
+              >
+                {user?.description}
+              </p>
+            </div>
+          </div>
 
           <Row>
             <Col md={6} style={{ position: "relative" }}>
@@ -244,14 +339,23 @@ const UserProfile = ({ username }: { username?: string }) => {
                           placeholder="Enter Technology"
                           value={techInput}
                           onChange={(e) => setTechInput(e.target.value)}
+                          onInput={(e) => {
+                            if (e.currentTarget.value.length > 12) {
+                              setAlertMessage(
+                                "Your technology cannot exceed 12 characters."
+                              );
+                              setAlertVariant("danger");
+                            } else {
+                              setAlertMessage(null);
+                            }
+                          }}
                         />
                       </Form.Group>
                     </Form>
                   </Col>
                   <Col md={6}>
                     <Button
-                      variant="info"
-                      className="list-button"
+                      className="edit-array-btn list-button"
                       onClick={() => {
                         handleAddTechnology(techInput);
                         setTechInput("");
@@ -262,8 +366,7 @@ const UserProfile = ({ username }: { username?: string }) => {
                   </Col>
                   <Col md={6}>
                     <Button
-                      variant="danger"
-                      className="list-button"
+                      className="edit-array-btn list-button"
                       onClick={() => {
                         handleDeleteTechnology(techInput);
                         setTechInput("");
@@ -307,14 +410,23 @@ const UserProfile = ({ username }: { username?: string }) => {
                           placeholder="Enter Link"
                           value={linkInput}
                           onChange={(e) => setLinkInput(e.target.value)}
+                          onInput={(e) => {
+                            if (e.currentTarget.value.length > 80) {
+                              setAlertMessage(
+                                "Your link cannot exceed 80 characters."
+                              );
+                              setAlertVariant("danger");
+                            } else {
+                              setAlertMessage(null);
+                            }
+                          }}
                         />
                       </Form.Group>
                     </Form>
                   </Col>
                   <Col md={6}>
                     <Button
-                      variant="info"
-                      className="list-button"
+                      className="edit-array-btn list-button"
                       onClick={() => {
                         handleAddLink(linkInput);
                         setLinkInput("");
@@ -325,8 +437,7 @@ const UserProfile = ({ username }: { username?: string }) => {
                   </Col>
                   <Col md={6}>
                     <Button
-                      variant="danger"
-                      className="list-button"
+                      className="edit-array-btn list-button"
                       onClick={() => {
                         handleDeleteLink(linkInput);
                         setLinkInput("");
@@ -341,7 +452,7 @@ const UserProfile = ({ username }: { username?: string }) => {
           </Row>
 
           {isOwnProfile && (
-            <Button variant="primary" onClick={handleSave}>
+            <Button id="save-changes-button" onClick={handleSave}>
               Save Changes
             </Button>
           )}

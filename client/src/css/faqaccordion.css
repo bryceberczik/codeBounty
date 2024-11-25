@@ -7,3 +7,17 @@
   background-color: #ccd5ae !important;
   color: #003049 !important;
 }
+
+body.dark .accordion-button {
+  background-color: #4c6756 !important;
+  border: 1px solid #4c6756 !important;
+  color: #eeede1 !important;
+  border: none !important;
+  outline: none !important;
+}
+
+@media screen and (max-width: 768px) {
+  .accordion-item {
+    width: 350px !important;
+  }
+}

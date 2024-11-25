@@ -3,9 +3,11 @@ import { type MouseEvent } from "react";
 import { Link, useLocation } from "react-router-dom";
 import auth from "../utils/auth";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faUser } from "@fortawesome/free-solid-svg-icons";
-import { useState } from "react";
+import { faUser, faBars } from "@fortawesome/free-solid-svg-icons";
+import { useState, useEffect } from "react";
 import Offcanvas from "react-bootstrap/Offcanvas";
+import BrandLogo from "../images/brandlogo_app.jpg";
+import DarkLogo from "../images/dark_brand.jpg";
 
 const Header = () => {
   const logout = (event: MouseEvent<HTMLDivElement>) => {
@@ -15,83 +17,127 @@ const Header = () => {
   const currentPage = useLocation().pathname;
 
   const [show, setShow] = useState(false);
+  const [isSmallScreen, setIsSmallScreen] = useState(window.innerWidth < 768);
+  const [logo, setLogo] = useState(BrandLogo);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsSmallScreen(window.innerWidth < 768);
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    // Check for theme preference in local storage
+    const theme = localStorage.getItem("theme");
+    if (theme === "dark") {
+      setLogo(DarkLogo);
+    } else {
+      setLogo(BrandLogo);
+    }
+
+    // Cleanup event listener on component unmount
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
   return (
-    <div>
-      <header>
-        <div className="header-left">
-          <h1>codeBounty</h1>
+    <div className="header-container">
+      {isSmallScreen ? (
+        <div>
+          <header>
+            <Link to="/">
+              <img src={logo} alt="brandlogo" width="300" />
+            </Link>
+            {auth.loggedIn() ? (
+              <FontAwesomeIcon
+                onClick={handleShow}
+                className="hamburger-menu"
+                icon={faBars}
+              />
+            ) : (
+              <Link to="signup" style={{ textDecoration: "none" }}>
+                <h2 className="signup-mobile">Sign up</h2>
+              </Link>
+            )}
+          </header>
         </div>
-        <div className="header-center">
-          <div className="category-item">
-            <Link to="/" className="no-underline">
-              <h1 className={currentPage === "/" ? "activeNav" : "restNav"}>
-                Home
-              </h1>
+      ) : (
+        <header>
+          <div className="header-left">
+            <Link to="/">
+              <img src={logo} alt="brandlogo" width="300" />
             </Link>
           </div>
-          <div className="category-item">
-            <Link to="/explore" className="no-underline">
-              <h1
-                className={currentPage === "/explore" ? "activeNav" : "restNav"}
-              >
-                Explore
-              </h1>
-            </Link>
-          </div>
-          <div className="category-item">
-            <Link to="/find-work" className="no-underline">
-              <h1
-                className={
-                  currentPage === "/find-work" ? "activeNav" : "restNav"
-                }
-              >
-                Find Work
-              </h1>
-            </Link>
-          </div>
-          <div className="category-item">
-            <Link to="/post-listing" className="no-underline">
-              <h1
-                className={
-                  currentPage === "/post-listing" ? "activeNav" : "restNav"
-                }
-              >
-                Post a Job
-              </h1>
-            </Link>
-          </div>
-          <div className="category-item">
-            <Link to="/about-us" className="no-underline">
-              <h1
-                className={
-                  currentPage === "/about-us" ? "activeNav" : "restNav"
-                }
-              >
-                About
-              </h1>
-            </Link>
-          </div>
-        </div>
-        <div className="header-right">
-          {auth.loggedIn() ? (
-            <div className="loggedin-container" onClick={handleShow}>
-              <h1>{auth.getProfile().data.username}</h1>
-              <div className="profile-pic-container">
-                <FontAwesomeIcon icon={faUser} className="profile-pic" />
-              </div>
+
+          <div className="header-center">
+            <div className="category-item">
+              <Link to="/" className="no-underline">
+                <h1 className={currentPage === "/" ? "activeNav" : "restNav"}>
+                  Home
+                </h1>
+              </Link>
             </div>
-          ) : (
-            <Link to="/signup" className="no-link">
-              <div className="signup-btn">
-                <h1>Sign up</h1>
+
+            <div className="category-item">
+              <Link to="/explore" className="no-underline">
+                <h1
+                  className={
+                    currentPage === "/explore" ? "activeNav" : "restNav"
+                  }
+                >
+                  Explore
+                </h1>
+              </Link>
+            </div>
+
+            <div className="category-item">
+              <Link to="/find-work" className="no-underline">
+                <h1
+                  className={
+                    currentPage === "/find-work" ? "activeNav" : "restNav"
+                  }
+                >
+                  Find Work
+                </h1>
+              </Link>
+            </div>
+
+            <div className="category-item">
+              <Link to="/post-listing" className="no-underline">
+                <h1
+                  className={
+                    currentPage === "/post-listing" ? "activeNav" : "restNav"
+                  }
+                >
+                  Post a Job
+                </h1>
+              </Link>
+            </div>
+          </div>
+
+          <div className="header-right">
+            {auth.loggedIn() ? (
+              <div className="loggedin-container" onClick={handleShow}>
+                <h1>{auth.getProfile().data.username}</h1>
+
+                <div className="profile-pic-container">
+                  <FontAwesomeIcon icon={faUser} className="profile-pic" />
+                </div>
               </div>
-            </Link>
-          )}
-        </div>
-      </header>
+            ) : (
+              <Link to="/signup" className="no-link">
+                <div className="signup-btn">
+                  <h1>Sign up</h1>
+                </div>
+              </Link>
+            )}
+          </div>
+        </header>
+      )}
 
       {auth.loggedIn() ? (
         <Offcanvas show={show} onHide={handleClose} placement="end">
@@ -100,10 +146,50 @@ const Header = () => {
               Hey, {auth.getProfile().data.username}
             </Offcanvas.Title>
           </Offcanvas.Header>
+
           <Offcanvas.Body>
-            <Link to="/me" className="offcanvas-opt">My Profile</Link>
-            <Link to="/settings" className="offcanvas-opt">Settings</Link>
-            <Link to="/find-work" className="offcanvas-opt">Find work</Link>
+            <Link
+              to="/"
+              className="offcanvas-opt"
+              onClick={() => (window.location.href = "/")}
+            >
+              Home
+            </Link>
+            <Link
+              to="/explore"
+              className="offcanvas-opt"
+              onClick={() => (window.location.href = "/explore")}
+            >
+              Explore
+            </Link>
+            <Link
+              to="/find-work"
+              className="offcanvas-opt"
+              onClick={() => (window.location.href = "/find-work")}
+            >
+              Find work
+            </Link>
+            <Link
+              to="/post-listing"
+              className="offcanvas-opt"
+              onClick={() => (window.location.href = "/post-listing")}
+            >
+              Post a job
+            </Link>
+            <Link
+              to="/me"
+              className="offcanvas-opt"
+              onClick={() => (window.location.href = "/me")}
+            >
+              My Profile
+            </Link>
+            <Link
+              to="/settings"
+              className="offcanvas-opt"
+              onClick={() => (window.location.href = "/settings")}
+            >
+              Settings
+            </Link>
             <div className="logout-btn" onClick={logout}>
               <h1>Log out</h1>
             </div>

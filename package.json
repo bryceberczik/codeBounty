@@ -9,18 +9,20 @@
         "develop": "concurrently \"cd server && npm run watch\" \"wait-on tcp:3001 && cd client && npm run dev\"",
         "install": "cd server && npm i && cd ../client && npm i",
         "build": "concurrently \"cd server && npm run build\" \"cd client && npm run build\"",
-        "render-build": "npm install && npm run build",
+        "seed": "cd server && npm run seed",
         "cypress": "cypress open",
         "test": "npm run test:e2e || true && npm run test:comp",
         "test:e2e": "npx cypress run --browser electron --headless",
         "test:comp": "npx cypress run --component",
-        "test-gui": "npx cypress open --detached"
+        "test-gui": "npx cypress open --detached",
+        "render-build": "npm install && npm run build",
+        "render-start": "npm run seed && npm run start"
     },
     "keywords": [],
     "author": "",
     "license": "ISC",
     "devDependencies": {
-        "@apollo/client": "^3.11.9",
+        "@apollo/client": "^3.11.10",
         "@testing-library/cypress": "^10.0.2",
         "@types/react": "^18.3.12",
         "@vitejs/plugin-react": "^4.3.3",
@@ -34,8 +36,15 @@
         "wait-on": "^8.0.1"
     },
     "dependencies": {
+        "@fortawesome/free-solid-svg-icons": "^6.7.0",
+        "@fortawesome/react-fontawesome": "^0.2.2",
+        "@testing-library/react": "^16.0.1",
         "dotenv": "^16.4.5",
+        "graphql": "^16.9.0",
         "graphql-tag": "^2.12.6",
-        "jwt-decode": "^4.0.0"
+        "import": "^0.0.6",
+        "jwt-decode": "^4.0.0",
+        "react-icons": "^5.3.0",
+        "react-test-renderer": "^18.3.1"
     }
 }

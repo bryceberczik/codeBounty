@@ -8,9 +8,11 @@ import {
   UpdateListingArgs,
   UpdateJobArgs,
   UserArgs,
+  UserByIdArgs,
   ListingArgs,
   JobArgs,
   LoginUserArgs,
+  findApplicantsByListingIdArgs,
 } from "../interfaces/interfaces.js";
 
 const resolvers = {
@@ -33,8 +35,17 @@ const resolvers = {
         throw new Error("Failed to retrieve user.");
       }
     },
+    userById: async (_parent: any, { _id }: UserByIdArgs) => {
+      try {
+        return await User.findOne({ _id })
+          .populate("listings")
+          .populate("jobs");
+      } catch (error) {
+        console.error("Error fetching user by ID:", error);
+        throw new Error("Failed to retrieve user by ID.");
+      }
+    },
     me: async (_parent: any, _args: any, context: any) => {
-      // If the user is authenticated, find and return the user's information along with their thoughts
       try {
         if (context.user) {
           return await User.findOne({ _id: context.user._id })
@@ -62,6 +73,20 @@ const resolvers = {
       } catch (error) {
         console.error("Error fetching listing:", error);
         throw new Error("Failed to retrieve listing.");
+      }
+    },
+    findApplicantsByListingId: async (
+      _parent: any,
+      { _id }: findApplicantsByListingIdArgs
+    ) => {
+      try {
+        // console.log("Query _id:", _id); // Log the incoming ID
+        const result = await Job.find({ listingId: _id });
+        // console.log("Query result:", result); // Log the query result
+        return result;
+      } catch (error) {
+        console.error("Error finding applicants by listing ID:", error);
+        throw new Error("Unable to find applicants for the given listing ID.");
       }
     },
     jobs: async () => {
@@ -119,6 +144,7 @@ const resolvers = {
           throw new Error("No user found with that ID.");
         }
 
+        await Listing.deleteMany({ _id: { $in: user.listings } });
         await Job.deleteMany({ _id: { $in: user.jobs } });
 
         await User.findByIdAndDelete(_id);

@@ -1,9 +1,17 @@
+body.dark .header-container {
+  background-color: #0d1117;
+}
+
 header {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   margin: 20px 200px;
   align-items: center;
+}
+
+body.dark header {
+  background-color: #0d1117;
 }
 
 .header-left h1:hover {
@@ -21,6 +29,10 @@ header {
   transition: 0.1s ease;
 }
 
+body.dark .header-center h1 {
+  color: white;
+}
+
 .header-center h1:hover {
   color: #4a5a6a;
   cursor: pointer;
@@ -31,6 +43,11 @@ header {
   font-family: "Poppins", sans-serif;
   font-weight: 350;
   color: #003049;
+}
+
+body.dark .header-left h1,
+body.dark .header-right h1 {
+  color: white;
 }
 
 .signup-btn h1 {
@@ -46,8 +63,8 @@ header {
   border: 1px solid #4a5a6a;
   transition: 0.3s ease;
   box-shadow: 0 1px 1px hsl(0deg 0% 0% / 0.075),
-  0 2px 2px hsl(0deg 0% 0% / 0.075), 0 4px 4px hsl(0deg 0% 0% / 0.075),
-  0 8px 8px hsl(0deg 0% 0% / 0.075), 0 16px 16px hsl(0deg 0% 0% / 0.075);
+    0 2px 2px hsl(0deg 0% 0% / 0.075), 0 4px 4px hsl(0deg 0% 0% / 0.075),
+    0 8px 8px hsl(0deg 0% 0% / 0.075), 0 16px 16px hsl(0deg 0% 0% / 0.075);
 }
 
 .signup-btn:hover {
@@ -73,34 +90,28 @@ header {
 }
 
 .loggedin-container {
-
   display: flex;
   flex-direction: row;
   align-items: center;
 }
 
 .loggedin-container:hover {
-
   cursor: pointer;
 }
 
 .loggedin-container:hover h1 {
-
   color: #4a5a6a;
 }
 
 .loggedin-container:hover .profile-pic-container {
-
   border: 2px solid #4a5a6a;
 }
 
 .loggedin-container:hover .profile-pic {
-
-color: #4a5a6a;
+  color: #4a5a6a;
 }
 
 .loggedin-container h1 {
-
   font-size: 20px;
   font-family: "Poppins", sans-serif;
   font-weight: 400;
@@ -110,7 +121,6 @@ color: #4a5a6a;
 }
 
 .profile-pic-container {
-
   border: 2px solid #003049;
   border-radius: 10px;
   width: 32px;
@@ -122,67 +132,103 @@ color: #4a5a6a;
 }
 
 .profile-pic {
-
   color: #003049;
   font-size: 20px;
   transition: 0.3s ease;
 }
 
-.offcanvas-header, .offcanvas-body {
+body.dark .profile-pic {
+  color: white;
+}
 
+body.dark .profile-pic-container {
+  border: 2px solid white;
+}
+
+.offcanvas-header,
+.offcanvas-body {
   background-color: #eeede1;
   color: #003049;
 }
 
-.offcanvas-title {
+body.dark .offcanvas-header,
+body.dark .offcanvas-body {
+  background-color: #0d1117;
+}
 
+.offcanvas-title {
   font-size: 30px;
 }
 
 .offcanvas-body {
-
   display: flex;
   flex-direction: column;
 }
 
 .offcanvas-opt {
-
   text-decoration: none;
   color: #003049;
   font-family: "Poppins", sans-serif;
   font-size: 30px;
-  margin: 10px 0;
+  margin: 20px 0;
   transition: 0.3s ease;
 }
 
-.offcanvas-opt:hover {
+body.dark .offcanvas-opt,
+body.dark .logout-btn,
+body.dark .offcanvas-title {
+  color: #eee;
+}
 
+.offcanvas-opt:hover {
   color: #4a5a6a;
   cursor: pointer;
 }
 
 .btn-close {
-
   border-color: #003049;
 }
 
 .logout-btn {
-
   text-decoration: none;
   color: #003049;
-  margin: 10px 0;
+  margin: 20px 0;
   transition: 0.3s ease;
 }
 
 .logout-btn:hover {
-
   color: #4a5a6a;
   cursor: pointer;
 }
 
 .logout-btn h1 {
-
   font-family: "Poppins", sans-serif;
   font-size: 30px;
   font-weight: 400;
+}
+
+@media screen and (max-width: 768px) {
+  header {
+    margin-left: 20px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+
+  header img {
+    width: 200px;
+  }
+
+  .hamburger-menu {
+    color: #003049;
+    font-size: 30px;
+    margin-left: 100px;
+  }
+
+  .signup-mobile {
+    color: #003049;
+    font-size: 20px;
+    white-space: nowrap;
+    margin: 0 0 0 75px;
+  }
 }

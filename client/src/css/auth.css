@@ -3,7 +3,7 @@
   justify-content: center;
   align-items: center;
   height: 80vh;
-  background-color: #e0e0a3;
+  margin-bottom: 50px;
 }
 
 .auth-container {
@@ -11,24 +11,33 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: #f2f2f2;
   gap: 1rem;
   padding: 20px;
   border-radius: 20px;
+  background-color: #aec5d5;
+  box-shadow: 0 1px 1px hsl(0deg 0% 0% / 0.075),
+    0 2px 2px hsl(0deg 0% 0% / 0.075), 0 4px 4px hsl(0deg 0% 0% / 0.075),
+    0 8px 8px hsl(0deg 0% 0% / 0.075), 0 16px 16px hsl(0deg 0% 0% / 0.075);
+}
+
+.auth-container p {
+  font-size: 15px;
+  text-decoration: underline;
+  transition: ease 0.2s;
+}
+
+.auth-container p:hover {
+  color: #4a5a6a;
 }
 
 .auth-toggle {
   padding: 5px 15px;
-    border-radius: 10px;
-    cursor: pointer !important;
-}
-
-.auth-toggle:hover {
-  background-color: #b0cc8a;
+  border-radius: 10px;
+  cursor: pointer !important;
 }
 
 .login-container {
- min-width: 300px;
+  min-width: 400px;
 }
 
 .auth-form {
@@ -37,27 +46,77 @@
   gap: 1rem;
 }
 
+.auth-form label {
+  color: #003049;
+}
+
+.auth-form input {
+  padding: 4px;
+  border-radius: 5px;
+  border: 1px solid #003049;
+  color: #003049;
+  background-color: #eeede1;
+}
+
+.auth-form input:focus {
+  border: 1px solid #003049;
+  outline: none;
+}
+
 .auth-btn {
+  margin-top: 20px;
   padding: 5px 15px;
   border-radius: 10px;
   cursor: pointer !important;
+  background-color: #eeede1;
+  border: 1px solid #003049;
+  color: #003049;
+  transition: ease 0.2s;
 }
 
 .auth-btn:hover {
-  background-color: #b0cc8a;
+  background-color: #d6d5c9;
 }
 
-.auth-form >div {
+.auth-form > div {
   display: flex;
   flex-direction: column;
 }
 
 .signup-container {
-  min-width: 350px;
+  min-width: 450px;
 }
 
 .input-items {
   border: 1px solid #003049;
   padding: 3px;
- border-radius: 5px;
-} 
+  border-radius: 5px;
+}
+
+@media screen and (max-width: 768px) {
+  .auth-container {
+    width: 350px;
+  }
+
+  .auth-form label {
+    display: block;
+    width: 300px;
+    margin: 0 auto 5px auto;
+    text-align: left;
+  }
+
+  .auth-form input {
+    width: 300px;
+    margin: 0 auto;
+  }
+
+  .auth-btn {
+    width: 300px;
+    margin: 20px auto;
+  }
+
+  .error {
+    max-width: 300px;
+    margin: 0 auto;
+  }
+}
