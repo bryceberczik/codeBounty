@@ -1,0 +1,14 @@
+name: Deploy To Render
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: 'Deploy To Render'
+      run: |
+        curl POST ${{ secrets.RENDER_DEPLOY_HOOK }}
