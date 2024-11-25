@@ -8,13 +8,13 @@
 }
 
 .noBananas {
-    font-size: 4rem;
-    font-weight: bold;
-    margin-bottom: 2rem;
+  font-size: 4rem;
+  font-weight: bold;
+  margin-bottom: 2rem;
 }
 
 .banana {
-    width: 30rem;
-    height: 30rem;
-    margin: 20px;
+  width: 30rem;
+  height: 30rem;
+  margin: 20px;
 }

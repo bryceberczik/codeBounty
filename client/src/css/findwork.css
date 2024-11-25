@@ -11,17 +11,15 @@
 }
 
 .get-accepted-container {
-
   display: flex;
   flex-direction: column;
-  color:#003049;
+  color: #003049;
   align-items: center;
   margin: 50px 200px;
 }
 
 .get-accepted {
-
-  color:#003049;
+  color: #003049;
   background-color: #e0e0a3;
   width: 100%;
   text-align: center;
@@ -31,7 +29,6 @@
 }
 
 .alert-back {
-
   margin: 25px auto;
   width: 600px;
   border: 1px solid #003049;
@@ -39,12 +36,10 @@
 }
 
 .btn-close {
-
   transition: 0.3s ease;
 }
 
 #listings-container {
-
   margin-bottom: 50px;
 }
 
@@ -54,7 +49,6 @@
 }
 
 body.dark #find-work {
-
   color: #eeede1;
 }
 
@@ -86,24 +80,19 @@ body.dark #find-work {
 }
 
 @media screen and (max-width: 768px) {
-
   #find-work-search {
-
     width: 75%;
   }
 
   .get-accepted-container h1 {
-
     white-space: nowrap;
   }
 
   .get-accepted {
-
     width: 350px;
   }
-  
-  .alert-back {
 
+  .alert-back {
     width: 350px;
   }
 }

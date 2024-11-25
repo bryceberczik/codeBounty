@@ -38,7 +38,9 @@ const Home = () => {
                 </Link>
               )}
 
-              <p>Explore limitless possibilities both as a client and a seller.</p>
+              <p>
+                Explore limitless possibilities both as a client and a seller.
+              </p>
             </div>
           </div>
           <div className="front-right">

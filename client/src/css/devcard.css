@@ -6,12 +6,11 @@
   margin: 20px;
   border-radius: 20px;
   box-shadow: 0 1px 1px hsl(0deg 0% 0% / 0.075),
-  0 2px 2px hsl(0deg 0% 0% / 0.075), 0 4px 4px hsl(0deg 0% 0% / 0.075),
-  0 8px 8px hsl(0deg 0% 0% / 0.075), 0 16px 16px hsl(0deg 0% 0% / 0.075);
+    0 2px 2px hsl(0deg 0% 0% / 0.075), 0 4px 4px hsl(0deg 0% 0% / 0.075),
+    0 8px 8px hsl(0deg 0% 0% / 0.075), 0 16px 16px hsl(0deg 0% 0% / 0.075);
 }
 
 body.dark .card-container {
-
   background-color: #2f4150;
 }
 
@@ -25,7 +24,6 @@ body.dark .card-container {
 body.dark .username-container,
 body.dark .role-container,
 body.dark .technologies-container {
-
   color: #eeede1;
 }
 
@@ -54,7 +52,6 @@ body.dark .technologies-container {
 }
 
 body.dark .description-container p {
-
   color: #eeede1;
 }
 
@@ -69,8 +66,8 @@ body.dark .description-container p {
   padding: 5px 0;
   transition: 0.1s ease;
   box-shadow: 0 1px 1px hsl(0deg 0% 0% / 0.075),
-  0 2px 2px hsl(0deg 0% 0% / 0.075), 0 4px 4px hsl(0deg 0% 0% / 0.075),
-  0 8px 8px hsl(0deg 0% 0% / 0.075), 0 16px 16px hsl(0deg 0% 0% / 0.075);
+    0 2px 2px hsl(0deg 0% 0% / 0.075), 0 4px 4px hsl(0deg 0% 0% / 0.075),
+    0 8px 8px hsl(0deg 0% 0% / 0.075), 0 16px 16px hsl(0deg 0% 0% / 0.075);
 }
 
 .openprofile-btn:hover {
@@ -86,9 +83,7 @@ body.dark .description-container p {
 }
 
 @media screen and (max-width: 768px) {
-
   .card-container {
-
     width: 350px;
     height: 400px;
     margin: 0;
