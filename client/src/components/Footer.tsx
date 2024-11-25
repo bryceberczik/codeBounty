@@ -56,7 +56,7 @@ const Footer = () => {
 
         <p>&copy; 2024 codeBounty | All Rights Reserved</p>
 
-        <p>
+        <p className="dev-container">
           Built by Bryce Berczik, Zander Kubajak, Jarvis Young, and Justin
           Hebenstreit.
         </p>

@@ -16,7 +16,7 @@
         "test:comp": "npx cypress run --component",
         "test-gui": "npx cypress open --detached",
         "render-build": "npm install && npm run build",
-        "render-start": "npm run start"
+        "render-start": "npm run seed && npm run start"
     },
     "keywords": [],
     "author": "",
