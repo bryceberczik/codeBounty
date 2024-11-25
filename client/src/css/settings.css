@@ -14,7 +14,15 @@
     margin-bottom: 50px;
 }
 
+body.dark .settings-div h1 {
 
+  color: #eee;
+}
+
+body.dark .settings-container {
+
+  border: 2px solid #eee;
+}
 
 .settings-container {
     padding: 20px;
@@ -37,6 +45,11 @@
 
     color: #003049;
     font-size: 20px;
+}
+
+body.dark .setting-opt h3 {
+
+  color: #eee;
 }
 
 .switch {
@@ -96,7 +109,21 @@
     transition: 0.3s ease;
   }
 
+  body.dark .delete-user-btn {
+
+    background-color: #502F2F;
+    border: 2px solid #502F2F;
+    color: #eee;
+
+  }
+
+
   .delete-user-btn:hover {
 
     background-color: #b08b8b;
+  }
+
+  body.dark .delete-user-btn:hover {
+
+    background-color: #4d0000;
   }
