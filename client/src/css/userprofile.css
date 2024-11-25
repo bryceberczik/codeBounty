@@ -4,7 +4,6 @@
 
 .edit-input {
   border: 1px solid black;
-  border-radius: 10px;
 }
 
 .edit-button {
@@ -33,43 +32,51 @@
 }
 
 .first-sect-profile {
-
   display: flex;
   flex-direction: row;
 }
 
 #user-profile {
-  width: 50%;
-  margin: 100px auto;
-  padding-bottom: 30px;
-  border: 4px solid gray;
-  border-radius: 15px;
-  height: 400px;
+  padding-top: 100px;
 }
 
-#profile-card {
-  padding: 30px 0px 0px 50px;
-  display: flex;
-  flex-direction: column;
-}
-
-#profile-card h1 {
+#user-profile h1 {
   width: fit-content;
+  margin: auto;
   border-bottom: 2px solid gray;
-  padding-bottom: 8px;
+  padding-bottom: 5px;
+  margin-bottom: 5px;
   font-size: 40px;
 }
 
-#profile-card h2 {
-  width: fit-content;
+#user-profile h2 {
+  width: 30%;
+  margin: auto;
+  padding: 5px;
+  text-align: center;
   font-size: 24px;
   color: rgba(0, 0, 0, 0.5);
 }
 
-#profile-card p {
-  width: 90%;
+#profile-card {
+  width: 50%;
+  margin: 50px auto;
+  padding: 10px 50px;
+  border: 4px solid gray;
+  border-radius: 15px;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.descr-container {
+  width: 100%;
   margin: auto;
-  padding-top: 20px;
+}
+
+#profile-card p {
+  padding: 5px;
+  margin: 0;
   font-weight: 500;
   font-size: 18px;
 }
@@ -79,4 +86,25 @@
   border-bottom: 2px solid gray;
   padding: 20px 0px 5px 0px;
   font-size: 24px;
+}
+
+.edit-array-btn {
+  background-color: #003049;
+  border: none;
+  transition: 0.3s ease;
+}
+
+.edit-array-btn:hover {
+  background-color: #4a5a6a;
+}
+
+#save-changes-button {
+  background-color: #aec5d5;
+  color:#003049;
+  border: 1px solid #003049;
+  width: 50%;
+  margin: 20px auto;
+  box-shadow: 0 1px 1px hsl(0deg 0% 0% / 0.075),
+  0 2px 2px hsl(0deg 0% 0% / 0.075), 0 4px 4px hsl(0deg 0% 0% / 0.075),
+  0 8px 8px hsl(0deg 0% 0% / 0.075), 0 16px 16px hsl(0deg 0% 0% / 0.075);
 }

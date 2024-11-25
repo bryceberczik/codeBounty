@@ -160,7 +160,7 @@ const UserProfile = ({ username }: { username?: string }) => {
       return;
     }
 
-    if (!user.technologies.includes(link)) {
+    if (!user.links.includes(link)) {
       setAlertMessage("This link does not exist on your list.");
       setAlertVariant("danger");
       return;
@@ -250,48 +250,46 @@ const UserProfile = ({ username }: { username?: string }) => {
             {alertMessage}
           </Alert>
         )}
+        <div className="username-role">
+          <h1
+            id="username-profile-input"
+            suppressContentEditableWarning={true}
+            contentEditable={isOwnProfile}
+            onInput={(e) => {
+              if (e.currentTarget.innerText.length > 20) {
+                setAlertMessage("Your username cannot exceed 20 characters.");
+                setAlertVariant("danger");
+              } else if (e.currentTarget.innerText.length < 8) {
+                setAlertMessage(
+                  "Your username cannot be less than 8 characters."
+                );
+                setAlertVariant("danger");
+              } else {
+                setAlertMessage(null);
+              }
+            }}
+          >
+            {user?.username}
+          </h1>
+          <h2
+            id="role-profile-input"
+            suppressContentEditableWarning={true}
+            contentEditable={isOwnProfile}
+            onInput={(e) => {
+              if (e.currentTarget.innerText.length > 24) {
+                setAlertMessage("Your role cannot exceed 24 characters.");
+                setAlertVariant("danger");
+              } else {
+                setAlertMessage(null);
+              }
+            }}
+          >
+            {user?.role}
+          </h2>
+        </div>
         <div id="profile-card">
+          <h3>Description:</h3>
           <div className="first-sect-profile">
-            <div className="username-role">
-              <h1
-                id="username-profile-input"
-                suppressContentEditableWarning={true}
-                contentEditable={isOwnProfile}
-                onInput={(e) => {
-                  if (e.currentTarget.innerText.length > 20) {
-                    setAlertMessage(
-                      "Your username cannot exceed 20 characters."
-                    );
-                    setAlertVariant("danger");
-                  } else if (e.currentTarget.innerText.length < 8) {
-                    setAlertMessage(
-                      "Your username cannot be less than 8 characters."
-                    );
-                    setAlertVariant("danger");
-                  } else {
-                    setAlertMessage(null);
-                  }
-                }}
-              >
-                {user?.username}
-              </h1>
-              <h2
-                id="role-profile-input"
-                suppressContentEditableWarning={true}
-                contentEditable={isOwnProfile}
-                onInput={(e) => {
-                  if (e.currentTarget.innerText.length > 24) {
-                    setAlertMessage("Your role cannot exceed 24 characters.");
-                    setAlertVariant("danger");
-                  } else {
-                    setAlertMessage(null);
-                  }
-                }}
-              >
-                {user?.role}
-              </h2>
-            </div>
-
             <div className="descr-container">
               <p
                 id="description-profile-input"
@@ -357,8 +355,7 @@ const UserProfile = ({ username }: { username?: string }) => {
                   </Col>
                   <Col md={6}>
                     <Button
-                      variant="info"
-                      className="list-button"
+                      className="edit-array-btn list-button"
                       onClick={() => {
                         handleAddTechnology(techInput);
                         setTechInput("");
@@ -369,8 +366,7 @@ const UserProfile = ({ username }: { username?: string }) => {
                   </Col>
                   <Col md={6}>
                     <Button
-                      variant="danger"
-                      className="list-button"
+                      className="edit-array-btn list-button"
                       onClick={() => {
                         handleDeleteTechnology(techInput);
                         setTechInput("");
@@ -430,8 +426,7 @@ const UserProfile = ({ username }: { username?: string }) => {
                   </Col>
                   <Col md={6}>
                     <Button
-                      variant="info"
-                      className="list-button"
+                      className="edit-array-btn list-button"
                       onClick={() => {
                         handleAddLink(linkInput);
                         setLinkInput("");
@@ -442,8 +437,7 @@ const UserProfile = ({ username }: { username?: string }) => {
                   </Col>
                   <Col md={6}>
                     <Button
-                      variant="danger"
-                      className="list-button"
+                      className="edit-array-btn list-button"
                       onClick={() => {
                         handleDeleteLink(linkInput);
                         setLinkInput("");
@@ -458,7 +452,7 @@ const UserProfile = ({ username }: { username?: string }) => {
           </Row>
 
           {isOwnProfile && (
-            <Button variant="primary" onClick={handleSave}>
+            <Button id="save-changes-button" onClick={handleSave}>
               Save Changes
             </Button>
           )}
