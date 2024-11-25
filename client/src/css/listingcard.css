@@ -1,70 +1,62 @@
 .listing-card-container {
-
   margin-bottom: 40px;
 }
 
 .listings-tab {
-
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
   align-items: center;
-
 }
 
 .desc-tag {
-
   font-family: "Poppins", sans-serif;
   font-weight: 450;
   font-size: 18px;
 }
 
 .price-tag {
-
   font-family: "Poppins", sans-serif;
   font-weight: 500;
   font-size: 24px;
 }
 
 .your-listing-card {
-
   background-color: #eeede1;
   border: 2px solid #003049;
   height: 300px;
   width: 24rem;
   position: relative;
   box-shadow: 0 1px 1px hsl(0deg 0% 0% / 0.075),
-  0 2px 2px hsl(0deg 0% 0% / 0.075), 0 4px 4px hsl(0deg 0% 0% / 0.075),
-  0 8px 8px hsl(0deg 0% 0% / 0.075), 0 16px 16px hsl(0deg 0% 0% / 0.075);
+    0 2px 2px hsl(0deg 0% 0% / 0.075), 0 4px 4px hsl(0deg 0% 0% / 0.075),
+    0 8px 8px hsl(0deg 0% 0% / 0.075), 0 16px 16px hsl(0deg 0% 0% / 0.075);
 }
 
 body.dark .your-listing-card {
-
   background-color: #4c4c4c;
   border: 1px solid #4c4c4c;
   color: #eeede1;
 }
 
 .your-listingcard-container {
-
   margin-bottom: 60px;
 }
 
 .your-card-price {
-
   position: absolute;
-  
 }
 
-.modal-header, .modal-body, .modal-footer {
-
+.modal-header,
+.modal-body,
+.modal-footer {
   border: none;
   background-color: #eeede1;
   color: #003049;
 }
 
-body.dark .modal-header, body.dark .modal-body, body.dark .modal-footer {
-
+body.dark .modal-header,
+body.dark .modal-body,
+body.dark .modal-footer {
   color: #eeede1;
   background-color: #4c4c4c;
 }
@@ -78,7 +70,6 @@ body.dark .modal-header, body.dark .modal-body, body.dark .modal-footer {
 }
 
 .applicant-div {
-
   max-height: 400px;
   overflow: auto;
   display: flex;
@@ -88,37 +79,32 @@ body.dark .modal-header, body.dark .modal-body, body.dark .modal-footer {
 }
 
 .applicant-container {
-
-  text-align: center; 
+  text-align: center;
   border: 2px solid #003049;
   width: fit-content;
   padding: 10px;
   border-radius: 10px;
   box-shadow: 0 1px 1px hsl(0deg 0% 0% / 0.075),
-  0 2px 2px hsl(0deg 0% 0% / 0.075), 0 4px 4px hsl(0deg 0% 0% / 0.075),
-  0 8px 8px hsl(0deg 0% 0% / 0.075), 0 16px 16px hsl(0deg 0% 0% / 0.075);
+    0 2px 2px hsl(0deg 0% 0% / 0.075), 0 4px 4px hsl(0deg 0% 0% / 0.075),
+    0 8px 8px hsl(0deg 0% 0% / 0.075), 0 16px 16px hsl(0deg 0% 0% / 0.075);
   margin: 10px;
 }
 
 .applicant-btn-container {
-
   display: flex;
   flex-direction: row;
   justify-content: center;
 }
 
 body.dark .applicant-profile-btn p {
-
   color: #eeede1;
 }
 
 body.dark .get-accepted-container h1 {
-
   color: #eeede1;
 }
 
 .applicant-btn-container button {
-
   padding: 5px;
   margin: 10px;
   border-radius: 10px;
@@ -128,22 +114,19 @@ body.dark .get-accepted-container h1 {
 }
 
 .applicant-btn-container button:hover {
-
   background-color: #4a5a6a;
 }
 
 body.dark .get-accepted {
-
-  background-color: #1A1A1A;
+  background-color: #1a1a1a;
 }
 
-body.dark .get-accepted h2, body.dark .get-accepted h3 {
-
+body.dark .get-accepted h2,
+body.dark .get-accepted h3 {
   color: #eeede1;
 }
 
 #your-listing-buttons-container {
-
   display: flex;
   flex-direction: row;
   justify-content: space-around;
@@ -152,7 +135,6 @@ body.dark .get-accepted h2, body.dark .get-accepted h3 {
 }
 
 #your-listing-button {
-
   background-color: #003049;
   border: none;
   transition: 0.3s ease;
@@ -160,7 +142,6 @@ body.dark .get-accepted h2, body.dark .get-accepted h3 {
 }
 
 #your-listing-button:hover {
-
   background-color: #4a5a6a;
 }
 
@@ -175,25 +156,22 @@ body.dark .get-accepted h2, body.dark .get-accepted h3 {
   height: 300px;
   position: inherit;
   box-shadow: 0 1px 1px hsl(0deg 0% 0% / 0.075),
-  0 2px 2px hsl(0deg 0% 0% / 0.075), 0 4px 4px hsl(0deg 0% 0% / 0.075),
-  0 8px 8px hsl(0deg 0% 0% / 0.075), 0 16px 16px hsl(0deg 0% 0% / 0.075);
+    0 2px 2px hsl(0deg 0% 0% / 0.075), 0 4px 4px hsl(0deg 0% 0% / 0.075),
+    0 8px 8px hsl(0deg 0% 0% / 0.075), 0 16px 16px hsl(0deg 0% 0% / 0.075);
   margin: 0 20px;
 }
 
 body.dark #listing-card {
-
   background-color: #4c4c4c;
   border: 1px solid #4c4c4c;
   color: #eeede1;
 }
 
 #card-title {
-
   margin-bottom: 10px;
 }
 
 #card-lister {
-
   margin-bottom: 10px !important;
 }
 
@@ -202,7 +180,6 @@ body.dark #listing-card {
 }
 
 #card-price {
-
   position: absolute;
   bottom: 10px;
   right: 13px;
@@ -219,32 +196,27 @@ body.dark #listing-card {
   border-radius: 15px;
   background-color: #eeede1;
   box-shadow: 0 1px 1px hsl(0deg 0% 0% / 0.075),
-  0 2px 2px hsl(0deg 0% 0% / 0.075), 0 4px 4px hsl(0deg 0% 0% / 0.075),
-  0 8px 8px hsl(0deg 0% 0% / 0.075), 0 16px 16px hsl(0deg 0% 0% / 0.075);
+    0 2px 2px hsl(0deg 0% 0% / 0.075), 0 4px 4px hsl(0deg 0% 0% / 0.075),
+    0 8px 8px hsl(0deg 0% 0% / 0.075), 0 16px 16px hsl(0deg 0% 0% / 0.075);
 }
 
 #apply-button:hover {
-
   background-color: #d6d5c9;
 }
 
 @media screen and (max-width: 768px) {
-
   #listing-card {
-
     width: 347px;
     margin: 0 10px;
   }
 
   .your-listingcard-container {
-
     display: flex;
     flex-direction: column;
     align-items: center;
   }
 
   .your-listing-card {
-
     width: 350px;
   }
 }

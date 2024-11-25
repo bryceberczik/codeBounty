@@ -11,7 +11,7 @@ const Signup = () => {
   }>({
     username: "",
     email: "",
-    password: ""
+    password: "",
   });
 
   const [error, setError] = useState("");
@@ -32,9 +32,7 @@ const Signup = () => {
 
     // Username must be at least 8 characters long.
     else if (formState.username.length < 8) {
-      setError(
-        "Username must be at least 8 characters long."
-      );
+      setError("Username must be at least 8 characters long.");
       isValid = false;
     }
 
@@ -62,10 +60,9 @@ const Signup = () => {
         variables: { input: formState },
       });
       Auth.login(data.addUser.token);
-      
+
       // let hasTheme = localStorage.getItem("theme");
       // if (!hasTheme) localStorage.setItem("theme", "light");
-
     } catch (err) {
       console.error(err);
       setError("Something went wrong.");

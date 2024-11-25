@@ -38,7 +38,6 @@
 
 .login-container {
   min-width: 400px;
-
 }
 
 .auth-form {
@@ -95,14 +94,11 @@
 }
 
 @media screen and (max-width: 768px) {
-
   .auth-container {
-
     width: 350px;
   }
 
   .auth-form label {
-
     display: block;
     width: 300px;
     margin: 0 auto 5px auto;
@@ -110,19 +106,16 @@
   }
 
   .auth-form input {
-
     width: 300px;
     margin: 0 auto;
   }
 
   .auth-btn {
-
     width: 300px;
     margin: 20px auto;
   }
 
   .error {
-
     max-width: 300px;
     margin: 0 auto;
   }

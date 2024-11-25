@@ -244,7 +244,10 @@ const YourListingCard = ({
                 <div className="applicant-container" key={index}>
                   <h4>{applicant.username}</h4>
                   <div className="applicant-profile-btn">
-                    <Link style={{ textDecoration: "none", color: "#003049" }} to={`/profiles/${applicant.username}`}>
+                    <Link
+                      style={{ textDecoration: "none", color: "#003049" }}
+                      to={`/profiles/${applicant.username}`}
+                    >
                       <p>{applicant.username}'s Profile</p>
                     </Link>
                   </div>

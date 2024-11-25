@@ -1,27 +1,16 @@
-import { useEffect } from 'react';
+import { useEffect } from "react";
 
-function PageTab(props: { title: string, children: React.ReactNode }) {
+function PageTab(props: { title: string; children: React.ReactNode }) {
+  useEffect(() => {
+    document.title = `codeBounty | ${props.title} `;
+    window.scrollTo(0, 0);
+  }, []);
 
-
-    useEffect (() => {
-
-        document.title = `codeBounty | ${props.title} `;
-        window.scrollTo(0, 0);
-
-      }, []);
-
-      return (
-
-        <>
-
-        <div>
-            {props.children}
-        </div>
-
-        </>
-
-      )
-
+  return (
+    <>
+      <div>{props.children}</div>
+    </>
+  );
 }
 
 export default PageTab;

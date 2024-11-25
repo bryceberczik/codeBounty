@@ -15,7 +15,6 @@
 }
 
 body.dark .intro-text-explore h1 {
-
   color: #eeede1;
 }
 
@@ -40,12 +39,11 @@ body.dark .intro-text-explore h1 {
   border-radius: 5px;
   transition: 0.1s ease;
   box-shadow: 0 1px 1px hsl(0deg 0% 0% / 0.075),
-  0 2px 2px hsl(0deg 0% 0% / 0.075), 0 4px 4px hsl(0deg 0% 0% / 0.075),
-  0 8px 8px hsl(0deg 0% 0% / 0.075), 0 16px 16px hsl(0deg 0% 0% / 0.075);
+    0 2px 2px hsl(0deg 0% 0% / 0.075), 0 4px 4px hsl(0deg 0% 0% / 0.075),
+    0 8px 8px hsl(0deg 0% 0% / 0.075), 0 16px 16px hsl(0deg 0% 0% / 0.075);
 }
 
 body.dark .turn {
-
   background-color: #2f4150;
 }
 
@@ -55,12 +53,10 @@ body.dark .turn {
 }
 
 body.dark .turn:hover {
-
   background-color: #002538;
 }
 
 body.dark .turn {
-
   color: #eeede1;
 }
 
@@ -75,12 +71,11 @@ body.dark .turn {
   text-align: center;
   border-radius: 20px;
   box-shadow: 0 1px 1px hsl(0deg 0% 0% / 0.075),
-  0 2px 2px hsl(0deg 0% 0% / 0.075), 0 4px 4px hsl(0deg 0% 0% / 0.075),
-  0 8px 8px hsl(0deg 0% 0% / 0.075), 0 16px 16px hsl(0deg 0% 0% / 0.075);
+    0 2px 2px hsl(0deg 0% 0% / 0.075), 0 4px 4px hsl(0deg 0% 0% / 0.075),
+    0 8px 8px hsl(0deg 0% 0% / 0.075), 0 16px 16px hsl(0deg 0% 0% / 0.075);
 }
 
 body.dark .explore-engage-container {
-
   background-color: #424242;
   color: #eeede1;
 }
@@ -106,8 +101,8 @@ body.dark .explore-engage-container {
   border-radius: 10px;
   transition: 0.1s ease;
   box-shadow: 0 1px 1px hsl(0deg 0% 0% / 0.075),
-  0 2px 2px hsl(0deg 0% 0% / 0.075), 0 4px 4px hsl(0deg 0% 0% / 0.075),
-  0 8px 8px hsl(0deg 0% 0% / 0.075), 0 16px 16px hsl(0deg 0% 0% / 0.075);
+    0 2px 2px hsl(0deg 0% 0% / 0.075), 0 4px 4px hsl(0deg 0% 0% / 0.075),
+    0 8px 8px hsl(0deg 0% 0% / 0.075), 0 16px 16px hsl(0deg 0% 0% / 0.075);
 }
 
 .findwork-btn:hover {
@@ -131,7 +126,6 @@ body.dark .explore-engage-container {
 }
 
 body.dark .explore-faq-container {
-
   color: #eeede1;
 }
 
@@ -164,52 +158,42 @@ body.dark .explore-faq-container {
 }
 
 @media screen and (max-width: 768px) {
-
   .explore-users-container {
-
     margin: 0 25px;
   }
 
   .mobile-explore {
-
     display: flex;
     flex-direction: column;
   }
 
   .turn-handles {
-
     display: flex;
     flex-direction: row;
     justify-content: center;
   }
 
   .turn {
-
     margin: 20px;
   }
 
   .explore-engage-container {
-
     margin: 50px 25px;
   }
 
   .explore-engage-container h1 {
-
     font-size: 30px;
   }
 
   .explore-faq-container h1 {
-
     font-size: 30px;
   }
 
   .explore-faq-container h4 {
-
     font-size: 25px;
   }
 
   .faq-container {
-
     display: flex;
     flex-direction: column;
   }

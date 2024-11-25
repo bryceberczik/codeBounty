@@ -82,7 +82,7 @@ const userSchema = new Schema<IUser>(
     _isSeeding: {
       type: Boolean,
       default: false,
-    }
+    },
   },
   {
     timestamps: true,

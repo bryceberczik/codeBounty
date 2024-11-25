@@ -7,7 +7,6 @@ import { useNavigate } from "react-router-dom";
 import "../css/settings.css";
 import "../css/header.css";
 
-
 const Settings = () => {
   const [showModal, setShowModal] = useState(false);
   const [isDarkMode, setIsDarkMode] = useState(false); // State for theme

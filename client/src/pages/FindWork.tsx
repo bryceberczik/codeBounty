@@ -45,7 +45,6 @@ const FindWork = () => {
 
   const handleApplication = async (listingId: string) => {
     try {
-
       const hasApplied = user.jobs.some(
         (job: Job) => job.listingId === listingId
       );
@@ -93,11 +92,16 @@ const FindWork = () => {
   return (
     <div id="find-work">
       <PageTab title="Find Work">
-      {alertMessage && (
-      <Alert className="alert-back" variant={alertVariant} onClose={() => setAlertMessage(null)} dismissible>
-        {alertMessage}
-      </Alert>
-    )}
+        {alertMessage && (
+          <Alert
+            className="alert-back"
+            variant={alertVariant}
+            onClose={() => setAlertMessage(null)}
+            dismissible
+          >
+            {alertMessage}
+          </Alert>
+        )}
         <h1>Search for work that fits your role.</h1>
 
         <Form id="find-work-search" className="d-flex">

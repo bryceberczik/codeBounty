@@ -106,14 +106,13 @@ const Explore = () => {
                 />
               ))}
               <div className="turn-handles">
-              <div onClick={handlePrevious} className="turn">
-                <h1>{left}</h1>
+                <div onClick={handlePrevious} className="turn">
+                  <h1>{left}</h1>
+                </div>
+                <div onClick={handleNext} className="turn">
+                  <h1>{right}</h1>
+                </div>
               </div>
-              <div onClick={handleNext} className="turn">
-                <h1>{right}</h1>
-              </div>
-              </div>
-
             </div>
           ) : (
             <>

@@ -1,7 +1,7 @@
 footer {
   text-align: center;
   padding: 100px 0 20px 0px;
-  border-top: 1px solid #0B5ED7;
+  border-top: 1px solid #0b5ed7;
   background-color: #0a142f;
   color: #eeede1;
 }
@@ -50,10 +50,9 @@ footer p {
 }
 
 .social-icon a:hover {
-  color: #4F8FF7;
+  color: #4f8ff7;
 }
 
 .dev-container {
-
   margin: 0 25px;
 }

@@ -25,7 +25,6 @@ export default function errorPage() {
         title="Bananas GIF"
         className="banana"
       ></iframe>
-
     </div>
   );
 }

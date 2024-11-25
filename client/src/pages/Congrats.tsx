@@ -30,7 +30,17 @@ const Congrats = () => {
           <h1 className="congrats-text">Congratulations!</h1>
           <div className="congrats-div">
             <h1>You have accepted {username}'s request!</h1>
-            <p>You can contact them at <a style={{ textDecoration: "none" }} target="_blank" href={`mailto:${email}`}>{email}</a>.</p>
+            <p>
+              You can contact them at{" "}
+              <a
+                style={{ textDecoration: "none" }}
+                target="_blank"
+                href={`mailto:${email}`}
+              >
+                {email}
+              </a>
+              .
+            </p>
             <p>We have removed the listing for you, keep up the great work!</p>
             <Link to="/" style={{ textDecoration: "none" }}>
               <div className="back-home">
