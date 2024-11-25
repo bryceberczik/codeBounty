@@ -7,6 +7,7 @@ import { faUser, faBars } from "@fortawesome/free-solid-svg-icons";
 import { useState, useEffect } from "react";
 import Offcanvas from "react-bootstrap/Offcanvas";
 import BrandLogo from "../images/brandlogo_app.jpg";
+import DarkLogo from "../images/dark_brand.jpg";
 
 const Header = () => {
   const logout = (event: MouseEvent<HTMLDivElement>) => {
@@ -17,6 +18,7 @@ const Header = () => {
 
   const [show, setShow] = useState(false);
   const [isSmallScreen, setIsSmallScreen] = useState(window.innerWidth < 768);
+  const [logo, setLogo] = useState(BrandLogo);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -27,6 +29,14 @@ const Header = () => {
     };
 
     window.addEventListener("resize", handleResize);
+
+    // Check for theme preference in local storage
+    const theme = localStorage.getItem("theme");
+    if (theme === "dark") {
+      setLogo(DarkLogo);
+    } else {
+      setLogo(BrandLogo);
+    }
 
     // Cleanup event listener on component unmount
     return () => {
@@ -40,27 +50,26 @@ const Header = () => {
         <div>
           <header>
             <Link to="/">
-              <img src={BrandLogo} alt="brandlogo" width="300" />
+              <img src={logo} alt="brandlogo" width="300" />
             </Link>
             {auth.loggedIn() ? (
-            <FontAwesomeIcon
-            onClick={handleShow}
-            className="hamburger-menu"
-            icon={faBars}
-          />
+              <FontAwesomeIcon
+                onClick={handleShow}
+                className="hamburger-menu"
+                icon={faBars}
+              />
             ) : (
               <Link to="signup" style={{ textDecoration: "none" }}>
-              <h2 className="signup-mobile">Sign up</h2>
+                <h2 className="signup-mobile">Sign up</h2>
               </Link>
             )}
-
           </header>
         </div>
       ) : (
         <header>
           <div className="header-left">
             <Link to="/">
-              <img src={BrandLogo} alt="brandlogo" width="300" />
+              <img src={logo} alt="brandlogo" width="300" />
             </Link>
           </div>
 
@@ -108,18 +117,6 @@ const Header = () => {
                 </h1>
               </Link>
             </div>
-
-            {/* <div className="category-item">
-            <Link to="/about-us" className="no-underline">
-              <h1
-                className={
-                  currentPage === "/about-us" ? "activeNav" : "restNav"
-                }
-              >
-                About
-              </h1>
-            </Link>
-          </div> */}
           </div>
 
           <div className="header-right">

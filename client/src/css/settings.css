@@ -127,3 +127,26 @@ body.dark .setting-opt h3 {
 
     background-color: #4d0000;
   }
+
+  .modal-title {
+
+    font-size: 24px;
+    text-align: center;
+  }
+
+  .modal-body button {
+
+    background-color:#003049 !important;
+    border-radius: 5px;
+    padding: 5px;
+    color: white;
+    margin: 0 20px
+  }
+
+@media screen and (max-width: 768px) {
+
+  .settings-container {
+
+    width: 350px
+  }
+}

@@ -44,6 +44,7 @@ const Settings = () => {
     setIsDarkMode(!isDarkMode); // Update state
     document.body.classList.toggle("dark", !isDarkMode); // Add/remove class
     localStorage.setItem("theme", newTheme); // Save theme to localStorage
+    window.location.reload(); // Refresh the screen
   };
 
   // Apply the saved theme on initial load
@@ -87,8 +88,8 @@ const Settings = () => {
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <button onClick={() => handleDeleteUser(userId)}>Hell yea</button>
-          <button onClick={handleCloseModal}>Nuh uh</button>
+          <button onClick={() => handleDeleteUser(userId)}>Confirm</button>
+          <button onClick={handleCloseModal}>Cancel</button>
         </Modal.Body>
       </Modal>
     </div>

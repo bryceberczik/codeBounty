@@ -38,6 +38,9 @@ footer p {
 .social-icon {
   width: 6%;
   font-size: 50px;
+  margin: 0 30px;
+  display: flex;
+  justify-content: center;
 }
 
 .social-icon a {
@@ -48,4 +51,9 @@ footer p {
 
 .social-icon a:hover {
   color: #4F8FF7;
+}
+
+.dev-container {
+
+  margin: 0 25px;
 }

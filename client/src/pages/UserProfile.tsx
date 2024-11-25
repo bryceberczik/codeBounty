@@ -293,7 +293,7 @@ const UserProfile = ({ username }: { username?: string }) => {
             <div className="descr-container">
               <p
                 id="description-profile-input"
-                suppressConten tEditableWarning={true}
+                suppressContentEditableWarning={true}
                 contentEditable={isOwnProfile}
                 onInput={(e) => {
                   if (e.currentTarget.innerText.length > 300) {
