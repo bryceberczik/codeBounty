@@ -1,9 +1,19 @@
+body.dark .header-container {
+
+  background-color: #0D1117;
+}
+
 header {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   margin: 20px 200px;
   align-items: center;
+}
+
+body.dark header {
+
+  background-color: #0D1117;
 }
 
 .header-left h1:hover {
@@ -21,6 +31,11 @@ header {
   transition: 0.1s ease;
 }
 
+body.dark .header-center h1 {
+
+  color: white;
+}
+
 .header-center h1:hover {
   color: #4a5a6a;
   cursor: pointer;
@@ -31,6 +46,11 @@ header {
   font-family: "Poppins", sans-serif;
   font-weight: 350;
   color: #003049;
+}
+
+body.dark .header-left h1, body.dark .header-right h1 {
+
+  color: white;
 }
 
 .signup-btn h1 {
@@ -128,10 +148,26 @@ color: #4a5a6a;
   transition: 0.3s ease;
 }
 
+body.dark .profile-pic {
+
+  color: white;
+}
+
+body.dark .profile-pic-container {
+
+  border: 2px solid white;
+}
+
 .offcanvas-header, .offcanvas-body {
 
   background-color: #eeede1;
   color: #003049;
+}
+
+body.dark .offcanvas-header, body.dark .offcanvas-body {
+
+  background-color: #0D1117;
+
 }
 
 .offcanvas-title {
@@ -153,6 +189,11 @@ color: #4a5a6a;
   font-size: 30px;
   margin: 20px 0;
   transition: 0.3s ease;
+}
+
+body.dark .offcanvas-opt, body.dark .logout-btn, body.dark .offcanvas-title {
+
+  color: #eee;
 }
 
 .offcanvas-opt:hover {

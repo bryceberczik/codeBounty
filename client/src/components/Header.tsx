@@ -35,7 +35,7 @@ const Header = () => {
   }, []);
 
   return (
-    <div>
+    <div className="header-container">
       {isSmallScreen ? (
         <div>
           <header>

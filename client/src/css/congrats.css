@@ -14,10 +14,20 @@
     0 8px 8px hsl(0deg 0% 0% / 0.075), 0 16px 16px hsl(0deg 0% 0% / 0.075);
 }
 
+body.dark .congrats-container {
+
+    border: 2px solid #eee;
+}
+
 .congrats-text {
 
     color: #003049;
     font-size: 45px;
+}
+
+body.dark .congrats-text, body.dark .congrats-div {
+
+    color: #eee;
 }
 
 .congrats-div {
@@ -39,6 +49,11 @@
 .back-home h1 {
 
     color: #003049;
+}
+
+body.dark .back-home h1 {
+
+    color: #eee;
 }
 
 .lost-container {

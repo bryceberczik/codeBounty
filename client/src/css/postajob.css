@@ -5,6 +5,11 @@
   color: #003049;
 }
 
+body.dark .label-ind {
+
+  color: #eeede1;
+}
+
 .group-space {
 
   margin-bottom: 20px !important;
@@ -15,11 +20,23 @@
   color: #003049 !important;
 }
 
+body.dark .text-muted {
+
+  color: #eeede1 !important;
+}
+
 .input-group-text {
 
   color: #003049;
   border: 1px solid #aec5d5;
   background-color: #aec5d5;
+}
+
+body.dark .input-group-text {
+
+  color: #eeede1;
+  border: 1px solid #003049;
+  background-color: #003049;
 }
 
 .form-control:focus {
@@ -81,10 +98,20 @@
   margin-left: 10px;
 }
 
+.form-title-cust {
+
+  color: #eeede1;
+}
+
 #post-job-heading {
   text-align: center;
   padding: 50px 0;
   color: #003049
+}
+
+body.dark #post-job-heading {
+
+  color: #eeede1;
 }
 
 #post-job-heading h1 {
@@ -115,17 +142,44 @@
   0 8px 8px hsl(0deg 0% 0% / 0.075), 0 16px 16px hsl(0deg 0% 0% / 0.075);
 }
 
+body.dark #post-listing-button {
+
+  background-color: #003049;
+  color: #eeede1;
+}
+
 /* * Your Current Listings * */
 
 #your-listings-text {
   text-align: center;
   padding-top: 100px;
+  color: #003049;
+}
+
+body.dark #your-listings-text {
+
+  color: #eeede1;
 }
 
 #your-listings-container {
   padding-top: 50px;
 }
 
+body.dark #your-listings-container p {
+
+  color: #eee;
+}
+
+body.dark .why-section {
+
+  color: #eee;
+}
+
+body.dark .why-explain {
+
+  background-color: #1A1A1A;
+  color: #eee;
+}
 #no-listings-message {
   text-align: center;
   padding-bottom: 20px;

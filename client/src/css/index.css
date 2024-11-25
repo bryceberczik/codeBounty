@@ -10,3 +10,8 @@
 body {
   background-color: #eeede1;
 }
+
+body.dark {
+
+  background-color: #0D1117;
+}
