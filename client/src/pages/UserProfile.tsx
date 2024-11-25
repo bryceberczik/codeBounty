@@ -306,7 +306,7 @@ const UserProfile = ({ username }: { username?: string }) => {
                   }
                 }}
               >
-              {user?.description}
+                {user?.description}
               </p>
             </div>
           </div>
@@ -355,8 +355,7 @@ const UserProfile = ({ username }: { username?: string }) => {
                   </Col>
                   <Col md={6}>
                     <Button
-                      variant="info"
-                      className="list-button"
+                      className="edit-array-btn list-button"
                       onClick={() => {
                         handleAddTechnology(techInput);
                         setTechInput("");
@@ -367,8 +366,7 @@ const UserProfile = ({ username }: { username?: string }) => {
                   </Col>
                   <Col md={6}>
                     <Button
-                      variant="danger"
-                      className="list-button"
+                      className="edit-array-btn list-button"
                       onClick={() => {
                         handleDeleteTechnology(techInput);
                         setTechInput("");
@@ -428,8 +426,7 @@ const UserProfile = ({ username }: { username?: string }) => {
                   </Col>
                   <Col md={6}>
                     <Button
-                      variant="info"
-                      className="list-button"
+                      className="edit-array-btn list-button"
                       onClick={() => {
                         handleAddLink(linkInput);
                         setLinkInput("");
@@ -440,8 +437,7 @@ const UserProfile = ({ username }: { username?: string }) => {
                   </Col>
                   <Col md={6}>
                     <Button
-                      variant="danger"
-                      className="list-button"
+                      className="edit-array-btn list-button"
                       onClick={() => {
                         handleDeleteLink(linkInput);
                         setLinkInput("");
