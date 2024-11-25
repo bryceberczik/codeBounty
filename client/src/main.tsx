@@ -64,7 +64,11 @@ export const router = createBrowserRouter([
       },
       {
         path: "/settings",
-        element: <Settings />,
+        element: auth.loggedIn() ? (
+          <Settings />
+        ) : (
+          <Navigate to="/signup" />
+        ),
       },
       {
         path: "/congrats",

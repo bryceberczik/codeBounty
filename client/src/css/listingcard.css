@@ -38,6 +38,13 @@
   0 8px 8px hsl(0deg 0% 0% / 0.075), 0 16px 16px hsl(0deg 0% 0% / 0.075);
 }
 
+body.dark .your-listing-card {
+
+  background-color: #4c4c4c;
+  border: 1px solid #4c4c4c;
+  color: #eeede1;
+}
+
 .your-listingcard-container {
 
   margin-bottom: 60px;
@@ -54,6 +61,12 @@
   border: none;
   background-color: #eeede1;
   color: #003049;
+}
+
+body.dark .modal-header, body.dark .modal-body, body.dark .modal-footer {
+
+  color: #eeede1;
+  background-color: #4c4c4c;
 }
 
 .modal-body {
@@ -94,6 +107,16 @@
   justify-content: center;
 }
 
+body.dark .applicant-profile-btn p {
+
+  color: #eeede1;
+}
+
+body.dark .get-accepted-container h1 {
+
+  color: #eeede1;
+}
+
 .applicant-btn-container button {
 
   padding: 5px;
@@ -107,6 +130,16 @@
 .applicant-btn-container button:hover {
 
   background-color: #4a5a6a;
+}
+
+body.dark .get-accepted {
+
+  background-color: #1A1A1A;
+}
+
+body.dark .get-accepted h2, body.dark .get-accepted h3 {
+
+  color: #eeede1;
 }
 
 #your-listing-buttons-container {
@@ -145,6 +178,13 @@
   0 2px 2px hsl(0deg 0% 0% / 0.075), 0 4px 4px hsl(0deg 0% 0% / 0.075),
   0 8px 8px hsl(0deg 0% 0% / 0.075), 0 16px 16px hsl(0deg 0% 0% / 0.075);
   margin: 0 20px;
+}
+
+body.dark #listing-card {
+
+  background-color: #4c4c4c;
+  border: 1px solid #4c4c4c;
+  color: #eeede1;
 }
 
 #card-title {

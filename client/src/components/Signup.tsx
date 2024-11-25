@@ -62,6 +62,10 @@ const Signup = () => {
         variables: { input: formState },
       });
       Auth.login(data.addUser.token);
+      
+      // let hasTheme = localStorage.getItem("theme");
+      // if (!hasTheme) localStorage.setItem("theme", "light");
+
     } catch (err) {
       console.error(err);
       setError("Something went wrong.");

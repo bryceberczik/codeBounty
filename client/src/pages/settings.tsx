@@ -1,13 +1,16 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useQuery, useMutation } from "@apollo/client";
 import { QUERY_ME } from "../utils/queries";
 import { DELETE_USER } from "../utils/mutations";
 import { Modal } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import "../css/settings.css";
+import "../css/header.css";
+
 
 const Settings = () => {
   const [showModal, setShowModal] = useState(false);
+  const [isDarkMode, setIsDarkMode] = useState(false); // State for theme
   const navigate = useNavigate();
 
   const [deleteUser] = useMutation(DELETE_USER);
@@ -35,6 +38,23 @@ const Settings = () => {
     }
   };
 
+  // Theme toggle logic
+  const themeToggle = () => {
+    const newTheme = !isDarkMode ? "dark" : "light"; // Toggle the theme
+    setIsDarkMode(!isDarkMode); // Update state
+    document.body.classList.toggle("dark", !isDarkMode); // Add/remove class
+    localStorage.setItem("theme", newTheme); // Save theme to localStorage
+  };
+
+  // Apply the saved theme on initial load
+  useEffect(() => {
+    const savedTheme = localStorage.getItem("theme");
+    if (savedTheme === "dark") {
+      setIsDarkMode(true);
+      document.body.classList.add("dark");
+    }
+  }, []); // Run only once when the component mounts
+
   if (loading) return <p style={{ paddingBottom: "1000px" }}>Loading...</p>;
 
   return (
@@ -44,13 +64,17 @@ const Settings = () => {
         <div className="setting-opt">
           <h3>Theme Switch</h3>
           <label className="switch">
-            <input type="checkbox" />
+            <input
+              type="checkbox"
+              onChange={themeToggle}
+              checked={isDarkMode} // Bind to state
+            />
             <span className="slider"></span>
           </label>
         </div>
         <div className="setting-opt">
           <h3>Account Deletion</h3>
-          <button onClick={() => handleShowModal()} className="delete-user-btn">
+          <button onClick={handleShowModal} className="delete-user-btn">
             Delete Account
           </button>
         </div>

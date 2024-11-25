@@ -10,11 +10,23 @@
   0 8px 8px hsl(0deg 0% 0% / 0.075), 0 16px 16px hsl(0deg 0% 0% / 0.075);
 }
 
+body.dark .card-container {
+
+  background-color: #2f4150;
+}
+
 .username-container,
 .role-container,
 .technologies-container {
   text-align: center;
   color: #003049;
+}
+
+body.dark .username-container,
+body.dark .role-container,
+body.dark .technologies-container {
+
+  color: #eeede1;
 }
 
 .username-container h1 {
@@ -39,6 +51,11 @@
 .description-container p {
   color: #003049;
   font-size: 15px;
+}
+
+body.dark .description-container p {
+
+  color: #eeede1;
 }
 
 .openprofile-btn {
