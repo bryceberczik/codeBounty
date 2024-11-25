@@ -288,6 +288,7 @@ const UserProfile = ({ username }: { username?: string }) => {
           </h2>
         </div>
         <div id="profile-card">
+          <h3>Description:</h3>
           <div className="first-sect-profile">
             <div className="descr-container">
               <p
@@ -305,7 +306,7 @@ const UserProfile = ({ username }: { username?: string }) => {
                   }
                 }}
               >
-                {user?.description}
+              {user?.description}
               </p>
             </div>
           </div>
@@ -455,7 +456,7 @@ const UserProfile = ({ username }: { username?: string }) => {
           </Row>
 
           {isOwnProfile && (
-            <Button variant="primary" onClick={handleSave}>
+            <Button id="save-changes-button" onClick={handleSave}>
               Save Changes
             </Button>
           )}
