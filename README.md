@@ -1,4 +1,4 @@
-
+ 
 # codeBounty
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
@@ -18,7 +18,7 @@ codeBounty is a freelance platform designed to connect developers, UI/UX designe
 To get started with **codeBounty**, clone the repository using `git clone https://github.com/bryceberczik/codeBounty.git` and navigate to the project directory with `cd codeBounty`. Install all dependencies by running `npm run install`, and then start the development server with `npm run start:dev`. You're now ready to explore and use the app!
 
 ## Usage
-In order to use our application, you must go to the browser, and open "codebounty.onrender.com" and from there you are able to access the app. If you would like to run the application locally, you can perform a "git@github.com:bryceberczik/codeBounty.git". From there locally, we can perform a npm run install, and then a npm run start:dev.
+In order to use our application, you must go to the browser, and open "codebounty.onrender.com" and from there you are able to access the app. If you would like to run the application locally, you can perform a "git clone git@github.com:bryceberczik/codeBounty.git". From there locally, we can perform a npm run install, and then a npm run start:dev.
 
 ![Screenshot 2024-11-25 at 1 42 49 PM (3)](https://github.com/user-attachments/assets/51284392-0872-442c-99af-cb96ab21125e)
 
